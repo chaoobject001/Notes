@@ -1,0 +1,176 @@
+{Module one: Course Overview}
+  class, method and properties
+  raise and hadle events
+  keep code readable
+  error handling
+  visual studio features
+
+{Module two: An Introduction to C# and .NET}
+Introduction
+  Need to install VS
+Setup
+  VS community
+.NET
+  .NET framework is part of VS installation
+  Application on top of framework can utilize framework's interface for features
+  .NET framework contains two main parts:
+
+    1. Common Language Runtime (CLR)
+      - execution environment for .NET (C#) application
+      - manage app while it executes
+      - tear down app after execution or unrecoverable error
+      - Other services include:
+        memory management:
+          tracking memory use during execution
+          ensure enough memory during execution
+          claen up memory after execution
+        free user from hardware details
+        support multiple languages: C#, VB, F#, ...etc
+
+    2. Framework Class Library (FCL)
+      - user interact on day-to-day basis
+      - contain reusable software for building application
+        such as:
+          regular expression
+          reand and write data from DB
+      - AKA Base Class Library (BCL): technically a subet of FCL
+        works everywhere (used for this course)
+      - user typically focus on some area like ASP.NET, but not all
+
+The C# Language
+  one of the language for .NET
+
+Hello, World
+
+The Compiler
+
+Visual Studio
+
+Debugging
+
+Are You Sleepy?
+
+Summary
+
+
+Classes and Objects
+
+Introduction
+
+The Grade Book
+
+Classes and Objects
+
+Constructors
+
+Classes and Variables
+
+Reference Types
+
+Access Modifiers
+
+tatics
+
+Statistics
+
+Computation
+
+Summary
+
+4
+Assemblies
+
+Introduction
+
+Assemblies
+
+Browsing Assemblies
+
+Referencing Assemblies
+
+Unit Testing
+
+Tests and Access Modifiers
+
+Tests and Floats
+
+Summary
+
+
+Types
+
+Introduction
+
+Reference Types
+
+Value Types
+
+struct and enum
+
+Passing Parameters
+
+ref and out
+mmutability
+
+Arrays
+
+mmary
+
+
+hods, Fields, Events, and Properties
+
+roduction
+
+thods
+
+Fields and Properties
+
+Events
+elegates
+
+Events Revisited
+
+Summary
+
+
+Control Flow
+
+Introduction
+
+Branching
+
+Switching
+
+Iterating
+
+Jumping
+
+Throwing
+
+Handling
+
+Chaining
+
+Finally
+
+Summary
+
+Object Oriented Programming
+
+Introduction
+
+The Pillars
+
+Inheritance
+
+Polymorphism
+
+Abstract Classes
+
+Interfaces
+
+Common Interfaces
+
+Wheto Go Next
+
+summary

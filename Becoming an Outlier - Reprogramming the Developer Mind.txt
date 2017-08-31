@@ -12,32 +12,32 @@
     Being wealthy is NOT about having money.
     It's about having options.
 
-    3 Common Fallacies 
+    3 Common Fallacies
     1. Not enough time to learn - too much to keep up
     2. No respect for the Skills we have - need connection to right people
-    3. No control over career trajectory 
+    3. No control over career trajectory
 
 {Module Two: Command Your Time}
     Objective:
         The amount of success you have in life is roughly equivalent to
-        the amount of time you spend doing things people want 
+        the amount of time you spend doing things people want
         - add value to other people
-    
+
     The technical treadmill:
-        The specific technology mastered today is unlikely to be 
+        The specific technology mastered today is unlikely to be
         marketable over a 10-year span
-    
-    Foster the joy of learning and curiosity to keep up and 
-    embrace the ever-changing landscape 
+
+    Foster the joy of learning and curiosity to keep up and
+    embrace the ever-changing landscape
 
     Habits Build Experts
     "I'm not a a great programmer; I'm just a good programmer with great habits"
 
     Habit: 40% of your day
 
-    Exercise habit: 
+    Exercise habit:
         Replace habit that makes you stagnant with habit that makes you moving
-    
+
     Eating habit: choose breakfast well
 
     Consider following options:
@@ -50,17 +50,17 @@
     Buy new             Buy used
     Sleep in            Weak early
     Status quo          Growth
-    Pessimism           Optimism 
-    Minimum             Exceeding Expectation 
+    Pessimism           Optimism
+    Minimum             Exceeding Expectation
 
     HABITS ARE A CHOICE
 
     Teach Yourself Programming in 10 years
     - with on-going and deliberate practice
 
-    Expert = 10,000 hours 
+    Expert = 10,000 hours
 
-    Deliberate practice: 
+    Deliberate practice:
         Doing things you are NOT good at
         Striving to improve
         Evaluate your performance
@@ -81,7 +81,7 @@
     Multithread your life
     Commute:
         1. Eliminate if possible
-        2. Public transit 
+        2. Public transit
         3. Listen to quality content (podcast, books on CD): http://outlierdeveloper.com/audiobooks/
         4. Notes while driving (digital voice recorder)
 
@@ -94,7 +94,7 @@
     Avoid coding + multi-tasking
 
     Be Modal: focus on task at hand
-        "You do something all day long, don't you? 
+        "You do something all day long, don't you?
         The only difference is that you do a great many things and I do one"
         The importance of time alone to focus on task - stay in the zone
         Options:
@@ -104,17 +104,17 @@
             Batch meeting
             Headphones
             Before leave for interruption, write down what you were doing
-        
-        Find a way to automate daily task or setup reminder 
-    
+
+        Find a way to automate daily task or setup reminder
+
     What is your default mode?
         A managed twetter stream as news
         Preference as following:
-        News: 
+        News:
             Hacker News
             Reddit Programming
             The Verge
-        TV: 
+        TV:
             PluralSight
             InfoQ videos
             DNRTV
@@ -128,21 +128,21 @@
             Seven language in seven weeks
             Patterns of EnterpriseAppArchtecture
 
-    Search for life changing media 
+    Search for life changing media
     "In order to do the big things, you have to let the small bad things happen."
     - Does it help achieve my goal?
-    
+
     Focus on the area you can change
 
     Money is Time
-    Buy time with money - 
+    Buy time with money -
     Success = spending time doing the things you want to do
 
 {Module Three: Hack Your Image}
-    
+
     Perception is Reality
-        The need for personal referral 
-        The cost of building prefessional relationship from scratch everytime you start 
+        The need for personal referral
+        The cost of building prefessional relationship from scratch everytime you start
 
     The developer image triangle (pick two if needed)
         1. Be easy to work with
@@ -151,25 +151,25 @@
 
         1 + 2: Cordial Craftsman -> Ivory Tower Developer for some (might be better then the other two?)
         2 + 3: Reliable Robot -> Tolerate no mistake
-        1 + 3: Happy Hacker -> Debt generator   
+        1 + 3: Happy Hacker -> Debt generator
         All three have downside - thus need balance based on context
 
     Purpose Built:
-        The narrower the niche; the more likely to become a standout 
+        The narrower the niche; the more likely to become a standout
         Consider what are you known for:
             Generalist or specialist?
             Front end or back end?
             Is 'it' clear on resume, blog and open source contributio?
-            What is the benefit moving to either extreme? 
+            What is the benefit moving to either extreme?
 
     Bring Solution:
-        Negative: Complaint without concrete suggestion for how to resolve issue 
-        Positive:  
+        Negative: Complaint without concrete suggestion for how to resolve issue
+        Positive:
             "I have been thinking about the issue we had with XYZ...How about we [alternative]
             ... this will [benefits & fix] ... I have investigated a few options and I recommand [solution] b/c ...
-            Can I build a proof of concept"   
+            Can I build a proof of concept"
             - taking initiative, been thoughtful and make managers job easy
-    
+
     Self-image is Your Greatest Constraint
         I am who I think you think I am:
             If you think people view you as "X" then you are likely to act like "X"
@@ -177,21 +177,21 @@
     1. Hack your self image: improve the way you view yourself by ACT like your hero
     2. Leave to leap (when not been taken seriously)
     3. Reach beyond your comfort zone by taking "Scary Interview" and embrace the uncertainty
-    "If you are not worrying that something you're making will come out badly, 
-    or you won't be able to understand something you are studying, then it isn't hard enough. 
-    There should be suspense ... Look for smart people and hard problems. 
-    Smart people tend to clump together, and if you find such a clump, 
+    "If you are not worrying that something you're making will come out badly,
+    or you won't be able to understand something you are studying, then it isn't hard enough.
+    There should be suspense ... Look for smart people and hard problems.
+    Smart people tend to clump together, and if you find such a clump,
     it's probably worthwhile to join it."
 
     Avoid Conference effect: we are all learning here
 
     Can I see your work?
-        - to apear to be more engaging 
+        - to apear to be more engaging
         Twitter account with programming reference
         Blog with a few posts
-        Github 
+        Github
         Personal website
-    
+
     Reuse and Repurpose:
     After you learned something new:
         - Take side project or Use the tech in different projects
@@ -199,28 +199,28 @@
         - Tweet abot it
         - Lunch & learn (Brown Bag)
         - Speak at Conference or Meetup
-        - Answer questions on forums / Stackoverflow 
+        - Answer questions on forums / Stackoverflow
         - Contribute to Open Source
-    
+
     How To Stop Sucking And Be Awesome Instead - Jeff Atwood
         1. Embrace the Suck
             The first rule of programming - It's always your fault.
-            Failure is the default mode and we can always do better. 
+            Failure is the default mode and we can always do better.
             Version 1 sucks but ship it anyway, because:
-                3 months of user feedback is always better then 
-                3 months in development            
+                3 months of user feedback is always better then
+                3 months in development
             Boyd's Law of Iteration:
             Speed of iteration ALWAYS beats quality of iteration
-            - where you are today doesn't matter so much, 
-            comparing to where you are goin tomorrow, 
-            as long as you can change and adapt fast enough 
+            - where you are today doesn't matter so much,
+            comparing to where you are goin tomorrow,
+            as long as you can change and adapt fast enough
             The goal is to suck less every day, week, month, year...
         2. Do it in public (where others can see)
-            This will make you spend the effort 
+            This will make you spend the effort
             The constraints are mostly self-imposed
-            
-            [Do these things]                       [in these places] 
-            
+
+            [Do these things]                       [in these places]
+
             Answer questions                        Blog
             Document your learning                  Conference / Meetup
             Share my Failures                       User Groups
@@ -235,53 +235,40 @@
 
         3. Pick stuff that matters
             Everytime you share something, Ask: So What?
-                People don't care about you, they care about: 
+                People don't care about you, they care about:
                     - their problems
                     - information useful to them
                     - what entertains them
                     - what makes them feel like they rule
                 Getting things done is enabling other people getting things done
-            People tend to ignore / forget "not awsome", 
+            People tend to ignore / forget "not awsome",
             but they remember their success - and the things you do to help them achieve that
             Find an audience that needs your help, and
             No one should be more excited about your mission than you
             Ask: What cool thing did I do for someone else today?
-            It is better to try and failed than being safe and sorry 
+            It is better to try and failed than being safe and sorry
 
-{Module Four: Own Your Trajectory} 
+{Module Four: Own Your Trajectory}
 Take actively control their career and don't let circumstances to dictate their career path
 1. Move from passive to active
 2. Clear your mind
 3. Choose your role
 
     From Passive to Active
-        Stay only if it helps to achieve your goal 
-        Make decision deliberately, not been forced to 
-   
-    Why Freedom Matters: here is two keys    
-        Slack in finance to afford life - frugality
-        Skills in demand to make it anywhere, anyhow 
+        Stay only if it helps to achieve your goal
+        Make decision deliberately, not been forced to
 
-    Slack: 
+    Why Freedom Matters: here is two keys
+        Slack in finance to afford life - frugality
+        Skills in demand to make it anywhere, anyhow
+
+    Slack:
         Clear your mind
 
 
 
 
 
-              
-
-
-
-
-
-     
-
-
-
-
-
-    
 
 
 
@@ -303,7 +290,20 @@ Take actively control their career and don't let circumstances to dictate their 
 
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
