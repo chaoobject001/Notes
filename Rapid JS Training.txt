@@ -6,11 +6,11 @@ Functiona Fundamentals
 
     JS works in two passes
         First pass: create any variables or functions
-        Second pass: begin execution 
-    
-    When a function is called with mismatched arguments, 
+        Second pass: begin execution
+
+    When a function is called with mismatched arguments,
     extra argument will be assigned with 'undefined'
-    - No error will be thrown 
+    - No error will be thrown
     - Good way to pass optional arguments to a function
 
     if a function does not return a value, JS will assign 'undefined' as return value
@@ -22,12 +22,12 @@ Functiona Fundamentals
 
     console.log(typeof activateOrder);
 
-    funtion is declared then assigned to a variable 
-    while the function does NOT have a name, it is held by a variable 
+    funtion is declared then assigned to a variable
+    while the function does NOT have a name, it is held by a variable
     To call the function held by the variable, use variable name followed by parenthesis ()
     , like activateOrder()
 
-    A statment with var alone will return the defination of the function held by the variable 
+    A statment with var alone will return the defination of the function held by the variable
     such as: activateOrder;
     (chrome) return:
         f() {
@@ -50,7 +50,7 @@ Advanced cases
                 break;
             case orderTotal >= 75 && orderTotal < 100:
                 discount = 20;
-                break; 
+                break;
             case orderTotal >= 100:
                 discount = 30;
                 break;
@@ -69,7 +69,11 @@ do ... while
     } while (currentItem < lineItemCount)
 
     output: item: undefined
-    
-    
+
+    // the currentItem is "undefined"
+    // operator ++ on an undefined variable will be ignored - currentItem remains undefined
+    // condition (currentItem < lineItemCount) will also result in undefined,
+    // which will evaluate to false due to undefined value
+
 
 
