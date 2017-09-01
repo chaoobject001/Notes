@@ -1,0 +1,451 @@
+Team Foundation Server 2010 Version Control
+by Robert Horvick
+
+{Module one: Getting Started}
+TFS 2010 version control
+    - TFS 3-Tier Architecture: simple and complex
+    - Project Collections and Team Projects: physical and logical means of structuring projects
+    - Version Control Models:
+        - Checkout/Edit/Checkin w/ central server
+    - TFS Clients:
+        - Several options for multiple platforms       
+    - The Workspace: as client and server concept 
+
+TFS 3-Tier Architecture: Client, Application and Data Tier
+    - Client tier: Windows PC running VS 2010
+        - Communicate to IIS (provide Application web services) via HTTP
+    - Application tier: web services runngin within IIS
+        - Communicate with TFServer DB in SQL Server to process client request    
+    - Data tier: SQL Server
+
+Additional Services can be added:
+    - Windows SharePoint Services (WSS): communicate with client
+    - SQL Reporting Services (SSRS): communicate with client
+    - Data warehouse (OLAP)
+
+Minimal TFS can be deployed on a Windows client (Win 7)
+    - can also be deployed in a workgroup or Active Directory domain 
+    - can use any version of SQL 2008 - including express
+
+TFS logical architecture: with respect to version control
+    - Core of TFS project strux is team project collection
+    - Project collection 
+        - container in which the team project exist
+        - groups related projects (logically & physically) in a single SQL DB
+    - Backup or restore a project collection DB = Backup or restore every team project within the DB
+    - Independently stored so can be moved b/t TFS instances
+    - logically isolated from each other
+        - version control operations cannot cross collection boundries 
+        - workitem and changeset IDs are unique b/t collections
+    - Managed via Administration Console
+        - create projection collection is a big deal
+    - Team projects are contained within a project collection 
+        - Team project defines: 
+            - development process: CMMI, Agile, Scrum, Lean, etc...
+            - version control root directory (eg., $/ProjectName/...), 
+                - don't use space in project name, it will be part of URL
+        - TFS artifacts within a collection can cross project boundaries         
+            - sources code can merge between projects
+        - Projects are managed via visual studio (creation, security & other aspects) 
+    - When to create new project:
+        - as coarse-grained as possible while satisfying business needs     
+    - Project structure should reflect the intended project management and release styles
+        - top-down vs. bottom-up
+        - project structure defines version control structure 
+            - consider on-going release and maintenance plans before selecting project structure 
+
+Common Version Control Models:
+    - Checkout/Edit/Checkin model 
+        - files are checked out from central server, edited then checked-in
+    - Edit/Merge/Checkin
+        - File are edited without notifying the server 
+        - Merged when checked in to a central server
+    - Distributed Edit/Merge/Checkin
+        - Files are edited without notifying the server 
+        - Submitted to a local server
+        - Local server can push and pull content from remote servers
+
+TFS Clients:
+    - primary interface: Source Control Explorer (visual Studio) 
+    - Command line interface (tf.exe)
+    - Team Explorer Everywhere
+        - Eclipse client foe Win and Non-Win users
+        - Java command line for non-Windows users
+    - Web interface for reviewing Data
+
+Version Control Workspace
+    - both a client and server concept 
+    - On client: where source code live
+    - On server: a stored record of what is currently on client
+    - Scenario:
+        - A new file created on client is displayed as pending on server side
+        - Once client check in the new file, the pending mark on server is removed and server and client are again in sync
+    - Scenario:
+        - A new file is added to the server but client has yet to get it 
+        - Client need to perform a "GET" operation to get in sync
+
+Additonal references:
+    - MVA: https://mva.microsoft.com/search/SearchResults.aspx#!q=Team%20Foundation%20Server&index=2&lang=1033
+    - Book: 
+        Professional Application Lifecycle Management with Visual Studio 2013 (Wrox Programmer to Programmer) 3rd Edition
+        Continuous Delivery with Visual Studio ALM 2015 1st ed. Edition
+    - Blogs:
+        https://blogs.msdn.microsoft.com/buckh/tag/team-foundation/
+        https://blogs.msdn.microsoft.com/bharry/
+    - Forums:
+        https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=tfsversioncontrol
+
+
+{Module two: Fundamental Operations}
+Connected to Team Foundation Server 
+Navigate version control structure with Team Explorer and Source Control Explorer 
+Create workspace (active & cloak mapping)
+"Get" source code
+
+    Connecting to Team Foundation Server
+        - In terms of version control, it is to connect to a team project collection
+        - Then select the projects to connect under that collection 
+    Connection dialog:
+        - Define connection via "Add Team Foundation Server" dialog
+            - Server Name
+            - Virtual Directory 
+            - Port Number 
+            - Connection protocol 
+         - Select a collection     
+            - URL for the service: http://<machine>:<port>/<vdir>/<collection>
+    Create workspace:
+        - workspace defines 
+            - what code will be brought from the server to the client 
+            - where on the client the code will live
+        - workspace mapping defines
+            - what server content goes where on the client 
+            - can be recusive or single file / folder 
+    Get: retrives requested items from server
+        - Client send request to server
+        - Server checks workspace mapings & determine what files eligible to receive 
+        - Server checks what files client already download into work space
+        - Server create a list for the delta between what are already download and what are been requested
+        - Server responds with list of items needed
+        - Client enumerate over the list and initiate a download request for every item
+        - Client send updates to server as file was downloaded & properly placed in the workspace 
+        - Server update its state for the workspace
+    
+    Get Latest is the default for Get method, usually done at begining of the work or periodically 
+    Get Specific Version
+    Get by Date
+    Get by Label (referencing content of the build)
+    Get by Workspace Version: use this when worksapce is corrupted during, but don't want remember the dealta from previous server version
+
+    Pending Changes:
+    Add: Create content file locally & Notify the server to add the item
+        - Different ways to add an item:
+            Option 1: add item via solution explorer
+            Option 2: 
+                - Create new item under local directory
+                - Add items under Source Control Explorer (Right-Click then "Add items to folder")
+                Note: 
+                    Add item to TFS (Source Control Explorer) does not mean add item to solution
+                    To add the item in solution, right-click solution to add existing item
+    Edit:
+        - First check out the file for editing
+        - File will NOT be modified during the subsequent Get operation
+        - However, without notifying TFS, there will be no pending change for the modified item
+        - Therefoe, TFS applied read-only attribute to ALL files stored in version control to prevent overriding any file
+        Note: 
+            - open file in Source Control Explorer and make changes will checked out the file for edit
+            - this will cause solution file to be checked-out implicitly 
+    View Pending Changes (after check out files):
+        - See what files are checked out & what changes yet to be checked in 
+        - (VS 2015) Under Team Explorer's home section
+        - once checked-in pending changes should not appear under source code explorer
+    Checkin:
+        commits the changes to the server so they are available to others
+
+{Module three: Fundamental Operations 2}
+View History
+Rename and Move (file directory in TFS)
+Delete & Undelete item
+Undo pending changes in workspace
+Shelve pending changes
+Unshelve items back to work space
+Get item by date & time or chnageset number
+
+    View Item History:
+    - Who, what and when of a directory or file (on line by line basis)
+    - If changeset number were skipped under a particular project, 
+    it means the skipped changeset project does not have content within that project
+    Chnageset 1's comment is empty - just generated when project collection is created   
+    - Individual file is the narrowest scope to view the history of an item
+    - Compare b/t changesets: Multiple selection between two changeset and right click menu option "Compare" will display both versions 
+    and highlight the differences 
+
+    Rename and Move:
+    Rename: change the name of a file or directory 
+    Rename limit: 
+        - No rename for Team Project root directory 
+        - No rename for Project Collection 
+    Move: change the location of a file or directory, even between team project
+    Move limit: 
+        - source and target location must be mapped in the workspace
+        - No move between project collection
+    
+    Delete: removes a file or directory from version control (recursively)
+        - Deleted item will not be downloaded during a "Get Latest" operation
+        - After delete operation is checked-in, when other users who get the latest source
+        will lose the deleted item as well 
+        - Deleted item still existed in Source Control: item history /content is NOT lost 
+    Undelete: Undelete brings a deleted item back
+        - To display deleted item:
+            - Tools / Options / Source Control (side navigation) / Visual Studio Team Foundation Server
+            / Show deleted items in the Source Control Explorer (check box)
+    Undo Pending Changes: revert content back to its original state 
+        - Notify server item is no loger checked out
+        - Downloads the original item contents to the workspace from server
+        - ! Undo changes CANNOT be reverted - ALL CHANGES ARE GONE !
+    
+    Shelve: store pending changes on the server for later use
+        - covers changes within the scope of item been brought up
+    Shelvesets: state management and sharing
+        - state management: switch task without losing state, before check-in
+            - Take local changes and create a shelveset from them 
+            - Changes are stored on server, for later work on
+        - sharing ideas or code review
+            - Shelveset is available to the whole team 
+        - Basic shelveset properties
+            - Name: such as a descriptive feature name
+                - Name can be re-used by multiple users
+                - Limit: Each user's shelveset must be uniquely named  
+                - Two Devs can have shelveset of the same name, but each developer can only have one selveset with that shared name
+                - Internal shelveset name (for server) is the combination of:
+                    - Name given by user (the displayed name)
+                    - Authenticated name (domain name and/or user anem)
+            - Shelving is NOT checking in the code - it's server side storage mechanism  
+            - Shelvesets are not versioned - delete or override a shelveset and the content will be LOST - No history
+    Unshelve: Get shelved changes back down to local workspace from server
+        - how does it work:
+            - (Server) determine the changes in the shelveset (edited, added, deleted or renamed items?)
+                - if item is edited, it will be checked out for edit in workspace
+                - if item is deleted / added, it will be checked out for delete / add in workspace
+                - as if user has requested the edit / add / delete
+            - (Client) download the change content from server into user's workspace
+        - when unshelve is done ...
+            - the content of modified item will match what was shelved to the server originally
+        - Limits: 
+            - No unshelving an item for an user when the item already been checked out locally by the user 
+                - No mechanism to merge these chnages together 
+                - No unselve unless pending chnages are removed first 
+            - No unshelving an item that is NOT mapped into user's workspace
+    Shelve option: "Preserve pending changes locally" (checkbox)
+        - when checked and shelve: pending changes stay pending in workspace (changes preserved)
+        - when un-checked and shelve: pending changes are undone (changes NOT preserved)
+
+    Get Specific Version: view items at previous point in time
+        common reasons: re-create previous builds for reproducing bugs
+    Download by different criteria: Date & Time or Changeset Number and more
+
+{Module Four: Command Line} - SKIPPED
+Overview of Command Line Environment
+Command Types:
+    Workspace Management
+    Query Server
+    Modyfy Source Code
+
+
+{Module Five: Team Development Practices 1}
+Handle Conflict
+Annotate feature
+Reviewing Shelved Changes
+
+    Handling Conflict: 
+        Conflict: Multiple changes made to same item by different people in parallel 
+        Conflict must be resolved before operation can continue 
+        Common causes:
+            Multiple edits to the same file 
+            Incompatible operations to the same file
+            Namespace collisions
+        Often occur during Get and Checkin workflows: The "Get" during "Checkin"
+
+    Conflicting Edits (scenario):
+    1. Flie at version 1 
+    2. Two users both checked out the file and made changes
+    3. One user checked in first while another one still has the file checked out; 
+    4. Now the file is on version 2
+    5. The second user need to merge the first user's changes 
+        - The second user "Get lastest version" of the file 
+        - Due to content difference - "Pending chnages - Conflicts" window is opened 
+        - Under the window, it states "1 Conflict: 1 Version"
+        - Description: "The item content has changed"
+            Four options:
+                - AutoMerge: 
+                    Merge as TFS see fit / disabled when both users change same section of code
+                - Merge Changes In Merge Tool:
+                    Left side: Server version
+                    Right side: Local version
+                        Click on the section in left or right to select wanted content
+                        which is displayed in the center bottom panel
+                        Additonal edit can be made on the center bottom panel 
+                    Click OK to resolve the conflict   
+                - Take Server Version (accept theirs - lose my work)
+                - Keep Local Version (accept mine / yours)
+            Gage differences in changeset numbers for the number of changes 
+    6. File checked in at version 3; There are no more chacked out files   
+
+    Incompatible Operations (scenario):
+    1. Flie at version 1
+    2. Two users want to rename the file 
+    3. One user checked in first with Name_A
+    4. Now the file is on version 2 with Name_A
+    5. Second user need to resolve file naming before check-in
+        [Second user perform a "Get Latest Version" request to triger name conflict]
+        Use "Choose Name" button to: Keep local, Take server or Select new name
+        Once name is picked, select "Accept Resolution" or "Cancel and Select another resolution"
+    6. Check-in file with updated name at version 3
+
+    Namespace Collisions (scenario):
+    1. A file added to two local workspaces by two users with the same name
+    2. The first user check in 
+       The second user cannot check in over existing item
+    4. Decide how to resolve (merge or pick one of the available copies)
+       [After first user check in]
+       Second user "Get Latest Version" 
+       Automerge is NOT an option for a new file 
+       Also, TFS will NOT allow user to chack in a file that is identical to a file already in source control 
+       - this prevent history of no changes between changesets
+    5. The file become version 2
+
+    Annotated Changes: view line by line change history for a file - the blame command
+    (VS 2017) Source Control Explorer / (Right Click on Item) / Annotate 
+    
+    Reviewing Shelved Changes
+        - Within VS
+        - Team Foundation Power Tool
+        - Team Foundation Web Access
+
+    VS 2017: locate a shelveset
+    Option 1:   Team Explorer / Pending changes / ... (Open drop down list from bottom right of "Pending Changes")
+                / select "Find Shelveset" 
+    Option 2:   Team Explorer / Pending changes / Action (drop down list) / select "Find Shelveset"
+
+
+{Module Six: Team Development Practices 2}
+Chnage Notification 
+    Configure TFS for SMTP delivery 
+    Subscribing to checkin alerts 
+Check in Policies 
+    Require comment on every check in 
+Checkin Notes
+    Provide additional note on changeset
+    Require code reviewer be indicated on every checkin
+
+    Change Notification - Need access to "Team Foundation Server Administration Console"
+
+    Checkin Policy
+        Ex.
+            Require checkin comment
+            Require linked workitem
+            Require no code analysis errors
+        Configured at team level: apply to all checkins within team project
+        Provide client side validation - all policy must be installed locally (install policy binaries)
+        Bypass policy requires recorded reson - this can be tracked later for review
+        Configure (TFS 2015):
+            Team Explorer / Settings / Source Control / [Check-out Settings, Check-in Policy, Check-in Notes]
+            ex. Add a Check-in Policy
+                Add button / Changeset Comment Policy (Description below)
+                    - this requires user to provide comment when check-in
+        Configure for alerts
+        (VS 2017) Team / Project Alert (Open Web Access) 
+        Click link with "Team alerts can be managed from the Advanced Alerts Management Page"
+        to open Alert Management Page - new alerts can be created under this Page
+
+    Checkin Notes: Provide additional info about a change
+        - Code reviewer
+        - Security reviewer
+        - Performance reviewer
+        - and others
+    This is a team project level setting / it can be required or optional 
+    The notes can be queried (like by a specific code reviewer) for matching changesets
+    A required (checkboc checked) check-in notes title will be required to filled when a user want to check-in
+    - this can ensure good coding practice 
+    Configure (TFS 2015):
+        Team Explorer / Settings / Source Control / Check-in Notes
+
+{Module Seven: Branch and Merge}
+Conceptual Overview
+Creating Branch
+Merge Change
+Visualizations
+
+    Conceptual Overview:
+        Branching: allows two versions of the item to be worked on independently 
+        Mergeing: allow the branched verions to be brought back together
+        This is often used for feature development without destabilizing the main development
+
+    Branching example:
+    1. "Main" branch created (stable, ideally shippable with complete features only)
+    2. "Feature" branch created (feature will eventually be developed on this branch)
+    3. "Feature" brach merged back to "Main" branch when feature is complete
+    [STEP 3 may repeat when more than one feature branch is created]
+    4. "Release" branch created: "Release" branch captures of "Main" branch when current release is complete
+    5. Any on-going development can continue on "Main" branch; while...
+       Any maintenance continue on "Release" branch
+    
+    Merging example:
+    1. A file created on "Main" branch
+    2. File branched to "Feature" branch  
+    3. File is modified on "Main" branch (due to bug fix)
+    4. File is also modified (differently) on "Feature" branch
+    5. Feature team will need to resolve the changes in "Main" & "Feature" branch
+    6. File merged back to "Main" branch
+    
+    Creating Branches (commands)
+        - Convert to Branch
+        - Branch (VS)
+        - Tf.exe branch (command line)
+        - when creating a new project
+
+    Convert to Branch: Convert existing folder into a branch object
+        - this can be undo by "Convert to Folder" command
+        - From Solution Explorer:
+            Right click on folder / Branching and Merging / Convert to Branch (Not in VS 2017)
+
+    Branch Command: Creates a branch from an existing branch or folder
+    - can select the version to branch from
+
+    "Merge and Branch" on folders of Source Control Explorer (right-click)
+    
+    Visualizations
+        Branch Hierarchy 
+            Visualize the parent/child relationship b/t branches 
+        Track Changeset 
+            Visualize wheather or not a change has merged between branches
+            Branch Hierarchy view: parent and child
+            Timeline View
+
+
+        
+
+    
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
