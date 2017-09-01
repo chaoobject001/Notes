@@ -38,22 +38,45 @@ Setup
       - user typically focus on some area like ASP.NET, but not all
 
 The C# Language
-  one of the language for .NET
+  one of the languages for .NET
+  influence from Java, C++ and JavaScript
 
 Hello, World
+  - When CLR starts a console app, it will automatically start to
+    look for a program class with Main method and start execute code inside
+  - C sharp compiler (csc) can be found in following directory
+      C:\Windows\Microsoft.NET\Framework\v4.0.30319>
+  - Compilation usually done via Visual Studio
 
-The Compiler
+The Compiler: csc.exe
+  - Compile one or multiple files into single executable or library
+  - Transforms C# code into Microsoft Intermediate Language (MSIL), similar to Java bytecode
+  - MSIL define instruction for CLR
+  - CLR transform MSIL instructions (within EXE) into CPU instructions
 
 Visual Studio
+  - access command line argument at Main method with string[] args
 
 Debugging
+  - To pass in argument while debugging:
+     Right-click on project
+     Select "Properties"
+     Select "Debug" setting on left panel
+     Under "Start Options"
+      Within "Command line arguments"
+      Enter arguments for string args[] during debugging
+      [Content entered will be used for command line argument(s) during debugging]
 
 Are You Sleepy?
+  Shift + Ctrl + B: Build
+  Start class and method name with upper Cases
 
 Summary
+  C# is strongly typed & case sensitive language for .NET
+  Visual Studio is an IDE for C# app of all types
 
 
-Classes and Objects
+{Module three: Classes and Objects}
 
 Introduction
 
