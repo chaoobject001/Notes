@@ -249,7 +249,7 @@
             It is better to try and failed than being safe and sorry
 
 {Module Four: Own Your Trajectory}
-Take actively control their career and don't let circumstances to dictate their career path
+Take active control over career and don't let circumstances dictate career path
 1. Move from passive to active
 2. Clear your mind
 3. Choose your role
@@ -263,18 +263,119 @@ Take actively control their career and don't let circumstances to dictate their 
         Skills in demand to make it anywhere, anyhow
 
     Slack:
-        Clear your mind
+      Clear your mind (with persistent focus):
+        because scarcity diminishes mental capacity
+          -> distraction makes you dumber
+        Devs needs uninterrupted thought
+        Financial worries make it harder to think about other things
+        Worries outside of job affect our abilities on the job
+
+        The biggest enemy is your bill -> the cheaper you live the greater your options.
+
+    Skills:
+      One must rigorously review the technical lanscape to see where their current skill set fits in
+      and where things are headed
+
+      Does the demand outstripe supply?
+        - Use TIOBE index to measure programing language popularity
+
+      How about demand in your city? Dice.com with City
+
+      Niche andleverage exist where demand outstripe supply - even if the opertunities is fewer
+      However, at either edge of adoption curve, patience and marketing are key
+      Technologies are unlikely to change if it is mature / dying - this can be upside
+
+    Program your Brain
+      Reading - Audiovisual - Demo - Discussion - Practice doing - Teach others
+      3 Steps for learning:
+        1. watch someone (video, books, blog)
+        2. Experiment with real world implementation
+        3. Teach someone else (also, blog post, stackoverflow)
+      Don't appologize for lack of knowledge or experience
+
+    Exploration and Exploitation
+      Exploration: Acquire new technology
+        Too much:
+          Never reach expertise
+          High opportunity cost
+      Exploitation: Apply acquired technology for work
+        Too much:
+          Skills become stale
+          Become irrelevant
+
+    Assembly Line Coder
+      Don't work only for money, work to learn
+
+    Opportunity curve
+      With expertise, more opportunities are available at any point in life
+      - remain relevant throughout retirement age
+
+    Search for scale:
+      You can only sell an hour of your life ONCE - this does not SCALE
+      To scale, one needs to get everything out of a given unit of work
+
+      SCALE buys more TIME
+      More TIME to enchance SKILLS
+      SKILLS to build more things that SCALE
+
+      Aim to get closer to independence and automated income
+      Level 1. Work (do what was told)
+        Fix bug, Bill by the hour
+      Level 2. Lead (talk about work)
+        Select architectures & Technologies
+        Mentor, hire and lead treadmill
+        Define project scope and processes
+      Level 3. Own
+        Products: SAAS PAAS
+        Frameworks
+        Author (books, lessons, etc...)
+
+{Module Five: The Outlier Challenge}
+1. Command your time
+2. Hack your image
+3. Own your trajectory
+
+  Act as if
+    Starting acting like a thought leader - get your thought and ideas out in the public.
+    - speaking, bloging, publishing
+    Act like you are rich:
+      - work part-time
+      - pay others to free up your time
+      - start working only part time so you have more time to learn
+
+  Manufacture Urgency
+    Make commitment with others to force you to deliver on your goals
+      Volunteer to present a topic you want to learn (for lunch and learn)
+      Announce your planned launch date
+      Take interview for tech you don't yet know well
+
+  Increase Luck Surface area
+    Luck Surface Area:
+      is directly proportional to the degree to which you do something you're passionate about
+      combined with the total number of people to whom this is effectively communicated
+
+    1. Speaking: lunch & learn, user group or conference - about things you want to be known for
+    2. Startup weekend / Code for charity: to build network
+    3. Connect people: Create a meetup / User Group / Mastermind
+    4. Blog / Tweet / Be Social
+    5. Contribute to Open Source: Halo effect
+    6. Never Eat Alone
+    7. Make the Hang: hanging out with leaders in your fields
+
+  Chase fear
+    Find what scares you and run AT it
+      - take a lead job
+      - manage others
+      - speaking
+      - committing to open source
+      - shipping art
+
+  Choose yourself - and choose HARD
+  b/c downside is much less than you thibk
 
 
 
-
-
-
-
-
-
-
-
+  Get Connected
 
 
 
