@@ -1,0 +1,75 @@
+Functiona Fundamentals
+    Declaraing functions
+    Arguments
+    Returning values
+    Function expression
+
+    JS works in two passes
+        First pass: create any variables or functions
+        Second pass: begin execution 
+    
+    When a function is called with mismatched arguments, 
+    extra argument will be assigned with 'undefined'
+    - No error will be thrown 
+    - Good way to pass optional arguments to a function
+
+    if a function does not return a value, JS will assign 'undefined' as return value
+
+    function expression:
+    var activateOrder = function() {
+        console.log('Order activated')
+    };
+
+    console.log(typeof activateOrder);
+
+    funtion is declared then assigned to a variable 
+    while the function does NOT have a name, it is held by a variable 
+    To call the function held by the variable, use variable name followed by parenthesis ()
+    , like activateOrder()
+
+    A statment with var alone will return the defination of the function held by the variable 
+    such as: activateOrder;
+    (chrome) return:
+        f() {
+            console.log('Order activated')
+        }
+
+If and Switch statements
+if
+if ... else
+switch ... case
+Advanced cases
+
+    special switch case:
+        var orderTotal = 99.99;
+        var discount;
+
+        switch(true) {
+            case orderTotal >= 50 && orderTotal < 75:
+                discount = 10;
+                break;
+            case orderTotal >= 75 && orderTotal < 100:
+                discount = 20;
+                break; 
+            case orderTotal >= 100:
+                discount = 30;
+                break;
+            default:
+                discount = 0;
+        }
+        console.log(discount);
+
+do ... while
+
+    var lineItemCount = 3;
+    var currentItem = undefined;
+    do {
+        console.log("item: " + currentItem);
+        currentItem++;
+    } while (currentItem < lineItemCount)
+
+    output: item: undefined
+    
+    
+
+
