@@ -75,12 +75,16 @@ Summary
   C# is strongly typed & case sensitive language for .NET
   Visual Studio is an IDE for C# app of all types
 
-
 {Module three: Classes and Objects}
-
 Introduction
+  Relationship b/t classes and objects
 
 The Grade Book
+  Use class to create abstraction for different nouns to work with
+    - a person, a place, a thin, an idea
+  Class Member Define:
+    1. State
+    2. Behavior (methods)
 
 Classes and Objects
 
