@@ -87,18 +87,49 @@ The Grade Book
     2. Behavior (methods)
 
 Classes and Objects
+  float is single precision
+  double is double precision
+  a decimal number is by default a double percision floating point number
+    - no implicit conversion from float to double
+  To assign value to a float variable, attach f at end of decimal number:
+    float d = 91.5f;
 
 Constructors
+  Every class has constructor implicitly
+  ctor: code snippet for constructor
 
 Classes and Variables
+  garbage: object no longer being used
+  CLR clean garbage objects up and free up memory periodically
 
 Reference Types
+  Wehn define a class, a reference type is created
+  Variable does not hold class object,
+  it holds pointer to the object in memory,
+  which is a memory address
 
 Access Modifiers
+  Encapsulation: enclosing or hiding details
+    public: can be accessed in the same assembly or another assembly that reference it
+    private: can ONLY be accessed from within the same class or struct
+    protected: can ONLY be accessed from within the same class or struct, or the derived class
+    internal: can only be accessed from within the same assembly
+    protected internal: protected OR internal
 
-tatics
+  A class or struct member without access modifier will be PRIVATE by default
+  A class or struct or interface without access modifier will be INTERNAL by default
+  A interface member is ALWYAS public
+  A delegate (when declared directly within a namespace) access modifier will be INTERNAL by default
+  A delegate (when nested) access modifier will be PRIVATE by default
+
+  Derived classes cannot have greater accessinility than their base type
+
+Statics
+  Use static members of a class without creating an instance of the class
 
 Statistics
+  Reduce complexity of app by adding classes
+
 
 Computation
 
