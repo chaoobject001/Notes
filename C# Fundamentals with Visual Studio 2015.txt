@@ -129,7 +129,7 @@ Statics
 
 Statistics
   Reduce complexity of app by adding classes
-
+  Code snippet: ctor + Tab X 2
 
 Computation
 
