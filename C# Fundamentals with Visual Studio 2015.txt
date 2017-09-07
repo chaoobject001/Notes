@@ -129,24 +129,49 @@ Statics
 
 Statistics
   Reduce complexity of app by adding classes
-  Code snippet: ctor + Tab X 2
+  Constructor Code snippet: ctor + Tab X 2
 
 Computation
+  Console WriteLine Code snippet: cw + Tab X 2
 
 Summary
 
-4
+{Module four: Classes and Objects}
 Assemblies
+  Assemblies
+    - created by compiler
+    - contains comipled code that can be executed under the Common Language Runtime
+    - .exe or (dynamic-link library) .dll files
+    - contain metadata about all types inside
 
-Introduction
-
-Assemblies
+  Global Assembly Cache
+    - a central location to store assemblies for a machine
+    - contain many core libraries like MSCorLib.dll
 
 Browsing Assemblies
+  Assembly name is the same as project name by default
+  Output type:
+    console application (exe)
+    class library (dll)  - cannot be started directly
+  Assembly will only be loaded when it is used in program, not referenced
+  MsCorLib is not listed under References in Solution Explorer - the usage is implied
+  Object Browser: see what classes are available to use
 
 Referencing Assemblies
+  - must load assembly into memory before using types inside
+  - easy approach - reference the assembly in VS
 
 Unit Testing
+  - code to test code
+  - same assembly == same project
+  - Test Calss needs to be public
+  - AVOID to make assertion on floating point numbers:
+    There can always be minor imprecision
+    Double percision vs. Single percision: amke sure the acutual and expected value are of same type
+  - Use the option to specify delta when comparing floating value
+    Assert.AreEqual(85.16);
+
+
 
 Tests and Access Modifiers
 
