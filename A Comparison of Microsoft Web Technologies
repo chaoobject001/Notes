@@ -1,0 +1,154 @@
+{Module one: Course Overview}
+Microsoft Web Technologies Comparison 
+    How do Web Forms, Web Pages and MVC works?
+    How does syntax differ from one to another?
+    How does server process request for each options?
+    What is ASP.NET Core?
+
+Goal: Know how to determine which respective technology should be used in varying scenarios 
+
+{Module two: An Introduction to the Microsoft Web Platform}
+Introduction
+    Web Technology Overview
+    Microsoft Web Platform: What does it offer?
+    Tooling
+
+Web Technology Overview
+    How does the web work?
+    How technologies are implemented to support how the web works?
+
+    HTTP request and response: 
+        Client access resources on server over HTTP
+    1. HTTP request: 
+        made by user 
+            typing URL into the browser
+            click on a link
+            fill out a form then submit 
+    2. Server receives request then performs server-side processing
+        code executed on server to fullfill and provide HTTP response back to Client
+            HTML
+            CSS
+            images
+            JavaScript
+            Whatever is needed 
+    Different technologies process those request and response differently 
+
+    Async HTTP: 
+        allow browser to make async call
+        while stays on page, no flicker
+        dynamically display relevant information on page as it is returned
+        
+Microsoft Web Platform
+    ASP.NET
+        Sites
+            Web Forms
+            Web Pages
+            MVC
+        Services
+            Web API: function "called" across HTTP
+            SignalR: for real-time communications 
+
+    ASP.NET Core: cross-platform development 
+        Sites
+            Web Pages
+            MVC
+        Services
+            Web API
+            SignalR
+
+Tooling
+    VS 2015 on Windows:
+        ASP.NET
+        ASP.NET Core
+    VS Code on Windows, Mac OSX, Linux
+        ASP.NET Core
+
+Demo Visual Studio Tooling: size dev environment
+    Solution centric (VS) vs. Folder centric (VS code)
+        VS Code: change cetting
+        [In a specific Folder]
+        File / Preference / Settings 
+
+    Rich UI v. lightweight text-intensive
+
+Summary
+    
+{Module three: Understanding How Web Forms Work}
+Introduction
+
+Describing Web Forms
+    Build dynamic website with drag-and-drop, event-driven model
+    Not in ASP.NET Core
+
+Processing Web Forms
+    
+    
+Demo: Create a Web Site
+ 
+Demo: Post Data
+ 
+Demo: Display a List of Data
+ 
+Summary
+ 
+4
+Understanding How Web Pages Work
+ 
+Introduction
+ 
+Describing Web Pages
+ 
+Processing Web Pages
+ Demo: Create a Web Site
+ 
+Demo: Post Data
+ 
+Demo: Display a List of Data
+ 
+Summary
+ 
+5
+Understanding How MVC Works
+ 
+Introduction
+ 
+Describing MVC
+ 
+Processing MVC
+ 
+Demo: Create a Web Site
+ 
+Demo: Post Data
+ 
+Demo: Display a List of Data
+ 
+Summary
+ 
+6
+Understanding How ASP.NET Core Works
+ 
+Introduction
+ 
+Describing ASP.NET Core
+ 
+Processing ASP.NET Core
+ 
+Demo: Tour of Starting Template
+ 
+Summary
+ 
+7
+A Strategic Comparison
+ 
+Introduction
+ 
+Comparing ASP.NET to ASP.NET Core
+ 
+Web Forms
+ 
+Web Pages
+ 
+MVC
+ 
+Summary
+ 
