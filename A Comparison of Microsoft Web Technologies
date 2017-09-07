@@ -1,11 +1,11 @@
 {Module one: Course Overview}
-Microsoft Web Technologies Comparison 
+Microsoft Web Technologies Comparison
     How do Web Forms, Web Pages and MVC works?
     How does syntax differ from one to another?
     How does server process request for each options?
     What is ASP.NET Core?
 
-Goal: Know how to determine which respective technology should be used in varying scenarios 
+Goal: Know how to determine which respective technology should be used in varying scenarios
 
 {Module two: An Introduction to the Microsoft Web Platform}
 Introduction
@@ -17,27 +17,27 @@ Web Technology Overview
     How does the web work?
     How technologies are implemented to support how the web works?
 
-    HTTP request and response: 
+    HTTP request and response:
         Client access resources on server over HTTP
-    1. HTTP request: 
-        made by user 
+    1. HTTP request:
+        made by user
             typing URL into the browser
             click on a link
-            fill out a form then submit 
+            fill out a form then submit
     2. Server receives request then performs server-side processing
         code executed on server to fullfill and provide HTTP response back to Client
             HTML
             CSS
             images
             JavaScript
-            Whatever is needed 
-    Different technologies process those request and response differently 
+            Whatever is needed
+    Different technologies process those request and response differently
 
-    Async HTTP: 
+    Async HTTP:
         allow browser to make async call
         while stays on page, no flicker
         dynamically display relevant information on page as it is returned
-        
+
 Microsoft Web Platform
     ASP.NET
         Sites
@@ -46,9 +46,9 @@ Microsoft Web Platform
             MVC
         Services
             Web API: function "called" across HTTP
-            SignalR: for real-time communications 
+            SignalR: for real-time communications
 
-    ASP.NET Core: cross-platform development 
+    ASP.NET Core: cross-platform development
         Sites
             Web Pages
             MVC
@@ -67,88 +67,229 @@ Demo Visual Studio Tooling: size dev environment
     Solution centric (VS) vs. Folder centric (VS code)
         VS Code: change cetting
         [In a specific Folder]
-        File / Preference / Settings 
+        File / Preference / Settings
 
     Rich UI v. lightweight text-intensive
 
 Summary
-    
+
 {Module three: Understanding How Web Forms Work}
 Introduction
 
 Describing Web Forms
-    Build dynamic website with drag-and-drop, event-driven model
-    Not in ASP.NET Core
+  Build dynamic website with drag-and-drop, event-driven model
+  Not in ASP.NET Core
+  Initially the classic ASP.NET
+    Web developer create file for ASP engine to process
+    The file contains HTML markup & server-side code, then converted into HTML
+  Rapid Application development for Windows Forms Developers:
+    Same model applied to Web Forms development
+    - Object-oriented
+    - Event-driven
+    - Supports separation of markup from logic
+    - Pre-compilation model
+      all code files compiled into one assembly or DLL
+    - Dynamic compilation
+      code file deployed to server & just-in-time compilation upon request
+      unique assembly for each request
+    - VS integration:
+        Design view
+        Controls (from 3rd party as well)
+        Data binding
+    - Maturity (oldest in ASP.NET)
 
 Processing Web Forms
-    
-    
+  1.  User makes request to site built using Web Forms = request to process a page based on URL path
+  2.  Server received request, then:
+      HTTP modules
+        - Examine, route and determine how the request should be handled
+      HTTP handler
+        - process code specifically for requested page
+      HTTP modules
+        - examine request and response for adjustments before return the response
+
 Demo: Create a Web Site
- 
+  New project in VS
+    File / New / Project
+    (For template) Visual C# / Web / ASP.NET Web Application
+    Select "Web Forms" as the template (MVC and Web API can also be added as folder and core reference)
+  Examine project structure
+    Files with .aspx extension - pages requested by users in browsers
+    Site.Master file: allow for repeatable contents across multiple pages
+    Style is managed by CSS files (like bootstrap) in Content folder
+    Global.asax file:
+      allow developer to tap into HTTP pipeline before / after request
+      authorization
+      authentication
+      session state management
+  View a page
+    Debug / Start Debugging
+
 Demo: Post Data
- 
+  Add input for text entry (textfield)
+  Add button to post data
+  Echo data back to page (on a label)
+    double click on button to generate a click event in code
+    Label1.Text = TextBox.Text; // assign label text with value of textbox text
+
 Demo: Display a List of Data
- 
+  Create sample data
+    Under App_Data folder in solution explorer
+      Project / Add New Item...
+      Add SQL Server Database (db.mdf) under Data template
+      App_Data contains db.mdf and .Idf file
+      Double click on db.mdf file
+
+  Display list of data
+
 Summary
- 
-4
-Understanding How Web Pages Work
- 
+
+{Module four: Understanding How Web Pages Work}
+  Describing Web Pages: inline code mix with HTML markup
+    One file: .cshtml with Razor syntax
+    Dynamic compilation when page is first requested on web server
+    Close to classic ASP
+
+  Processing Web Pages
+    1. request made to a website
+    2. HTTP modules: intercept series of request on server before page process begin
+        - tasks include: support friendly URL
+    3. HTTP handler: process webpage
+        - process server-side code in .cshtml file
+    4. Other HTTP modules called
+    5. send response back to client
+
+  Demo: Create a Web Site
+    Create new website in VS
+      File / New / Website / ASP.NET Web Site (Razor v3)
+      (File located under "WebSites" folder)
+    Examine folder structure
+      Key files:
+        *.cshtml (like "About.cshtml")
+        _SiteLayout.cshtml:
+          all content to repeat for every page that uses this _SiteLayout
+          <head> section contents will also be in the head section of any layout user
+          @RenderBody() is where actual body of page gets processed
+        Content(folder) / css files are for theme
+        _AppStart.cshtml:
+          Initialized on the first request to website, like initializing DB
+    View page
+        Friendly URL: webpage path without .cshtml
+          /About.cshtml = /About
+
+  Demo: Post Data
+    Add input for text entry (with form)
+    Add (submit) button to post data
+    Echo data back to page (on a span)
+      <form method="post" action="">
+        <input type="text" name="userData">
+        <input type="submit" name="postAction" value="Post data..." />
+      </form>
+      <span clas="message-success">
+        @if(IsPost) {<text>@Request.Form["userData"]</text>}
+      </span>
+
+  Demo: Display a List of Data
+    Create sample data
+      DataBase under App_Data folder
+
+    Display list of data
+      @{
+        Layout = ...
+        ...
+        var db = Database.Open("StarterSite"); // name of the DB
+        var items = db.Query("SELECT Name FROM TechItem");
+      }
+      ...
+      @foreach (var row in items)
+      {
+        <div>@row.Name</div>
+      }
+      // this will print out all row.Name in collection items
+
+  Summary
+{Module five: Understanding How MVC Works}
+
 Introduction
- 
-Describing Web Pages
- 
-Processing Web Pages
- Demo: Create a Web Site
- 
-Demo: Post Data
- 
-Demo: Display a List of Data
- 
-Summary
- 
-5
-Understanding How MVC Works
- 
-Introduction
- 
+
 Describing MVC
- 
+
 Processing MVC
- 
+
 Demo: Create a Web Site
- 
+
 Demo: Post Data
- 
+
 Demo: Display a List of Data
- 
+
 Summary
- 
+
 6
 Understanding How ASP.NET Core Works
- 
-Introduction
- 
-Describing ASP.NET Core
- 
+  Describing ASP.NET Core
+    MVC = Model View Controller
+    separation of concerns
+      Model: Content or Data
+      View: user-interface (theme & responsiveness)
+      Controller: processing
+
 Processing ASP.NET Core
- 
+  HTTP Request
+    1. Client send request to MVC site for default response
+    2. This is translate into:
+      Call upon default controller (of the site) and its default action
+      Example:
+        http://site/
+          home controller with index as its default action ()
+        http://site/account
+          account controller with default action
+        http://site/account/register
+          account controller with register action
+    3. Http Modules on server side: authentication, authorization, etc
+    4. Http Handler for MVC
+    5. Http Modules necessary before response is sent back
+
 Demo: Tour of Starting Template
- 
+  Create new project in VS
+    File / New / Project / ASP.NET Web Application
+    MVC template
+  Examine template project structure
+    Key folders:
+      Models
+        contain content or data for the site use
+      Views
+        Each controller has corresponding folder under Views folder (HomeController -> Home)
+        Within that folder, each action in controller has corresponding view file (cshtml)
+      Controllers
+        Under HomeController / 3 Actions: Index, About, Contact
+        http://site/home/index
+        http://site/home/About
+        http://site/home/Contact
+    How was the route setup:
+      Global.asax
+        Application_Start (event at very begining)
+          RouteConfig.RegisterRoutes(RouteTable.Table);
+      Under App_Start folder
+        RouteConfig.cs
+          RegisterRoutes method
+            Specifying default controller and action & url pattern
+
+
+  View a page
+
 Summary
- 
+
 7
 A Strategic Comparison
- 
+
 Introduction
- 
+
 Comparing ASP.NET to ASP.NET Core
- 
+
 Web Forms
- 
+
 Web Pages
- 
+
 MVC
- 
+
 Summary
- 
