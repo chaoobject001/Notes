@@ -259,7 +259,7 @@ Demo: Create a Web Site
   View a page
 Demo: Post Data
     Add input for text entry (modify view)
-        ViewBag: object that maintain states to pass into view while page is processed    
+        ViewBag: object that maintain states to pass into view while page is processed
     Add button to post data (to server)
     Echo data (return data from server)
     example:
@@ -269,41 +269,111 @@ Demo: Post Data
             <input type="text" name="userData" />
             <input type="submit" name="postAction" value="Post..." />
             <h3>@ViewBag.Message</h3>
-        } 
+        }
         ... back to HomeController ...
         [HttpPost]
         public ActionResult About(string userData)
         {
             // userData is the value of "name" attribute of text input in View
-            ViewBag.Message = userData; // save user input  
+            ViewBag.Message = userData; // save user input
             return View();
-        }  
-Demo: Display a List of Data
+        }
+Demo: (Consume &) Display a List of Data
+  Create sample data under Models folder
+  Return dtat source within the model class:
+    public static IEnumerable<Item> GetItems() {
+      // can be API, DB connection or other dtat source
+      return new List<Item>
+      {
+       ...
+      };
+    }
+  Display list of data:
+    Create new action under HomeController:
+    // site/home/list
+    public ActionResult List()
+    {
+      // pass data into the view
+      return View(Item.GetItems());
+    }
+    Add View to this Action:
+      Sub-Menu option: Add View
+      View name: List
+      Template: List
+      Model class: Item.cs
+      Click Add
+      (Right click) View in browser (under localhost)
 
-Summary
+  Summary
 
-6
-Understanding How ASP.NET Core Works
+{Module six: Understanding How ASP.NET Core Works}
 
-Describing ASP.NET Core
+  Describing ASP.NET Core
+    used to be known as ASP.NET 5
+    utilize .NET core 1.0 (lightweight)
+    cross-platform development
+    can be hosted on IIS or in other process that support ASP.NET Core
+    open source
 
-Processing ASP.NET Core
+  Processing ASP.NET Core (Http request & response)
+  1. Client makes request to site (http://site/page)
+  2. Http pipeline in Startup.cs file
+    - No more modules / handlers
+    - developer has control over what happen in every request
 
-Demo: Tour of Starting Template
+  Demo: Tour of Starting Template
+    - create new project in VS
+      new project / ASP.NET Web Application
+      ASP.NET Core (ASP.NET 5) Template / Web Application
+    - examine project structure
+      project.json (deprecated)
+      Startup.cs
+        enable services and middle-wares
+        manage every request and response
+        enable MVC and config:
+          app.UseMVC(
+            {
+              routes.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}");
+            });
+      Tag Helper: server-side processed to generate HTML
+    - view a page
+      run the page on VS with following options:
+        IIS Express
+        web (like other services)
+        more...
+      view page with VS Code
+        View / Command Palette / (type on prompt) dnx /
+        (under dropdown) select dnx:Run Command /
+        (under dropdown) select dnx web - (ProjectName)
 
-Summary
+        Console window opened with hosting URL
+        Open browser
 
-7
-A Strategic Comparison
+  Summary
 
-Introduction
+{Module seven: A Strategic Comparison}
+  Comparing ASP.NET to ASP.NET Core
+    ASP.NET                         ASP.NET Core
+    - Requires Windows              - Cross-platform
+    - Web Forms, Web Pages, MVC     - Web Pages, MVC
+    - Requires full .NET Framework  - .NET Core & .NET Framework (if on Windows)
+                                    - Unified syntax and controllers
+  Web Forms
+  + Established maturity            - "Bloated": object model and event
+  + Rapid app development           - Use Viewstate to maintain state across postbacks: sluggish and low scalability
+  + low skill requirement           - Not supported in ASP.NET Core
+  + strong 3rd party support
 
-Comparing ASP.NET to ASP.NET Core
+  Web Pages
+  + Server code embedded in HTML    - Server code embedded in HTML: no TDD / not agile
+  + Dynamic compilation             - Smaller adoption
+  + Supported in ASP.NET Core
 
-Web Forms
+  MVC
+  + Separation of concerns (agile)  - Require stronger developer skills
+  + ASP.NET Core                      : strong web developer / core developer
+  + Strong adoption
 
-Web Pages
-
-MVC
-
-Summary
+  Summary
