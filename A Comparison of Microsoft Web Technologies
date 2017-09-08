@@ -209,31 +209,14 @@ Summary
 
   Summary
 {Module five: Understanding How MVC Works}
-
-Introduction
-
 Describing MVC
-
-Processing MVC
-
-Demo: Create a Web Site
-
-Demo: Post Data
-
-Demo: Display a List of Data
-
-Summary
-
-6
-Understanding How ASP.NET Core Works
-  Describing ASP.NET Core
-    MVC = Model View Controller
+  MVC = Model View Controller
     separation of concerns
       Model: Content or Data
       View: user-interface (theme & responsiveness)
       Controller: processing
 
-Processing ASP.NET Core
+Processing MVC
   HTTP Request
     1. Client send request to MVC site for default response
     2. This is translate into:
@@ -249,7 +232,7 @@ Processing ASP.NET Core
     4. Http Handler for MVC
     5. Http Modules necessary before response is sent back
 
-Demo: Tour of Starting Template
+Demo: Create a Web Site
   Create new project in VS
     File / New / Project / ASP.NET Web Application
     MVC template
@@ -273,9 +256,21 @@ Demo: Tour of Starting Template
         RouteConfig.cs
           RegisterRoutes method
             Specifying default controller and action & url pattern
-
-
   View a page
+Demo: Post Data
+
+Demo: Display a List of Data
+
+Summary
+
+6
+Understanding How ASP.NET Core Works
+
+Describing ASP.NET Core
+
+Processing ASP.NET Core
+
+Demo: Tour of Starting Template
 
 Summary
 
