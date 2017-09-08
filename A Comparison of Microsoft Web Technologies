@@ -258,7 +258,26 @@ Demo: Create a Web Site
             Specifying default controller and action & url pattern
   View a page
 Demo: Post Data
-
+    Add input for text entry (modify view)
+        ViewBag: object that maintain states to pass into view while page is processed    
+    Add button to post data (to server)
+    Echo data (return data from server)
+    example:
+        ... in About.cshtml ...
+        @using (Html.BeginForm())
+        {
+            <input type="text" name="userData" />
+            <input type="submit" name="postAction" value="Post..." />
+            <h3>@ViewBag.Message</h3>
+        } 
+        ... back to HomeController ...
+        [HttpPost]
+        public ActionResult About(string userData)
+        {
+            // userData is the value of "name" attribute of text input in View
+            ViewBag.Message = userData; // save user input  
+            return View();
+        }  
 Demo: Display a List of Data
 
 Summary
