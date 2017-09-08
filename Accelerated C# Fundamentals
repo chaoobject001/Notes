@@ -1,0 +1,241 @@
+
+An Introduction to C#
+
+Overview
+
+What is .NET?
+
+What is the CLR?
+
+The FCL
+
+Hello, C#
+
+Command Line Demo
+
+Command Line Compiler
+
+Visual Studio Demo
+
+The IDE
+
+Solution Explorer
+
+Types
+
+Primitive Types
+
+Namespaces
+
+Variables
+
+Statements and Expressions
+
+Operators
+
+References
+
+Summary
+
+2
+Classes and Objects
+
+Introduction
+
+Classes and Objects
+
+Demo in WPF
+
+onstructors
+
+Reference Types
+
+Object Oriented Programming
+
+Inheritance
+
+Demo with Circles and Squares
+
+Access Modifiers
+
+Abstract Classes
+
+Virtual Members
+
+Static Classes
+
+Sealed Classes
+
+Partial Classes
+
+Summary
+
+C# - Types
+
+Oerview
+
+Refrence Types
+
+Value Types
+
+The struct
+
+Testing Reference Types
+
+Testing Value Types
+
+Passing Parameters
+
+Parameter Demo
+
+Strings
+
+Boxing
+
+The enum
+
+Defining Types
+
+
+Interfaces
+
+Arrays
+
+Array Demo
+
+Assemblies
+
+Conclusion
+C# - Events, Properties, and Methods
+
+
+verview
+
+Methods
+
+Method Review
+
+Method Overloading
+
+Fields
+
+Properties
+
+Events
+
+Events - Delegates
+
+Events - Subscribing
+
+Events - Publishing
+
+Indexers
+
+Operator Overloading
+
+Conversion Operators
+
+Constructors
+
+Destructors
+
+Summary
+
+C#- Flow Control and Exceptions
+
+Introduction
+
+Branching
+
+Switching
+
+Looping
+
+Using foreach
+
+Jumping
+
+Returning and Yielding
+
+Throwing Exceptions
+
+Built-in Exceptions
+
+Handling Exception
+
+Chaining Catch Blocks
+
+Finally
+
+Re-throwing Exceptions
+
+Custom Exceptions
+
+Summary
+
+C# and the CLR
+
+Introduction
+
+Garbage Collection
+
+Threads
+
+Threading Demo
+
+Async Demo
+
+Parallel Demo
+
+Reflection
+
+Attributes
+
+Custom Attributes
+
+Creating Objects
+
+Emitting Code
+
+C# on the Metal
+
+COM Interop
+
+PInvoke
+
+Summary
+
+
+C# and Generics
+
+Overview
+
+Why Generics?
+
+Building Collections Without Generics
+
+Using Generics
+
+Generic Collections
+
+Generic Parameters
+
+Gneric Constraints
+
+Terminology
+
+Generic Methods
+
+The default Keyword
+
+Generic Interfaces
+
+Generic Delegates
+
+Variance
+
+Summary
+
+Default and Named Parameters in C# 4.0
+
+Deault and Named Parameters in C# 4.0
