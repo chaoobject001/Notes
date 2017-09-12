@@ -196,21 +196,60 @@ The Players of OAuth2
   1. Client: many types
     - trusted client: build by the same party who also build resource server and authorization server (like enterprise software)
     - partially trusted client: Build by 3rd party (less trust worthy)
-    - Public client: software runs on client (mobile) device
-    - Confidential client: (typically) implemented as server side software with more control over security
+    - public client: software runs on client (mobile) device
+    - confidential client: (typically) implemented as server side software with more control over security
+    - client is registered with Authorization Server using OAuth flow
+    - client access resource with keys
+    - not always trusted
 
-  2. Authorization Server: issues limited keys (valet-parking keys)
+  2. Authorization Server: issues limited keys ("valet-parking keys")
+    - authorizes client
+    - knows about the resource to protect
+
   3. Resource Owner: Human that "owns" a resource on a resource server
     - use a client to access resources with access key / token
     - but a limited key is preferred
-  4. Resource Server
 
-OAuth2 Flows
+  4. Resource Server: trust Authorization Server
+    - inside trust zone
+    - knows how to validate different keys (access token)
+
+OAuth2 Flows - with user interaction:
+  - describe how a client together with the resource owner can acquire access tokens from
+  the authorization server
+  - A human involved at some point to allow access for the client to the resource
+
+  Authorization Code Flow:
+    - Web Application clients
+      1. Request authorization
+      2. Request token
+      3. Access resource
+
+  Implicit Flow:
+    - Native / local clients / user agent based scenarios
+      1. Request authorization & token
+      2. Access resource
+
+OAuth2 Flows - with NO user interaction (No human consent):
+  Resource Owner Password Credential Flow
+    "Trusted clients"
+      1. Request token with resource owner credentials (master key)
+      2. Access resource
+
+  Client Credential Flow
+    Client to Service communication (does NOT involve resource owner)
+      1. Request token with client credentials
+      2. Access resource
 
 Summary
+  OAuth is about delegate authorization:
+    Authorize a client (software) to access resource on your behalf
+      - HTTP / JSON friendly
+      Resource owner + client = access token
+    Takes multiple client architectures into account
+      - clients with different trust level
 
-5
-OAuth2 Flows
+{Module five: OAuth2 Flows}
 
 Overview
 
