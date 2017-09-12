@@ -1,0 +1,276 @@
+{Module one: Overview}
+Agenda
+  The new security stack for mordern applications
+  JSON Web Tokens
+  OAuth2:
+    Strength & Challenges
+    OAuth Flows
+  OpenID Connect:
+    Authentication protocal build on top of OAuth2
+    Both OAuth2 and OpenId deals with security token
+
+  Appendixes
+    OAuth2 Security Discussion
+    Resources
+
+{Module two: The Security Stack for Modern Applications}
+Overview: what is the new security stack?
+
+Enterprise Security:
+  Within Active Directory:
+    Client, Machine, User, Servers and Security Infrastructure
+    Join machine to domain with Kerberos (authentication / authorization)
+    LDAP: Keep user directory together
+    Assign people to roles
+    Query info about the user
+    No trust issue - everything within a trusted subsystem
+    All machine / clients provisioned by the enterprise
+    User with enterprise account
+
+  Busines-to-Business Federation scenarios:
+    Need new protocal connect to outside resources
+      SOAP
+        WS*: WS security, WS trust, WS federation
+      XML
+        SAML protocal or SAML token types
+    Busines-to-Business: both ends are tightly controlled
+
+The Mobile Revolution
+  Not enterprise-oriented at the begining:
+    No SOAP, No SAML, No WS*
+  HTTP / JSON
+
+Mobile Enterprise Apps
+  Access enterprise data with mobile device
+  Access enterprise data ON / OFF premises
+
+OAuth2 for Authorization
+OAuth: Authorization / Delegated authorization
+1. Client send request to Authorization Server for token for backend consumption
+2. Client forward token to backend services (WEB API)
+
+OpenID Connect for Authentication
+1. Client send request to Authentication Server for token for backend consumption
+2. Token allow client to validate identity
+
+Summary
+  - classic security is intranet-only
+  - B2B federationusing protocols like WS-Federation, SAML2p and WS-trust
+  - Mobile devices as game changer
+  - New Common denominator technologies
+    presentation (HTML5, JS, CSS)
+    authentication & authorization
+
+{Module three: JSON Web Tokens (JWT)}
+Overview
+  JWT close to standardization (IETF: Internet Engineering Task Force)
+  OpenID connect mandates the use of JWT for all exchange
+  OAuth2 implementation mostly with JWT
+
+The Purpose of Security Tokens
+  Security tokens are (protected) data structure
+    - contain infomration about issuer, recipient and subject (claims)
+    - signed (temper proof & authenticity) - can be async
+    - typically contain an expiration time
+  Client requests token
+  Issuer issues token
+  Resource (like API, has trust relationship with issuer) consumes token
+
+History
+  SAML 1.1 / 2.0
+    - XML based
+    - many encryption & signature options
+    - very expressive
+  Simple Web Token
+    - Form / URL encoded
+    - symmetric signatures only
+    - too few features
+  JSON Web Token (JWT)
+    - JSON encoded
+    - symmetric and asymmetric signature (HMACSHA256-384, ECDSA, RSA)
+    - symmetric and asymmetric encryption (RSA, AES/CGM)
+    - the new standard
+
+JWT Structure and Format
+  1. Header
+    - metadata
+    - algorithm & keys used: for cryptographic operations
+  2. Claims
+    Reserved claims:
+      - Issuer (iss): where is the token coming from
+      - Audience (aud): recipient knows the token is for him
+      - IssuedAt (iat): when the token is issued
+      - Expiration (exp): when the token has expired
+      - Subject (sub): identifier that the token describes, like UserID
+    Application defined claims:
+      - Others
+
+  Example:
+    Header
+      {
+        "typ": "JWT",
+        "alg": "HS256"
+      }
+    Claims:
+    exp: epoch time: # of seconds since 01/01/1970
+    client: App that request token
+      {
+        "iss": "http://myIssuer",
+        "exp": "1340819380",
+        "aud": "http://myResource",
+        "sub": "alice",
+        "client": "xyz",
+        "scope": ["read", "search"]
+      }
+  token: {Header}.{Claims}.{Signature}
+  Take header part Base64 URL encoded, then take claims part Base64 URL encoded
+
+Producing and Consuming JWTs
+  Produce a token
+    (Nuget) Microsoft.IdentityModel.Tokens.JWT
+    Example:
+      var token = new JWTSecurityToken (
+        issuer: "http://myIssuer",
+        audience: "http://myResource",
+        claims: GetClaims(),
+        signingCredentials: GetKey(),
+        validFrom: DataTime.UtcNow,
+        validTo: DateTime.UtcNow.AddHours(1)
+      );
+
+      // serialize
+      var tokenString = new JWTSecurityTokenHandler().WriteToken(token);
+      // token string can be on the header of HTTP request or query string or cookies
+
+  Consume a token
+    Retrive serialized token: from HTTP header, query string etc
+    Validate token and turn into claims
+    Example:
+      var token = new JWTSecurityToken(tokenString);
+      var validationParams = new TokenValidationParameters
+      {
+        ValidIssuer = "http://myIssuer",
+        AllowedAudience = "http://myResource",
+        SigningToken = GetSigningKey()
+      };
+      var handler = new JWTSecurityTokenHandler();
+      var principal = handler.ValidateToken(token, validationParams);
+
+Summary
+  JWT is easy to
+    create
+    transmit
+    parse
+    validate
+  Quickly become standard
+  Mandatory in OpenIDConnect
+
+{Module four: Introduction to OAuth2}
+History
+  OAuth2:
+    an open protocol to allow secure authorization in
+    a simple and standard method from web, mobile and desktop app
+  It's about authorization
+  OAuth1 could not rely on any sort of transportation protection like SSL
+  OAuth1 become too complicated
+  October 2012: OAuth2 RFC 6749 and RFC 6750 for Bearer Token usage
+
+OAuth2 Overview
+  Human want to use some app to access data
+  Client vs. Resource Owner
+
+  A trusted user (resource owner) may run application to access backend coming from a 3rd party
+  OAuth takes the software used by resource owner into account
+  OAuth also takes the software used by clients (or their platforms) into account -
+  these can varying trust level
+
+  Client = the software that is used to access the backend data
+  Resource Owner = the human that owns the backend data
+
+The Valet Parking Analogy
+  Master key that provides full control of resources
+  Valet Parking key that grants limited resources
+  How can resource owner gives the client access to resources without giving client the master key?
+
+The Players of OAuth2
+  1. Client: many types
+    - trusted client: build by the same party who also build resource server and authorization server (like enterprise software)
+    - partially trusted client: Build by 3rd party (less trust worthy)
+    - Public client: software runs on client (mobile) device
+    - Confidential client: (typically) implemented as server side software with more control over security
+
+  2. Authorization Server: issues limited keys (valet-parking keys)
+  3. Resource Owner: Human that "owns" a resource on a resource server
+    - use a client to access resources with access key / token
+    - but a limited key is preferred
+  4. Resource Server
+
+OAuth2 Flows
+
+Summary
+
+5
+OAuth2 Flows
+
+Overview
+
+Code Flow: Authorization Request
+
+Code Flow: Token Request
+
+Code Flow: Access and Refresh Token
+
+Code Flow: Client Management
+
+Code Flow: Summary
+
+Code Flow: Demo
+
+Implicit Flow
+
+Implicit Flow: Demo
+
+Resource Owner Credentials Flow
+
+Resource Owner Credentials Flow: Demo
+
+Client Flow
+
+Summary
+
+6
+OpenID Connect
+
+Overview
+
+OAuth2 and Authentication
+
+The Problems With OAuth2 Authentication
+
+OpenID Connect
+
+OpenID Code Flow
+
+Summary
+
+7
+OAuth2 Concerns
+
+Overview
+
+Eran Hammer
+
+Specification Bloat
+
+Bearer Tokens
+
+Security Theater
+
+Attack Surface
+
+Summary
+
+8
+Resources
+
+Resources
