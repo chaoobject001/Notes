@@ -163,53 +163,105 @@ Referencing Assemblies
 
 Unit Testing
   - code to test code
-  - same assembly == same project
+  - (By default) assembly name will be the project name
   - Test Calss needs to be public
   - AVOID to make assertion on floating point numbers:
     There can always be minor imprecision
-    Double percision vs. Single percision: amke sure the acutual and expected value are of same type
+    Double percision vs. Single percision:
+      make sure the acutual and expected value are of same type
   - Use the option to specify delta when comparing floating value
-    Assert.AreEqual(85.16);
+    Assert.AreEqual(85.16, ActualResult, 0.01);
+    The delta (3rd argument) control the expected amount of precision
 
-
-
-Tests and Access Modifiers
-
-Tests and Floats
-
-Summary
-
-
-Types
-
-Introduction
+{Module five: Types}
+Introduction: every type is either a Reference Type or a Value Type
 
 Reference Types
+  - created from class defination
+  - variables store a reference to an object
+  - variable holds address in memory for runtime to find object in memory
+  - multiple variables (references) can point to an object
+  - string is reference type!
+
+  public class member typically starts with upper case letter
+  private class member typically starts with lower case letter
+  ** Use unit test as a way to learn about new API / technology **
+  ** Test Method code snippet: testm **
 
 Value Types
+  - variable that hold the value of itself - No pointer, No reference
+  - value stored inside the memory location of a variable
+  - Fast (to allocate) and Small (to store)
+  - many built-in primitives are value types: like int double, float
+  - typically immutable
 
-struct and enum
+struct and enum (two ways to create value type)
+  struct definations create value type
+  example:
+    public struct DateTime
+    {
+      // ...
+    }
+  purpose of struct: abstraction that represents a single value (small amount of data)
+  example:
+    "DateTime" represnts a point in DateTime
+    Complex numbers
+    A point in 2D or 3rd
+    Currency amount (value + currency symbol)
+
+  enumerations (enum)
+  An enum create value type (named constant)
+  Avoid "magic number"
+  example:
+    public enum PayrollType {
+      Contractor = 1,
+      Salarid,
+      Executive,
+      HHourly
+    }
+  // first symbol is assigned as 1, the subsequent symbols will be 2, 3, ...etc
+  enum contains symbols, like Contractor, Salarid, ... listed above
+  By default, the first entry in enum will carry index 0
+
+  How to tell reference type from value type:
+    reference type: defination contains class
+      string is a reference type
+    value type: defination contains struct
+      bool is a value type
 
 Passing Parameters
+  - (Default) Parameters pass "by value"
+    - what is passed is always a copy
+      Reference type pass a copy of reference
+        changes inside a method will impact referenced object
+      Value type pass a copy for value
+        changes inside a method will NOT impact passed value outside of method
 
 ref and out
-mmutability
+  - Alter the default "pass by value" method parameters
+  ref: initialize outside of method - pass by reference
+  out: initialize inside of method - return as output
 
-Arrays
+immutability
+  value type is typically immutable
+  such as string or DateTime
+  methods like Trim (for string) or AddDays (for DateTime) returns a new copy of the value type
+  The calling instance (underlying value) will NOT be changed
 
-mmary
+Arrays (reference type)
+  - fixed size
+  - 0 indexed
 
+{Module six: Methods, Fields, Events, and Properties}
+Methods
+  Methods define behavior
 
-hods, Fields, Events, and Properties
-
-roduction
-
-thods
 
 Fields and Properties
 
 Events
-elegates
+
+Delegates
 
 Events Revisited
 
