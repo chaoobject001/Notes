@@ -255,9 +255,46 @@ Arrays (reference type)
 {Module six: Methods, Fields, Events, and Properties}
 Methods
   Methods define behavior
+  Every method has return type - void if no value returned
+  Every method has 0 to many parameters
+    Use keyword "params" to accept a variable number of parameters
+  Every method has signature
+    signature = mathod name + paramters
+    method overloading = same method name; DIFFERENT parameters
 
+  string format:
+     example:
+      Console.WriteLine("{0:F2}", result);
+      {0:F2}
+        format as floating point number with 2 digits after decimal point
+      {0:C}
+        format as currency (like $12.34)
+
+  string interpolation: $ in front of opening quote for formatting string
+  example:
+    Console.WriteLine($"{result:F2}", result);
 
 Fields and Properties
+  Fields: variables of a class
+  Typically private for protection
+    example: private readonly string _name;
+
+  Property: define get and/or set accessor
+    example:
+      private string _name;
+
+      public string name
+      {
+        get { return _name; }
+        set {
+          // check if input is not null or empty
+          if(!String.IsNullOrempty(value))
+          {
+            _name = value;
+            // value is the parameter to the set accessor
+          }
+        }
+      }
 
 Events
 
