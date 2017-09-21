@@ -1,0 +1,147 @@
+Course Title: Load Testing with Visual Studio 2013
+
+{Module one: Introduction}
+
+Introduction
+
+Purpose of Performance Testing
+
+What Can You Load Test with Visual Studio 2013?
+
+Developing Load Tests with Visual Studio 2013
+
+Ways to Run Load Tests
+
+{Module two: Web Performance Test Basics}
+Introduction
+
+What Is a Web Performance Test?
+
+Demo: Create a Web Performance Test
+
+How Do Web Performance Tests Work?
+
+Test Organization
+
+Demo: Readability with Comments
+
+Validation Rules
+
+Demo: Add Validation Rules
+
+Parameterization & Test Context
+
+Extraction Rules
+
+Demo: Extraction Rules
+
+Summary
+
+{Module three: Validation & Extraction Rules}
+Introduction
+
+Validation Rules Overview
+
+Content Validation Rules
+
+Performance Validation Rules
+
+SharePoint Validation Rules
+
+Extraction Rules Overview
+
+Custom Validation & Extraction Rules
+
+Demo: Custom Validation Rule
+
+Demo: Custom Extraction Rule
+
+Summary
+
+
+{Module four: Web Performance Tests Beyond the Basics}
+
+Introduction
+
+Data Sources
+
+Demo: Add a Data Source
+
+WPT Security
+
+Demo: Add HTTP Security to a WPT
+
+Conditional & Loop Steps
+
+Demo: Add a Conditional to a WPT
+
+Demo: Add a Loop to a WPT
+
+WPT Plug-ins
+
+Demo: Create a Web Performance Test Plug-in
+
+Summary
+
+{Module five: Load Test Basics}
+Introduction
+
+What Is a Load Test?
+
+Demo: Create a Load Test
+
+Pieces of a Load Test
+
+Pieces of a Load Test Scenario
+
+Test Mix Models
+
+Browser Mix & Network Mix
+
+User Load Patterns
+
+Counter Sets & Test Settings
+
+Demo: Enable SQL Server Tracing
+
+Summary
+
+{Module six: Load Test Beyond the Basics}
+Introduction
+
+Unit Tests in a Load Test
+
+Load Test Rigs
+
+Demo: Run a Load Test on a Rig
+
+Why Use Custom Performance Counters?
+
+Implementing Custom Performance Counters
+
+Demo: Add Custom Performance Counters to the Code
+
+Demo: Use Custom Performance Counters in a Load Test
+
+Coded UI Tests in a Load Test
+
+Demo: Cloud-based Load Testing & Visual Studio Online
+
+Summary
+
+{Module seven: Case Study}
+Introduction
+
+The Situation
+
+Bst Practices vs. Reality
+
+Demo: Recreate & Fix Problems with a Load Test
+
+Demo: Compare Load Test Results with Excel
+
+Performance Wizard & Code Profiling
+
+Demo: Code Profiling
+
+Summary
