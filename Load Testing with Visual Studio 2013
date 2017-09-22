@@ -1,16 +1,97 @@
 Course Title: Load Testing with Visual Studio 2013
 
 {Module one: Introduction}
-
 Introduction
+  www.benday.com
 
 Purpose of Performance Testing
+  Identify capabilities of a application
 
-What Can You Load Test with Visual Studio 2013?
+  Possible objectives:
+    Explore: what can we actually do?
+    Verify: Can we handle the expected / specified load?
+    Find limit: How many user can we actual handle at our comfortable maximum?
+    Crush application:
+      What is the behavior when crushed?
+      Any privacy or security breach or unpredicted / unacceptable behavior?
+
+  Performance Testing in a Nutshell
+    1. Throw traffic at application
+    2. Does it perform as expected?
+    3. (If performance problems were found) Recreate any performance problems with performance test
+    4. Fix performance problem
+    5. Verify valid fix by repeating performance test
+
+What Can You Load Test with Visual Studio 2013 (Ultimate)?
+  - ASP.NET with HTML UI
+    - Web Forms or MVC - this is the ideal target
+  - SharePoint Apps
+  - HTTP-based Apps
+    - ASP.NET-based SOA Apps
+    - Service-based apps with WebAPI or RestAPI
+  - Coded UI Test
+  - Anything call from a Visual Studio Unit Test
+
+  Put Unit Test in a Load Test
+    - Test anything that can be called from C# or VB.NET
+    - Typically target Service-Oriented Applications (SOA)
+      - WCF Services
+      - Web API
+      - REST
+      - OData
+    - DB as well
+      - Queries
+      - Stored Procedure
+
+  Coded UI Test
+    - more difficult with Non-HTML / non-XML app test
+    - takes much more hardware
 
 Developing Load Tests with Visual Studio 2013
+  1. Create "Web Performance and Load Test Project"
+  2. Use Web Performance Test (WPTs) to simulate HTTP traffic
+    - in steps where user use apps
+  3. Unit Tests against services or DB
+  4. Load Test (How groups of users will use app)
+    - User counts & user load pattern
+    - Servers & Windows Performance Monitor Counters
+      - Which server to hit with load?
+      - Which Windows Performance Monitor Counters to monitor to verify performance?
+  5. Run test locally or...
+    Run test with Load Test Rig or...
+    Run Test with Cloud-based Load Test
+      - Losts of load is needed to test app
+      - On-premise: Load Controller & Agents
+      - Cloud: Visual Studio Online
+
+  The development & execution life cycle
+  1. Create Web Performance Tests & Unit Tests
+    - Scenarios for test
+    - Implemented with WPT or Unit Test
+  2. Create Load Tests
+    - Mix of scenarios
+    - Mix of configurations
+    - Defination of what should be monitored across server(s)
+      - describes what the load is going to look like
+  3. Run Tests
+    - Exercise System Under Test (SUT)
+      - run from VS 2013: generate load with workstation
+      - run from load test rig
+      - run from Visual Studio Online
+    - Record run-time data
+  4. Analyze
+    - Examine data
+    - Make changes as needed
+    - Re-Test
 
 Ways to Run Load Tests
+  1. Use VS 2013 to generate load and monitor execution
+  2. Use Load Test Rig that consisted of a load controller and many load agents
+  3. Use Visual Studio Online Cloud-based Load Testing
+    - best for public website / web services
+
+Ultimate goal:
+  Running load test using a load test rig or with cloud-based load testing
 
 {Module two: Web Performance Test Basics}
 Introduction
@@ -58,9 +139,7 @@ Demo: Custom Extraction Rule
 
 Summary
 
-
 {Module four: Web Performance Tests Beyond the Basics}
-
 Introduction
 
 Data Sources
