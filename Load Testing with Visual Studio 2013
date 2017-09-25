@@ -95,22 +95,72 @@ Ultimate goal:
 
 {Module two: Web Performance Test Basics}
 Introduction
+  Typical scenario: ASP.NET app with HTML-based UI
+  Basics of Web Performance Tests (WPT)
+  Organize WPT test suite
+  Validation rule: validate what's on the screen
+  Parameterization & Test Context
+  Extraction rules: collect value from screen for use later
 
 What Is a Web Performance Test?
+  Test Type in VS 2013 Ultimate
+  Exists within a Web Performance and Load Test project
+  Collection of HTTP requests against the App
+  Simulate user using (ASP.NET) Web App by play back Http requests
+  Building blocks of load tests
 
 Demo: Create a Web Performance Test
+  remove unnecessary request recorded and keep application specific requests
 
 How Do Web Performance Tests Work?
+  No browser - onlly simulated HTTP traffic
+  Series of steps
+    generate web request
+    web performance test simulate user
 
 Test Organization
+  Objective: turn web performance test into load test
+    Plan ahead: how to diagnose performance problems
+    Use the same way to organize performance test
+
+  Web Tests = User Stories
+    User stories formula:
+      As a "X", I want to do "Y" so that I can achieve "Z"
+      As a "X", I want to do "Y" and "Z"
+  Guide test suite organization for diagnose problems in load test
+
+WPT needs to be granular enough - so the slow part can be identify
+Each WPT should do 1 thing
+  Good naming and organization
+    - LogInWithUsernamePassword
+    - SearchByLastName
+    - CreateNewUser
+    - PlaceOrderWithPayPal
+    - Logout
+  A slow test indicate target for optimization
 
 Demo: Readability with Comments
+  Right click on a request to add comment
 
 Validation Rules
+  Check if Web App is functional by:
+    Check values of HTTP response
+    Can be scoped to:
+      - individual request / test
+      - all requests / tests
 
 Demo: Add Validation Rules
 
 Parameterization & Test Context
+  Parameterization
+    Minimize hard coded values
+    {{variable_name}} syntax within WPT
+      Plugin values as needed:
+        Data-Driven Web Test
+        Data-Driven Load Test
+      Pull values from data source
+  Parameterize web server name
+
 
 Extraction Rules
 
