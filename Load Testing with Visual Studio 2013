@@ -159,12 +159,31 @@ Parameterization & Test Context
         Data-Driven Web Test
         Data-Driven Load Test
       Pull values from data source
-  Parameterize web server name
+  Parameterize web server Adresses
+    - Avoid hard coded server addresses
+    - Enable different values for different environments
+      - Values specified in Load Tests override values in WPT
 
+  Parameterization via:
+    - data source
+    - Test Context
 
-Extraction Rules
+  Test Context: local to web performance test
+    Name value pairs, like Dictionary<string, string>
+    Load Test variables > Performance Test variable
+
+Extraction Rules: use computed value (off screen) then use it later
+  - Locates a value in the text of web page response
+  - Store it in Test Context
+  - Then value can be used in request later
+  - Also allow modification of test context values dynamically (simulate users)
 
 Demo: Extraction Rules
+  For JSON response, to extract a specific value:
+    Add Extraction Rule (to extract value for facilityName)
+      Extract Text
+        Start With: "facilityName":"
+        End With: "
 
 Summary
 
