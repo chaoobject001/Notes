@@ -296,7 +296,12 @@ Fields and Properties
         }
       }
 
-Events
+Events (high level overview)
+  - A type of member you can have in a class
+  - Interact or keep track of components 
+  - Allow class to send notifications to other classes or objects
+    - Publisher raises the event
+    - One or more subscribers process the event 
 
 Delegates
 
