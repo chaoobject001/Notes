@@ -297,15 +297,31 @@ Fields and Properties
       }
 
 Events (high level overview)
-  - A type of member you can have in a class
-  - Interact or keep track of components 
+  - A type of member in a class
+  - Interact with or keep track of components at non-specific time
   - Allow class to send notifications to other classes or objects
     - Publisher raises the event
-    - One or more subscribers process the event 
+    - One or more subscribers process the event
+    - Publisher does not track subscribers
+    - Subscriber does not track other subscribers
+  -Events are implemented via delegates
 
 Delegates
+  - delegate is a type that declares a variable that references a method
+  example:
+    public delegate void Writer(string message);  // similar to a method signature
+    - this creates a delegate named "Writer"
+    - this is NOT a method definition
+    - this delegate can hold methods with same parameter(s) types / number and return type; method's name does not matter
+  Multi-cast delegate: one delegate can hold multiple methods
+  += to add additional delegate
+  -= to remove additional delegate
+    - useful in UI component management
+
+  Event provides more encapsulation than delegate
 
 Events Revisited
+  - based on and use delegate
 
 Summary
 
