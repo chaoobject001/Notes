@@ -322,6 +322,7 @@ Delegates
 
 Events Revisited
   - based on and use delegate
+  independent code can subscribe or un-subscribe to a code without outside interference
 
 Summary
 
