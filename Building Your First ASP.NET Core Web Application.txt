@@ -1,0 +1,176 @@
+{Module 01: Course Overview}
+
+Course Overview
+
+{Module 02: Introduction}
+
+Course Overview
+
+Demo: Taking a Look at the Finished Application
+
+An Introduction to ASP.NET Core
+
+Getting Your Machine Ready
+
+Demo: Getting Your Machine Ready
+
+Summary
+
+{Module 03: Setting up the Solution}
+
+Module Overview
+
+File -- New Project
+
+Demo: Creating the New Solution
+
+Looking at the Project Structure
+
+Demo: Adding the Correct NuGet Packages
+
+Other .NET Core Files
+
+Configuring the Application
+
+Demo: Configuring the Application
+
+Summary
+
+{Module 04: Creating the Overview Page}
+
+Module Overview
+
+Looking at the Finished Overview Page
+
+The MVC Pattern
+
+Demo: Adding Models, the Repository, and the First Controller
+
+Creating the View
+
+Demo: Creating Our First View
+
+Improving the View Code
+
+Demo: Adding a Layout, ViewStart, and ViewImports file
+
+Adding Styles
+
+Demo: Adding Styles
+
+Summary
+
+
+{Module 05: Ading Data with EF Core}
+
+Module Overview
+
+An Overview of Entity Framework Core
+
+Adding EF Core to Our Application
+
+Demo: Adding EF Core to Our Application
+
+Database Initialization and Migrations
+
+Demo: Database Initialization and Migrations
+
+Summary
+
+{Module 06: Designing More Pages}
+
+Module Overview
+
+Updating the List View with Partial Views
+
+Demo: Updating the List View with Partial Views
+
+Creating the Shopping Cart
+
+Demo: Creating the Shopping Cart
+
+View Components
+
+Demo: Creating a Simple View Component
+
+Creating a Custom Tag Helper
+
+Demo: Creating a Custom Tag Helper for the Contact Page
+
+Summary
+
+{Module 07: Adding Navigation}
+
+Module Overview
+
+Routing Fundamentals
+
+Adding Navigation to Our Site
+
+Demo: Adding Navigation and Routes
+
+Summary
+
+{Module 08: Ordering with the Form}
+
+Module Overview
+
+Using Tag Helpers to Create the Form
+
+Demo: Creating the Order Form
+
+Adding Validation
+
+Demo: Validating the Form
+
+Summary
+
+{Module 09: Adding Client-side Functionality}
+
+Module Overview
+
+Adding Client-side Libraries with Bower
+
+Demo: Adding jQuery to Our Site
+
+Creating an API Controller
+
+Demo: Creating the Load More Functionality Using Script and the API Controller
+
+Summary
+
+{Module 10: Adding Security Using ASP.NET Identity}
+
+Module Overview
+
+Introducing ASP.NET Identity
+
+Configuring the Application for Identity
+
+Demo: Adding and Configuring ASP.NET Core Identity
+
+Adding the Login Page
+
+Demo: Adding the AccountController and the Login View
+
+Adding Authorization
+
+Demo: Adding Authorization
+
+Summary
+
+{Module 11: Deploying the Site to Azure}
+
+Module Overview
+
+Configuring Multiple Environments
+
+Demo: Creating the Error Page and Configuring the Environments
+
+Deployment Options
+
+Deploying the Site to Azure
+
+Demo: Deploying the Site to Azure
+
+Summary and Course Closing
