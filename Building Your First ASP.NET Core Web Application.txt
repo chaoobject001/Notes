@@ -1,24 +1,87 @@
 {Module 01: Course Overview}
-
 Course Overview
+  prerequisite: web development
 
 {Module 02: Introduction}
-
 Course Overview
+  goal: to build a fully working web app with ASP.NET Core
+  learning topics:
+    .NET Core and ASP.NET Core
+    MVC (pattern)
+    New features for ASP.NET Core
+    Entity Framework Core
+    Security
+    Deployment
+  Assumption :
+    Basic HTML & CSS
+    C#
+    Affinity with web development
+  Web App to build: a web shop
+    ASP.NET Core MVC
+    Multiple Page
+    Shopping Cart that tracks purchase
+    Security
+    Deployed to Azure
+    Login & Place Order
+    Contact store
 
 Demo: Taking a Look at the Finished Application
 
 An Introduction to ASP.NET Core
+  History:
+    1996: Active Server Page (ASP)
+      Serverside scripting
+    2002: WebForms
+      ViewState: generated to keep web stateful
+        - Data generated and transfered with each request
+      No control over HTML for dev
+      Code behind: Hadr to test
+      Page life cycle is hard to understand
+    2008: ASP.NET MVC
+      Released as open source
+    2016: ASP.NET Core
+
+  Issues with original ASP.NET MVC
+    Dependency on IIS (System.Web):
+    Dependency on .NET Framework
+    Web evolves faster than .NET
+    Created without Cloud in mind
+
+  ASP.NET Core
+    Built on .NET Core
+    Cross-platform: Linux and Mac-Os
+    not tied to .NET Framework
+
+  Improvements:
+    Unification b/t MVC and Web API
+    Dependency Injection
+    Modular HTTP request pipeline working with middle-ware
+    Basedon NuGet (for package management)
+    Cloud-ready (Azure)
+    IIS or self-host
+    Open Source & Cross Platform
+
+  Fist release: June 2016 (v 1.0) including
+    Console applications
+    ASP.NET Core MVC
+    ASP.NET Core Web API
+    .NET Standard Libraries
 
 Getting Your Machine Ready
+  Windows:
+    VS 2015 Update 3
+    .NET Core tooling
+  Alternatives:
+    VS Code with C# plugin
+    OmniSharp-ready editor
 
 Demo: Getting Your Machine Ready
 
 Summary
 
 {Module 03: Setting up the Solution}
-
 Module Overview
+  Setting up solution and project
 
 File -- New Project
 
