@@ -1,0 +1,197 @@
+
+{Module 1: Introduction}
+Introduction
+ 
+Experimenting with JavaScript on the Web
+ 
+{Module 2: JavaScript Basics}
+Introduction
+1m 4s
+JavaScript in Web Pages
+ 43s
+Variables
+7m 44s
+Function Fundamentals
+7m 
+if and switch Statements
+7m 16s
+while and do...while Statements
+ 21s
+for and for...in
+4m 53s
+JavaScript Usage Features
+ 14s
+Summary
+0m 42s
+3
+Variables, Types, and Scope
+35m 43s
+Introduction
+1m 1s
+Hoisting
+5m 14s
+Numberm 17s
+Strings
+ 6s
+Boolean Values
+ 42s
+undefined and null
+ 
+Global Scope
+4m 37s
+Function Scope
+4m 12s
+Block Scope
+ 43s
+Summary
+0m 49s
+4
+Operators
+57m 16s
+Introduction
+1m 37s
+Addition
+5m 7s
+Subtraction
+ 43s
+Multiplication, Division, Modulus
+5m 28s
+Unary Operators
+5m 4s
+Bitwise Operators
+4m 28s
+Boolean Operators
+11m 40s
+Equality Operators
+40s
+Relational Operators
+4m 43s
+Miscellaneous Operators
+5m 43s
+Summary
+0m 
+5
+Arrays and Reference Types
+48m 28s
+Introduction
+11s
+Understanding Reference Types
+4m 43s
+Reference Type Examples
+ 9s
+Array Fundamentals
+8m 
+Array Features
+14m 4s
+Date Fundamentals
+ 9s
+Regular Expressions
+9m 29s
+Summary
+0m 42s
+6
+Objects, JSON, and Prototypes
+37m 
+Introduction
+1m 46s
+Simple Objects and JSON
+
+Understanding Prototypes
+4m 50s
+Working with Prototypes
+5m 49s
+Object.create() and Prototypes
+4m 
+Object.defineProperty()
+7m 56s
+Miscellaneous Object Functions
+5m 6s
+Summary
+1m 29s
+7
+Functions
+37m 51s
+Introduction
+1m 47s
+Naming Function Expressions
+ 34s
+Constructor Functions
+9m 15s
+The this Keyword
+5m 11s
+Calling Functions
+4m 16s
+Closures
+ 43s
+IIFEs
+ 22s
+Recursion
+ 13s
+Summary
+1m 26s
+8
+Programming the BOM and DOM
+17m 
+Introduction
+1m 50s
+Theindow Object and Timers
+4m 16s
+System Dialogs
+ 30s
+The location Object
+1m 27s
+Document Basics
+4m 20s
+Query Selectors
+ 14s
+Summary
+0m 45s
+9
+Event Handlers
+19m 42s
+Introduction
+1m 47s
+Events
+ 7s
+The Event Object
+ 3s
+Handling Events
+4m 20s
+Event Listeners
+ 49s
+Event Bubbling
+4m 19s
+Summary
+1m 14s
+10
+Built-in Objects and Functions
+20m 34s
+Introduction
+0m 52s
+Global Functions
+8m 44s
+The Math Object
+ 9s
+The String Object
+5m 26s
+Arguments
+1m 41s
+Summary
+0m 40s
+11
+Miscellaneous JavaScript Topics
+18m 41s
+Introduction
+1m 32s
+Error Handling Using try, catch, finally
+ 1s
+Promises and Observables
+ 27s
+Strict Mode
+4m 42s
+JSLint and JSHint
+ 50s
+Modular JavaScript
+ 15s
+Summary
+0m 51s
