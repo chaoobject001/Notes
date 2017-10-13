@@ -55,8 +55,7 @@ Demo: Formatters and Content Negotiation
 
 Summary
 
-4
-Manipulating Resources
+{Module 4: Manipulating Resources}
 
 Coming Up
 
@@ -74,8 +73,7 @@ Demo: Deleting a Resource
 
 Summary
 
-5
-Working with Services and Dependency Injection
+{Module 5: Working with Services and Dependency Injection}
 
 Coming Up
 
@@ -93,8 +91,7 @@ Demo: Scoping Configuration to Environments
 
 Summary
 
-6
-Getting Acquainted with Entity Framework Core
+{Module 6: Getting Acquainted with Entity Framework Core}
 
 Coming Up
 
@@ -112,8 +109,7 @@ Demo: Seeding the Database with Data
 
 Summary
 
-7
-Using Entity Framework Core in Our Controllers
+{Module 7: Using Entity Framework Core in Our Controllers}
 
 Coming Up
 
