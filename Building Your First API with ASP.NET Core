@@ -1,0 +1,136 @@
+Subject: Building Your First API with ASP.NET Core
+
+{Module 1: Course Overview}
+Course Overview
+
+{Module 2: Getting Acquainted with ASP.NET Core}
+
+Introduction
+
+Tooling
+
+ASP.NET Core: The Big Picture
+
+Demo: Downloading and Installing .NET Core
+
+Demo: Starting a New ASP.NET Core Project
+
+The ASP.NET Core Request Pipeline and Middleware
+
+Demo: Configuring the ASP.NET Request Pipeline
+
+Summary
+
+{Module 3: Creating the API and Returning Resources}
+
+Coming Up
+
+Middleware for Building an API
+
+Clarifying the MVC Pattern
+
+Demo: Adding the ASP.NET Core MVC Middleware
+
+ASP.NET Core 2 Metapackage and Runtime Store
+
+Demo: Returning Resources (Part 1)
+
+Learning About Routing
+
+Demo: Returning Resources (Part 2)
+
+Demo: Improving the Architecture with Model Classes
+
+The Importance of Status Codes
+
+Demo: Returning Correct Status Codes
+
+Demo: Returning Child Resources
+
+Demo: Working with Serializer Settings
+
+Formatters and Content Negotiation
+
+Demo: Formatters and Content Negotiation
+
+Summary
+
+4
+Manipulating Resources
+
+Coming Up
+
+Demo: Creating a Resource
+
+Demo: Validating Input
+
+Demo: Updating a Resource
+
+Partially Updating a Resource
+
+Demo: Partially Updating a Resource
+
+Demo: Deleting a Resource
+
+Summary
+
+5
+Working with Services and Dependency Injection
+
+Coming Up
+
+Inversion of Control and Dependency Injection
+
+Demo: Injecting and Using a Logger
+
+Demo: Logging to a File
+
+Demo: Implementing and Using a Custom Service
+
+Demo: Working with Configuration Files
+
+Demo: Scoping Configuration to Environments
+
+Summary
+
+6
+Getting Acquainted with Entity Framework Core
+
+Coming Up
+
+Introducing Entity Framework Core
+
+Demo: Creating Entity Classes
+
+Demo: Creating a DbContext
+
+Demo: Working with Migrations
+
+Demo: Safely Storing Sensitive Configuration Data
+
+Demo: Seeding the Database with Data
+
+Summary
+
+7
+Using Entity Framework Core in Our Controllers
+
+Coming Up
+
+Introducing the Repository Pattern
+
+Demo: Introducing the Repository Pattern
+
+Demo: Returning Data from the Repository When Requesting Resources
+
+Demo: Using AutoMapper to Map Between Entities and DTOs
+
+Demo: Creating a Resource
+
+Demo: Updating a Resource
+
+Demo: Partially Updating a Resource
+
+Demo: Deleting a Resource
+
+Summary
