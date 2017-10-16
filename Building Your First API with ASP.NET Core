@@ -2,22 +2,165 @@ Subject: Building Your First API with ASP.NET Core
 
 {Module 1: Course Overview}
 Course Overview
+  Build API for getting & manipulating info for cities and their points of interest
+    Intro to ASP.NET Core
+    Implement functionalities
+    Essential features & concepts
+    Entity Framework Core (ORM for .NET Core)
 
 {Module 2: Getting Acquainted with ASP.NET Core}
-
 Introduction
+  ASP.NET Core 1 & 2
+  VS 2015 & 2017
+  Gradual improvement
+    Introduce ASP.NET Core
+    Build API
+    Update / Delete resources (in-memory)
+    EF Core
 
 Tooling
+  VS2015 ASP.NET Core 1 (update 3): project.json
+  VS2017 ASP.NET Core 1: .csproj / MSBuild
+  VS2017 ASP.NET Core 2 (v15.3+): .csproj / MSBuild
+  VS Code ASP.NET Core 1 & 2: .csproj / MSBuild
+  VS for Mac ASP.NET Core 1 & 2: .csproj / MSBuild
+
+Exercise Files
+  95% code overlap b/t ASP.NET Core 1 & 2
+  VS2015 Core 1
+  VS2017 Core 1
+  VS2017 Core 2
+
+Postman: send request / receive response
 
 ASP.NET Core: The Big Picture
+  ASP.NET Core:
+    open-source & cross platform framework for building modern cloud-based internet connected applications
+    re-design from ground up
+    granular set of NuGet packages
+    smaller application service area
+      tighter security
+      reduced servicing
+      improved performance
+
+  ASP.NET Core runs on:
+    Full .NET Framework: target all dependencies
+    .NET Core:
+      small footprint
+      performance improvement
+      cross-platform
 
 Demo: Downloading and Installing .NET Core
 
 Demo: Starting a New ASP.NET Core Project
+  Under solution "Cityinfo.API":
+    Program.cs:
+      Starting point of application
+        w/ "public static void Main(string[] args)"
+        -> ASP.NET Core is a console application (that calls into ASP.NET specific libraries)
+
+      public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .UseApplicationInsights()
+                .Build();
+            host.Run();
+        }
+      WebHostBuilder(): Host application
+      UseKestrel(): Provides default Web Server
+      ASP.Net Core is completely decoupled from web server environment
+      ASP.Net Core is shipped with two different Http servers:
+        WebListener: windows-only seb server
+        Kestrel (default): cross-platform web server
+      UseIISIntegration():
+        Since IIS Express is default host for Visual Studio
+        IIS Express functions as reverse proxy server for Kestrel
+        Self hosting with IIS Express is possible, but IIS is much nicer
+      UseContentRoot(Directory.GetCurrentDirectory()):
+        UseContentRoot() specifies content root directory used by web host
+        content root:
+          base path to any content used by any application (like views and web content)
+          default: same as app base path for the executable hosting the app
+        content root is NOT webroot (wwwroot)
+      UseStartup<Startup>():
+        specifies startup type used by web host
+      Build():
+        build IWebHost instance to host our web app
+      Run():
+        runs web app; blocks the calling thread until host shuts down
+
+    Startup.cs: entry point of application
+
+      public void ConfigureServices(IServiceCollection services):
+        an optional method
+        for registering that are NOT registered automatically
+        * Add services to the container & configure services *
+      container: for dependency Injection
+      service: component intended for common consumption in an application
+        example:
+          (framework Services) identity, MVC, EF Core services
+          (application services - application specific) like one for sending email
+          (built-in services)
+            like ApplicationBuilder or Logger - there are NO coding in ConfigureServices
+            built-in services are available for injection
+
+      Injection via Configure method:
+        example: public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        with Instance of
+          IApplicationBuilder
+          IHostingEnvironment
+          ILoggerFactory
+        provided by the container
+
+        Called after ConfigureServices()
+        Uses services configured and registered in ConfigureServices()
+        Specify how app will respond to individual HTTP requests, such as MVC
 
 The ASP.NET Core Request Pipeline and Middleware
+  Request pipeline:
+    code logic that handles requests and returns response
+    configure pipeline by adding middleware(s)
+    example:
+      diagnostics middleware
+      authentication middleware
+      MVC
+
+  Each middleware determines to pass request on to the next component in pipeline or NOT
+  Order to add middleware matters
+  example:
+    authentication middleware finds unauthorized request and returns unauthorized response without passing to the next middleware
+    Therefore, authentication middleware needs to be added
 
 Demo: Configuring the ASP.NET Request Pipeline
+  Add developer exception page middleware to request pipeline
+    [Within Configure method]
+    app.UseDeveloperExceptionPage()
+    This is part of microsoft.aspnet.core.diagnostics assembly
+    Most middlewares are in separate assemblies
+
+  Add following code to trigger exception
+    app.Run( (context) =>
+    {
+      throw new Exception("Example exception");
+    });
+
+  Add ExceptionHandler to HTTP request pipeline when environment is not development
+    if (env.IsDevelopment())
+      {
+        app.UseDeveloperExceptionPage();
+      }
+      else {
+        app.UseExceptionHandler();
+      }
+
+  Change environment from "Development" to "Production"
+  Project Properties | Debug |
+    For Environment variable:
+      Change value of ASPNETCORE_ENVIRONMENT to "Production" from "Development"
 
 Summary
 
