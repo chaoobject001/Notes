@@ -1,14 +1,47 @@
 
 {Module 1: Introduction}
 Introduction
+  professional who wants to learn JS rapidly & directly
+  anyone with foundamental already 
+  course in Q & A format 
+  Example:
+    var totla = 5.1 + 3.3;
+    console.log(total);
+    Q: what shows in console?
+    A: 8.39999...
+  
+  Module 2: JS Basics
+  Module 3: Variables, Type and Scope
+  Module 4: Operators
+  Module 5: Arrays and Reference Types
+  Module 6: Objects, JSON and Prototypes
+  Module 7: Functions
+  Module 8: Browser Object Model (BOM) & Document Object Model (DOM)
+  Module 9: Event Handler
+  Module 10: Built-in Objects and Functions
+  Module 11: Miscellaneous Topics & Tools
 
 Experimenting with JavaScript on the Web
+  Best way to learn is to create many, many example programs
+  Two eay ways to write JS on Web
+  1. jsfiddle.NET
+  2. plnkr.co
 
 {Module 2: JavaScript Basics}
 Introduction
+  Module Overview
+    script tag: <script>
+      HTML5 tag that let us include JS within web Pages
+    Variables and Types
+    Functions
+    Conditionals
+    Loops
+    JS Usage: comments, end of line character, semicolon and other Topics
 
 JavaScript in Web Pages
-
+  <script>: embeded JS within web page or point to JS file
+  src attribute (on script tage): specify which JS file to load
+  defer attribute:   
 Variables
 
 Function Fundamentals
