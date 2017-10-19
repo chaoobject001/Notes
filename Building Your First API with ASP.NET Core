@@ -165,12 +165,42 @@ Demo: Configuring the ASP.NET Request Pipeline
 Summary
 
 {Module 3: Creating the API and Returning Resources}
-
 Coming Up
+  Add middleware to Web API, such as ASP.NET Core Middleware
+  Return resources (data) from Web API
+  Interact with Web API by sending HTTP request
+  Configure response
 
 Middleware for Building an API
+  Need to:
+    Add middleware to HTTP request pipeline in Configure method
+    Add framework services to container in ConfigureServices method
+
+  Previously (Before Core)
+    ASP.NET Web API: Http services
+    ASP.NET MVC: Client-facing web application
+
+  Now (only):
+    ASP.NET Core MVC
 
 Clarifying the MVC Pattern
+  MVC = Model-View-Controllers
+    Architecture software pattern for implementing UI
+    Encourage loose coupling, separation of concerns, testability, reuse
+    Not the FULL application architecture
+
+    A typical N-tier architecture: presentation layer, business layer, data access layer
+    also likely a service layer in-between
+
+    MVC is used in presentation layer
+
+  Model:
+    handles the logic of application data like retrive or store data
+    If MVC pattern is only used at the top level of architecture, the model does not contain any logic
+    - another component handles this, such as business layer
+  View:
+    handles the display of data, like HTML
+
 
 Demo: Adding the ASP.NET Core MVC Middleware
 
