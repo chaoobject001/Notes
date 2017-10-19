@@ -192,15 +192,31 @@ Clarifying the MVC Pattern
     A typical N-tier architecture: presentation layer, business layer, data access layer
     also likely a service layer in-between
 
-    MVC is used in presentation layer
+    MVC is used as presentation layer
 
   Model:
     handles the logic of application data like retrive or store data
     If MVC pattern is only used at the top level of architecture, the model does not contain any logic
     - another component handles this, such as business layer
+    Alternatively, a View Model contains code to retrive or store data, used as model
+
   View:
     handles the display of data, like HTML
+    depends on Model
+  
+  Controller:
+    handles interaction between Model and View
+    handles user input
+    depends on Model & View
+    chooses View to display to user
+    provide the View with any Model data the View required
 
+  In terms of API:
+    View represents data or resources (JSON)
+    Consumer of API is typically another application
+    Request send by consumer of API will trigger Controller
+    Controller takes user inputs (like query string parameters) to component responsible of business or data logic 
+    Controller returns a model to data or resources like JSON (View)     
 
 Demo: Adding the ASP.NET Core MVC Middleware
 
