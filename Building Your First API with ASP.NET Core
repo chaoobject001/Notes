@@ -201,10 +201,23 @@ Clarifying the MVC Pattern
   View:
     handles the display of data, like HTML
 
-
 Demo: Adding the ASP.NET Core MVC Middleware
+  Under Startup.cs / ConfigureServices()
+    Add services.AddMvc();
+      AddMvc() is not recognized
+      Add reference: Microsoft.AspNetCore.Mvc
+
+  Under Startup.cs / Configure()
+    Add app.UseMvc();
+    below exception handling code
+
+  Run project with IIS Express
+    return error 404
+
+  Next: Add controller to return resources (data)
 
 ASP.NET Core 2 Metapackage and Runtime Store
+
 
 Demo: Returning Resources (Part 1)
 
