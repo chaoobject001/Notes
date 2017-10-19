@@ -202,10 +202,8 @@ Clarifying the MVC Pattern
 
   View:
     handles the display of data, like HTML
-<<<<<<< HEAD
-=======
     depends on Model
-  
+
   Controller:
     handles interaction between Model and View
     handles user input
@@ -217,9 +215,8 @@ Clarifying the MVC Pattern
     View represents data or resources (JSON)
     Consumer of API is typically another application
     Request send by consumer of API will trigger Controller
-    Controller takes user inputs (like query string parameters) to component responsible of business or data logic 
-    Controller returns a model to data or resources like JSON (View)     
->>>>>>> 486973e8c3aeb8920b1de702128e4563dfe46084
+    Controller takes user inputs (like query string parameters) to component responsible of business or data logic
+    Controller returns a model to data or resources like JSON (View)
 
 Demo: Adding the ASP.NET Core MVC Middleware
   Under Startup.cs / ConfigureServices()
