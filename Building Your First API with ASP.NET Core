@@ -234,11 +234,64 @@ Demo: Adding the ASP.NET Core MVC Middleware
   Next: Add controller to return resources (data)
 
 ASP.NET Core 2 Metapackage and Runtime Store
+  New concept for ASP.NET Core 2:
+    Metapackage: Microsoft.AspNetCore.All
+    Runtime Store
 
+  Potential issues with Modularity
+    difficult to
+      locate functionalities
+      track version numbers
+
+  For ASP.NET Core 2.0
+    Metapackage adds a list of packages
+    Microsoft.AspNetCore.All includes
+      - all supported ASP.NET Core packages
+      - all supported Entity Framework Core packages
+      - internal and 3rd party dependencies used by ASP.NET Core & Entity Framework Core
+
+  But where do those packages come from?
+
+  For ASP.NET Core 2.0
+    Runtime Store locates on disk containing packages required for running ASP.NET Core 2 application
+    Similar to Global Assembly Cache
+
+  Benefits of Runtime Store
+    Faster deployment
+    Lower disk space used - b/c multiple applicae can use same Store
+    Improved startup performance - b/c packages are pre-compiled
+
+  Trade-off:
+    Comparing with ASP.NET Core 1.X
+      The (OPTIONAL) new approach require installation of Runtime and Runtime Store on each machine that been publish to
 
 Demo: Returning Resources (Part 1)
+  Create Controllers Folder under project
+  Create CitiesController class under Controllers Folder
+  Objective: return JSON as the representation format of data
+    CitiesController Extends from Controller (using Microsoft.AspNetCore.Mvc)
+    Add Method:
+      public JsonResult GetCities()
+      {
+        return new JsonResult(
+        new List<object>()
+        {
+          new { id=1, Name = "New York City" },
+          new { id=2, Name = "Antwerp"}
+        });
+      }
+
+  When consuming HTTP services (like Web API)
+  Client sned HTTP GET request
 
 Learning About Routing
+  Routing matches request to a method on Controller
+    Client Sneds Request
+    MVC framework passes URI to a controller and a corresponding method on that controller
+      By Convention
+        or
+      By Attribute
+
 
 Demo: Returning Resources (Part 2)
 
