@@ -288,16 +288,131 @@ Learning About Routing
   Routing matches request to a method on Controller
     Client Sneds Request
     MVC framework passes URI to a controller and a corresponding method on that controller
-      By Convention
-        or
-      By Attribute
-
+      By Convention:
+        Under Startup.cs | Configure | (Add parameters) app.UseMvc()
+        Passing routing conventions as UseMvc parameters
+        example:
+          app.UseMvc( config => {
+            config.MapRoute(
+              name: "Default",
+              template: "{controller}/{action}/{id?}",
+              defaults: new {controller="Home", action="Index"}
+          ); });
+          Typically for returning HTML-return views
+          Conventions need to be configured
+          NOT ADVISED for API's
+      By Attribute:
+        Attributes at controller & action level including an optional template
+        Attributes are based on HTTP method
+        Typical resource use case: creating, reading, updating and deleteing
+        Reading:
+          HTTP Method: GET
+          Attribute: HttpGet
+          Level: Action
+          Sample URI: "/api/cities" & "/api/cities/1"
+        Creating:
+          HTTP Method: POST
+          Attribute: HttpPost
+          Level: Action
+          Sample URI: "/api/cities"
+        Updating:
+          Full Update:
+            HTTP Method: PUT (all fields overwritten or set to default)
+            Attribute: HttpPut
+            Level: Action
+            Sample URI: "/api/cities/1"
+          Partial Update:
+            HTTP Method: PATCH
+            Attribute: HttpPatch
+            Level: Action
+            Sample URI: "/api/cities/1"
+        Deleting:
+            HTTP Method: DELETE
+            Attribute: HttpDelete
+            Level: Action
+            Sample URI: "/api/cities/1"
+        Special Attribute: Route
+          Attribute: HttpDelete
+          Level: Controller
+          Provide a template to prefix all templates of action level attributes
+          Sample: Set template value "/api/cities" at controller level, so templates at action level do not have to
 
 Demo: Returning Resources (Part 2)
+  Objective: Execute specific controller action when receiving request to "api/cities"
+    Pass in routing template
+      [HttpGet("api/cities")]
+      public JsonResult GetCities()
+      { //See Demo 1 above }
+
+    Response:
+      [
+        {
+          "id": 1,
+          "name": "New York City"
+        },
+        {
+          "id": 2,
+          "name": "Antwerp"
+        }
+      ]
+
+    Define route attribute at controller level
+      [Route("api/cities")]
+      public class CitiesController : Controller
+      { //... }
+
+      OR [Route("api/[controller]")]
+      However, with this approach, refactoring can cause controller name change, which will change URI as well
 
 Demo: Improving the Architecture with Model Classes
+  Objective: Add Model
+    Add "Models" folder under project
+    Add DTO class, "CityDto.cs"
+      What is return from and accept by API is NOT the same as the entities used by underlying datastore
+      At this point, in-memory datastore is been used
+      Entity Framework Core will be added later
+      Entity classes will be different from these Dto classes
+        Dto can contain methods with calculation that will NOT be part of entity class
+        Entity class will not contain field like Id - but defer it to underlying datastore
+
+    Add a new action to return a single city
+      Add new action GetCity
+      Under CitiesController.cs
+        [HttpGet("{id}")]
+        public JsonResult GetCity(int id)
+        {
+            return new JsonResult(
+                    CititesDataStore.Current.Cities.FirstOrDefault(c => c.Id == id)
+                );
+        }
+      Noted that Route attribute in previous Demo eliminate the need to add "api/cities" like "api/cities/{id}"
+      Get attribute is marked with "{id}" and pass into GetCity(int id) as integer
+
+    Request with un-matched URI (like "api/people") will produce 404 error - resource not found - return by framework
+    Request with matched URI (to an Action, like "api/cities/0") but parameter does not exist will produce 200 OK status with null result
+    However, 404 error is the expected response status code
 
 The Importance of Status Codes
+  HTTP response contains status code
+  Client (App) can get information if:
+    request processed as expected
+    (If fail) cause of failure
+  Five levels of status code:
+    Level 100: Informational, not part of HTTP 1.0 standard, NOT used by API
+    Level 200: request success
+      200 - OK: GET
+      201 - Created new resource
+      204 - No content: DELETE
+    Level 300: Re-Direction
+      Such as inform search engine a page has been permanently moved, mostly NOT used by API
+    Level 400: Client Error
+      400 - Bad request: such as JSON provided by client cannot be parsed
+      401 - Unauthorized: No or invalid authentication details were provided
+      403 - Forbidden: Authentication success, but client does not have access to resource requested
+      404 - Not found: Request resource does not exist
+      409 - Conflict: like two updates at the same time
+    Level 500: Server Error
+      500 - Internal Server Error
 
 Demo: Returning Correct Status Codes
 
