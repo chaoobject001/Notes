@@ -415,15 +415,107 @@ The Importance of Status Codes
       500 - Internal Server Error
 
 Demo: Returning Correct Status Codes
+  Objective: return response with a specific status code
+    At this point, we are returning JsonResult
+    JsonResult is an ActionResult formats given object as JSON
+    ActionResult is the default implementation of IActionResult
+    IActionResult defines a contract of an Action method
+
+  What if we want to return othe than Json object or along with a response status code?
+    - API should return what consumer request in Accept header if supported
+    - In addition to data, status code is also an important part of the response
+      To set status code literally
+        Under CitiesController | GetCities()
+          [HttpGet()]
+          public JsonResult GetCities()
+          {
+            var temp = new JsonResult(CitiesController.Current.Cities);
+            temp.StatusCode = 200;
+            return temp;
+          }
+
+  ASP.NET Core built-in helper methods - all create IActionResult
+    NotFound(): resource is not found
+    BadRequest(): request is malformed ... and more
+
+  Change result signature of Get methods in CitiesController to IActionResult
+  The return result can be of different format, like XML
+    [Http("{id}")]
+    public IActionResult GetCity(int id)
+    {
+      var cityToReturn = CityDataStore.Current.Cities.FirstOrDefault(c => c.Id == id);
+      if (cityToReturn == null)
+      { return NotFound(); }
+      return Ok(cityToReturn);
+    }
+
+  Advantage of using methods like NotFound() or Ok() & IActionResult
+    Results are not necessarily returned in JSON format
+    If other formatters in API are supported, consumer can decide how to view the results
+
+  Modify Startup.cs to add status code pages (middleware):
+    Under Configure() method:
+      app.UseStatusCodePages();
+    Now display "Status Code: 404; Not Found" for resource not found instead of empty page
 
 Demo: Returning Child Resources
+  Objective: return points of interests in a city with correct status code
+    Add class PointOfInterestDto
+    Extend CityDto class to include a collection of points of interest
+      - Initalize the list with empty collection to avoid null point exception
+      Under CityDto.cs (auto-property initializer):
+        public ICollection<PointOfInterestDto> PointOfInterest { get; set; } = new List<PointOfInterestDto>();
+
+    Add Controller: PointsOfInterestController extends Controller, with [Route("")] attribute
+      PointsOfInterest is a child resource of another resource - the URI needs to reflect that
+      Start the Route attribute with [Route("api/cities")]
+      If a City (parent resource) cannot be found, then request for pointsofinterest(child resource) should return 404
+
+    Add Action to PointsOfInterestController to get one point of interest
+      [HttpGet("{cityId}/pointsofinterest/{id}")]
+      public IActionResult GetPointOfInterest(int cityId, int id) {}
 
 Demo: Working with Serializer Settings
+  Objective: chnage property casing to match casing in DTO class with Serializer Settings
+  ASP.NET Core by default deserializes from and serializes to Json
+  To apply the convetion directly from DTO class by overwritting default NamingStrategy:
+    Startup.cs | ConfigureServices |
+    services.AddMvc()
+      .AddJsonOptions(o => {
+        if (o.SerializerSettings.ContractResolver != null)
+        {
+          var castedResolver = o.SerializerSettings.ContractResolver
+            as DefaultContractResolver;
+          castedResolver.NamingStrategy = null;
+        }
+      });
 
 Formatters and Content Negotiation
+  Content Negotiation:
+    Selecting the best representation for a given response when multiple response are available
+    This may be necessary when API has multiple clients / unknown clients that may prefer XML or other format
+
+  Media type is passed via the Accept header of the request
+    ex. "application/json" or "application/xml"
+
+  Output formatter of ASP.NET Core deals with Output
+    Consumer of API can request a specific type of output by
+    Setting the Accept header to the requested media typle, such as "application/json"
+
+  Input formatter of ASP.NET Core deals with Input
+    - like body of a POST request to create new resources
+    - input to media type of request body identified through content-type header
 
 Demo: Formatters and Content Negotiation
+  By Default, only Json input / output are used
+  Under Startup | ConfigureServices method
+  services.AddMvc()
+    .AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
+  AddMvcOptions: Configure supported formatters for API
+  Add XmlDataContractSerializerOutputFormatter to supported formatters
+  Use o.OutputFormatters.Clear to clear all formatters
+  Use o.OutputFormatters.Remove to remove a specific one
 Summary
 
 {Module 4: Manipulating Resources}
