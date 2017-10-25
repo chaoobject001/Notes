@@ -516,7 +516,14 @@ Demo: Formatters and Content Negotiation
   Add XmlDataContractSerializerOutputFormatter to supported formatters
   Use o.OutputFormatters.Clear to clear all formatters
   Use o.OutputFormatters.Remove to remove a specific one
+
 Summary
+  MVC Pattern
+  Routing maps URI to controller method
+  For API, attribute-routing is advised over convention-based routing
+  Content Negotiation by
+    Output formatters (accept header in request)
+    Input formatters (content-type header)
 
 {Module 4: Manipulating Resources}
 
