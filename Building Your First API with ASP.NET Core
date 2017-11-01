@@ -533,12 +533,123 @@ Coming Up
   Validating Inputs
 
 Demo: Creating a Resource
-  Objective: Create DTO without Id
+  Objective: Create DTO without Id with POST
   DTO should be different for different needs of actions (read, create, update, delete)
-  Add "PointOfInterestForCreationDto.cs" in Models folder
+    - ID should not be part of BTO for creating resource
+  Add "PointOfInterestForCreationDto.cs" in Models folder without Id
+    - Even in cases where "PointOfInterestForDto" and "PointOfInterestForCreationDto" are identical
+      It would be good to create them saperately
+        -> create model more inline with functionality
+        -> easy to refactor or change
+        -> different validation rules for different models
+  Create method "CreatePointOfInterest" and decorate with HttpPost attribute
+    parameters:
+      int cityId
+      [FromBody] PointOfInterestForCreationDto pointOfInterest
+        Obtain data from request body to create DTO "PointOfInterestForCreationDto"
 
+    Case Bad request: request body cannot be deserialized
+      Return BadRequest() if DTO is null
+
+    Case Not Found: parent resource not found
+      Return NotFound() if cityId does not match an existing city
+
+  Add new object to in-memory datastore
+    Calculate Id for the new point of interest
+      Iterate through all Ids and get the Max value
+      Add one to Max Id value and assign it to new Id
+    Assign inputs of other fields to new object
+    Add new object to in-memory datastore
+  !! ISSUE with this approach: concurrency and performance
+
+  Create At Route helper method (201 Created Response):
+    Route to single point of interest for a city
+      Name the action "GetPointOfInterest"
+        [HttpGet("{cityId}/pointsofinterest/{id}", Name = "GetPointOfInterest")]
+      Add parameters to CreatedAtRoute()
+
+        return CreatedAtRoute("GetPointOfInterest", new
+          {
+            cityId = cityId,
+            id = finalPointOfInterest.Id
+          },
+          finalPointOfInterest
+        );
+
+      parameter #1: "GetPointOfInterest" - this is the name of action
+      parameter #2: anonymous object with values required by route template: cityId and Id
+      parameter #3: newly created DTO "PointOfInterestDto" (stored in data store) -> ens up in response body
+
+  Test with Postman:
+    Post request URL: http://localhost:56412/api/cities/3/pointsofinterest
+    Pass in two parameters (name and description) as JSON in request Body
+      {
+        "name": "Cookies Store",
+        "description": "A store that sells cookies..."
+      }
+    Specify JSON format in content type header for input formatter
+      Header
+        key: "Content-Type",
+        value: "application/json"
+
+    Response: 201 Created
+      Newly created DTO in the body
+      Location header in header collection for consumer to access the point of interest
+        Location -> http://localhost:56412/api/cities/3/pointsofinterest/7
 
 Demo: Validating Input
+Objective: Validtae input with ModelState
+  Send request with invalid input
+    POST request with empty body -> null DTO reference triggered BadRequest()
+    POST request with missing property for DTO & very long description -> API will not return error
+      Check each value manually is too cumbersome -> solution: Data Annotation
+
+  Apply Data Annotation to DTO "PointOfInterestForCreationDto"
+    using System.ComponentModel.DataAnnotations;
+    [Required] - value required
+    [MaxLength(50)] - Maximum Length allowed (50)
+
+  Model State is a dictionary that contains:
+    - State of model
+    - Model binding validation
+
+  [Aside from DTO is null]
+  If there is any rule borken or invalid input, ModelState.IsValid() will return false
+  if (!ModelState.IsValid)
+    return BadRequest();
+
+  Upon breaking the annotation, a message like following will be in body of the response
+  {
+    "Name": [
+        "Name value is required!"
+    ],
+    "Description": [
+        "The field Description must be a string or array type with a maximum length of '200'."
+    ]
+  }
+
+  customized message for Name, default message for Description
+
+  For more complex validation or validation that cannot be checked with built-in data annotation:
+    Customized coding required
+    Add errors to ModelState so they are returned with ModelState when return BadRequest(ModelState)
+
+    Case: Description and Name are the same
+      Add model error in "PointsOfInterestController"
+      if (pointOfInterest.Description == pointOfInterest.Name)
+      {
+        ModelState.AddModelError("Description", "Provided description should be different from the name.");
+      }
+
+    [When description and name are the same]
+    Response Body contains following:
+    {
+      "Description": [
+          "Provided description should be different from the name."
+      ]
+    }
+
+    Consider "FluentValidation" for better architecture - support .NET Core after version 6.4
 
 Demo: Updating a Resource
 
