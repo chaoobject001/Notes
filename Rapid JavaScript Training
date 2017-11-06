@@ -62,10 +62,66 @@ JavaScript in Web Pages
   Q&A:
     Using <script> tag with src attribute, only JS code in referenced file will be executed.
     Code within <script> tag will be ignored
-  
-  
 
 Variables
+  Fundamentals & how it is used
+  undefined (keyword) as its own data type
+  Primitive Types
+  Object and function Types
+
+  variable as string (in double quote), int  
+  var orderId = "ORD-9001";
+  orderId = 1201;
+  
+  variable (var) in JavaScript is dynamically typed & the type is definite 
+  However, type can be changed thoughout execution
+
+  undefined:
+    When a variable is not initialized, it is always set to "undefined" -> typeof "undefined"
+  
+  'use strict'; // enter strict mode - JavaScript will not create global variable implicitly when var is not used
+  orderId = 9001;
+  console.log(orderId);
+    VM103:2 Uncaught ReferenceError: orderId is not defined
+      at <anonymous>:2:9
+
+  var orderId = 9001;
+  console.log(typeof orderId);
+  output: number
+
+  number is one of the primitive datatype with JavaScript
+  both integer and floating point number are specified by the type "number"
+
+  var orderId = "ORD-9001";
+  console.log(typeof orderId);
+  output: string
+
+  string is another primitive datatype
+
+  var isActive = true;
+  console.log(typeof isActive);
+  output: boolean
+
+  boolean is another primitive datatype
+
+  JSON object and array are both typeof "object"
+    var order = {
+    orderId: 9001,
+    isActive: true
+    };
+    console.log(typeof order);
+    output: object
+
+  null is of type "object"
+  var order = null;
+  console.log(typeof order);
+  output: object
+
+  function cancelOrder(orderId) {};
+  console.log(typeof cancelOrder);
+  output: function
+
+  function is another primitive datatype
 
 Function Fundamentals
 
