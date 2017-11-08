@@ -665,6 +665,17 @@ Demo: Updating a Resource
   e.g. return NoContent();
 
 Partially Updating a Resource
+  Partially Updating a Resource with PATCH HTTP method
+  Body of request needs:
+    fields and values to be updated
+    necessary operation like copy value of one property to another property
+
+  Json Patch (RFC 6902)
+  http://tools.ietf.org/html/rfc6902
+    Defines JSON structure for expression a sequence of operations to apply to a JSON document
+
+  The API client creates JsonPatch document as body of PATCH request
+  The body conatins a list of operations: add, replace, copy, etc including resp
 
 Demo: Partially Updating a Resource
 
