@@ -652,6 +652,17 @@ Objective: Validtae input with ModelState
     Consider "FluentValidation" for better architecture - support .NET Core after version 6.4
 
 Demo: Updating a Resource
+  Objective: Full update with HTTP PUT method
+  Add DTO for updating pointofinterest: PointOfInterestForUpdateDTO
+  Add action under PointsOfInterestController: UpdatePointOfInterest
+
+  Full update:
+    Consumer of API should provide values for resource, save for ID (coming form URI)
+    When consumer fail to provide values, those fields should be put to its default value
+
+  return 204 NoContent
+  Request complete successfully without anything to return
+  e.g. return NoContent();
 
 Partially Updating a Resource
 
