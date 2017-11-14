@@ -677,7 +677,30 @@ Partially Updating a Resource
   The API client creates JsonPatch document as body of PATCH request
   The body conatins a list of operations: add, replace, copy, etc including resp
 
+  examples of request body:
+  [
+    {
+      "op": "replace",
+      "path": "/name",
+      "value": "new name"
+    }
+    ,
+    {
+      "op": "replace",
+      "path": "/description",
+      "value": "new description"
+    }
+  ]
+
+  1. start with array of operations []
+  2. operations (like "replace") signified by the name "op"
+  3. "path" signifies path to property (like "/name" or "/description")
+  4. "value" signifies new value for the named propery
+
 Demo: Partially Updating a Resource
+Objective: Partially Updating a Resource with PATCH
+  PATCH: HTTP PATCH attribute
+
 
 Demo: Deleting a Resource
 
