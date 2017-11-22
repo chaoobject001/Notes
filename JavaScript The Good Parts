@@ -1,0 +1,145 @@
+{Module 01: Introduction}
+- Programming Style & Your Brain
+- And Then There Was JavaScript
+- Function the Ultimate
+- Problems
+- Monads & Gonads
+
+{Module 02: Programming Style & Your Brain}
+The Way We Think
+  why some programmig styles are better than others
+
+  System 02 thinking:
+    analytical but slow (head)
+  System 01 thinking:
+    associative, heuristics and fast (gut)
+    provide working assumption to System 02 without its awareness
+
+  Example:
+    visual processing
+    advertising
+    smoking
+
+The Programming Thought Process
+  Computer Programs: The most complicated things people make
+
+  Artificial Intelligence:
+    program that writes programs - does not work
+    translate one formal language into another - does work
+
+  Programming Language
+    Higher level of abstraction for more leverage
+    Lines of code / day is constent
+    More abstraction = More effectiveness
+
+  Program needs perfection for all possible inputs
+    But there is NO test for perfection (pass all tests != perfect)
+
+  Hunters and Gatherers are not good for programming
+  Programming with Head & Gut = Making tradeoffs that we may not be aware of
+
+  Effects of system one:
+    There is no algorithm for programming
+    We can program but we cannot instruct program to write program
+
+  Example: JavaScript - Good Parts. Bad Parts.
+
+JavaScript: Good Parts and Bad Parts
+  JSLint hurts your feeling
+  Arguments about format are not necessary - consistency is more important sometimes
+
+  "Put curly brace on the Right"
+
+    return {
+      ok: true
+    };
+    // work as expected
+
+    return
+    {
+      ok: false
+    };
+    // Silent Error!
+    // The statement retun "undefined" due to automatic semicolon insertion
+    // This produce "return;" which returns "undefined"
+
+  Lesson:
+    Prefer forms that are error resistant, especially when the trade-off is free
+    Less likely to error = Closer to perfection
+
+  "switch statement"
+    The fallthrough hazard
+    If I sometimes intentionally fallthrough, I can accidentally fallthrough
+    The "elegant" implementation can become hard ot maintain overtime - even if the error hardly ever happens
+
+Understanding Good Programming Style
+  "That hardly ever happen" = "It (does) happens"
+
+  A good style helps to produce better programs
+
+  Style should NOT be about
+    personal preference and self-expression
+    reduce key stroke
+
+  Style should be about
+    effectively reduce error rate
+    improve readability
+
+  Programs must communicate clearly to people
+  Use elements of good composition where applicable
+  Do not deviate unless there is a clear benefit
+
+Avoiding Confusing Code (A)
+
+Avoiding Confusing Code (B)
+
+Using JSLint
+
+{Module 03: And Then There Was JavaScript}
+
+The History of JavaScript
+
+JavaScript Fundamentals
+
+Numbers
+
+Strings and Arrays
+
+Objects
+
+Common JavaScript Statements
+
+{Module 04: Function the Ultimate}
+
+Background on Functions
+
+Functions as Subroutines
+
+Prototypal Inheritance (A)
+
+Prototypal Inheritance (B)
+
+{Module 05: Problems}
+Problems 1-5
+
+Problems 6-9
+
+Problems 10-12
+
+Problems 13-15
+
+{Module 06: Monads & Gonads}
+
+Introduction to Monads
+
+The Identity Monad
+
+The Ajax Monad
+
+The Maybe Monad
+
+The Promise Monad (A)
+
+The Promise Monad (B)
+
+Audience Questions
