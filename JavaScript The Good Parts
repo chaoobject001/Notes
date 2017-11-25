@@ -89,9 +89,139 @@ Understanding Good Programming Style
   Use elements of good composition where applicable
   Do not deviate unless there is a clear benefit
 
-Avoiding Confusing Code (A)
+  Ex. Use spaces to disambiguate parens. 
+    No space b/t a function name and (.
+    One space b/t all other names and (.
+    WRONG:
+      foo (bar);
+      return(a+b); // return is a statement, not a function
+      if(a=== 0) {...}
+      function foo (b) {...}
+      functio(x) {...}
 
+  Ex. Immediately Invocable Function Expressions 
+    function () {
+      ...
+    }();  // Uncaught SyntaxError: Unexpected token (
+
+    Wrap function in () so it is no longer in statement position and thus ready to be invoked
+    (function () {
+      ...
+    })(); // good to go
+
+    But we can give reader a little more information - 
+    what is important here is not the function, it's the invocaton of the function  
+    (function () {
+      ...
+    }()); // Neatness counts.  
+
+    Never rely on automatic semicolon insertion!
+    x = y   // <-- Missing semicolon
+    (function () {
+      ...
+    }());
+    Instead of assign y to x, this will 
+    assign y invoked as a function passing in the result of the other function as its argument 
+
+    Avoid keyword "with" - It cause confusion 
+
+Avoiding Confusing Code (A)
+  Confusion must be avoided. 
+  Always use ===, never == (No transitivity)
+  
+  If there is a feature of a language that is sometimes problematic, 
+  and if it can be replaced with another feature that is more reliable,
+  then always use the more reliable feature. 
+
+  Multiline string literals 
+  space after back slash (\) is hard to detect - avoid forms that are difficult to distinguish from common errors 
+
+  Avoid ambiguous form
+    if (a = b) {...}
+
+    ... is actually 
+    
+    a = b;
+    if (a) {...} 
+
+    ... and NOT
+
+    if (a === b) {...}
+
+    avoid the first ambiguous form and use the other two instead 
+
+  Scope.
+    Block Scope (other languages) v function scope (JavaScript)
+    Block Scope:
+      variable in block is not visible outside of the block
+      inner block has access to outer block
+    Function Scope:
+      Anything declared in a function is not visible outside of the function
+    
+    Problem: JavaScript has syntax equal to block scope languages
+    ... this is caused by the way var statement works
+
+    var statement 
+      It gets split into two parts:
+        Declaration is hoisted to top of function, initialized as "undefined"  
+        Ex.
+          function foo() {
+            ...
+            var oneVar = 0, twoVar;
+        
+        ... is actually
+
+          function foo() {
+            var varOne = undefined,
+                varTwo = undefined;
+            ...
+            varOne = 0; 
+
+    For function scope language, the best advice is:
+      Declare all your variable at top of the function b/c that where they are actually been declared
+      Declare all your functions before you call them 
+    
+    for (var i ...) {...}      
+      Variable i (induction variable) is not scoped to the loop - it is scoped to the function 
+      Thus var i should be moved to the top of the function 
+      Write in the language you are writing in
+
+    When available, use let statement instead of var statement 
+    
 Avoiding Confusing Code (B)
+  Global variables
+    Global variables are evil
+    Avoid global variables
+    When using global variables, be explicit
+      UPPER_CASE
+    Global variables should be as rare as hens teeth and stick out like a sore thumb 
+    Global variable reduce reliability and security 
+
+  new prefix
+    Forgetting new causes a constructor to clobber global variables w/out warning 
+    Fixed in ES5/strict
+
+  Constructor functions should be named with InitialCaps
+  Nothing else should be named with InitialCaps - this is the ONLY way to identify when "new" prefix is missing 
+
+  Another example of ambiguous code:
+  var a = b = 0;
+  ... is actually
+  b = 0; // an implicit global variable
+  var a = b;
+  ... NOT
+  var a = 0, b = 0;
+
+  Avoid ++ 
+  Use x += 1 instead
+
+  As our process become more agile, our code must be more resilient 
+  Programming is the most complicated thing that human do.
+  Computer programs must be perfect.
+  Humans are not good at perfect. 
+  Designing a programming style demands discipline.
+
+  Optimize to stay away fro the abyss 
 
 Using JSLint
 
