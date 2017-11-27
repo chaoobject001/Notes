@@ -89,7 +89,7 @@ Understanding Good Programming Style
   Use elements of good composition where applicable
   Do not deviate unless there is a clear benefit
 
-  Ex. Use spaces to disambiguate parens. 
+  Ex. Use spaces to disambiguate parens.
     No space b/t a function name and (.
     One space b/t all other names and (.
     WRONG:
@@ -99,7 +99,7 @@ Understanding Good Programming Style
       function foo (b) {...}
       functio(x) {...}
 
-  Ex. Immediately Invocable Function Expressions 
+  Ex. Immediately Invocable Function Expressions
     function () {
       ...
     }();  // Uncaught SyntaxError: Unexpected token (
@@ -109,46 +109,46 @@ Understanding Good Programming Style
       ...
     })(); // good to go
 
-    But we can give reader a little more information - 
-    what is important here is not the function, it's the invocaton of the function  
+    But we can give reader a little more information -
+    what is important here is not the function, it's the invocaton of the function
     (function () {
       ...
-    }()); // Neatness counts.  
+    }()); // Neatness counts.
 
     Never rely on automatic semicolon insertion!
     x = y   // <-- Missing semicolon
     (function () {
       ...
     }());
-    Instead of assign y to x, this will 
-    assign y invoked as a function passing in the result of the other function as its argument 
+    Instead of assign y to x, this will
+    assign y invoked as a function passing in the result of the other function as its argument
 
-    Avoid keyword "with" - It cause confusion 
+    Avoid keyword "with" - It cause confusion
 
 Avoiding Confusing Code (A)
-  Confusion must be avoided. 
+  Confusion must be avoided.
   Always use ===, never == (No transitivity)
-  
-  If there is a feature of a language that is sometimes problematic, 
-  and if it can be replaced with another feature that is more reliable,
-  then always use the more reliable feature. 
 
-  Multiline string literals 
-  space after back slash (\) is hard to detect - avoid forms that are difficult to distinguish from common errors 
+  If there is a feature of a language that is sometimes problematic,
+  and if it can be replaced with another feature that is more reliable,
+  then always use the more reliable feature.
+
+  Multiline string literals
+  space after back slash (\) is hard to detect - avoid forms that are difficult to distinguish from common errors
 
   Avoid ambiguous form
     if (a = b) {...}
 
-    ... is actually 
-    
+    ... is actually
+
     a = b;
-    if (a) {...} 
+    if (a) {...}
 
     ... and NOT
 
     if (a === b) {...}
 
-    avoid the first ambiguous form and use the other two instead 
+    avoid the first ambiguous form and use the other two instead
 
   Scope.
     Block Scope (other languages) v function scope (JavaScript)
@@ -157,52 +157,52 @@ Avoiding Confusing Code (A)
       inner block has access to outer block
     Function Scope:
       Anything declared in a function is not visible outside of the function
-    
+
     Problem: JavaScript has syntax equal to block scope languages
     ... this is caused by the way var statement works
 
-    var statement 
+    var statement
       It gets split into two parts:
-        Declaration is hoisted to top of function, initialized as "undefined"  
+        Declaration is hoisted to top of function, initialized as "undefined"
         Ex.
           function foo() {
             ...
             var oneVar = 0, twoVar;
-        
+
         ... is actually
 
           function foo() {
             var varOne = undefined,
                 varTwo = undefined;
             ...
-            varOne = 0; 
+            varOne = 0;
 
     For function scope language, the best advice is:
       Declare all your variable at top of the function b/c that where they are actually been declared
-      Declare all your functions before you call them 
-    
-    for (var i ...) {...}      
-      Variable i (induction variable) is not scoped to the loop - it is scoped to the function 
-      Thus var i should be moved to the top of the function 
+      Declare all your functions before you call them
+
+    for (var i ...) {...}
+      Variable i (induction variable) is not scoped to the loop - it is scoped to the function
+      Thus var i should be moved to the top of the function
       Write in the language you are writing in
 
-    When available, use let statement instead of var statement 
-    
+    When available, use let statement instead of var statement
+
 Avoiding Confusing Code (B)
   Global variables
     Global variables are evil
     Avoid global variables
     When using global variables, be explicit
       UPPER_CASE
-    Global variables should be as rare as hens teeth and stick out like a sore thumb 
-    Global variable reduce reliability and security 
+    Global variables should be as rare as hens teeth and stick out like a sore thumb
+    Global variable reduce reliability and security
 
   new prefix
-    Forgetting new causes a constructor to clobber global variables w/out warning 
+    Forgetting new causes a constructor to clobber global variables w/out warning
     Fixed in ES5/strict
 
   Constructor functions should be named with InitialCaps
-  Nothing else should be named with InitialCaps - this is the ONLY way to identify when "new" prefix is missing 
+  Nothing else should be named with InitialCaps - this is the ONLY way to identify when "new" prefix is missing
 
   Another example of ambiguous code:
   var a = b = 0;
@@ -212,24 +212,80 @@ Avoiding Confusing Code (B)
   ... NOT
   var a = 0, b = 0;
 
-  Avoid ++ 
+  Avoid ++
   Use x += 1 instead
 
-  As our process become more agile, our code must be more resilient 
+  As our process become more agile, our code must be more resilient
   Programming is the most complicated thing that human do.
   Computer programs must be perfect.
-  Humans are not good at perfect. 
+  Humans are not good at perfect.
   Designing a programming style demands discipline.
 
-  Optimize to stay away fro the abyss 
+  Optimize to stay away fro the abyss
 
 Using JSLint
+  If a form itself can be used to find defect - it is a defect in itself
+
+  Performance
+    Performance specific code tend to be crufty
+    Clean code is easier to reason about
+    Premature optimization is the root of all evil - Donald Knuth
+    Most code has negligible impact on performance -
+    Only optimize the slow code
+    Algorithm replacement is vastly more effective than code fiddling
+    Majority of web app time is spent on DOM - JS execution is only a small part
+
+  There will be bugs.
+    Do what you can to move the odds to your favor.
 
 {Module 03: And Then There Was JavaScript}
-
 The History of JavaScript
+  "HyperCard" with event listener
+  LiveScript:
+    - Java
+    - Scheme - dialect of Lisp
+    - Self - dialect of SmallTalk
+
+  For long term, work with ES5/Strict - Avoid ES5 / Default
+
+  Bad parts come from:
+    Legacy
+    Good Intentions
+    Haste
+  ... but they can be avoided
+  The problem with the bad parts isn't that they are useless - they are dangerous
 
 JavaScript Fundamentals
+  JS is an object oriented language - almost everything is object
+  Object = a dynamic collection of properties -> new property can be added to object at anytime
+  Every property has a key string that is unique within that object to retrive the value
+
+  Basic operations on an object: get, set and delete
+    - get:
+      object.name
+      object[expression]
+
+    - set:
+      object.name = value;
+      object[expression] = value;
+
+    - delete (from the object):
+      delete object.name
+      delete object[expression]
+
+  Object literals
+    An expression notation for creating objects
+    var my_object = {foo: bar};
+
+    var my_object = Object.defineProperties(
+        Object.create(Object.prototype), {  // can be inherited from null
+      foo: {
+        value: bar,
+        writeable true,
+        enumerable: true,  // when make non-enumerable, will not show up in iteration
+        configurable: true
+      }
+    });
 
 Numbers
 
