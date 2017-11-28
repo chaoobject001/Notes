@@ -1,0 +1,23 @@
+Chapter One: Primitive and Reference Types 
+    Lack of classes -> 
+    Lack of packages (class grouping) -> 
+    High degrees freedom of organization
+
+    Almost all data in JavaScript is an object OR is accessed via objects 
+    Functions are represented as objects too - first class Functions
+
+    Objects can be created anytime
+    Object properties can be added or removed anytime
+
+    Two primary JavaScript data types:
+    1. primitive types
+    2. reference types
+
+  What are Types:
+    Primitive types: stored as simple data types
+    Reference types: stored as objects (references to location in memory)
+
+    Primitive types can be treated like reference types 
+
+
+
