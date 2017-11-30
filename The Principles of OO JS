@@ -19,5 +19,69 @@ Chapter One: Primitive and Reference Types
 
     Primitive types can be treated like reference types 
 
+    JavaScript tracks variables for a particular scope with a "variable object"
+      - Primitive values are stored directly on the variable object
+      - Reference values are stored as pointers to location in memory in the variable object
+
+    Primitive Types:
+      Boolean: true or false
+      Number: any integer or floating numeric value
+      String: single or sequence of characters delimited by either single or double quotes - no character type
+      Null: a primitive type with only one value null
+      Undefined: default value of a variable; a primitive type with only one value, undefined
+
+      All primitive types have literal representation of their values 
+      Literals are values NOT stored in a variable
+      A variable assigned with primitive value has its own copy of data
+
+      Identifying Primitive Types:
+        Best way to identify primitive types is with typeof operator
+        console.log(typeof "Nicholas");   // "string"
+        console.log(typeof 10);           // "number"
+        console.log(typeof 10.1);         // "number"
+        console.log(typeof true);         // "boolean"
+        console.log(typeof undefined);    // "undefined"
+
+        EXCEPTION: null
+        console.log(typeof null);         // "object"
+        The best way to identify null is by ===
+        console.log(value === null);      // return true if value is null
+      
+      Primitive Methods:
+        Despite having method, primitive values are NOT objects
+        null & undefined have no Methods
+
+        string:
+          var str = "TokenOne";
+          var lowercaseName = str.toLowerCase();    // "tokenone"
+          var firstLetter = str.charAt(0);          // "T"
+          var middleStr = str.substring(2, 5);      // "ken" (index: 2 - 4)
+        
+        number:
+          var count = 10;
+          var fixedCount = count.toFixed(2);        // convert to "10.00"
+          var hexCount = count.toString(16);        // convert to "a", hexdecimal - base 16
+
+        boolean:
+          var flag = true;
+          var strFlg = flag.toString();             // convert to "true"
+
+    Reference Types:
+      Reference type represents objects 
+      Reference values are instances / objects
+      Object is an unordered list of properties (name : value pairs)
+      If a property's value is function, the property is a "method"
+      Function is reference value
+
+      Creating Objects:
+        - new operator with a constructor
+        - constructor begin with a capital letter
+
+
+
+
+
+
+
 
 
