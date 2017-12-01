@@ -1,9 +1,9 @@
-Chapter One: Primitive and Reference Types 
-    Lack of classes -> 
-    Lack of packages (class grouping) -> 
+Chapter One: Primitive and Reference Types
+    Lack of classes ->
+    Lack of packages (class grouping) ->
     High degrees freedom of organization
 
-    Almost all data in JavaScript is an object OR is accessed via objects 
+    Almost all data in JavaScript is an object OR is accessed via objects
     Functions are represented as objects too - first class Functions
 
     Objects can be created anytime
@@ -17,7 +17,7 @@ Chapter One: Primitive and Reference Types
     Primitive types: stored as simple data types
     Reference types: stored as objects (references to location in memory)
 
-    Primitive types can be treated like reference types 
+    Primitive types can be treated like reference types
 
     JavaScript tracks variables for a particular scope with a "variable object"
       - Primitive values are stored directly on the variable object
@@ -30,7 +30,7 @@ Chapter One: Primitive and Reference Types
       Null: a primitive type with only one value null
       Undefined: default value of a variable; a primitive type with only one value, undefined
 
-      All primitive types have literal representation of their values 
+      All primitive types have literal representation of their values
       Literals are values NOT stored in a variable
       A variable assigned with primitive value has its own copy of data
 
@@ -46,7 +46,7 @@ Chapter One: Primitive and Reference Types
         console.log(typeof null);         // "object"
         The best way to identify null is by ===
         console.log(value === null);      // return true if value is null
-      
+
       Primitive Methods:
         Despite having method, primitive values are NOT objects
         null & undefined have no Methods
@@ -56,7 +56,7 @@ Chapter One: Primitive and Reference Types
           var lowercaseName = str.toLowerCase();    // "tokenone"
           var firstLetter = str.charAt(0);          // "T"
           var middleStr = str.substring(2, 5);      // "ken" (index: 2 - 4)
-        
+
         number:
           var count = 10;
           var fixedCount = count.toFixed(2);        // convert to "10.00"
@@ -67,15 +67,45 @@ Chapter One: Primitive and Reference Types
           var strFlg = flag.toString();             // convert to "true"
 
     Reference Types:
-      Reference type represents objects 
+      Reference type represents objects
       Reference values are instances / objects
       Object is an unordered list of properties (name : value pairs)
       If a property's value is function, the property is a "method"
       Function is reference value
 
       Creating Objects:
-        - new operator with a constructor
-        - constructor begin with a capital letter
+        new operator with a constructor
+          - constructor is any function that uses new to create an object
+          - constructor begin with a capital letter by convention
+          Ex. var object = new Object();
+          - When an object is assigned to a varaiable, only the reference / pointer is copied,
+            the memory referenced by the pointer is shared among variables
+          Ex.
+            var obj01 = new Object();
+            var obj02 = obj01;
+
+      Dereferencing Objects:
+        JavaScript is a garbage-collected language
+        Deference a reference by assign the variable to null
+
+      Adding or Removing Properties
+        Ex.
+          var object1 = new Object();
+          var object2 = object1;
+
+          object1.myProperty = "Awsome!";
+          console.log(object2.myProperty);  // "Awsome!"
+
+    Instantiating Built-In Types:
+      Built-In types:
+        Array
+        Date
+        Error
+        Function
+        Object
+        RegExp
+
+
 
 
 
