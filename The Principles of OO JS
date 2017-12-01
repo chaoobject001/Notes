@@ -98,10 +98,10 @@ Chapter One: Primitive and Reference Types
 
     Instantiating Built-In Types:
       Built-In types:
-        Array
-        Date
-        Error
-        Function
+        Array     - an ordered list of numerically indexed values
+        Date      - a date and time
+        Error     - a runtime error (with several more specific subtypes)
+        Function  - 
         Object
         RegExp
 
