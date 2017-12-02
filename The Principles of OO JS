@@ -101,9 +101,61 @@ Chapter One: Primitive and Reference Types
         Array     - an ordered list of numerically indexed values
         Date      - a date and time
         Error     - a runtime error (with several more specific subtypes)
-        Function  - 
-        Object
-        RegExp
+        Function  - a function
+        Object    - a generaic object
+        RegExp    - a regular expression
+
+      Instantiation:
+        var list  = new Array();
+        var now   = new Date();
+        var error = new Error("Somthing Wrong");
+        var func  = new Function("console.log('log')");
+        var object = new Object();
+        var re    = new RegExp("\\d+");
+
+      Literal Forms
+        Literal:
+          syntax that define a reference value
+          without explicitly creating an object using "new" operator and constructor
+
+      Object and Array Literals
+        object literal syntax:
+          define properties of a new object inside braces
+          but does NOT call the constructor
+
+        property is made of:
+          1. identifier or string
+          2. colon
+          3. value
+
+        Multiple properties are separated by commas
+
+        Ex. with identifier as property name
+          var book = {
+            name: "The Principles of Object-Oriented JavaScript",
+            year: 2014
+          }
+
+        Ex. same object with string literals as property name
+          var book = {
+            "name": "The Principles of Object-Oriented JavaScript",
+            "year": 2014
+          }
+
+        Logically Equvilent to
+          var book = new Object();
+          book.name = "The Principles of Object-Oriented JavaScript";
+          book.year = 2014;
+
+        Array literal:
+        Ex.
+          var colors = [ "red", "white", "blue"];
+
+        Logically Equvilent to
+          var colors = new Array("red", "white", "blue");
+
+
+
 
 
 
