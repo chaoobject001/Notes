@@ -195,6 +195,29 @@ Chapter One: Primitive and Reference Types
         console.log(typeof reflect);  //"function"
 
       For all other reference types, keyword typeof returns "object"
+      Use "instanceof" to identify these objects
+      Ex. instanceof
+        var items = [];
+        var object = {};
+
+        function reflect(reflect) {
+          return value;
+        }
+
+        console.log(items instanceof Array);      // return true
+        console.log(object instanceof Object);    // return true
+        console.log(reflect instanceof Function); // return true
+      
+      Use "instanceof" to identify inherited types
+      Ex.
+        var items = [];
+        var object = {};
+
+        function reflect(value) {
+          return value;
+        }
+
+        console.log();
 
 
 
