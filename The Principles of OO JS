@@ -153,17 +153,17 @@ Chapter One: Primitive and Reference Types
 
         Logically Equvilent to
           var colors = new Array("red", "white", "blue");
-      
+
       Function Literals
-        Define function with constructor is discouraged 
+        Define function with constructor is discouraged
         Define function with literal form is preferred
-        Ex. literal form 
+        Ex. literal form
           function reflect(value) {
             return value;
           }
         Ex. same function defined by constructor - but hard to debug
           var reflect = new function ("value", "return value;");
-      
+
       Regular Expression Literals
         The pattern is contained b/t two forward slashes (/)
         Additional options are single characters follow the second forware slash
@@ -171,10 +171,34 @@ Chapter One: Primitive and Reference Types
           var numbers = /\d+/g; // a little easier - no need to escape characters, \d+
         Ex. Identical constructor form
           var numbers = new RegExp("\\d+", "g"); // need to escape backslashes, \\d+
-          
-    Property Access
 
-        
+    Property Access
+      By dot notation:
+        Ex.
+          var array = [];
+          array.push(12345);
+      By bracket notation:
+        Ex.
+          var array = [];
+          array["push"](12345);
+
+      Bracket notation can be used to call method dynamically
+      Bracket notation allow use of special characters in property name
+      Dot notation is more readable for most
+
+    Identifying Reference Types
+      Function is identified via typeof operator
+      Ex.
+        function reflect(value) {
+          return value;
+        }
+        console.log(typeof reflect);  //"function"
+
+      For all other reference types, keyword typeof returns "object"
+
+
+
+
 
 
 
