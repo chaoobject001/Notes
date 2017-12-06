@@ -194,7 +194,56 @@ Chapter One: Primitive and Reference Types
         }
         console.log(typeof reflect);  //"function"
 
-      For all other reference types, keyword typeof returns "object"
+      For all other reference types, keyword typeof returns "object" - this calls for keyword instanceof
+      Ex.
+        var items = [];
+        var object = {};
+
+        function reflect(value) {
+          return value;
+        }
+
+        console.log(items instanceof Array);      // true
+        console.log(object instanceof Object);    // true
+        console.log(reflect instanceof Function); // true
+
+      keyword instanceof can also verify inherited types
+      Ex.
+        var items = [];
+        var object = {};
+
+        function reflect(value) {
+          return value;
+        }
+        console.log(items instanceof Array);
+        console.log(items instanceof Object);
+        console.log(object instanceof Object);
+        console.log(object instanceof Array);     // false
+        console.log(reflect instanceof Function);
+        console.log(reflect instanceof Object);
+
+    Identifying Arrays
+      keyword instanceof can identify array
+      Each web page has its own global context
+        - its own version of Object, Array and all builtin types
+      Array from one frame cannot be identify by instanceof
+      ES 5 feature: Array.isArray() - Not supported in IE 8 or eariler
+      Ex.
+        var items = [];
+        console.log(Array.isArray(items));  // true
+
+    Primitive Wrapper Types
+      references types exist to make primitive types works like object
+        String
+        Number
+        Boolean
+      Ex. String.charAt()
+
+
+
+
+
+
 
 
 
