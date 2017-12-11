@@ -36,7 +36,7 @@ Chapter One: Primitive and Reference Types
 
       Identifying Primitive Types:
         Best way to identify primitive types is with typeof operator
-        console.log(typeof "Nicholas");   // "string"
+        console.log(typeof "Charles");   // "string"
         console.log(typeof 10);           // "number"
         console.log(typeof 10.1);         // "number"
         console.log(typeof true);         // "boolean"
@@ -239,6 +239,79 @@ Chapter One: Primitive and Reference Types
         Number
         Boolean
       Ex. String.charAt()
+        var name = "Charles";
+        var firstChar = name.charAt(0);
+        console.log(firstChar);   // "N"
+
+      Actual implementation:
+        var name = "Charles";
+        var temp = new String(name);  // "Autoboxing": implicit creation of wrapper type
+        var firstChar = name.charAt(0);
+        temp = null;                  // "Autoboxing": implicit removeal of wrapper type right after wrapper method call
+        console.log(firstChar);       // "N"
+
+      Due to automboxing, Wrapper Types can NOT be used like noraml reference types
+      Ex. Additional properties wrapper type CANNOT be accessed
+        var name = "Charles";
+        name.last= "Kuo";
+
+        console.log(name.last); // undefined
+
+      Actucal implementation
+        var name = "Charles";
+        var temp = new String(name);
+        name.last= "Kuo";
+        temp = null;
+
+        var temp = new String(name);  // wrapper type created
+        console.log(temp.last); // undefined
+        temp = null;
+
+      Primitive types cannot be identified as its wrapper types by keyword instanceof
+      Ex.
+        var name = "Charles";
+        console.log(name instanceof String);  // false
+
+      Wrapper types cannot be used as its primitive types
+      Ex.
+        var found = new Boolean(false);
+
+        if (found) { console.log("Found"); } // found is truthy
+      Avoid instantiating primitive wrappers manually
+
+    Summary
+      JS: types, not class
+      primitive types: string, number, boolean, null, undefined
+      all primitive types but "null" can be identified by keyword typeof
+      identify "null" by === compare with "null"
+      Functions are identified by typeof operator
+      primitive wrapper types: String, Number, Boolean
+
+Chapter Two: Functions
+  Declarations vs. Expression
+  Function as values
+  Parameters
+  Overloading
+  Object Methods
+    The "this" Object
+    Changing this
+  Summary
+    Functions are objects too
+    Function has special internal property [[Call]]
+    Function declaration
+      - function name is right of the "function" keyword
+      - Hoisted to top of the context scope
+    Function expression
+      - other values can also be used
+    Function constructor should be avoided
+
+
+
+
+
+
+
+
 
 
 
