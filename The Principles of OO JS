@@ -288,9 +288,81 @@ Chapter One: Primitive and Reference Types
       primitive wrapper types: String, Number, Boolean
 
 Chapter Two: Functions
+  Functions are distinguished from other objects by its internal property [[Call]]
+  Internal property cannot be accessed by code
+  Functions are identified via "typeof" keyword
+
   Declarations vs. Expression
+    Function Declaration:
+      1. "function" keyword
+      2. function name
+      3. zero or more parameters enclosed in parenthese, saperated by commas
+      4. content enclosed in braces
+      Ex.
+      function add(num1, num2) {
+        return num1 + num2;
+      }
+    Function declarations are hoisted to the top of context
+    Ex.
+      var result = add(5, 5);
+
+      function add(num1, num2) {
+        return num1 + num2;
+      }
+
+      ... is actually interpreted by JS engine
+      function add(num1, num2) {
+        return num1 + num2;
+      }
+
+      var result = add(5, 5);
+
+    Function Expression:
+      1. "function" keyword
+      2. zero or more parameters enclosed in parenthese, saperated by commas
+      3. content enclosed in braces
+
+    Function Expression(s) are anonymous
+      - usually assigned to a variable or property & ends with semicolon
+    Ex.
+      var add = function(num1, num2) {
+        return num1 + num2;
+      };
+
+    Define functions before usage to avoid potential issues
+
   Function as values
+    Functions can be used like other objects, such as:
+      - assigned to variables
+      - added to objects
+      - passed as arguments to other functions
+      - returned from other functions
+
+    Ex. assign function to variables
+      function sayHi() {
+        console.log("Hi!");
+      }
+      sayHi();  // outputs "Hi!"
+
+      var sayHi2 = sayHi;
+
+      sayHi2(); // outputs "Hi!"
+
+    Ex. pass function as arguments to other functions
+    var numbers = [ 1, 5, 8, 4, 7, 10, 2, 6 ];
+    numbers.sort(function(first, second) {
+      return first - second;
+    });
+
+    console.log(numbers); // "[1, 2, 4, 5, 6, 7, 8, 10]"
+    numbers.sort();
+    console.log(numbers); // "[1, 10, 2, 4, 5, 6, 7, 8]"
+
+    Comparison function (as function expression & anonymous function) is passed into sort()
+    numbers.sort(); sorts array as strings
+
   Parameters
+
   Overloading
   Object Methods
     The "this" Object
