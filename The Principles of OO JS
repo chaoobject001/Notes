@@ -362,6 +362,13 @@ Chapter Two: Functions
     numbers.sort(); sorts array as strings
 
   Parameters
+    JS function takes any number of parameters without causing error
+    "arguments" property:
+      automatically available within any function
+      store parameters
+      reference parameter by numeric index
+      "length" property determines (arity) number of expected parameters
+
 
   Overloading
   Object Methods
@@ -376,6 +383,7 @@ Chapter Two: Functions
     Function expression
       - other values can also be used
     Function constructor should be avoided
+
 
 
 
