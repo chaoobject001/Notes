@@ -363,16 +363,106 @@ Chapter Two: Functions
 
   Parameters
     JS function takes any number of parameters without causing error
-    "arguments" property:
+    "arguments" property of function object:
       automatically available within any function
       store parameters
       reference parameter by numeric index
       "length" property determines (arity) number of expected parameters
+      BUT "arguments" is NOT an array -> Array.isArray(arguments) always return false
+      Ex.
+        // function declaration
+        function reflect(value) {
+          return value;
+        }
+        console.log(reflect("Hi"));     // "Hi" - first argument only
+        console.log(reflect("Hi", 25)); // "Hi" - first argument only
+        console.log(reflect.length);    // 1 - one named parameter
 
+        // function expression
+        function = function() {
+          return arguments[0];
+        };
+        console.log(reflect("Hi"));     // "Hi" - first argument only
+        console.log(reflect("Hi", 25)); // "Hi" - first argument only
+        console.log(reflect.length);    // 0 - no named parameter
+
+      "arguments" is best used when expecting no-fixing number of parameters
+      Ex. function sum() {
+        var result = 0,
+        i = 0,
+        len = arguments.length;
+
+        while (i < len) {
+          result += arguments[i];
+          i++;
+        }
+
+        return result;
+      }
+
+      console.log(sum(1, 2));   // 3
+      console.log(sum());       // 0 - reusult is initialized with zero
 
   Overloading
+    Function overloading is NOT available b/c same function can accept multiple parameters
+    Mimic function overloading by arguments object
+      Ex.
+      function sayMessage(message) {
+        // alternatively: if (message === undefined)
+        if (arguments.length === 0) {
+          message = "Default message";
+        }
+        console.log(message);   // when function is called with at least one parameter
+      }
+    Use "typeof" or "instanceof" to check for diffeent data type
+
   Object Methods
+    When object property is a function, the property is considered as method
+    Method can be added like property with the same syntax
+    Ex.
+      var person = {
+        name: "Charles",
+        sayName: function() {
+          console.log(person.name);
+        }
+      };
+      person.sayName(); // outputs: "Charles"
+
     The "this" Object
+      "this" object represents the calling object for the function
+      In global scope, "this" represents global object
+      In web browser, the global object is "window"
+      When function is called while attached to an object, "this" represents the object
+    Ex.
+      var person = {
+        name: "Charles",
+        sayName: function() {
+          console.log(this.name);  // access object property dynamically for code reuse
+        }
+      };
+      person.sayName(); // outputs: "Charles"
+    Ex.
+      function sayNameForAll() {
+        console.log(this.name);
+      }
+
+      var person1 = {
+        name: "Jack",
+        sayName: sayNameForAll
+      };
+
+      var person2 = {
+        name: "Charles",
+        sayName: sayNameForAll
+      };
+
+      var name = "Old Sport"; // global varaiable
+
+      person1.sayName();  // "Jack"
+      person2.sayName();  // "Charles"
+
+      sayNameForAll();    // "Old Sport" - global variable is property of global object
+
     Changing this
   Summary
     Functions are objects too
