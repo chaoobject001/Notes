@@ -464,6 +464,64 @@ Chapter Two: Functions
       sayNameForAll();    // "Old Sport" - global variable is property of global object
 
     Changing this
+      call() method:
+        1st parameter: the value to which "this" should be equal when the function is executed
+        subsequent parameters will be passed into the function
+        Ex.
+          function sayNameForAll(label) {
+            console.log(label + ":" + this.name);
+          }
+
+          var p1 = {name: "Charles"};
+          var p2 = {name: "Jack"};
+
+          var name = "Old Sport";
+
+          sayNameForAll.call(this, "global");   // output "global: Old Sport"
+          sayNameForAll.call(p1, "person1");    // output "person1: Charles"
+          sayNameForAll.call(p2, "person2");    // output "person2: Jack"
+
+      apply() method:
+        1st parameter: the value to which "this" should be equal when the function is executed
+        subsequent parameters will be passed into the function AS ARRAY
+        Ex.
+          function sayNameForAll(label) {
+            console.log(label + ":" + this.name);
+          }
+
+          var p1 = {name: "Charles"};
+          var p2 = {name: "Jack"};
+
+          var name = "Old Sport";
+
+          sayNameForAll.apply(this, ["global"]);   // output "global: Old Sport"
+          sayNameForAll.apply(p1, ["person1"]);    // output "person1: Charles"
+          sayNameForAll.apply(p2, ["person2"]);    // output "person2: Jack"
+
+      bind() method:
+        This function is added after ES5; return a new function bind to a given object
+        1st parameter: "this" value for the new function
+        subsequent parameters will be passed into the function
+        Ex.
+          function sayNameForAll(label) {
+            console.log(label + ":" + this.name);
+          }
+
+          var p1 = {name: "Charles"};
+          var p2 = {name: "Jack"};
+
+          // create a function just for p1
+          var sayNameForPerson1 = sayNameForAll.bind(p1);
+          sayNameForPerson1("person1");   // outputs "person1:Charles"
+
+          // create a function just for p2
+          var sayNameForPerson2 = sayNameForAll.bind(p2);
+          sayNameForPerson2("person2");   // outputs "person2:Jack"
+
+          // attaching a method to an object does not change "this"
+          p2.sayName = sayNameForPerson1;
+          p2.sayName("person2");    // outputs "person2:Charles"
+
   Summary
     Functions are objects too
     Function has special internal property [[Call]]
@@ -474,6 +532,23 @@ Chapter Two: Functions
       - other values can also be used
     Function constructor should be avoided
 
+Chapter Three: Primitive and Reference Types
+  Defining Properties
+  Detecting Properties
+  Removing Properties
+  Enumeration
+  Type of Properties
+  Property Attributes
+    Common Attributes
+    Data Property Attributes
+    Accessor Property Attributes
+    Defining Multiple Properties
+    Retrieving Property Attributes
+  Preventing Object Modification
+    Preventing Extensions
+    Sealing Objects
+    Freezing Objects
+  Summary
 
 
 
