@@ -533,10 +533,104 @@ Chapter Two: Functions
     Function constructor should be avoided
 
 Chapter Three: Primitive and Reference Types
+JS objects are dynamic - can change during execution
   Defining Properties
+    Objects (properties) created by programmer are always open for modification unless specified otherwise
+
+    When property first added to object,
+    - Internal method [[Put]] specifies initial value & attributes of the property
+    - By creating an "own property" on object
+      - "Own property" indicate a specific instance of object owns that property
+    - All operations on the propery must be performed via its object
+    - "Own property" are different from prototype properties
+
+    When new value assigned to an existing property:
+    - Internal method [[Set]] replace old value with new
+
+    Ex.
+      var person1 = { name: "Charles" };    // [[Put]]name
+
+      person1.age = "Redacted";   // [[Put]]age
+
+      person1.name = "Greg";    // [[Set]]name
+
   Detecting Properties
+    Avoid checking property existence by "truthy" or "falsy" value (in if expression)
+      - a valid property can contain falsy values -> causing false negative
+    truthy:
+      - an object
+      - non-empty string
+      - non-zero number
+      - true
+    falsy:
+      - null
+      - undefined
+      - 0
+      - NaN
+      - empty string
+
+    Detect property existence with "in" operator:
+      "in" operator checks for given key exists in hash table
+      Ex. ... following previous example
+        console.log("name" in person1);   // "true" - person1 holds property "name"
+        console.log("age" in person1);    // "true" - person1 holds property "age"
+        console.log("title" in person1);  // "false"- No "title" property in person1
+
+    Detect method (function as property) with "in" operator
+    Ex.
+      var person1 = {
+        name: "Charles",
+        sayName: function() {
+          console.log(this.name);
+        }
+      };
+      console.log("sayName" in person1);    // true
+
+    Detect property with "in" will NOT evaluate value of property
+      - this avoid error or performance issue
+      - detect own properties AND prototype properties
+
+    Detect ONLY own properties with hasOwnProperty() method
+    Ex. following example above
+      console.log("toString" in person1);               // true
+      console.log(person1.hasOwnProperty("toString"));  // false
+      // toString() method is a prototype present on all objects
+
   Removing Properties
+    "delete" operator calls internal operator [[Delete]] to remove key/value pair from hash table
+    Upon successful delete, it returns true
+    Ex.
+      var person1 = {
+        name: "Charles"
+      };
+
+      console.log("name" in person1);     // true
+      console.log(delete person1.name);   // delete property & return true
+      console.log("name" in person1);     // false
+      console.log(person1.name);          // undefined
+
   Enumeration
+    By default, all properties added are enumerable
+    Enumerable properties have internal [[Enumerable]] attributes set to true
+    Ex.
+      var obj = {a: 1, b: 2, c: 3};
+      var prop;
+      for (prop in obj) {
+        console.log('Name: ' + prop);
+        console.log('Value: ' + obj[prop]);
+      }
+
+    Object.keys(obj) retrive enumerable peoperties from object in parameter
+    Ex.
+      var obj = {a: 1, b: 2, c: 3};
+      var properties = Object.keys(obj);
+      // if you want to mimic for-in behavior
+      var i, len;
+      for (i=0, len=properties.length; i < len; i++){
+        console.log("Name: " + properties[i]);
+        console.log("Value: " + obj[properties[i]]);
+      }
+
   Type of Properties
   Property Attributes
     Common Attributes
