@@ -619,6 +619,7 @@ JS objects are dynamic - can change during execution
         console.log('Name: ' + prop);
         console.log('Value: ' + obj[prop]);
       }
+    "for - in" loop return prototype & own properties
 
     Object.keys(obj) retrive enumerable peoperties from object in parameter
     Ex.
@@ -630,6 +631,12 @@ JS objects are dynamic - can change during execution
         console.log("Name: " + properties[i]);
         console.log("Value: " + obj[properties[i]]);
       }
+    Object.keys() returns only own / instance properties
+
+    Not all properties are enumerable 
+      - most native methods on object have [[Enumerable]] attribute set to false
+    Ex.
+      
 
   Type of Properties
   Property Attributes
