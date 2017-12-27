@@ -631,16 +631,63 @@ JS objects are dynamic - can change during execution
         console.log("Name: " + properties[i]);
         console.log("Value: " + obj[properties[i]]);
       }
-    Object.keys() returns only own / instance properties
+    Object.keys() returns ONLY own / instance properties
 
-    Not all properties are enumerable 
+    Not all properties are enumerable
       - most native methods on object have [[Enumerable]] attribute set to false
+      - check whether a property is enumerable by propertyIsEnumerable()
     Ex.
-      
+      var person = {name: "Charles"};
+
+      console.log("name" in person);                      // true
+      console.log(person.propertyIsEnumerable("name"));   // true
+
+      var properties = Object.keys(person);
+
+      console.log("length" in properties);                // true
+      console.log(properties.propertyIsEnumerable("length")); // false - length is a built-in property on Array.prototype
 
   Type of Properties
+    1. Data property: contains a value
+      - by default [[Put]] method creates data property
+    2. Accessor property:
+      - define a function to call when property is read (getter)
+      - define a function to call when property is written nto (setter)
+      - To add behavior for value assignment / read
+      - With only getter, property is read-only, write will fail silently in nonstrict mode and throw error in strict mode
+      - With only setter, property is write-only, read will fail silently in nonstrict and strict mode
+
+      Ex.
+        var person = {
+          _name: "Charles",  // leading underscore is just convention, property is still public
+
+          get name() {
+            console.log("Reading name");
+            return this._name;
+          },
+          set name(value) {
+            console.log("Setting name to %s", value);
+            this._name = value;
+          }
+        };
+
+        console.log(person.name);
+        person.name = "Old Sport";
+        console.log(person.name);
+
+
   Property Attributes
     Common Attributes
+      [[Enumerable]]: determine if property can be iterated over
+      [[Configurable]]: determine if property can be changed
+        - configurable property can be changed at any time
+        - configurable property can be remove with "delete"
+        - configurable property can be changed between data and accessor property
+      By default, user defined properties are Enumerable & Configurable
+
+      Change property attributes by Object.defineProperty() method
+
+
     Data Property Attributes
     Accessor Property Attributes
     Defining Multiple Properties
