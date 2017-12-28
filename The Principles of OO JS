@@ -686,12 +686,165 @@ JS objects are dynamic - can change during execution
       By default, user defined properties are Enumerable & Configurable
 
       Change property attributes by Object.defineProperty() method
+        - three arguments
+          1. owning object
+          2. property name
+          3. property descriptor object containing attributes to set
+            - descriptor has properties of the same name as internal attribute but without square brackets
+            - use enumerable to set [[Enumerable]]
+            - use configurable to set [[Configurable]]
+            Ex. Make an object property non-enumerable & non-configurable
+              var p1 = {name: "Charles"}; // define name property
 
+              Object.defineProperty(p1, "name", {
+                enumerable: false
+              }); // modify name's [[Enumerable]] attribute to false
+
+              console.log("name" in p1);  // true
+              console.log(p1.propertyIsEnumerable("name")); // false
+
+              var properties = Object.keys(p1);
+              console.log(properties.length); // 0
+
+              Object.defineProperty(p1, "name", {
+                configurable: false
+              }); // name is now non-configurable - the property CANNOT be changed, it is LOCKED down
+
+              delete p1.name; // try to delete property - will ERROR out in strict mode or fail silently in non-strict mode
+              console.log("name" in p1);  // still true
+              console.log(p1.name); // still "Charles"
+
+              Object.defineProperty(p1, "name", {
+                configurable: true
+              }); // ERROR! Uncaught TypeError: Cannot redefine property: name
+
+            Switch between data property and accessor property will also produce error
 
     Data Property Attributes
+      Data properties have two additional attributes that accessors do not:
+      [[Value]]: holds property value, filled automatically when property is created, include function
+      [[Writable]]: boolean value indicating weather property can be written to
+        - by default, all properties are writable, unless specified otherwise
+
+      Ex. Define a data property with Object.defineProperty
+        var p1 = {name: "Charles"}; // ...is logically equvilent to ...
+
+        var p1 = {};
+        Object.defineProperty(p1, "name", {
+          value: "Charles",
+          enumerable: true,
+          configurable: true,
+          writable: true
+        });
+
+      When Object.defineProperty() is called:
+        1. check if property exists
+        2. if property NOT exist, a new one is added per descriptor
+
+      When define property with Object.defineProperty(), any unspecified boolean attribute is default to false
+      Ex. Object.defineProperty() without specifying boolean attribute
+        var p1 = {};
+
+        Object.defineProperty(p1, "name", {
+          value: "Charles"
+        }); // only read property is possible; all else are locked down
+
+        console.log("name" in p1);
+        console.log(p1.propertyIsEnumerable("name")); // false - enumerable: false by default
+
+        delete p1.name;
+        console.log("name" in p1);  // true - configurable: false by default
+
+        p1.name = "Jack";
+        console.log(p1.name); // "Charles" - writable: false by default
+
+      Non-writable property throws error when re-assigned in strict mode and fails silently when in nonstrict mode
+
     Accessor Property Attributes
+      Accessor properties also have two additional attributes that data properties do not
+      [[Get]] for getter
+      [[Set]] for setter
+      Only one of the attributes is required to create an accessor property
+      Create a property with both data AND accessor attributes cause error
+      Ex. accessor with Object.defineProperty()
+        var p1 = { _name: "Charles" };
+
+        Object.defineProperty(p1, "name", {
+          get: function() {
+            console.log("Reading name");
+            return this._name;
+          },
+          set: function(value){
+            console.log("Setting name to %s", value);
+            this._name = value;
+          },
+          enumerable: true,
+          configurable: true
+        });
+
+        console.log(p1.name);
+        p1.name = "Jack";
+        console.log(p1.name);
+
+      "get" and "set" keys are passed in as data properties containing function
+      Setting attributes [[Enumerable]] and [[Configurable]] enables user
+      to identify and change how accessor property works.
+
+      Ex. Non-configurable, Non-enumerable, Non-writable property
+        var p1 = { _name: "Charles" };
+
+        Object.defineProperty(p1, "name", {
+          get:function(){
+            console.log("Reading name");
+            return this._name;
+          }
+        });
+        console.log("name" in p1); // true
+        console.log(p1.propertyIsEnumerable("name")); // false
+
+        delete p1.name;
+        console.log("name" in p1); // true
+        p1.name = "JackGreg";
+        console.log(p1.name); // "Charles"
+
     Defining Multiple Properties
+      with Object.defineProperties()
+        - takes two arguments:
+        1. object to work on
+        2. object with all properties info
+          - property names
+          - values: descriptor objects defining attributes of the property
+      Ex. define data and accessor property
+        var p1 = {};
+
+        Object.defineProperties(p1, {
+          // data property
+          _name: {
+            value: "Charles",
+            enumerable: true,
+            configurable: true,
+            writable: true
+          },
+          // accessor property
+          name: {
+            get: function() {
+              console.log("Reading name");
+              return this._name;
+            },
+            set: function(value) {
+              console.log("Setting name to %s", value);
+              this._name = value;
+            },
+            enumerable: true,
+            configurable: true
+          }
+        });
+        console.log(p1.name);
+        p1.name = "Jack";
+        console.log(p1.name);
+
     Retrieving Property Attributes
+
   Preventing Object Modification
     Preventing Extensions
     Sealing Objects
