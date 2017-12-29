@@ -680,9 +680,12 @@ JS objects are dynamic - can change during execution
     Common Attributes
       [[Enumerable]]: determine if property can be iterated over
       [[Configurable]]: determine if property can be changed
-        - configurable property can be changed at any time
+        - configurable property attributes (other than value & writable) can be changed at any time
         - configurable property can be remove with "delete"
         - configurable property can be changed between data and accessor property
+
+
+
       By default, user defined properties are Enumerable & Configurable
 
       Change property attributes by Object.defineProperty() method
@@ -753,10 +756,10 @@ JS objects are dynamic - can change during execution
         console.log(p1.propertyIsEnumerable("name")); // false - enumerable: false by default
 
         delete p1.name;
-        console.log("name" in p1);  // true - configurable: false by default
+        console.log("name" in p1);  // true - configurable: false by default when not specified in Object.defineProperty()
 
         p1.name = "Jack";
-        console.log(p1.name); // "Charles" - writable: false by default
+        console.log(p1.name); // "Charles" - writable: false by default when not specified in Object.defineProperty()
 
       Non-writable property throws error when re-assigned in strict mode and fails silently when in nonstrict mode
 
@@ -860,7 +863,7 @@ JS objects are dynamic - can change during execution
     [[Extensible]]: boolean value that indicates if object can be modified
     Extensible = new properties can be added to object at any time
     Verify [[Extensible]] by Object.isExtensible()
-    Thre are 3 ways to prevent object modifications
+    Thre are 3 ways to prevent object modifications; all are irreversible
 
     1. Preventing Extensions
       Object.preventExtensions() takes 1 argument: object to make non-extensible
@@ -879,11 +882,110 @@ JS objects are dynamic - can change during execution
       Seal object makes it non-configurable and non-extensible
       Sealed object can only be read from or write to its properties
       Object.seal() takes 1 argument: object to be sealed
+      Seal status can be verified with Object.isSealed()
+      Sealed object cannot be un-sealed
+      Ex.
+        var p1 = { name: "Charles" }; // by default an object is NOT sealed and is extensible
 
+        console.log(Object.isExtensible(p1)); // true
+        console.log(Object.isSealed(p1));     // false
 
+        Object.seal(p1);
+
+        console.log(Object.isExtensible(p1)); // false
+        console.log(Object.isSealed(p1));     // true
+
+        // try to add a function as property to a sealed object, p1
+        p1.sayName = function() {
+          console.log(this.name);
+        };
+
+        // check if a sealed object can have new method
+        console.log("sayName" in p1); // false
+
+        // check if a sealed object can re-assign its property value
+        p1.name = "Jack";
+        console.log(p1.name); // "Jack"
+
+        // check if property of a sealed object can deleted
+        delete p1.name;
+        console.log("name" in p1);  // true - still present
+        console.log(p1.name); // "Jack"
+
+        // check if property of a sealed object is configurable by Object.getOwnPropertyDescriptor()
+        var descriptor = Object.getOwnPropertyDescriptor(p1, "name");
+        console.log(descriptor.configurable); // false
+      Use strict mode with sealed object so error is thrown when object is used incorrectly
 
     3. Freezing Objects
+      Object.freeze() takes one object to be frozen
+      A frozen object CANNOT:
+        - add or remove properties
+        - change property type
+        - be un-frozen
+        - re-assign data property
+      Forzen state is checked with Object.isFrozen()
+
+       Ex.
+        var p1 = { name: "Charles" }; // by default an object is NOT sealed and is extensible
+
+        console.log(Object.isExtensible(p1)); // true
+        console.log(Object.isSealed(p1));     // false
+        console.log(Object.isFrozen(p1));     // false
+
+        Object.freeze(p1);
+
+        console.log(Object.isExtensible(p1)); // false
+        console.log(Object.isSealed(p1));     // true
+        console.log(Object.isFrozen(p1));     // true
+
+        // try to add a function as property to a frozon object, p1
+        p1.sayName = function() {
+          console.log(this.name);
+        };
+
+        // check if a frozen object can have new method
+        console.log("sayName" in p1); // false
+
+        // check if a frozen object can re-assign its property value
+        p1.name = "Jack";
+        console.log(p1.name); // No, still "Charles"
+
+        // check if property of a frozen object can deleted
+        delete p1.name;
+        console.log("name" in p1);  // true - still present
+        console.log(p1.name); // "Charles"
+
+        // check if property of a frozen object is configurable / writable by Object.getOwnPropertyDescriptor()
+        var descriptor = Object.getOwnPropertyDescriptor(p1, "name");
+        console.log(descriptor.configurable); // false
+        console.log(descriptor.writable); // false
+
   Summary
+    obj.hasOwnProperty(prop)
+      - check for specific property (prop) as direct property of the object
+    prop in obj
+      - check for specific property (prop) as own property or from prototype chain
+    Object.keys(obj)
+      - return an arry of enumerable properties
+    Object.getOwnPropertyNames(obj)
+      - return an arry of enumerable and non-enumerable properties
+      - but item on prototype chain are NOT listed
+
+    Object.preventExtensions()
+      Object.isExtensible() / add property: false
+      Object.configurable() / delete property: true
+      (Descriptor) writable: true
+
+    Object.seal()
+      Object.isExtensible() / add property: false
+      Object.configurable() / delete property: false
+      (Descriptor) writable: true
+
+    Object.freeze()
+      Object.isExtensible() / add property: false
+      Object.configurable() / delete property: false
+      (Descriptor) writable: false
 
 
 
