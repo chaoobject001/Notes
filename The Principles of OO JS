@@ -844,11 +844,45 @@ JS objects are dynamic - can change during execution
         console.log(p1.name);
 
     Retrieving Property Attributes
+      Object.getOwnPropertyDescriptor() takes 2 arguments:
+      1. object to work on
+      2. property to check
+      Ex.
+        var p1 = { name: "Charles" };
+        var descriptor = Object.getOwnPropertyDescriptor(p1, "name");
+
+        console.log(descriptor.enumerable);   // true
+        console.log(descriptor.configurable); // true
+        console.log(descriptor.writable);     // true
+        console.log(descriptor.value);        // "Charles"
 
   Preventing Object Modification
-    Preventing Extensions
-    Sealing Objects
-    Freezing Objects
+    [[Extensible]]: boolean value that indicates if object can be modified
+    Extensible = new properties can be added to object at any time
+    Verify [[Extensible]] by Object.isExtensible()
+    Thre are 3 ways to prevent object modifications
+
+    1. Preventing Extensions
+      Object.preventExtensions() takes 1 argument: object to make non-extensible
+      Ex.
+        var p1 = {name: "Charles"};
+
+        console.log(Object.isExtensible(p1)); // true
+        Object.preventExtensions(p1);
+        console.log(Object.isExtensible(p1)); // false
+        p1.sayName = function() {
+          console.log(this.name);
+        };
+        console.log("sayName" in p1); // false
+
+    2. Sealing Objects
+      Seal object makes it non-configurable and non-extensible
+      Sealed object can only be read from or write to its properties
+      Object.seal() takes 1 argument: object to be sealed
+
+
+
+    3. Freezing Objects
   Summary
 
 
