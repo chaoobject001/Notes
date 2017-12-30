@@ -987,6 +987,62 @@ JS objects are dynamic - can change during execution
       Object.configurable() / delete property: false
       (Descriptor) writable: false
 
+Chapter Four: Constructors And Prototypes
+- not exactly like class
+  Constructors
+    constructor: a function used with "new" to create an object
+    Objects created with same constructor contain the same properties and methods
+    User defined constructor = user defined reference type
+    Ex.
+      function Person() {
+        // intentionally blank
+      }
+
+    constructor is just like any other function, only difference is the name
+      - first latter is capitalized by convention
+    Ex.
+      var p1 = new Person();
+      var p2 = new Person();
+
+    if constructor requires no parameters, parentheses can be omited
+    Ex.
+      var p1 = new Person;
+
+    Object type can be identified by "instanceof" operator
+    Ex.
+      console.log(p1 instanceofe Person); // true
+
+    Object type can also be identified with "constructor" property - this reference to the constructor function
+    For generic objects created via object literal or Object constructor, constructor is "Object"
+    Ex.
+      console.log(p1.constructor === Person); // true
+
+    Create objects with same properties and method with keyword "this":
+    Ex. "this" reference to the new instance created when constructor is called
+      function Person(name) {
+        this.name = name;
+        this.sayName = function() {
+          console.log(this.name);
+        };
+      }
+    Constructor function does NOT return value - the new operator return created instance
+    Ex. Constructor with initialied property
+      var p1 = new Person("Charles");
+      console.log(p1.name); // "Charles"
+      p1.sayName(); // "Charles"
+
+
+
+  Prototypes
+    The [[Prototype]] property
+    Using Prototypes with Constructors
+    Changing Prototypes
+    Built-in Object Prototypes
+  Summary
+
+
+
+
 
 
 
