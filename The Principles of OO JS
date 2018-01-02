@@ -1026,11 +1026,16 @@ Chapter Four: Constructors And Prototypes
         };
       }
     Constructor function does NOT return value - the new operator return created instance
+    Explicitly call "return" in sconstructor:
+      return object, then it will be returned instead of newly created object
+      return primitive type, newly created object will still be returned
+     
     Ex. Constructor with initialied property
       var p1 = new Person("Charles");
       console.log(p1.name); // "Charles"
       p1.sayName(); // "Charles"
 
+    
 
 
   Prototypes
