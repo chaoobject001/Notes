@@ -1029,17 +1029,78 @@ Chapter Four: Constructors And Prototypes
     Explicitly call "return" in sconstructor:
       return object, then it will be returned instead of newly created object
       return primitive type, newly created object will still be returned
-     
+
     Ex. Constructor with initialied property
       var p1 = new Person("Charles");
       console.log(p1.name); // "Charles"
       p1.sayName(); // "Charles"
 
-    
+    Ex. Constructor for seting up / initializing the properties
+    function Person(name) {
+      // "name" parameter stored as accessor property
+      // named parameters are like local variables
+      Object.defineProperty(this, "name", {
+        get: function() {
+          return name;
+        },
+        set: function(newName) {
+          name = newName;
+        },
+        enumerable: true,
+        configurable: true
+        // set accessor is available for name -> cannot use writable
+      });
 
+      this.sayName = function() {
+        console.log(this.name);
+      };
+    }
+
+    Calling constructor WITHOUT new changes global object instead of new instance of reference type
+    WITHOUT new, constructor is just a function without return statement
+    Ex.
+      var p1 = Person("Charles");
+      console.log(p1 instanceof Person);    // false
+      console.log(typeof p1);               // undefined
+      console.log(name);                    // "Charles"
+      // this.name passed through Person, become a global variable
+
+    Constructor does not remove code redundancy completely
+      - each instance holds identical method with different data
+    A more efficient way is for ALL instance to share one method -> Prototype
 
   Prototypes
+    Prototype: recipe for object
+    Except built-in functions, all functions has prototype property
+      - used when new instance is created
+      - shared among all instances to access properties of prototype
+
+    Ex. hasOwnProperty() method
+      var book = {title: "Book Title"};
+
+      console.log("title" in book);                // true
+      console.log(book.hasOwnProperty("title"));    // true
+      console.log("hasOwnProperty" in book);        // true
+      console.log(book.hasOwnProperty("hasOwnProperty")); // false
+      console.log(Object.prototype.hasOwnProperty("hasOwnProperty")); // true
+
+    hasOwnProperty() method is NOT defined in book, but it exist on Object.prototype
+    "in" operator return true for both prototype property and own property
+
+    Ex. Identify prototype property
+      function hasPrototypeProperty(object, name) {
+        return name in object && !object.hasOwnProperty(name);
+      }
+
+      console.log(hasPrototypeProperty(book, "title")); // false
+      console.log(hasPrototypeProperty(book, "hasOwnProperty")); // true
+
     The [[Prototype]] property
+      [[Prototype]] points back to the prototype object of current instance
+      When use "new" to create object, constructor's prototype is assigned to the [[Prototype]] property of new object
+      and multiple instances refer to the same prototype and reduce code redundancy
+
+
     Using Prototypes with Constructors
     Changing Prototypes
     Built-in Object Prototypes
