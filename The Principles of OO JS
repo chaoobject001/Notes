@@ -1100,6 +1100,29 @@ Chapter Four: Constructors And Prototypes
       When use "new" to create object, constructor's prototype is assigned to the [[Prototype]] property of new object
       and multiple instances refer to the same prototype and reduce code redundancy
 
+    Ex. Check [[Prototype]] by Object.getPrototypeOf()
+      var object = {};
+      var prototype = Object.getPrototypeOf(object);
+      console.log(prototype === Object.prototype);    // true
+      // [[Prototype]] of generic object always refer to Object.prototype
+
+    __proto__
+      Support by some JS engine, this property allow both write and read of [[Prototype]] property
+
+    Ex. Check object for being prototype
+      var object = {};
+      console.log(Object.prototype .isPrototype(object));   // true
+
+    property lookup:
+      1. own property
+      2. [[Prototype]] upon prototype chain
+    if there is no match, undefined is returned
+
+    Ex.
+
+
+
+
 
     Using Prototypes with Constructors
     Changing Prototypes
