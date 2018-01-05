@@ -1116,15 +1116,70 @@ Chapter Four: Constructors And Prototypes
     property lookup:
       1. own property
       2. [[Prototype]] upon prototype chain
-    if there is no match, undefined is returned
+        if there is no match, "undefined" is returned
 
-    Ex.
+      Ex. own property precedes prototype but prototype property cannot be deleted
+        var object = {};
 
+        console.log(object.toString()); // return from prototype: [object Object]
 
+        object.toString = function() {
+          return "[object Custom]";
+        }; // define own method "toString"
 
+        console.log(object.toString());  // own property precedes prototype and return [object Custom]
 
+        // delete own property
+        delete object.toString;
+
+        console.log(object.toString()); // Again, return from prototype: [object Object]
+
+        // no effect - delet only works on own properties
+        delete object.toString;
+        console.log(object.toString());    // Again, return from prototype: [object Object]
+
+      User cannot assign value to prototype property, doing so create new own propery with the same name
 
     Using Prototypes with Constructors
+      Define methods once for all instances
+      Put methods on prototype and then use "this" to access current instance
+      Ex. Put method on prototype of an existing object then access instance via "this"
+        function Person(name) {
+          this.name = name;
+        }
+
+        Person.prototype.sayName = function() {
+          console.log(this.name);
+        };
+
+        var p1 = new Person("Charles");
+
+        console.log(p1.name);
+        p1.sayName();
+
+      Data stored in prototype is shared across ALL instances
+        - one instance may change data while another one try to access the same data
+        - singleton
+      Ex.
+        function Person(name) {
+          this.name = name;
+        }
+
+        Person.prototype.sayName = function() {
+          console.log(this.name);
+        };
+
+        Person.prototype.favorites = [];
+
+        var p1 = new Person("Charles");
+        var p2 = new Person("Jack");
+
+        p1.favorites.push("Apple");
+        p2.favorites.push("Banana");
+
+        console.log(p1.favorites);
+        console.log(p2.favorites);  // changes are accumulative and shared
+
     Changing Prototypes
     Built-in Object Prototypes
   Summary
