@@ -1180,8 +1180,126 @@ Chapter Four: Constructors And Prototypes
         console.log(p1.favorites);
         console.log(p2.favorites);  // changes are accumulative and shared
 
+      Replace prototype with object literal to add multiple properties to prototype
+      Ex.
+        function Person(name) {
+          this.name = name;
+        }
+
+        Person.prototype = {
+          sayName: function() {
+            console.log(this.name);
+          },
+          toString: function() {
+            return "[Person " + this.name + "]";
+          }
+        };
+
+        // Sideeffect: "constructor" property points to Object
+        // b/c "constructor" property is stored on prototype
+
+        var p1 = new Person("Charles");
+        console.log(p1 instanceof Person);          // true
+        console.log(p1.constructor === Person);     // false!
+        console.log(p1.constructor === Object);     // true
+
+        // restore constructor property when overwriting to avoid the side effect
+        Person.prototype = {
+          constructor: Person,
+          sayName: function() {
+            console.log(this.name);
+          },
+          toString: function() {
+            return "[Person " + this.name + "]";
+          }
+        };
+        var p2 = new Person("Jack");
+        console.log(p2.constructor === Person);     // true now
+
+        1 Link b/t instance and prototype
+          Person Instance
+            [[Prototype]] -> Person.prototype
+
+        2 Link b/t prototype and constructor
+          Person.prototype
+            constructor (property) -> Person (constructor)
+
+          Person (constructor)
+            prototype (property) -> Person.prototype
+
     Changing Prototypes
+      Add new member to a prototype
+      Ex.
+        function Person(name) {
+          this.name = name;
+        }
+
+        Person.prototype = {
+          sayName: function() {
+            console.log(this.name);
+          },
+          toString: function() {
+            return "[Person " + this.name + "]";
+          }
+        };
+
+        // add memebr to Person.prototype
+        Person.prototype.sayHi = function() {
+          console.log("Hi");
+        };
+
+        var p1 = new Person("Charles");
+        p1.sayHi();
+
+      Since prototype is NOT own property,
+      Object.seal() and Object.freeze() does not prevent adding properties or changing existing property to prototype
+      Ex.
+        function Person(name) {
+          this.name = name;
+        }
+        var p1 = new Person("Charles");
+
+        Object.freeze(p1);
+
+        Person.prototype.sayHi = function() {
+          console.log("Hi");
+        };
+
+        p1.sayHi();
+        // [[Prototype]] is considered own property and is frozen but the value (an object) is NOT
+
     Built-in Object Prototypes
+      [[Prototype]] allows modification of built-in type objects
+      Ex. Array.prototype.sum
+        Array.prototype.sum = function() {
+          return this.reduce(function(previous, current) {
+            return previous + current;
+          }); // reduce is an array method
+        };
+        var numbers = [1, 2, 3, 4];
+        console.log(numbers.sum()); // 10
+      Warning: alter built-in type behavior is NOT recommand for production
+
+  Summary
+    Constructors are functions called with "new" operator - initial letter capitalized
+    Identify constructors by:
+      instanceof operator (p1 instanceof Person)
+      "constructor" of an instance
+    Every function's prototype property defines shared properties among instances
+    "constructor" property is defined on prototype
+    [[Prototype]] is a reference, not copy
+    Search a property from own properties then prototype(s)
+    Modification of built-in types' prototype is NOT recommanded in production
+
+Chapter Five: Inheritance
+- Inheritance via the mechanism of prototype
+  Prototype Chaining and Object.prototype
+    Methods Inherited from Object.prototype
+    Modifying Object.prototype
+  Object Inheritance
+  Constructor Inheritance
+  Constructor Stealing
+  Accessing Supertype Methods
   Summary
 
 
