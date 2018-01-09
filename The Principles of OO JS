@@ -1294,10 +1294,157 @@ Chapter Four: Constructors And Prototypes
 Chapter Five: Inheritance
 - Inheritance via the mechanism of prototype
   Prototype Chaining and Object.prototype
+    JS built-in inheritance: prototype chaining / prototypal inheritance
+    Unless otherwise specified, all objects inherit from Object: [[Prototype]] set to Object.prototype
+
     Methods Inherited from Object.prototype
+      These five methods apears to all objects via inheritance:
+        - hasOwnProperty() Determines if an own property with given name exists
+        - propertyIsEnumerable() Determines if an own property is enumerable
+        - isPrototypeOf() Determines if one object is prototype of another
+        - valueOf() Returns value representation of the object
+        - toString() Returns string representation of the object
+
+      valueOf()
+        called whenever an operator is used on an object
+        return object instance by default
+        overridden by primitive wrapper
+          return:
+            string for String
+            boolean for Boolean
+            number for Number
+            epoch time in milliseconds for Date
+            Ex.
+              var now  = new Date();
+              var earlier = new Date(2010, 1, 1);
+              console.log(now > earlier);   // true
+        Override valueOf() to change the value used with operator
+
+      toString()
+        serves as fallback when valueOf() returns reference value instead of primitive value
+        called implicitly on primitive values when expecting a string (eg. as one operand of +)
+        Ex.
+          var p = {name: "Charles"};
+          var message = "My name is " + p;
+          console.log(message);   // "My name is [object Object]"
+        Define toString() to provide more information
+        Ex.
+          var p = {
+            name: "Charles",
+            toString: function() {
+              return ("[Person " + this.name + "]");
+            }
+          };
+          var message = "Person = " + p;
+          console.log(message);   // "Person = [Person Charles]"
+
     Modifying Object.prototype
+      DON'T DO IT
   Object Inheritance
+    Ex. Inherit from other objects
+      var person1 = {
+        name: "Charles",
+        sayName: function() {
+          console.log(this.name);
+        }
+      };
+      var person2 = Object.create(person1, {
+        name: {
+          configurable: true,
+          enumerable: true,
+          value: "Jack",
+          writable: true
+        }
+      });
+
+      person1.sayName();    // Charles
+      person2.sayName();    // Jack
+      console.log(person1.hasOwnProperty("sayName")); // true
+      console.log(person1.isPrototypeOf(person2)); // true
+      console.log(person2.hasOwnProperty("sayName")); // false
+
+    Prototype Chain for person2
+
+    person2
+      [[Prototype]] -> person1
+      name: "Jack"
+    person1
+      [[Prototype]] -> Object.prototype
+      name: "Nicholas"
+      sayName (function)
+    Object.prototype
+      [[Prototype]] -> null
+
+    Prototype Chain typically ends with Object.prototype whose [[Prototype]] is set to null
+
+    Ex. Create object with null [[Prototype]] - prototype-less
+      var nakedObject = Object.create(null);
+      // no predefined properties
+      // perfect to create lookup hash without potential naming collisions with inherited property names
+
+      console.log("toString" in nakedObject);   // false
+      console.log("valueOf" in nakedObject);    // false
+
   Constructor Inheritance
+    In user-defined constructor, prototype property is assigned to a generic object
+      - inherits from Object.prototype
+      - has one own property "constructor"
+    Ex.
+      function OwnConstructor() {
+        // initialization
+      }
+
+      // JS engine implicitly assigns OwnConstructor.prototype
+      OwnConstructor.prototype = Object.create(Object.prototype, {
+        constructor: {
+          configurable: true,
+          enumerable:true,
+          value: OwnConstructor,
+          writable: true
+        }
+      });
+
+    Overwriting prototype property to change prototype chain
+    Ex.
+      function Rectangle(length, width) {
+        this.length = length;
+        this.width = width;
+      }
+
+      Rectangle.prototype.getArea = function() {
+        return this.length * this.width;
+      };
+
+      Rectangle.prototype.toString = function() {
+        return "[Rectangle " + this.length + "X" + this.width + "]";
+      };
+
+      // inherits from Rectangle
+      function Square(size) {
+        this.length = size;
+        this.width = size;
+      }
+
+      Square.prototype = new Rectangle();
+      Square.prototype.constructor = Square;
+
+      Square.prototype.toString = function() {
+        return "[Square " + this.length + "X" + this.width + "]";
+      };
+
+      var rect = new Rectangle(5, 10);
+      var square = new Square(6);
+      console.log(rect.getArea()); // 50
+      console.log(square.getArea()); // 36
+      console.log(rect.toString()); // "[Rectangle 5x10]"
+      console.log(square.toString()); // "[Square 6x6]"
+      console.log(rect instanceof Rectangle); // true
+      console.log(rect instanceof Object); // true
+      console.log(square instanceof Square); // true
+      console.log(square instanceof Rectangle); // true
+      console.log(square instanceof Object); // true
+
+
   Constructor Stealing
   Accessing Supertype Methods
   Summary
