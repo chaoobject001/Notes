@@ -1425,8 +1425,12 @@ Chapter Five: Inheritance
         this.width = size;
       }
 
-      Square.prototype = new Rectangle();
-      Square.prototype.constructor = Square;
+      Square.prototype = new Rectangle();     // prototype of constructor Square is overwritten with an instance of Rectangle
+      Square.prototype.constructor = Square;  // Restore constructor property to Square after overwrite prototype
+      // No arguments are passed into Rectangle at this point - b/c not needed
+      // When overwrite prototype chain, make sure constructor won't throw an error
+      // if arguments are not supplied
+      // Also, no global state is altered 
 
       Square.prototype.toString = function() {
         return "[Square " + this.length + "X" + this.width + "]";
@@ -1444,8 +1448,92 @@ Chapter Five: Inheritance
       console.log(square instanceof Rectangle); // true
       console.log(square instanceof Object); // true
 
+    Prototype chain of square
+    square
+      [[Prototype]] -> Square.prototype
+      length: 6
+      width: 6
+    Square.prototype
+      [[Prototype]] -> Rectangle.prototype
+      getArea (function)
+      toString (function)
+    Rectangle.prototype
+      [[Prototype]] -> Object.prototype
+    Object.prototype
+      [[Prototype]] -> null
+    
+    Since Rectangle constructor does not do anything special for Square, 
+    only link needed is for Square.prototype to point to Rectangle.prototype
+    -> Simplification via Object.create()
+    Ex.
+      function Square(size) {
+        this.length = size;
+        this.width = size;  
+      }
+
+      // overwrite Square.prototype
+      // with new object inherits from Rectangle.prototype
+      // Rectangle constructor is NEVER called here
+      Square.prototype = Object.create(Rectangle.prototype, {
+        constructor: {
+          configurable: true,
+          enumerable: true,
+          value: Square,
+          writable: true
+        }
+      });
+
+      Square.prototype.toString = function() {
+        return "[Square " + this.length + "x" + this.width + "]";
+      };
+    !! Always make sure OVERWRITE prototype before ADDING properties to it 
+    OR the added properties will be lost when overwrite happens !!
 
   Constructor Stealing
+    Call supertype constructor from subtype constructor 
+    by passing in newly created object 
+    via call() or apply()
+    Ex.
+      function Rectangle(length, width) {
+        this.length = length;
+        this.width = width;  
+      }
+
+      Rectangle.prototype.getArea = function() {
+        return this.length * this.width;
+      };
+
+      Rectangle.prototype.toString = function() {
+        return "[Rectangle " + this.length + "x" + this.width + "]";
+      };
+
+      // inherits from Rectangle - pseudoclassical inheritance 
+      function Square(size) {
+        Rectangle.call(this, size, size);
+        // create length and width properties on new object, set them equal to size - constructor stealing
+        // optional: add new properties or override existing properties
+      }
+
+      // modify prototype for method inheritance 
+      Square.prototype = Object.create(Rectangle.prototype, {
+        constructor: {
+          configurable: true,
+          enumerable: true,
+          value: Square,
+          writable: true
+        }
+      });
+      
+      Square.prototype.toString = function() {
+        return "[Square " + this.length + "x" + this.width + "]";
+      };
+      
+      var square = new Square(6);
+
+      console.log(square.length); // 6
+      console.log(square.width);  // 6
+      console.log(square.getArea());// 36
+
   Accessing Supertype Methods
   Summary
 
