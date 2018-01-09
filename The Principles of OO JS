@@ -1534,7 +1534,9 @@ Chapter Five: Inheritance
       console.log(square.width);  // 6
       console.log(square.getArea());// 36
 
-  Accessing Supertype Methods
+  Accessing Supertype Methods - even after override supertype methods
+    
+
   Summary
 
 
