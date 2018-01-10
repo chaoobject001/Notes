@@ -1604,8 +1604,10 @@ Chapter Six: Object Patterns
             };
           }());
 
+        Module Pattern:
         1. anonymous function created and executed immediately
         2. return object with privileged methods & properties
+        
         Ex.
           var person = (function() {
             var age = 25;
@@ -1620,13 +1622,104 @@ Chapter Six: Object Patterns
             };
           }());
 
-          console.log(person.name);
-          console.log();
-          console.log();
-          console.log();
+          console.log(person.name);     // "Charles"
+          console.log(person.getAge()); // 25
+          person.age = 100;
+          console.log(person.getAge()); // 25     
+          person.growOlder();          
+          console.log(person.getAge()); // 26
+
+        Revealing Module Pattern:
+        1. Arrange All variables and function declarations (methods) at the top of the IIFE together
+        2. Assign public properties to the returned object
+        Ex. identical to example above w/ revealing module pattern
+        var person =(function() {
+          var age = 25;
+          function getAge() {
+            return age;
+          }
+          
+          function growOlder() {
+            age++;
+          }
+
+          return {
+            name: "Nicholas",
+            getAge: getAge,
+            growOlder: growOlder
+          };
+        }());
 
     Private Members for Constructor
-  Mixins
+      How to build custom types w/ instance-specific private properties
+      Ex.
+        function Person(name) {
+          // define a variable only accessible inside of Person constructor
+          // each instance of Person gets its own private copy of age
+          var age = 25;
+
+          this.name = name;
+
+          this.getAge = function() {
+            return age;
+          };
+
+          this.growOlder = function() {
+            age++;
+          };
+        }
+
+        var person = new Person("Charles"); 
+        
+        console.log(person.name);        // "Charles"
+        console.log(person.getAge());    // 25
+
+        person.age = 100;
+        console.log(person.getAge());    // 25
+
+        person.growOlder();
+        console.log(person.getAge());    // 26
+
+      How to build custom types w/ private properties shared by all instances
+        - constructor INSIDE of a module pattern
+      Ex.
+        var Person = (function() {
+          // every instance share the same age
+          var age = 25;
+
+          function InnerPerson(name) {
+            this.name = name;
+          }
+
+          InnerPerson.prototype.getAge = function() {
+            return age;
+          };
+
+          InnerPerson.prototype.growOlder = function() {
+            age++;
+          };
+
+          return InnerPerson; // constructor returned = Person's constructor in global scope
+
+        } ());
+
+        var p1 = new Person("Charles");
+        var p2 = new Person("Jack");
+
+        console.log(p1.name);     // "Charles"
+        console.log(p1.getAge()); // 25
+        console.log(p2.getAge()); // 25
+        p1.growOlder();
+        console.log(p2.getAge()); // 26
+
+  Mixins: 
+    One (receiver) object gets property of another (supplier) 
+    w/out modifying prototype chain
+    but shallow copying those properties directly - reference properties will be pointing to the same object
+    Ex.
+
+
+
   Scope-Safe Constructors
   Summary
 
