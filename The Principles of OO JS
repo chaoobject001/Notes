@@ -1430,7 +1430,7 @@ Chapter Five: Inheritance
       // No arguments are passed into Rectangle at this point - b/c not needed
       // When overwrite prototype chain, make sure constructor won't throw an error
       // if arguments are not supplied
-      // Also, no global state is altered 
+      // Also, no global state is altered
 
       Square.prototype.toString = function() {
         return "[Square " + this.length + "X" + this.width + "]";
@@ -1461,14 +1461,14 @@ Chapter Five: Inheritance
       [[Prototype]] -> Object.prototype
     Object.prototype
       [[Prototype]] -> null
-    
-    Since Rectangle constructor does not do anything special for Square, 
+
+    Since Rectangle constructor does not do anything special for Square,
     only link needed is for Square.prototype to point to Rectangle.prototype
     -> Simplification via Object.create()
     Ex.
       function Square(size) {
         this.length = size;
-        this.width = size;  
+        this.width = size;
       }
 
       // overwrite Square.prototype
@@ -1486,17 +1486,17 @@ Chapter Five: Inheritance
       Square.prototype.toString = function() {
         return "[Square " + this.length + "x" + this.width + "]";
       };
-    !! Always make sure OVERWRITE prototype before ADDING properties to it 
+    !! Always make sure OVERWRITE prototype before ADDING properties to it
     OR the added properties will be lost when overwrite happens !!
 
   Constructor Stealing
-    Call supertype constructor from subtype constructor 
-    by passing in newly created object 
+    Call supertype constructor from subtype constructor
+    by passing in newly created object
     via call() or apply()
     Ex.
       function Rectangle(length, width) {
         this.length = length;
-        this.width = width;  
+        this.width = width;
       }
 
       Rectangle.prototype.getArea = function() {
@@ -1507,14 +1507,14 @@ Chapter Five: Inheritance
         return "[Rectangle " + this.length + "x" + this.width + "]";
       };
 
-      // inherits from Rectangle - pseudoclassical inheritance 
+      // inherits from Rectangle - pseudoclassical inheritance
       function Square(size) {
         Rectangle.call(this, size, size);
         // create length and width properties on new object, set them equal to size - constructor stealing
         // optional: add new properties or override existing properties
       }
 
-      // modify prototype for method inheritance 
+      // modify prototype for method inheritance
       Square.prototype = Object.create(Rectangle.prototype, {
         constructor: {
           configurable: true,
@@ -1523,11 +1523,11 @@ Chapter Five: Inheritance
           writable: true
         }
       });
-      
+
       Square.prototype.toString = function() {
         return "[Square " + this.length + "x" + this.width + "]";
       };
-      
+
       var square = new Square(6);
 
       console.log(square.length); // 6
@@ -1535,9 +1535,102 @@ Chapter Five: Inheritance
       console.log(square.getArea());// 36
 
   Accessing Supertype Methods - even after override supertype methods
-    
+    using call() or apply()
+    Ex.
+      function Rectangle(length, width) {
+        this.length = length;
+        this.width = width;
+      }
+
+      Rectangle.prototype.getArea = function() {
+        return this.length * this.width;
+      };
+
+      Rectangle.prototype.toString = function() {
+        return "[Rectangle " + this.length + "x" + this.height + "]";
+      };
+
+      // inherits from Rectangle
+      function Square(size) {
+        Rectangle.call(this, size, size);
+      }
+
+      Square.prototype = Object.create(Rectangle.prototype, {
+        constructor: {
+          configurable: true,
+          enumerable: true,
+          value: Square,
+          writable: true
+        }
+      });
+
+      // Call supertype method
+      Square.prototype.toString = function() {
+        var text = Rectangle.prototype.toString.call(this);
+        return text.replace("Rectangle", "Square");
+      }
+      // "Square.prototype.toString" calls "Rectangle.prototype.toString"
+      // by using call()
 
   Summary
+    JS inherits via prototype chaining
+    Create object to inherit with Object.create() to specify value of [[Prototype]] of new object
+    To inherit own properties - use constructor stealing - call constructor function using call() or apply()
+    Constructor stealing + prototype chaining = pseudoclassical inheritance
+    To access supertype methods, access supertype's prototype then the method, followed by call()
+    ex.
+      Rectangle.prototype.toString.call(this)
+
+Chapter Six: Object Patterns
+- patterns to manage and create objects
+  Private and Privileged Members
+    All object properties are public in JS
+    Ways to prevent modification of private information
+
+    Module Pattern:
+      Object-creation pattern to create singleton with private data
+      Immediately Invoked Function Expression (IIFE):
+        A function expression defined then called immediately that returns an object
+        local variables within IIFE
+          - are not accessible from outside of that function
+          - are accessible from returned object's method
+        Privileged methods:
+          have access to private data within IIEE
+        Ex.
+          var yourObject = ( function() {
+            // private data variables
+            return {
+              // public (privileged) method and properties
+            };
+          }());
+
+        1. anonymous function created and executed immediately
+        2. return object with privileged methods & properties
+        Ex.
+          var person = (function() {
+            var age = 25;
+            return {
+              name: "Charles",
+              getAge: function() {
+                return age;
+              },
+              growOlder: function() {
+                age++;
+              }
+            };
+          }());
+
+          console.log(person.name);
+          console.log();
+          console.log();
+          console.log();
+
+    Private Members for Constructor
+  Mixins
+  Scope-Safe Constructors
+  Summary
+
+
 
 
 
