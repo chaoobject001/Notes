@@ -1607,7 +1607,7 @@ Chapter Six: Object Patterns
         Module Pattern:
         1. anonymous function created and executed immediately
         2. return object with privileged methods & properties
-        
+
         Ex.
           var person = (function() {
             var age = 25;
@@ -1625,8 +1625,8 @@ Chapter Six: Object Patterns
           console.log(person.name);     // "Charles"
           console.log(person.getAge()); // 25
           person.age = 100;
-          console.log(person.getAge()); // 25     
-          person.growOlder();          
+          console.log(person.getAge()); // 25
+          person.growOlder();
           console.log(person.getAge()); // 26
 
         Revealing Module Pattern:
@@ -1638,7 +1638,7 @@ Chapter Six: Object Patterns
           function getAge() {
             return age;
           }
-          
+
           function growOlder() {
             age++;
           }
@@ -1669,8 +1669,8 @@ Chapter Six: Object Patterns
           };
         }
 
-        var person = new Person("Charles"); 
-        
+        var person = new Person("Charles");
+
         console.log(person.name);        // "Charles"
         console.log(person.getAge());    // 25
 
@@ -1712,11 +1712,129 @@ Chapter Six: Object Patterns
         p1.growOlder();
         console.log(p2.getAge()); // 26
 
-  Mixins: 
-    One (receiver) object gets property of another (supplier) 
+  Mixins:
+    One (receiver) object gets property of another (supplier)
     w/out modifying prototype chain
     but shallow copying those properties directly - reference properties will be pointing to the same object
+    Ex. Shallow copy All (own) enumerable properties from supplier to receiver - reference proprties copied shared same object
+      function mixin(receiver, supplier) {
+        for(var property in supplier) {
+          if(supplier.hasOwnProperty(property)) {
+            receiver[property] = supplier[property]
+          }
+        }
+        return receiver;
+      }
+
+    Ex. Add event support to object via maxin - suppose a custome type is defined for using event
+      function EventTarget() { }
+
+      EventTarget.prototype = {
+        constructor: EventTarget,
+        addListener: function(type, listener) {
+          // create array called "_listeners" if not already exist
+          if(!this.hasOwnProperty("_listeners")) {
+            this._listeners = [];
+          }
+
+          // create an element of array property _listeners of index "type" with value []
+          // if _listeners of index "type" is "undefined"
+          if (typeof this._listeners[type] == "undefined") {
+            this._listeners[type] = [];
+          }
+
+          // push listener into array _listeners[type]
+          this._listeners[type].push(listener);
+        },
+
+        fire: function(event) {
+          // assign current instance to event.target property if event.target is falsy
+          if(!event.target) {
+            event.target = this;
+          }
+
+          if (!event.type) {  // falsy
+            throw new Error("Event object missing 'type' property");
+          }
+
+          if (this._listeners && this._listeners[event.type] instanceof Array) {
+            // this._listeners is NOT null or undefined
+            // AND
+            // this._listeners[event.type] references an array object
+
+            var listeners = this._listeners[event.type];
+            for (var i = 0, len = listeners.length; i < len; i++) {
+              listeners[i].call(this, event);
+            }
+          }
+        },
+
+        removeListener: function(type, listener) {
+          if(this._listeners && this._listeners[event.type] instanceof Array) {
+            // this._listeners is NOT null or undefined
+            // AND
+            // this._listeners[event.type] references an array object
+
+            var listeners = this._listeners[event.type];
+              for (var i = 0, len = listeners.length; i < len; i++) {
+                if (listeners[i] === listener){
+                  listeners.splice(i, 1); // reomve matched listner from listeners array
+                  break;
+                }
+              }
+          }
+        }
+      }
+
+      var target = new EventTarget();
+      target.addListener("message", function(event) {
+        console.log("Message is " + event.data);
+      })
+
+      target.fire({
+        type: "message",
+        data: "Hello world!"
+      });
+
+    To create different type of objects that support EventTarget behaviors:
+    1. Create new instance of EventTarget then add new behavior:
+      - new objects are still EventTarget instances
+      - need to add new properties by hand
+      - not organized
     Ex.
+      var person = new EventTarget();
+      person.name = "Charles";
+      person.sayName = function() {
+        console.log(this.name);
+        this.fire({
+          type: "name said",
+          name: this.name
+        });
+      }
+
+      2. pseudoclassical inheritance
+        - but is a person also a event target
+      Ex.
+        function Person(name) { this.name = name; }
+
+        Person.prototype = Object.create(EventTarget.prototype);
+        Person.prototype.constructor = Person;
+
+        Person.prototype.sayName =  function() {
+          console.log(this.name);
+          this.fire({
+            type: "name said",
+            name: this.name
+          });
+        };
+
+        var person = new Person("Charles");
+        console.log(person instanceof Person); // true
+        console.log(person instanceof EventTarget); // true
+
+      3. maxin: reduce amount of code necessary to assign new properties to prototype
+      Ex.
+
 
 
 
