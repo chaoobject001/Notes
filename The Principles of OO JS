@@ -1111,7 +1111,7 @@ Chapter Four: Constructors And Prototypes
 
     Ex. Check object for being prototype
       var object = {};
-      console.log(Object.prototype .isPrototype(object));   // true
+      console.log(Object.prototype.isPrototype(object));   // true
 
     property lookup:
       1. own property
@@ -1138,7 +1138,7 @@ Chapter Four: Constructors And Prototypes
         delete object.toString;
         console.log(object.toString());    // Again, return from prototype: [object Object]
 
-      User cannot assign value to prototype property, doing so create new own propery with the same name
+      User cannot assign value to prototype property, doing so create new own property with the same name
 
     Using Prototypes with Constructors
       Define methods once for all instances
@@ -1716,7 +1716,7 @@ Chapter Six: Object Patterns
     One (receiver) object gets property of another (supplier)
     w/out modifying prototype chain
     but shallow copying those properties directly - reference properties will be pointing to the same object
-    
+
     Ex. Shallow copy All (own) enumerable properties from supplier to receiver - reference proprties copied shared same object
       function mixin(receiver, supplier) {
         for(var property in supplier) {
@@ -1838,7 +1838,7 @@ Chapter Six: Object Patterns
         function Person(name) {this.name = name};
 
         // Add all EventTarget.prototype properties to Person.prototype, constructor too
-        mixin(Person.prototype, EventTarget.prototype); 
+        mixin(Person.prototype, EventTarget.prototype);
         // Re-assign constructor property in Person.prototype with Person
         // add method sayName
         mixin(Person.prototype, {
@@ -1903,7 +1903,7 @@ Chapter Six: Object Patterns
       3. For each property, use Object.getOwnPropertyDescriptor() with supplier and property name
          to get descriptor of the specified property
       4. With descriptor of a supplier property, use Object.defineProperty(receiver, property, descriptor)
-         to define or modify property of receiver   
+         to define or modify property of receiver
       5. Return receiver after iteraion is complete
       */
       var p = mixin(new EventTarget(), {
@@ -1921,11 +1921,11 @@ Chapter Six: Object Patterns
         console.log(p.name);  // Charles
         p.name = "Jack";
         console.log(p.name);  // Charles - name is getter only
-      
+
       Ex. mixin() that works with pre and post ECMAScript 5
         function mixin(receiver, supplier) {
           if (Object.getOwnPropertyDescriptor) {
-            // ECMAScript 5 
+            // ECMAScript 5
             Object.keys(supplier).forEach(function() {
               var descriptor = Object.getOwnPropertyDescriptor(supplier, property);
               Object.defineProperty(receiver, property, descriptor);
@@ -1940,7 +1940,7 @@ Chapter Six: Object Patterns
           }
           return receiver;
         }
-      
+
       !! Object.keys() ONLY return enumerable properties, to copy over Non-enumerable properties use
       !! Object.getOwnPropertyNames()
 
@@ -1958,10 +1958,10 @@ Chapter Six: Object Patterns
     Scope-safe constructors are also available for Object, Array, RegExp and Error
 
   Summary
-    Mixin can add functionality without inheritance -> 
-      Source cannot be identified for mixined properties 
+    Mixin can add functionality without inheritance ->
+      Source cannot be identified for mixined properties
     Best Use:
-      data property or small pieces of functionality 
+      data property or small pieces of functionality
     Scope-Safe Constructors can be used with or without new
 
 
