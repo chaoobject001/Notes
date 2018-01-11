@@ -1,0 +1,16 @@
+Introduction
+Chapter 1: How Block Bindings Work
+Chapter 2: Strings and Regular Expression
+Chapter 3: Functions in ECMAScript 6
+Chapter 4: Expanded Object Functionality
+Chapter 5: Destructuring for Easier Data Access
+Chapter 6: Symbols and Symbol Properties
+Chapter 7: Sets and Maps
+Chapter 8: Iterators and Generators
+Chapter 9: Introducing JavaScript Classes
+Chapter 10: Improved Array Capabilities
+Chapter 11: Promises and Asynchronous Programming
+Chapter 12: Proxies and the Reflection API
+Chapter 13: Encapsulating Code with Modules
+Appendix A: Smaller ECMAScript 6 Changes
+Appendix B: Understanding ECMAScript 7 (2016)
