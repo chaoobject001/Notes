@@ -1,6 +1,10 @@
 Introduction
 Chapter 1: How Block Bindings Work
+  bindings / variable:
+    "name" bound to "value" inside "scope"
+  
   var Declarations and Hoisting
+    
   Block-Level Declarations
     let Declarations
     No Redeclaration
