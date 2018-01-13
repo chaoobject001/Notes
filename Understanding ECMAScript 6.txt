@@ -4,11 +4,76 @@ Chapter 1: How Block Bindings Work
     "name" bound to "value" inside "scope"
   
   var Declarations and Hoisting
+    Hoisting: var declaration treated as being at top of function or global scope (when outside of function)
+    No hoisting for var initialization 
+    
+    Ex. var declaration & initialization without showing hoisting
+      function getValue(condition) {
+        if(condition) {
+          var value = "blue"; // declaration & initialization
+          return value;
+        } else {
+          return null;
+        }
+      }
+
+    Ex. var declaration & initialization showing hoisting - what actually happen
+      function getValue(condition) {
+        var value;  // declaration
+        if (condition) {
+          value = blue; // initialization
+        } else {
+          return null;
+        }
+      }
     
   Block-Level Declarations
+    Block scope / lexical scope: 
+      - inside a function
+      - inside a {} block
+    Block-Level declarations are inaccessible outside block scope
+    
     let Declarations
+      let declaration syntax is the same as var but only accessible in current block
+      Best practice: place let declaration at the begining of block
+      Ex.
+        function getValue(condition) {
+          // if condition: false, value will not be declared or initialized
+          if (conditon) {
+            let value = "blue"; // No hoisting - only accessible within current {} block
+            return value;
+          } else {
+            return null;
+          }
+        } 
+    
     No Redeclaration
+      Same identifier, same scope, declared with let & var = error
+      Ex. 
+        var count = 30;
+        let count = 40; // error - even if let declaration come first
+
+      Same identifier, let declaration within its own {} block = No error
+      Ex.
+        var count = 30;
+        if (condition) {
+          let count = 40; // local count "shadows" global count - no error
+        }
+
     const Declarations
+      Binding with const:
+        - value cannot be changed once set
+        - (Thus) must be initialized on declaration
+      Ex.
+        const x = 30;
+        const y; // Uncaught SyntaxError: Missing initializer in const declaration
+
+    const vs. let Declarations
+      const declarations are block-level declarations - not accessible outside of scope
+
+    Object declarations with const
+
+
     The Temporal Dead Zone
   Block Bindings in Loops
     Functions in Loops
