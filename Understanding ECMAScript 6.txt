@@ -70,14 +70,87 @@ Chapter 1: How Block Bindings Work
 
     const vs. let Declarations
       const declarations are block-level declarations - not accessible outside of scope
+      Error: const variable has the same identifier with another var or let variable within the same scope
+      const is read-only
+      const object's properties can be modified 
 
     Object declarations with const
-
-
-    The Temporal Dead Zone
+      Ex. 
+        const person = { name: "Charles" };
+        person.name = "Jack";       // No error
+        // person = { name: "Jack" };  // SyntaxError: Identifier 'person' has already been declared
+      const prevents modification in binding, NOT modifification of bound value
+  
+    The Temporal Dead Zone (TDZ)
+      Variables declared with let or const cannot be accessed until declaration
+      within the same scope
+      Ex.
+        console.log(typeof value);  // undefined - no binding here
+        if (true) {
+          console.log(typeof value); // ReferenceError: value is not defined
+          let value = "red";
+        } 
+  
   Block Bindings in Loops
+    declare counter with let to keep it inaccessible outside of the loop
+    Ex.
+      for (let i = 0; i < 10; i++) {
+        console.log(i);
+      }
+      console.log(i); // ReferenceError: i is not defined
+    
     Functions in Loops
+      declare counter with var - all iterations share one copy of the counter 
+      Ex.
+        var funcs = [];
+        for (var i = 0; i < 10; i++) {
+          funcs.push(function() {
+            console.log(i);
+          });
+        }
+        funcs.forEach(function(func) {
+          func(); // "10" x 10
+        });
+      To keep unique counter value for each iteration, use immediate invoked function expressions (IIEF)
+      Ex.
+        var func = [];
+        for (var i = 0; i < 10; i++) {
+          // count i passed to IIFE for every iteration and stored as value
+          funcs.push((function(value) {
+            return function() {
+              console.log(value);
+            }
+          }(i)));
+        }
+
+        funcs.forEach(function(func) {
+          func(); // 0 to 9
+        });
+
     let Declarations in Loops
+      Ex. use let in for loop
+        var funcs = [];
+        for (let i = 0; i < 10; i++) {
+          funcs.push(function() {
+            console.log(i);
+          });
+        }
+        funcs.forEach(function(func) {
+          func();
+        });
+
+      Ex. use let with for-in loop
+        var funcs = [],
+            object = {a: true, b: true, c: true};
+        for (let key in object) {
+          funcs.push(function() {
+            console.log(key);
+          });
+        }
+        funcs.forEach(function(func) {
+          func(); // a, b, c
+        });
+        
     const Declarations in Loops
   Global Block Bindings
   Emerging Best Practices for Block Bindings
