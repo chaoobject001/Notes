@@ -219,6 +219,28 @@ Chapter 2: Strings and Regular Expression
     Making Substitutions
     Tagged Templates 
   Summary
+    Full unicode support in ECMAScript 6 = process UTF-16 characters logically 
+    string manipulation: transfer b/t code point and character 
+      codePointAt(pos): return a number represents code point value of character at given index 
+      String.fromCodePoint(): return a string created from specified sequence of code points
+    Regular expression u flag enables operation on code points instead of 16-bit characters
+    normalize() method returns Unidoce Normalization Form of the string (for manipulation)
+    ECMAScript 6 new string methods:
+      identify substring
+      RegExp
+    Template literals: 
+      Create domain-specific languages (DSLs) to create string easier 
+      Embed variables into teplate literals
+    Built-in support of multiline strings
+    Newlines are allowed in template literal but \n and escape sequence are still functional 
+    Template Tags:
+      functions that receives pieces of template literal as arguments, such as:
+        literals
+        raw equivalents
+        substitution values
+      then return string value
+
+
 
 Chapter 3: Functions in ECMAScript 6
 Chapter 4: Expanded Object Functionality
