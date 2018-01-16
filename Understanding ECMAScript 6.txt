@@ -139,21 +139,48 @@ Chapter 1: How Block Bindings Work
           func();
         });
 
+    const Declarations in Loops
+      const declaration cannot be used as counter in for loop - No increment allowed
+      Exception: for-in or for-of loop - b/c New binding created on each iteration
       Ex. use let with for-in loop
         var funcs = [],
             object = {a: true, b: true, c: true};
         for (let key in object) {
           funcs.push(function() {
+            // value of key CANNOT be change inside loop - else eerror
             console.log(key);
           });
         }
         funcs.forEach(function(func) {
           func(); // a, b, c
         });
-        
-    const Declarations in Loops
+   
   Global Block Bindings
+    Declaration with var in global scopr = create new property with identifier on global object
+    global object = window in browser
+    Ex. 
+      var RegExp = "oy";
+      console.log(window.RegExp); // "oy"
+      var ncz = "Hi";
+      console.log(window.ncz);  // "Hi"
+    
+    Declaration with let or const in global scope = 
+      create new binding in global scope (shadow)
+      but NO property added (overwrite) to global object
+    Ex. 
+      let RegExp = "oy";
+      console.log(RegExp);  // "oy"
+      console.log(window.RegExp === RegExp);  // fasle - does not overwrite
+
+      const ncz = "yo";
+      console.log(ncz); // "yo"
+      console.log("ncz" in window); // false
+    
+    var should still be used when code needs to be available from global object:
+      such as access code across frames or windows
+    
   Emerging Best Practices for Block Bindings
+    use let by default or use const by default 
 
   Summary
     let and const block bindings are lexical scoping:
@@ -162,6 +189,7 @@ Chapter 1: How Block Bindings Work
     Block bindings: 
       - variables declared exactly where they are needed
       - No access to variable before declaration - doing so cause error (b/c binding before declaration)
+      - declare let or const at the top of block scope to remove TDZ
     Inside for-in for-of loop:
       - let and const create new binding for with each new iteration
       - (Thus) functions created inside loop body can access loop bindings' current values 
@@ -173,6 +201,25 @@ Chapter 1: How Block Bindings Work
       use let only when the variable is expected to change
 
 Chapter 2: Strings and Regular Expression
+  Better Unicode Support
+    UTF-16 Code Points
+    The codePointAt() Method
+    The String.fromCodePoint() Method
+    The Regular Expression u Flag
+  Other String Changes
+    Methods for identifying Substrings
+    The repeat() Method
+  Other Regular Expression Changes
+    The Regular Expression y Flag
+    Duplicating Regular expressions
+    The flags properties
+  Template Literals
+    Basic Syntax
+    Multiline Strings
+    Making Substitutions
+    Tagged Templates 
+  Summary
+
 Chapter 3: Functions in ECMAScript 6
 Chapter 4: Expanded Object Functionality
 Chapter 5: Destructuring for Easier Data Access
