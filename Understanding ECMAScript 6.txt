@@ -202,7 +202,32 @@ Chapter 1: How Block Bindings Work
 
 Chapter 2: Strings and Regular Expression
   Better Unicode Support
+    code unit: 
+      16-bit sequence that represents string before ECMAScript 6  
+    code point:
+      global unique identifiers 
+      number start from 0, number represents character
+      character codes  
+    
     UTF-16 Code Points
+      character encoding: encode code points into code units, internally consistent
+      Basic Multilingual Plane (BMP):
+        First 2^16 code points in UTF-16 represent as single 16-bit code units
+      Supplementary planes: anything after 2^16 code
+      UTF-16 surrogate pairs:
+        single code point = 2 X 16-bit code units
+      Any character can be:
+        1. one code unit for BMP
+        2. two units of supplementary planes - total of 32 bits
+      Ex. 
+        let text = "𠮷";  // character represented by a surrogate pair
+        console.log(text.length); // 2 - treated as two 16-bit characters, should be one
+        console.log(/^.$/.test(text)); // false - RegExp matches single character
+        console.log(text.charAt(0)); // "" - first 16-bits does not corresponds to a printable character
+        console.log(text.charAt(1)); // "" - second 16-bits does not corresponds to a printable character
+        console.log(text.charCodeAt(0)); // 55362 - 16-bit number for first code unit 
+        console.log(text.charCodeAt(1)); // 57271 - 16-bit number for second code unit 
+
     The codePointAt() Method
     The String.fromCodePoint() Method
     The Regular Expression u Flag
