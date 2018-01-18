@@ -216,20 +216,49 @@ Chapter 2: Strings and Regular Expression
       Supplementary planes: anything after 2^16 code
       UTF-16 surrogate pairs:
         single code point = 2 X 16-bit code units
-      Any character can be:
+      Any character (code point) can be:
         1. one code unit for BMP
         2. two units of supplementary planes - total of 32 bits
       Ex. 
         let text = "𠮷";  // character represented by a surrogate pair
         console.log(text.length); // 2 - treated as two 16-bit characters, should be one
-        console.log(/^.$/.test(text)); // false - RegExp matches single character
+        console.log(/^.$/.test(text)); // false - RegExp only matches single character
         console.log(text.charAt(0)); // "" - first 16-bits does not corresponds to a printable character
         console.log(text.charAt(1)); // "" - second 16-bits does not corresponds to a printable character
         console.log(text.charCodeAt(0)); // 55362 - 16-bit number for first code unit 
         console.log(text.charCodeAt(1)); // 57271 - 16-bit number for second code unit 
 
-    The codePointAt() Method
+    The codePointAt() Method of ES 6
+      codePointAt() returns code point maps to a given index (code unit position) in a string
+      Ex.
+        let text = "𠮷a";
+
+        console.log(text.charCodeAt(0));  // 55362 - 1st code unit of first character
+        console.log(text.charCodeAt(1));  // 57271 - 2nd code unit of first character
+        console.log(text.charCodeAt(2));  // 97 - 1st code unit of second character
+
+        console.log(text.codePointAt(0)); // 134071 - non-BMP character: 2 code units / 1 code point
+        console.log(text.codePointAt(1)); // 57271 - 2nd code unit of first character
+        console.log(text.codePointAt(2)); // 97 - 1st code unit of second character
+      
+      Ex. check if a character is represented by 1 or 2 code units
+        function is32Bit(c) {
+          return c.codePointAt(0) > 0xFFFF; // upper bound of 16-bit = FFFF
+        }
+        console.log(is32Bit("𠮷")); // true
+        console.log(is32Bit("a"));  // false
+
     The String.fromCodePoint() Method
+      fromCodePoint() takes a code point and return a character in string
+      For BMP code point: fromCodePoint() has the same result as fromCharCode()
+      For non-BMP code point: fromCodePoint() and fromCharCode() have different result 
+      Ex.
+        console.log(String.fromCodePoint(134071));  // "𠮷"
+        console.log(String.fromCharCode(134071));   // ஷ
+
+    The normalized() Method
+    
+    
     The Regular Expression u Flag
   Other String Changes
     Methods for identifying Substrings
