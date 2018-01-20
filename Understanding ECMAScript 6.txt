@@ -285,6 +285,9 @@ Chapter 2: Strings and Regular Expression
             return 1;
           }
         });
+      
+      Ex. normalized() as part of comparator of sort function
+      
 
     
     The Regular Expression u Flag
