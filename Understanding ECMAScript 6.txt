@@ -257,7 +257,35 @@ Chapter 2: Strings and Regular Expression
         console.log(String.fromCharCode(134071));   // ஷ
 
     The normalized() Method
-    
+      Different characters can be considered equivalent for sorting or comparisons
+      Two types of equivalence:
+      1. canonical equivalence: two sequences of code points are interchangeable 
+      2. compatibility: two sequences of code points are interchangeable in some situations
+      str.normalized([form]): 
+        optionally takes one of the four Unicode normalization forms
+        returns string in noralized form
+        Unicode normalization forms:
+          1. Normalization Form Canonical Composition ("NFC") - default
+          2. Normalization Form Canonical Decomposition ("NFD")
+          3. Normalization Form Compatibility Composition ("NFKC")
+          4. Normalization Form Compatibility Decomposition ("NFKD")
+      
+      When comparingstrings, both strings must be normalized to the SAME form
+      Ex.
+        let normalized = values.map(function(text) {
+          return text.normalize();
+        });
+
+        normalized.sort(function(first, second) {
+          if (first < second) {
+            return -1;
+          } else if (first === second) {
+            return 0;
+          } else {
+            return 1;
+          }
+        });
+
     
     The Regular Expression u Flag
   Other String Changes
