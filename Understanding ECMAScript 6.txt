@@ -287,6 +287,20 @@ Chapter 2: Strings and Regular Expression
         });
       
       Ex. normalized() as part of comparator of sort function
+        values.sort(function(first, second) {
+          let firstNormalized = first.normalize(),
+              secondNormalized = second.normalize();
+          // alternatively, with NFD
+          // let firstNormalized = first.normalize("NFD"),
+          //     secondNormalized = second.normalize("NFD");
+          if (firstNormalized < secondNormalized) {
+            return -1;
+          } else if (firstNormalized === secondNormalized) {
+            return 0;
+          } else {
+            return 1;
+          }
+        });
       
 
     
