@@ -301,10 +301,43 @@ Chapter 2: Strings and Regular Expression
             return 1;
           }
         });
+          
+    The Regular Expression u Flag
+      With out u Flag, RegEx matches on 16-bit code units
+      u: Unicode
+      With u Flag set:
+        RegEx matches on characters
+        Ex. /^.$/ matches any string with single character
+          let text = "𠮷";
+          console.log(text.length);       // 2
+          console.log(/^.$/.test(text));  // false
+          console.log(/^.$/u.test(text)); // true - single character with 2 code units
+      
+      Counting Code Points w/ RegEx
+      Ex.
+        function codePointLength(text) {
+          let result = text.match(/[\s\S]/gu);
+          return result ? result.length : 0;
+        }
+        // both sample texts have 3 characters 
+        console.log(codePointLength("abc"));    // 3
+        console.log(codePointLength("𠮷bc"));   // 3
+
+        /[\s\S]/gu
+          pattern matches both whitespace and non-whitespace character - also newlines
+          flag g: apply globally (to entire string)
+          flag u: enable unicode - matches on characters
+        
+        result contains an array of matches if there is any - array length = number of code points in string
+        !! Warning: Slow performance - use string iterator if possible !!
+      
+      Determining Support for the u flag
+
+
+
       
 
-    
-    The Regular Expression u Flag
+
   Other String Changes
     Methods for identifying Substrings
     The repeat() Method
