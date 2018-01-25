@@ -303,17 +303,17 @@ Chapter 2: Strings and Regular Expression
         });
           
     The Regular Expression u Flag
-      With out u Flag, RegEx matches on 16-bit code units
+      With out u Flag, RegExp matches on 16-bit code units
       u: Unicode
       With u Flag set:
-        RegEx matches on characters
+        RegExp matches on characters
         Ex. /^.$/ matches any string with single character
           let text = "𠮷";
           console.log(text.length);       // 2
           console.log(/^.$/.test(text));  // false
           console.log(/^.$/u.test(text)); // true - single character with 2 code units
       
-      Counting Code Points w/ RegEx
+      Counting Code Points w/ RegExp
       Ex.
         function codePointLength(text) {
           let result = text.match(/[\s\S]/gu);
@@ -331,12 +331,16 @@ Chapter 2: Strings and Regular Expression
         result contains an array of matches if there is any - array length = number of code points in string
         !! Warning: Slow performance - use string iterator if possible !!
       
-      Determining Support for the u flag
-
-
-
-      
-
+      Verify Support for the u flag
+        Ex. detect u flag without syntax error
+          function hasRegExpU() {
+            try{
+              pattern = new RegExp(".", "u"); // throw exception if u flag is not supported 
+            }
+            catch(e) {
+              return false;
+            }
+          }
 
   Other String Changes
     Methods for identifying Substrings
