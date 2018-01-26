@@ -1,0 +1,79 @@
+JavaScript Regular Expressions
+Chapter 1: Getting Started w/ Regex
+  It's all about patterns
+    Analyzing a phone number
+    Analyzing a simple log file
+    Analyzing an XML file
+  Regex in JavaScript
+    The RegExp constructor
+      Using pattern flags
+    Using the rgx.test method
+    Using the rgx.exec method
+    The string object and regular expressions
+      Using the String.replace method
+      Using the String.search method
+      Using the String.match method
+  Building our environment
+    Handling a submitted form 
+    Resetting matches and errors
+    Creating a regular expression
+    Executing RegExp and extracting its matches
+    Testing our application
+  Summary
+Chapter 2: The Basics
+  Defining vague matchers in Regex
+    Matching a wild card character
+    Matching digits
+    Matching alphanumeric chars
+    Negating alphanumeric chars and digits
+  Defining ranges in Regex
+    Defining a ranges
+    Matching the dash character
+    Defining negated ranges
+  Defining multipliers in Regex
+    Matching one or more occurrences 
+    Matching zero or one occurrence
+    Matching zero or more occurrences 
+  Defining custom quantifiers
+    Matching n or more occurrences
+    Matching n to m occurrences
+  Matching alternated options 
+  Creating a Regex for a telephone number
+  Summary
+Chapter 3: Special Characters
+  Nonvisual constraints
+    Matching the begining and end of an input 
+    Matching word boundaries 
+    Matching nonword boundaries 
+    Matching a whitespace character
+  Define nongreedy quantifiers
+  Matching groups in Regex
+    Grouping characters together to create a clause
+      Capture and noncapture groups
+    Matching lookahead groups
+      Using a negative lookahead
+  Summary
+Chapter 4: Regex in Practice
+  Regular expressions and form validation 
+    Setting up the form 
+  Validating fields
+    Matching a complete name
+      Understanding the complete name Regex
+    Matching an e-mail with Regex
+      Understanding the email Regex
+    Matching a Twitter name
+      Understanding the twitter username Regex
+    Matching passwords
+    Matching URLs
+      Understanding the URL Regex
+  Manipulating data
+    Using the String.replace method
+    Matching a description field
+      Understanding the description Regex
+      Explaining a Markdown example 
+  Summary
+Chapter 5: Node.js and Regex 
+
+
+    
+    
