@@ -1,8 +1,17 @@
 JavaScript Regular Expressions
 Chapter 1: Getting Started w/ Regex
+  Regular Expression represents paterns syntactically with mechanical syntax
+  RegExp is available in nearly all languages
+
   It's all about patterns
     Analyzing a phone number
+      Identify mandatory and optional parts and their constraints from examples
+      Ex. phone number
+        mandatory: 10 digits (constraint: 0-9)
+        optional: dashes, brackets and spaces
+ 
     Analyzing a simple log file
+      
     Analyzing an XML file
   Regex in JavaScript
     The RegExp constructor
@@ -73,6 +82,20 @@ Chapter 4: Regex in Practice
       Explaining a Markdown example 
   Summary
 Chapter 5: Node.js and Regex 
+  Setting up Node.js
+  Getting started with our application 
+    Reading a file with Node.js
+  The anatomy of an Apache log file
+    Creating the Apache log Regex
+      Creating a Regex for the time part 
+      Creating a Regex for the request information
+      Creating a Regex for the status code and object size
+      Creating a Regex for the referrer and the user agent 
+      Parsing each Apache log now
+  Summary
+Appendix A. JavaScript Regex Cheat Sheet
+
+
 
 
     
