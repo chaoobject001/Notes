@@ -11,13 +11,49 @@ Chapter 1: Getting Started w/ Regex
         optional: dashes, brackets and spaces
  
     Analyzing a simple log file
+      improve accuracy by targeting specific keyword  
       
     Analyzing an XML file
+      keep track of repeating element like opening and closing tag 
+
   Regex in JavaScript
-    The RegExp constructor
-      Using pattern flags
+    as RegExp object that can be used to test and manipulate strings
+      Ex. regular expression that matches "hello"
+        var rgx1 = new RegExp("hello");
+        var rgx2 = /hello/;
+
+    The RegExp constructor takes string - special characters need to be escaped
+      Using pattern flags as second parameter that applies on entire expression
+        "i" flag: ignore case - standard pattern are case sensitive, i flag enable selection of either case 
+        "m" flag: multiline - treat each line in the string as a new string to be matched 
+        "g" flag: global 
+          - return all matches 
+          - RegExp only return first found match without g flag 
+        Ex.
+          var rgx1 = new RegExp("hello", "gi");
+          var rgx2 = /hello/gi;
+
     Using the rgx.test method
+      return true or false based on if there is a match
+      Ex.
+        var rgx = /hello/;
+        console.log(rgx.test("hello")); // true
+        
     Using the rgx.exec method
+      Ex. 
+        var rgx = /world/g;
+        var result = rgx.exec("world !!"); 
+        console.log(result.length);  // 1
+        console.log(result[0]);  // world
+        console.log(result[1]);  // undefined - no () in rgx
+        console.log(result.index);  // 0
+
+        console.log(rgx.lastIndex);   // o without g flag, 5 with g flag
+        console.log(rgx.ignoreCase);  // false
+        console.log(rgx.global);      // true
+        console.log(rgx.multiline);   // false
+        console.log(rgx.source);      // world
+        
     The string object and regular expressions
       Using the String.replace method
       Using the String.search method
