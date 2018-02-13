@@ -1,0 +1,219 @@
+{Module 1: Course Overview}
+    Creating & structuring application
+    Routing incoming requests
+    Using templates and components
+    Passing data in & respond with actions
+    Using Ember CLI
+
+{Module 2: Introduction}
+    What is covered and what is not
+        Covered:
+            Setup Environment
+            Routing Incoming Traffic
+            Templates / Components
+            Models / Ember Object Model
+            Services
+            Actions, including data down action up pattern
+        Not covered:
+            Testing
+            Debugging
+            Deployment
+            Code reuse outside of template Helper
+            Remote data w/ Ember Data
+            Authentication & Authorization
+    Conventions
+{Module 3: What is Ember?}
+Introduction
+    A Framework for Ambitious Apps
+    MVC (?)
+    URL centric: determine state by URL
+    The main parts
+
+What Is an Ambitious Web Application?
+    Convention over configuration
+    ES2015 / ES6 with babel transpiler
+    Stability Without Stagnation: stable 
+        - stable & beta: release every 6 weeks
+        - long term support releases come out twice a year
+            - for plug-in developers
+        - upgrade plug-in dependencies twice a year
+    Built for performance    
+    Ember-CLI: command line interface for Ember, provides: 
+        - conventional directory structure
+        - asset pipeline 
+        - ES2015 transpiling
+        - modules
+        - testing 
+        - add-on system
+    Ember Addons for:
+        - Authentication
+        - Templates
+        - CSS frameworks
+        - linting 
+        - deployment
+
+Is Ember MVC?
+    Model: JSON or EmberData
+    View: HTMLBars based on Handlebars
+    Controller ?
+
+    instead - think in terms of these areas and how they interact
+        Model: JSON or EmberData 
+        Component: Template with Events+
+        Router: Router, Route Handler  
+
+Ember Core Concepts
+    Ember is URL-centric: 
+        URL leads Ember's state
+        URL comes first even for transition within the application
+        Path 01:
+            1. URL reaches router
+            2. Router passes request to route handler
+            3. Route handler renders template and components
+            4. Route handler displays the resulting page in browser
+        Path 02:
+            1. URL reaches router
+            2. Router passes request to route handler
+            3. Route handler redirects request to a different route if needed (like failed authentication)
+            4. Route handler renders template and components
+            5. Route handler displays the resulting page in browser
+        Path 03:
+            1. URL reaches router
+            2. Router passes request to route handler
+            3. Route handler loads the Model
+            4. Route handler renders the template 
+            5. Route handler displays the resulting page in browser
+    
+    URL represents the state of application
+    User can bookmark URL and come back to the same page
+
+Ember Definitions
+    Router: Maps URL to a route handler & resulting output 
+    Route Handler: Loads model and Renders template 
+    Model: Represents persistent state (state can resides in local storage or other places)
+    Template: Organize and describe interface, should contain NO logic - enforced by Handlebars 
+    Component: Controls how the interace behaves with Action and Events 
+
+Conclusion
+
+{Module 4: Getting Started}
+Introduction
+    Setup Dev environment 
+    Ember CLI 
+    Create a new app
+Setup Your Environment
+    Install:
+        - Node.js
+        - Google Chrome + Ember Inspector
+        - Console
+        - Ember-CLI
+        - Editor  
+
+Ember CLI
+
+Create a New App
+
+Conclusion
+
+{Module 5: 1st Class JavaScript}
+
+Introduction
+
+What Is Babel?
+
+What Is ES6?
+
+What are Promises?
+
+Conclusion
+
+{Module 6: Routing Incoming Traffic}
+Introduction
+
+Plan Our Application
+
+Generate Our Base App
+
+Provide a Model
+
+Nested Routes
+
+Dynamic Segments
+
+Index Routes
+
+Redirecting and Loading
+
+Conclusion
+
+{Module 7: Using Templates Properly}
+
+Introduction
+
+Handlebars
+
+Loops and Conditionals
+
+Boolean Attributes
+
+Named Arguments
+
+Create a Helper
+
+Debugging
+
+Conclusion
+
+{Module 8: Getting to Know the Object Model}
+Introduction
+
+What is Ember.Object?
+
+Using Ember.Object
+
+Computed Properties
+
+Arrays and Controllers
+
+Conclusion
+
+{Module 9: Adding Reusable Components}
+Introduction
+
+What Are Components?
+
+Using a Component
+
+Changing the tagName
+
+Handling a Block
+
+Conclusion
+
+{Module 10: Triggering Events & Actions}
+
+Introduction
+
+Why Actions?
+
+Basic Actions
+
+Sending Actions
+
+More Closure Actions
+
+Conclusion
+
+{Module 11: Using Services}
+
+Introduction
+
+What Are Services and Initializers?
+
+Creating a Service
+
+Using an Initializer
+
+Conclusion
+
+{Module 12: Conclusion}
