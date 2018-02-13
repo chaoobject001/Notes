@@ -52,7 +52,7 @@ What Is an Ambitious Web Application?
         - linting 
         - deployment
 
-Is Ember MVC?
+What Is Ember MVC?
     Model: JSON or EmberData
     View: HTMLBars based on Handlebars
     Controller ?
@@ -110,8 +110,30 @@ Setup Your Environment
         - Editor  
 
 Ember CLI
+    An asset pipeline for 
+        pre-processing, 
+        transpiling and 
+        preparing for deployment
+    Prvides 
+        conventional directory structure
+        Add-on system for plug-ins
+    Ember-CLI Commands
+    > ember new <app-name>          <-  Create a new App
+    > ember init                    <-  Generate app structure in existing directory
+                                        Often used to upgrade app fro one version of Ember to another
+    > ember server                  <-  Run development server w/ live reload 
+    > ember generate <name> <opts>  <-  Create boiler plate code
+                                        Often create matching test for each creation
+    > ember install <addon>         <-  Install add-on and all Node and Bower dependencies
+    > ember build                   <-  Compiles application for distribution, then place all results in a disk directory
+    > ember test                    <-  Run test suite both on command line or inside browser
+    >  
+
+
+
 
 Create a New App
+
 
 Conclusion
 
