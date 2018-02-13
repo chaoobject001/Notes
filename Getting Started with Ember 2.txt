@@ -127,13 +127,13 @@ Ember CLI
     > ember install <addon>         <-  Install add-on and all Node and Bower dependencies
     > ember build                   <-  Compiles application for distribution, then place all results in a disk directory
     > ember test                    <-  Run test suite both on command line or inside browser
-    >  
 
-
-
-
-Create a New App
-
+Create a new app
+Explore the directory structure
+Run the development server
+Generate a route
+Install an add-on
+Build the application
 
 Conclusion
 
