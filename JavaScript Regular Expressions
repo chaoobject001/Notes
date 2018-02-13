@@ -42,21 +42,29 @@ Chapter 1: Getting Started w/ Regex
     Using the rgx.exec method
       Ex. 
         var rgx = /world/g;
-        var result = rgx.exec("world !!"); 
+        var result = rgx.exec("world !!"); // return null if there is NO match
         console.log(result.length);  // 1
         console.log(result[0]);  // world
         console.log(result[1]);  // undefined - no () in rgx
         console.log(result.index);  // starting index: 0
         console.log(result.input);  // original input text: world !!
 
-        console.log(rgx.lastIndex);   // o without g flag, 5 with g flag
+        console.log(rgx.lastIndex);   // integer property lastIndex (index where next search start): 0 without g flag, 5 with g flag
         console.log(rgx.ignoreCase);  // false
         console.log(rgx.global);      // true
         console.log(rgx.multiline);   // false
         console.log(rgx.source);      // world
         
     The string object and regular expressions
-      Using the String.replace method
+      Using the String.replace method only replace first occurrence 
+      Ex.
+        str = "foo foo";
+        console.log(str.replace("foo", "qux")); // foo qux
+      Supply String.replace with RegExp and g flag, /foo/g, to replace ALL occurrences
+      Ex.
+        str = "foo foo";
+        console.log(str.replace(/foo/g, "qux")); // qux qux
+
       Using the String.search method
       Using the String.match method
   Building our environment
