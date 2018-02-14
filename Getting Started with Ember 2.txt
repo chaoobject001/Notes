@@ -176,7 +176,19 @@ What Is Babel?
 
 What Is ES6?
     ES2015 with Classes and Modules
-    
+    Strings:
+        Template literals
+        Ex.
+            var u = "flower/" + id + ".xml";    // ES5
+            var u = `flowers/${id}.xml`;        // ES6
+        Multiline strings
+        Ex. 
+            var body = "First word,\n" + 
+            "Second word.";  
+            var body = `First Word, 
+            Second word.`;  
+        Default parameters for function can be expression or function
+
 What are Promises?
 
 Conclusion
