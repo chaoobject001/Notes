@@ -129,6 +129,37 @@ Ember CLI
     > ember test                    <-  Run test suite both on command line or inside browser
 
 Create a new app
+    {project_folder}/app/app.js
+        starts application
+        stores configurations 
+    {project_folder}/app/router.js
+        defines each route
+    {project_folder}/public
+        holds assets like images to be copied into distribution
+    {project_folder}/bower.json & {project_folder}/package.json 
+        contains dependencies 
+    {project_folder}/ember-cli-build.js
+        configuration file for asset pipeline 
+
+    Ember.js directory structure
+        app/                Application code - compiled into one <app-name>.js file
+        dist/               Contains compiled code
+        public/             Compied as is - non-compiled assets and files like web server or configuration files
+        tests/              Tests and their Helpers
+        bower_components/   Bower dependencies 
+        node_modules/       npm dependencies 
+        ember-cli-build.js  asset pipeline configuration; build configuration for the Broccoli build tool
+        bower.json          dependencies
+        package.json        dependencies
+    
+    Inside app directory
+        app.js              Application code - compiled into one <app-name>.js file
+        index.html          One and only HTML page to kickstarts app
+        router.js           Route configuration
+        styles              Contains stylesheets
+        templates           HTMLBars templates - including component templates
+        app/modules         Modules resolved by Ember CLI: route handler (app/routes), components, models, services, etc.
+
 Explore the directory structure
 Run the development server
 Generate a route
@@ -138,13 +169,14 @@ Build the application
 Conclusion
 
 {Module 5: 1st Class JavaScript}
-
-Introduction
-
 What Is Babel?
+    JS transpiler 
+    ES6 / ES7 -> ES5
+    Ember-CLI built-in
 
 What Is ES6?
-
+    ES2015 with Classes and Modules
+    
 What are Promises?
 
 Conclusion
