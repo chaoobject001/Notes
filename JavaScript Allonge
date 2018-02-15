@@ -1,0 +1,42 @@
+Prelude: Values and Expressions over Coffee
+All values are expressions:
+  Type "42" into JavaScript and gets the same thing back - it is both "expression" and "value"
+  Ex.
+    42 // => 42
+Other expressions
+  Ex.
+    "JavaScript" + " " + "Allonge" // => "JavaScript Allonge"
+  "JavaScript" - a string is a value 
+  "Allonge" - another string is also a value
+  + operator combined with strings makes an expressions
+
+Values and identity 
+  === operator tests if two values are identical
+  !== operator tests if two values are NOT identical
+  Ex.
+    2 === 2 // => true
+    'hello' !== 'goodbye' // => true
+  
+  How do "===" and "!==" work with the possibilities of different combinations of operands?
+  1. Two operands of different types - NEVER identical
+    Ex. 
+      2 === '2'       // => false
+      true !== 'true' // => true
+  2. Two operands of same type but holds different value - Not identical
+    Ex.
+      true === flase  // => false
+      2 !== 5         // => true
+      'two' === 'five'// => false
+  3.  Two operands of same "primitive" / "value" types (string, number and boolean) 
+      and same content - identical
+    Ex.
+      2 + 2 === 4   // => true
+      (2 + 2 === 4) === (2 !== 5) // => true
+  4.  Two operands of same "reference" types (array, functions) and same content - Not identical
+      Each time expression is evaluated, a new reference value is created 
+    Ex.
+      [2-1, 2, 2+1] === [1, 2, 3]   // => false
+      [1,2,3] === [1, 2, 3]         // => false
+      [1, 2, 3] === [1, 2, 3]       // => false
+
+A Rich Aroma: Basic Numbers
