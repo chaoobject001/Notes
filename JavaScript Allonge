@@ -40,3 +40,16 @@ Values and identity
       [1, 2, 3] === [1, 2, 3]       // => false
 
 A Rich Aroma: Basic Numbers
+  number literals can have different bases -  like base 8, base 10 
+  numbers of different bases have same internal representation double-precision floating point
+  largest integer that can be used safely in JS is 2^53 -1
+  
+  For some floating point number, there is no exact representation of fractions in base 10 as in base 2  
+  Ex. 
+    0.1 + 0.1 + 0.1 // => 0.30000000000000004
+    $43.21 is not the same as 43.21
+  
+  operations on numbers
+   | and & operate directly on numbers' binary representation
+
+    
