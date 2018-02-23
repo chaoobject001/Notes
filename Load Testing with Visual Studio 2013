@@ -190,12 +190,102 @@ Summary
 
 {Module three: Validation & Extraction Rules}
 Introduction
+  Validation rules: Check if system is still working 
+  Extraction rules: Obtain values off screen during run-time 
+  Out-of-box vs. Custom options for both 
 
 Validation Rules Overview
+  Out-of-box Validation Rules
+    Check value of HTTP response
+    Scope to single request or all requests in web performance test
+  3 types:
+    Content Validation Rule
+    Performance Validation Rule
+    SharePoint Validation Rule 
 
 Content Validation Rules
+  6 types:
+    Form Field 
+    Find Text
+    Required Tag
+    Selection Option
+    Tag Inner Text
+    Required Attribute Value 
+  
+    Form Field:  
+      Varifies a field value within a HTML <form>
+      A field can be located by name, if value matches expected value, the validation rule passes 
+      Properties 
+        Form Field Name
+        Expected Value
+       
+    Find Text:
+      Searches for text in response or with regular expression 
+      Properties
+        Find Text
+        Ignore Case
+        Use Regular Expression
+        Pass/Faile if text is found 
+
+    Required Tag:
+      Verifies HTML tag exists in response with minimum times of occurrences
+      Properties
+        Required Tag Name 
+        Min. number of expected occurrences
+      
+    Selected Option
+      Test a <select> control in HTML
+      Properties
+        Select Tag Name - locate the tag to validate 
+        Expected Selected Option 
+        Index - locate certain instances of tag on the form 
+        Ignore case - sets case sensitivity (on or off)
+    
+    Tag Inner Text
+      Validates contents of an HTML tag 
+      Properties:
+        Tag Name 
+        Attribute Name 
+        Attribute Value 
+        Expected Inner Text 
+        Remove Tags in Inner Text 
+        Has Closing Tag 
+        Collapse Extra White Space 
+        Index
+        Ignore Case   
+        Ex.
+          <div id="my-div-tag">
+            Is this text the 
+            value that we expect? 
+          </div>
+        Tag Name = div
+        Attribute Name = id
+        Attribute Value = my-div-tag
+        Expected Inner Text = Is this text the value that we expect? 
+        Collapse Extra White Space = true
+        Ignore Case = true
+
+    Required Attribute Value
+      Search by tag name, attribute name and attribute value 
+      Such as, tag name + "id" + id value
+      Properties to locate tag
+        Tag Name 
+        Match Attribute Name 
+        Match Attribute Value  
+      Properties to validate found tag      
+        Attribute Name
+        Expected Value
+        Ignore Case
 
 Performance Validation Rules
+  3 types:
+    Response Time Goal 
+      Verify an acceptble response time for: 
+        request
+        response 
+        dependent request 
+    Maximum Request Time 
+    Response URL
 
 SharePoint Validation Rules
 
