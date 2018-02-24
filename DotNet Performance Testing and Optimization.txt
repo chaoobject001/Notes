@@ -22,38 +22,38 @@ Chapter 2: Understanding Performance Targets
 Chapter 3: Performance and Load Test Metrics
     What metrics do we need?
     Basic metrics
-Web application basic metrics............................................................................................46
-What to look for.............................................................................................................................50
-CPU utilization......................................................................................................................50
-Memory utilization................................................................................................................51
-Response time........................................................................................................................53
-Creating a baseline.........................................................................................................................54
-Using Visual Studio to analyze the results.................................................................................54
-Using the Test Results management window...................................................................55
-Using the Open and Manage Test Results dialog.............................................................55
-Filtering performance test result selection........................................................................56
-Sweet spots and operational ceilings.........................................................................................60
-Detailed performance metrics.....................................................................................................62
-Performance metrics.............................................................................................................63
-What do I do with all this information?....................................................................................70
-Conclusion......................................................................................................................................72
-Chapter 4: Implementing Your Test Rig.......................................................................................75
-Creating the performance test rig...............................................................................................75
-Architecture and structure of a performance test rig......................................................75
-Role breakdown....................................................................................................................76
-Setting up and configuration.......................................................................................................78
-Port setup and firewall considerations...............................................................................78
-Network segmentation/isolation.......................................................................................80
-Controller setup....................................................................................................................84
-Creating the load test database..........................................................................................86
-Guest policy on Windows XP in workgroup mode..........................................................87
-Agent setup.............................................................................................................................87
-Workstation setup................................................................................................................88
-Troubleshooting the controller and agents......................................................................89
-Setting up performance counter collection...............................................................................93
-Conclusion.....................................................................................................................................98
-Chapter 5: Creating Performance Tests........................................................................................99
-Basic solution structure................................................................................................................99
+Web application basic metrics
+What to look for
+CPU utilization
+Memory utilization
+Response time
+Creating a baseline
+Using Visual Studio to analyze the results
+Using the Test Results management window
+Using the Open and Manage Test Results dialog
+Filtering performance test result selection
+Sweet spots and operational ceilings
+Detailed performance metrics
+Performance metrics
+What do I do with all this information?
+Conclusion
+Chapter 4: Implementing Your Test Rig
+Creating the performance test rig
+Architecture and structure of a performance test rig
+Role breakdown
+Setting up and configuration
+Port setup and firewall considerations
+Network segmentation/isolation
+Controller setup
+Creating the load test database
+Guest policy on Windows XP in workgroup mode
+Agent setup
+Workstation setup
+Troubleshooting the controller and agents
+Setting up performance counter collection
+Conclusion
+Chapter 5: Creating Performance Tests
+Basic solution structure
 Recording the web tests..............................................................................................................102
 Test replay......................................................................................................................................110
 Data binding web tests.................................................................................................................117
