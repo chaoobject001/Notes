@@ -279,11 +279,22 @@ Content Validation Rules
 
 Performance Validation Rules
   3 types:
-    Response Time Goal 
+    Response Time Goal - client application
       Verify an acceptble response time for: 
         request
         response 
-        dependent request 
+        dependent request
+      Less than or equal to goal = pass
+      Property: Tolerance - % above the goal that is considered acceptable
+      Ex.
+        Goal = 5 sec
+        Tolerance = 20%
+        Acceptable range = 0 - 6 sec
+      Set response time goal per request:
+        Under properties and set goal in seconds - 0 = No goal
+      Set bulk response time goal via 'Set Request Details' button
+        Under "Response Time Goal" column 
+
     Maximum Request Time 
     Response URL
 
