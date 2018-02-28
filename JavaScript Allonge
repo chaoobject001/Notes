@@ -50,6 +50,22 @@ A Rich Aroma: Basic Numbers
     $43.21 is not the same as 43.21
   
   operations on numbers
-   | and & operate directly on numbers' binary representation
+    | and & operate directly on numbers' binary representation
+    Ex. 
+      5 & 1 = 0101 & 0001 = 0001 = 1  
+      5 | 1 = 0101 | 0001 = 0101 = 5
 
-    
+The first sip: Basic Functions
+  As little as possible about functions, but no less
+    Functions = computations to be performed 
+    Ex. a function takes no values and return zero 
+      () => 0
+      (() => 0) // => () => 0 in chrome 
+                   => [Function] in Node.js
+  functions and identities 
+    Function is a reference type
+    Ex. Reference type are not identical even with the same content
+      (() => 0) === (() => 0) //=> false
+  applying functions
+
+
