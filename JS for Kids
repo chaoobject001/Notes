@@ -20,8 +20,12 @@ Chapter 2: Data Types and Variables
         Ex. 
             var x = 8, y = 2;
             x/y; // => 4
-    Naming Variable:
+    Naming Variable - camel case:
+        - numberOfCandies (Capitalize 1st character)
+        - NumberOfCandies (Lower case 1st character)
+    Creating New Variables Using Math:
         
+
     
 Chapter 3: Arrays
 Chapter 4: Objects 
