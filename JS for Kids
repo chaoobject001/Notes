@@ -1,6 +1,19 @@
 Part I: Fundamentals
 Chapter 1: What Is JavaScript?
-Chapter 2: Data Types and Variables 
+    The Structure of a JavaScript Program
+        In browser console: Add new lines by pressing shift-enter at the end of each line
+    Syntax: rules to combine symbol and words to create programs
+    Comments: 
+        - Start with two forward lashes (//)
+        - in between /* and */
+    
+Chapter 2: Data Types and Variables
+    Data: info stored in program
+    Basic data types: numbers, strings and booleans
+    ";" marks end of statement
+    variable: hold information, new assignment replace the old information  
+    Create variable or initialize variable does not return a value => JS interruptor prints undefined 
+    
 Chapter 3: Arrays
 Chapter 4: Objects 
 Chapter 5: The Basics of HTML 
