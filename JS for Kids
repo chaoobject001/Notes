@@ -11,8 +11,17 @@ Chapter 2: Data Types and Variables
     Data: info stored in program
     Basic data types: numbers, strings and booleans
     ";" marks end of statement
-    variable: hold information, new assignment replace the old information  
-    Create variable or initialize variable does not return a value => JS interruptor prints undefined 
+    Variable:
+        variable: hold information, new assignment replace the old information  
+        Create variable (with keyword var) or initialize variable does not return a value 
+            => JS interpreter prints "undefined"
+        Assign value to an existing variable and interpreter returns the value assigned and prints it
+        Expression can be made from variable and interpreter returns the value of evaluation 
+        Ex. 
+            var x = 8, y = 2;
+            x/y; // => 4
+    Naming Variable:
+        
     
 Chapter 3: Arrays
 Chapter 4: Objects 
