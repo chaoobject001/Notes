@@ -24,7 +24,23 @@ Chapter 2: Data Types and Variables
         - numberOfCandies (Capitalize 1st character)
         - NumberOfCandies (Lower case 1st character)
     Creating New Variables Using Math:
-        
+        Ex. Seconds in an hour
+            var secondsInAMinute = 60;
+            var minutesInAnHour = 60;
+            var secondsinAnHour = secondsInAMinute * minutesInAnHour;
+            secondsinAnHour; // => 3600  
+    Incrementing and Decrementing with ++ or -- operator 
+        Increment = increase by 1
+        Decrement = decrease by 1
+        Pre-Increment / Pre-Decrement (++i or --i) return the value AFTER increment / decrement
+        Post-Increment / Post-Decrement (i++ or i--) return the value BEFORE increment / decrement
+        Ex.
+            var x = 0, y = 0;
+            console.log(x++); // => 1
+            console.log(++y); // => 0
+    += (plus-equals) and –= (minus-equals)    
+
+
 
     
 Chapter 3: Arrays
