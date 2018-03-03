@@ -39,9 +39,11 @@ Chapter 2: Data Types and Variables
             console.log(x++); // => 1
             console.log(++y); // => 0
     += (plus-equals) and –= (minus-equals)    
-
-
-
+    Ex. 
+        X += 3; // x = x + 3;
+        y -= 4; // y = y - 4;
+        x *= 3; // x = x * 3;
+        y /= 2; // y = y / 2;
     
 Chapter 3: Arrays
 Chapter 4: Objects 
