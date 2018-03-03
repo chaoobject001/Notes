@@ -20,31 +20,81 @@ Chapter 2: Data Types and Variables
         Ex. 
             var x = 8, y = 2;
             x/y; // => 4
-    Naming Variable - camel case:
-        - numberOfCandies (Capitalize 1st character)
-        - NumberOfCandies (Lower case 1st character)
-    Creating New Variables Using Math:
-        Ex. Seconds in an hour
-            var secondsInAMinute = 60;
-            var minutesInAnHour = 60;
-            var secondsinAnHour = secondsInAMinute * minutesInAnHour;
-            secondsinAnHour; // => 3600  
-    Incrementing and Decrementing with ++ or -- operator 
-        Increment = increase by 1
-        Decrement = decrease by 1
-        Pre-Increment / Pre-Decrement (++i or --i) return the value AFTER increment / decrement
-        Post-Increment / Post-Decrement (i++ or i--) return the value BEFORE increment / decrement
-        Ex.
-            var x = 0, y = 0;
-            console.log(x++); // => 1
-            console.log(++y); // => 0
-    += (plus-equals) and –= (minus-equals)    
-    Ex. 
-        X += 3; // x = x + 3;
-        y -= 4; // y = y - 4;
-        x *= 3; // x = x * 3;
-        y /= 2; // y = y / 2;
-    
+        Naming Variable - camel case:
+            - numberOfCandies (Capitalize 1st character)
+            - NumberOfCandies (Lower case 1st character)
+        Creating New Variables Using Math:
+            Ex. Seconds in an hour
+                var secondsInAMinute = 60;
+                var minutesInAnHour = 60;
+                var secondsinAnHour = secondsInAMinute * minutesInAnHour;
+                secondsinAnHour; // => 3600  
+        Incrementing and Decrementing with ++ or -- operator 
+            Increment = increase by 1
+            Decrement = decrease by 1
+            Pre-Increment / Pre-Decrement (++i or --i) return the value AFTER increment / decrement
+            Post-Increment / Post-Decrement (i++ or i--) return the value BEFORE increment / decrement
+            Ex.
+                var x = 0, y = 0;
+                console.log(x++); // => 1
+                console.log(++y); // => 0
+        += (plus-equals) and –= (minus-equals)    
+        Ex. 
+            X += 3; // x = x + 3;
+            y -= 4; // y = y - 4;
+            x *= 3; // x = x * 3;
+            y /= 2; // y = y / 2;
+    String:
+        String = sequence of characters - letters, numbers, spaces and punctuations
+        Strings are between quotes so JS knows where it begins and ends 
+        Ex. sum vs. string concatenation
+            var numberNine = 9;
+            var stringNine = "9";
+            console.log(numberNine + numberNine); // 18
+            console.log(stringNine + stringNine); // "99"
+        Finding the Length of a String:
+            Ex. 
+                var java = "Java";
+                var script = "Script";
+                var javaScript = java + script;
+                javaScript.length; // 10
+            length property is available for a string literal or a string variable 
+        Getting a Single Character from a String
+            JavaScript is zero-index: start from zero
+            Ex.
+                var javaScript = "JavaScript";
+                javaScript[0]; // "J"
+        Cutting Up Strings
+            slice w/ 2 parameters - 
+            1st argument = begining of sliced token
+            2nd argument = one character after end of sliced token
+                Ex.
+                    "01234".slice(1, 4); // "123"
+        Changing Strings to All Capital or All Lowercase Letters
+            str.toUpperCase() capitalize all characters in a string
+            str.toLowerCase() makes all characters in a string lowercase
+            Ex.
+                var token = "hELlo THERE, hOW ARE yOu doINg?";
+                console.log(token[0].toUpperCase() + token.splice(1).toLowerCase());
+                // "Hello there, how are you doing?"
+    Booleans:
+        a boolean value is either true or false
+        Logical Operators:
+            && (and)
+            || (or)
+            ! (not)
+        Combining logical operators:
+            () before && before || in logical statements 
+        Comparing Numbers with Booleans:
+            > (Greater Than) return true if 1st (left) operand is greater than 2nd (right) operand 
+            < (Less Than) return true if 1st (left) operand is less than 2nd (right) operand  
+            === (Equal To, triple equal sign)
+            == (Double Equals) type coercion - convert two operands into same type than compare (like convert boolean into number than compare)
+                Ex. 
+                    5 == "5";   // true
+                    0 == false; // true
+                    1 == true;  // true
+            
 Chapter 3: Arrays
 Chapter 4: Objects 
 Chapter 5: The Basics of HTML 
