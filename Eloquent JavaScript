@@ -1,303 +1,339 @@
 Ch 1 Values, Types, and Operators
-Values 
-Numbers 
-Strings 
-Unary operators 
-Boolean values 
-Undefined values 
-Automatic type conversion 
-Summary 
+    number 13 in bits => 
+        1 1 0 1 => 
+        1 * 2^3 + 1 * 2^2 + 0 * 2^1 + 1 * 2^0 =
+        8 + 4 + 1 = 13   
+    Values: chunks of bits that represnt pieces of information
+        6 basic types of value:
+            numbers, strings, Boolean, object, functions and undefined values
+    Numbers
+        A single number is stored in 64 bits - which can represnt 2^64 different numbers 
+        Overflow: a number does NOT fit into given amount of bits
+        Represent nonwhole number: extra bit to store position of decimal point
+        Negative number: one bit for sign of number
+        Actual whole number (integer) can be precisely stored: 9 quadrillion 15 zeros   
+        Scientific notation by "e", like 2.998e8 => 299,800,000
+        Precision: many number lose precision with only 64 bit bits available 
+        Treat fractional digits as approximation NOT precise number
+        Arithmetic operator precedence: 
+            (), 
+            %, *, /
+            +, -
+        Special numbers:
+            Infinity & -Infinity: positive and negative infinity 
+                Infinity - 1 is still infinity
+                Infinity computation is NOT mathmatically solid 
+            NaN: a value of number type, but Not-a-Number (NaN)
+                Infinity - Infinity = NaN
+                0 / 0 = NaN
+    Strings
+        string is written by enclosing content in single / double quotes
+        escaping character with backslash (\)
+            ex. \" a quote preceed by backslash will be part of string, instead of end it
+                \n newline, \t tab 
+        concatenates strings with + operator 
+                
+    Unary operators operates on one value
+        "typeof" operator:
+            typeof 3.5; // => "number"
+        binary operator takes two values 
+        minus operator can be both unary and binary operator 
+    
+    Boolean values 
+    Undefined values 
+    Automatic type conversion 
+    Summary 
 Ch 2 Program Structure 23
-Expressions and statements 
-Variables 
-Keywords and reserved words 
-The environment 
-Functions 
-The console.log function 
-Return values 
-prompt and confirm 
-Control flow 
-Conditional execution 
-while and do loops 
-Indenting Code 
-for loops 
-Breaking Out of a Loop 
-Updating variables succinctly 
-Dispatching on a value with switch 
-Capitalization 
-Comments 
-Summary 
-Exercises 
+    Expressions and statements 
+    Variables 
+    Keywords and reserved words 
+    The environment 
+    Functions 
+    The console.log function 
+    Return values 
+    prompt and confirm 
+    Control flow 
+    Conditional execution 
+    while and do loops 
+    Indenting Code 
+    for loops 
+    Breaking Out of a Loop 
+    Updating variables succinctly 
+    Dispatching on a value with switch 
+    Capitalization 
+    Comments 
+    Summary 
+    Exercises 
 Ch 3 Functions
-Defining a function 
-Parameters and scopes 
-Nested scope 
-Functions as values 
-Declaration notation 
-The call stack 
-Optional Arguments 
-Closure 
-Recursion 
-Growing functions 
-Functions and side effects 
-Summary 
-Exercises 
+    Defining a function 
+    Parameters and scopes 
+    Nested scope 
+    Functions as values 
+    Declaration notation 
+    The call stack 
+    Optional Arguments 
+    Closure 
+    Recursion 
+    Growing functions 
+    Functions and side effects 
+    Summary 
+    Exercises 
 Ch 4 Data Structures: Objects and Arrays
-The weresquirrel 
-Data sets 
-Properties 
-Methods 
-Objects 
-Mutability 
-The lycanthrope’s log 
-Computing correlation 
-Objects as maps 
-The final analysis 
-Further arrayology 
-Strings and their properties 
-The arguments object 
-The Math object 
-The global object 
-Summary 
-Exercises 
+    The weresquirrel 
+    Data sets 
+    Properties 
+    Methods 
+    Objects 
+    Mutability 
+    The lycanthrope’s log 
+    Computing correlation 
+    Objects as maps 
+    The final analysis 
+    Further arrayology 
+    Strings and their properties 
+    The arguments object 
+    The Math object 
+    The global object 
+    Summary 
+    Exercises 
 Ch 5 Higher-Order Functions 86
-Abstraction 
-Abstracting array traversal 
-Higher-order functions 
-Passing along arguments 
-JSON 
-Filtering an array 
-Transforming with map 
-Summarizing with reduce 
-Composability 
-The cost 
-Great-great-great-great-… 
-Binding 
-Summary 
-Exercises 
+    Abstraction 
+    Abstracting array traversal 
+    Higher-order functions 
+    Passing along arguments 
+    JSON 
+    Filtering an array 
+    Transforming with map 
+    Summarizing with reduce 
+    Composability 
+    The cost 
+    Great-great-great-great-… 
+    Binding 
+    Summary 
+    Exercises 
 Ch 6 The Secret Life of Objects
-History 
-Methods 
-Prototypes 
-Constructors 
-Overriding derived properties 
-Prototype interference 
-Prototype-less objects 
-Polymorphism 
-Laying out a table 
-Getters and setters 
-Inheritance 
-The instanceof operator 
-Summary 
-Exercises 
+    History 
+    Methods 
+    Prototypes 
+    Constructors 
+    Overriding derived properties 
+    Prototype interference 
+    Prototype-less objects 
+    Polymorphism 
+    Laying out a table 
+    Getters and setters 
+    Inheritance 
+    The instanceof operator 
+    Summary 
+    Exercises 
 Ch 7 Project: Electronic Life
-Definition 
-Representing space 
-A critter’s programming interface 
-The world object 
-this and its scope 
-Animating life 
-It moves 
-More life forms 
-A more lifelike simulation 
-Action handlers 
-Populating the new world 
-Bringing it to life 
-Exercises 
+    Definition 
+    Representing space 
+    A critter’s programming interface 
+    The world object 
+    this and its scope 
+    Animating life 
+    It moves 
+    More life forms 
+    A more lifelike simulation 
+    Action handlers 
+    Populating the new world 
+    Bringing it to life 
+    Exercises 
 Ch 8 Bugs and Error Handling 
-Programmer mistakes 
-Strict mode 
-Testing 
-Debugging 
-Error propagation 
-Exceptions 
-Cleaning up after exceptions 
-Selective catching 
-Assertions 
-Summary 
-Exercises 
+    Programmer mistakes 
+    Strict mode 
+    Testing 
+    Debugging 
+    Error propagation 
+    Exceptions 
+    Cleaning up after exceptions 
+    Selective catching 
+    Assertions 
+    Summary 
+    Exercises 
 Ch 9 Regular Expressions
-Creating a regular expression 
-Testing for matches 
-Matching a set of characters 
-Repeating parts of a pattern 
-Grouping subexpressions 
-Matches and groups 
-The date type 
-Word and string boundaries 
-Choice patterns 
-The mechanics of matching 
-Backtracking 
-The replace method 
-Greed 
-Dynamically creating RegExp objects 
-The search method 
-The lastIndex property 
-Parsing an INI file 
-International characters 
-Summary 
-Exercises 
+    Creating a regular expression 
+    Testing for matches 
+    Matching a set of characters 
+    Repeating parts of a pattern 
+    Grouping subexpressions 
+    Matches and groups 
+    The date type 
+    Word and string boundaries 
+    Choice patterns 
+    The mechanics of matching 
+    Backtracking 
+    The replace method 
+    Greed 
+    Dynamically creating RegExp objects 
+    The search method 
+    The lastIndex property 
+    Parsing an INI file 
+    International characters 
+    Summary 
+    Exercises 
 Ch 10 Modules 
-Why modules help 
-Using functions as namespaces 
-Objects as interfaces 
-Detaching from the global scope 
-Evaluating data as code 
-Require 
-Slow-loading modules 
-Interface design 
-Summary 
-Exercises 
+    Why modules help 
+    Using functions as namespaces 
+    Objects as interfaces 
+    Detaching from the global scope 
+    Evaluating data as code 
+    Require 
+    Slow-loading modules 
+    Interface design 
+    Summary 
+    Exercises 
 Ch 11 Project: A Programming Language
-Parsing 
-The evaluator 
-Special forms 
-The environment 
-Functions 
-Compilation 
-Cheating 
-Exercises 
+    Parsing 
+    The evaluator 
+    Special forms 
+    The environment 
+    Functions 
+    Compilation 
+    Cheating 
+    Exercises 
 Ch 12 JavaScript and the Browser
-Networks and the Internet 
-The Web 
-HTML 
-HTML and JavaScript 
-In the sandbox 
-Compatibility and the browser wars 
+    Networks and the Internet 
+    The Web 
+    HTML 
+    HTML and JavaScript 
+    In the sandbox 
+    Compatibility and the browser wars 
 Ch 13 The Document Object Model
-Document structure 
-Trees 
-The standard 
-Moving through the tree 
-Finding elements 
-Changing the document 
-Creating nodes 
-Attributes 
-Layout 
-Styling 
-Cascading styles 
-Query selectors 
-Positioning and animating 
-Summary 
-Exercises 
+    Document structure 
+    Trees 
+    The standard 
+    Moving through the tree 
+    Finding elements 
+    Changing the document 
+    Creating nodes 
+    Attributes 
+    Layout 
+    Styling 
+    Cascading styles 
+    Query selectors 
+    Positioning and animating 
+    Summary 
+    Exercises 
 Ch 14 Handling Events
-Event handlers 
-Events and DOM nodes 
-Event objects 
-Propagation 
-Default actions 
-Key events 
-Mouse clicks 
-Mouse motion 
-Scroll events 
-Focus events 
-Load event 
-Script execution timeline 
-Setting timers 
-Debouncing 
-Summary 
-Exercises 
+    Event handlers 
+    Events and DOM nodes 
+    Event objects 
+    Propagation 
+    Default actions 
+    Key events 
+    Mouse clicks 
+    Mouse motion 
+    Scroll events 
+    Focus events 
+    Load event 
+    Script execution timeline 
+    Setting timers 
+    Debouncing 
+    Summary 
+    Exercises 
 Ch 15 Project: A Platform Game 
-The game 
-The technology 
-Levels 
-Reading a level 
-Actors 
-Encapsulation as a burden 
-Drawing 
-Motion and collision 
-Actors and actions 
-Tracking keys 
-Running the game 
-Exercises 
+    The game 
+    The technology 
+    Levels 
+    Reading a level 
+    Actors 
+    Encapsulation as a burden 
+    Drawing 
+    Motion and collision 
+    Actors and actions 
+    Tracking keys 
+    Running the game 
+    Exercises 
 Ch 16 Drawing on Canvas 
-SVG 
-The canvas element 
-Filling and stroking 
-Paths 
-Curves 
-Drawing a pie chart 
-Text 
-Images 
-Transformation 
-Storing and clearing transformations 
-Back to the game 
-Choosing a graphics interface 
-Summary 
-Exercises 
+    SVG 
+    The canvas element 
+    Filling and stroking 
+    Paths 
+    Curves 
+    Drawing a pie chart 
+    Text 
+    Images 
+    Transformation 
+    Storing and clearing transformations 
+    Back to the game 
+    Choosing a graphics interface 
+    Summary 
+    Exercises 
 Ch 17 HTTP 
-The protocol 
-Browsers and HTTP 
-XMLHttpRequest 
-Sending a request 
-Asynchronous Requests 
-Fetching XML Data 
-HTTP sandboxing 
-Abstracting requests 
-Promises 
-Appreciating HTTP 
-Security and HTTPS 
-Summary 
-Exercises 
+    The protocol 
+    Browsers and HTTP 
+    XMLHttpRequest 
+    Sending a request 
+    Asynchronous Requests 
+    Fetching XML Data 
+    HTTP sandboxing 
+    Abstracting requests 
+    Promises 
+    Appreciating HTTP 
+    Security and HTTPS 
+    Summary 
+    Exercises 
 Ch 18 Forms and Form Fields 
-Fields 
-Focus 
-Disabled fields 
-The form as a whole 
-Text fields 
-Checkboxes and radio buttons 
-Select fields 
-File fields 
-Storing data client-side 
-Summary 
-Exercises 
+    Fields 
+    Focus 
+    Disabled fields 
+    The form as a whole 
+    Text fields 
+    Checkboxes and radio buttons 
+    Select fields 
+    File fields 
+    Storing data client-side 
+    Summary 
+    Exercises 
 Ch 19 Project: A Paint Program 
-Implementation 
-Building the DOM 
-The foundation 
-Tool selection 
-Color and brush size 
-Saving 
-Loading image files 
-Finishing up 
-Exercises 
+    Implementation 
+    Building the DOM 
+    The foundation 
+    Tool selection 
+    Color and brush size 
+    Saving 
+    Loading image files 
+    Finishing up 
+    Exercises 
 Ch 20 Node.js
-Background 
-Asynchronicity 
-The node command 
-Modules 
-Installing with NPM 
-The file system module 
-The HTTP module 
-Streams 
-A simple file server 
-Error handling 
-Summary 
-Exercises 
+    Background 
+    Asynchronicity 
+    The node command 
+    Modules 
+    Installing with NPM 
+    The file system module 
+    The HTTP module 
+    Streams 
+    A simple file server 
+    Error handling 
+    Summary 
+    Exercises 
 Ch 21 Project: Skill-Sharing Website 
-Design 
-Long polling 
-HTTP interface 
-The server 
-The client 
-Exercises 
-Program Structure 
-Functions 
-Data Structures: Objects and Arrays 
-Higher-Order Functions 
-The Secret Life of Objects 
-Project: Electronic Life 
-Bugs and Error Handling 
-Regular Expressions 
-Modules 
-Project: A Programming Language 
-The Document Object Model 
-Handling Events 
-Project: A Platform Game 
-Drawing on Canvas 
-HTTP 
-Forms and Form Fields 
-Project: A Paint Program 
-Node.js
-Project: Skill-Sharing Website 
+    Design 
+    Long polling 
+    HTTP interface 
+    The server 
+    The client 
+    Exercises 
+    Program Structure 
+    Functions 
+    Data Structures: Objects and Arrays 
+    Higher-Order Functions 
+    The Secret Life of Objects 
+    Project: Electronic Life 
+    Bugs and Error Handling 
+    Regular Expressions 
+    Modules 
+    Project: A Programming Language 
+    The Document Object Model 
+    Handling Events 
+    Project: A Platform Game 
+    Drawing on Canvas 
+    HTTP 
+    Forms and Form Fields 
+    Project: A Paint Program 
+    Node.js
+    Project: Skill-Sharing Website 
 
