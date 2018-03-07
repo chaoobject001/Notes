@@ -1,10 +1,77 @@
 Chapter 1: Introduction – The What and the Why
+    For business owner:
+        "I want to know the app supporting my business can cope with the size and usage patterns of my customers"
+        "I want accurate estimation of infrastructure required to support my current AND future customer base"
+    For solution developer:
+        "I want to write software that is fast, responsive and scalable" 
+        Before  measurement and quantification, estimate based on 
+            Technology
+            Technique
+            Environment
+    Effective performance, load and stress test:
+        Answers questions
+        Remove vague assumption on performance 
+        Provide level of confidence 
+
     Performance testing
+        Definition: 
+            Testing app at increasing levels of concurrent users and measuring how system reacts under the increasing load 
+            "concurrent usage levels": the number of user accessing web app at the same time
+        Typically:
+            Starting with low level of concurrent user 
+            Increase the number of concurrent users at defined intervals 
+            Measure the effect on:
+                response times
+                system usage patterns for CPU, memory 
+                request execution time 
+                other factors 
+            ... to characterize system at various points    
+            ... to define patterns in app behaviors at various levels of concurrent users
+
     Load testing
-    Stress testing
+        Definition: 
+            Testing against system at a consistently high load level, 
+            high number of concurrent users for extended periods of time
+            to determine reliability, robustness and availability characteristics
+        Can be part of performance test
+            - but need to know what exactly "high level" is
+        Often referred to as "volume testing" 
+        Question: How does the app perform at nearly maximum capacity for hours or even days?
+
+    Stress Testing
+        Definition:
+            Similar to load test, except - 
+                continuous stress applied 
+                to examine system overwhelmed at level beyond what is capable
+                resulting in some form of failure 
+        Question: What is the recoverability of the application under test?
+            recoverability: 
+                the ability to restore deployment to the point at which a failure occured   
+                the ability to recover from system failure or disaster 
+        Question: What happens if the system gets overloaded with requests? Will it stop functioning 
+
     Profiling
+        Profile app by quantifing the performance characteristics of isolated parts
+        - what methods take long time to execute 
+        - what object utilize excessive amount of memory
+        Two types of profiling: performance-based & memory-based
+            performance-based: how long a method take to runs
+            memory-based: how much memory certain aspects of an app or individual objects used
+
     Cost benefits of performance and load testing
+        Performance testing is comprehensive and expensive operation
+            Test execution must be effortless - Automation is crucial 
+            Results collection must be painless
+            Results analysis must be quick
+            Know where to fix exactly 
+            Able to demo to business 
+        Major beneficiaries of performance testing:
+            Business: need to ensure infrasturcture, budgets and growth rate are considered 
+            App developers: need to ensure 
+                Development process is not generating performance issue or inefficient code
+                Architecture does NOT imped performance 
         Example scenarios
+            
     Sometimes, what seems right can be wrong
     Conclusion
 Chapter 2: Understanding Performance Targets
