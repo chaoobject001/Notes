@@ -39,7 +39,12 @@ Ch 1 Values, Types, and Operators
         binary operator takes two values 
         minus operator can be both unary and binary operator 
     
-    Boolean values 
+    Boolean values: true & false
+        Comparisons as a way to produce Boolean value
+        Ex. 3 > 2; // => true
+        Uppercase is always "LESS" than Lowercase
+        Comparison is based on Unicode standard  
+
     Undefined values 
     Automatic type conversion 
     Summary 
