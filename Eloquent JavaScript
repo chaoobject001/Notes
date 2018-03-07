@@ -43,7 +43,9 @@ Ch 1 Values, Types, and Operators
         Comparisons as a way to produce Boolean value
         Ex. 3 > 2; // => true
         Uppercase is always "LESS" than Lowercase
-        Comparison is based on Unicode standard  
+        string Comparison is based on Unicode standard (as a sequence of numbers)  
+            - Goes over from left to right, one character at a time
+        NaN: The only value in JavaScript that does not equal to itself (nonsensical computation)
 
     Undefined values 
     Automatic type conversion 
