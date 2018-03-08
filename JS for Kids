@@ -94,8 +94,43 @@ Chapter 2: Data Types and Variables
                     5 == "5";   // true
                     0 == false; // true
                     1 == true;  // true
-            
+            Try It Out!
+                age >= 13 || accompanied
+    undefined and null:
+        variable is assigned value of undefined by default 
+        useage of null:
+            set a variable to “nothing”, a placeholder 
+            dereference objects for garbage collection
+            use delete to remove property of an object
+    
 Chapter 3: Arrays
+    Array = a list of other JavaScript data values
+    Why Should You Care About Arrays?
+        - grouping data for easy access
+    Creating an Array
+        empty array: [];
+        filled array:
+            var list = [
+                "token01",
+                "token02",
+                "token03"
+            ];  
+        Shift + Enter to input multiline on browser console
+    Accessing an Array’s Elements with square bracket and index
+        Ex. list[0]; // "token01"
+    Setting or Changing Elements in an Array
+        Ex. 
+            var list = [
+                "token01",
+                "token02",
+                "token03"
+            ];
+            list[6] = "token07";
+            list; // ["token01", "token02", "token03", empty X 3, "token07"]
+    Mixing Data Types in an Array
+        Array elements don't all have to be the same type
+        
+
 Chapter 4: Objects 
 Chapter 5: The Basics of HTML 
 Chapter 6: Conditionals and Loops 
