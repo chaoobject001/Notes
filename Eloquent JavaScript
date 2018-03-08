@@ -66,7 +66,16 @@ Ch 1 Values, Types, and Operators
             console.log(false == 0);    // => true    
         JS implicitly convert type of value when an operator is applied with values of mismatched type
         - type coercion 
-        Use === or !== defensively to prevent unexpected type conversions 
+        
+        null and undefined 
+        When null or undefined occurs on either side of ==
+        The expression return true only if both side are null or undefined
+        Ex.
+            null == undefined;  // true
+            null == 0;          // false
+        To check if a value is null or undefined, compare it to null with == or !=
+        To check for precise false, use !== and ===
+        Use !== and === defensively tor prevent unexpected type conversions 
 
     Short-circuit of logical operator 
         && and || convert left operand to Boolean type
@@ -82,10 +91,12 @@ Ch 1 Values, Types, and Operators
             return left operand if it can be converted to false
             else return value of right operand 
         For both operators, right operand may not be evaluated depend on the result of left operand conversion 
-
     Summary 
+        - to negate number; ! to negate logically 
 Ch 2 Program Structure 23
     Expressions and statements 
+        Expression = fragment of code that produce a value
+        
     Variables 
     Keywords and reserved words 
     The environment 
