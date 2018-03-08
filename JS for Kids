@@ -129,7 +129,68 @@ Chapter 3: Arrays
             list; // ["token01", "token02", "token03", empty X 3, "token07"]
     Mixing Data Types in an Array
         Array elements don't all have to be the same type
-        
+        Multi-dimensional array 
+        Ex. 
+            var list = [
+                "token01",
+                [1, 2, 3],
+                "token03"
+            ];
+            list[1][2]; // 3
+    Working with Arrays
+        Finding the Length of an Array: with length property
+        Ex.
+            var list = [
+                "token01",
+                [1, 2, 3],
+                "token03"
+            ];
+            list.length; // 3
+        Access last element 
+        Ex.
+            list[list.length - 1];
+        Adding Elements to an Array
+            Add element to end of array with .push
+                Ex. list.push("token04"); // return length of changed array 
+            Add element ot begining of array with .unshift
+                Ex. list.unshift("token00");    // return length of changed array 
+        Removing Elements from an Array
+            Remove first element with .shift
+                Ex. list.shift(); // return original first element 
+            Remove last element with .pop
+                Ex. list.pop(); // return original last element 
+        Adding Arrays
+            Add two arrays together to make new, single array with .concat
+                Ex. listOne.concat(listTwo);    // return new single array
+                Original arrays are not chnaged 
+            Join multiple arrays with .concat
+                var totalList = listOne.concat(listTwo, listThree); 
+        Finding the Index of an Element in an Array with .indexOf(element)
+            if one matching element is present in array   
+                return index of element
+            if NO matching element is present in array
+                return -1
+            if more than one matching elements are present in array
+                return index of first matching element 
+        Turning an Array into a String          
+            Join all elements in array together into one string (separated by commas) with .join()
+            Ex.
+                var list = [
+                    "token01",
+                    "token02",
+                    "token03"
+                ];
+                list.join();    // return "token01,token02,token03"
+            Join elements with different separator with .join(separator)
+            Ex.
+                list.join(" - ");   // return "token01 - token02 - token03"
+            If elements in array is not string, they will be converted into strings before concatination 
+    Useful Things to Do with Arrays
+        Finding Your Way Home        
+
+
+                
+
 
 Chapter 4: Objects 
 Chapter 5: The Basics of HTML 
