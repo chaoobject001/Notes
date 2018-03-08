@@ -46,9 +46,43 @@ Ch 1 Values, Types, and Operators
         string Comparison is based on Unicode standard (as a sequence of numbers)  
             - Goes over from left to right, one character at a time
         NaN: The only value in JavaScript that does not equal to itself (nonsensical computation)
+        Logical operators: AND , OR, NOT
+        precedence (low to high):
+            || -> && -> comparison operators: >, ==, etc ->  others
+        conditional operator / ternary operator: question mark and a colon 
+            Ex. 
+                console.log(true ? 1: 2);   // => 1
+                console.log(false ? 1: 2);  // => 2
 
-    Undefined values 
-    Automatic type conversion 
+    Undefined values: null and undefined
+        values without information - possiblely interchangeable?
+
+    Automatic type conversion
+        Ex.
+            console.log(8 * null);      // => 0 (null becomes zero)
+            console.log("5" - 1);       // => 4 ("5" becomes 5)
+            console.log("5" + 1);       // => "51" (string concatenation)
+            console.log("five" * 2);    // => NaN
+            console.log(false == 0);    // => true    
+        JS implicitly convert type of value when an operator is applied with values of mismatched type
+        - type coercion 
+        Use === or !== defensively to prevent unexpected type conversions 
+
+    Short-circuit of logical operator 
+        && and || convert left operand to Boolean type
+        based on operator and the result of conversion 
+        than return either the original left operand value or the right operand value 
+        || operator:
+            return left operand if it can be converted to true 
+            else return value of right operand 
+            Ex. 
+                null || "user";     // => "user"
+                "Karl" || "user";   // => "Karl"
+        && operator:
+            return left operand if it can be converted to false
+            else return value of right operand 
+        For both operators, right operand may not be evaluated depend on the result of left operand conversion 
+
     Summary 
 Ch 2 Program Structure 23
     Expressions and statements 
