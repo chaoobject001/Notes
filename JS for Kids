@@ -186,13 +186,72 @@ Chapter 3: Arrays
                 list.join(" - ");   // return "token01 - token02 - token03"
             If elements in array is not string, they will be converted into strings before concatination 
     Useful Things to Do with Arrays
-        Finding Your Way Home        
-
-
-                
-
+        Finding Your Way Home
+            Adding from end of list with .push()
+        Going in Reverse with pop
+            Removing from the end of list with .pop()
+            .push() / .pop() like stack
+        Decision Maker
+            Using Math.random() 
+                Get a dandom number between o and 1, but never 1 
+            Rounding Down with Math.floor()
+                Round down to the next smaller whole number
+                Ex. 
+                    Math.floor(-0.79); // return -1
+                    Math.floor(Math.random() * 4); // return 0, 1, 2, 3, but never 4
+        The Complete Decision Maker
+            Ex.
+                var list = [
+                    "token01",
+                    "token02",
+                    "token03"
+                ];
+                var randomToken = list[Math.floor(Math.random() * list.length)];                
+                console.log(randomToken);
+    What You Learned
+        Array use number indexes to store elements
+        Object use string keys 
+    Programming Challenges
+        #1 - 4
+            var adjList = [
+                "Good",
+                "Clean",
+                "Fun"
+            ];
+            var materialList = [
+                "Wooden",
+                "Metal",
+                "Paper"
+            ];
+            var toolList = [
+                "Knife",
+                "Saw",
+                "Scissor"
+            ];
+            var randomTool = 
+                adjList[Math.floor(Math.random() * adjList.length)] + " " 
+                + materialList[Math.floor(Math.random() * materialList.length)] + " " 
+                + toolList[Math.floor(Math.random() * toolList.length)];
+            var randomToolSequence = [
+                adjList[Math.floor(Math.random() * adjList.length)],
+                materialList[Math.floor(Math.random() * materialList.length)],
+                toolList[Math.floor(Math.random() * toolList.length)]
+            ];
+            var randomToolByJoin = randomToolSequence,join(" ");
 
 Chapter 4: Objects 
+    Creating Objects 
+    Keys Without Quotes
+    Accessing Values in Objects 
+    Adding Values to Objects 
+    Adding Keys with Dot Notation 
+    Combining Arrays and Objects 
+    An Array of Friends 
+    Exploring Objects in the Console 
+    Useful Things to Do with Objects 
+    Keeping Track of Owed Money 
+    Storing Information About Your Movies 
+    What You Learned 
 Chapter 5: The Basics of HTML 
 Chapter 6: Conditionals and Loops 
 Chapter 7: Creating a Hangman Game 
