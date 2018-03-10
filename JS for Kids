@@ -240,20 +240,212 @@ Chapter 3: Arrays
             var randomToolByJoin = randomToolSequence,join(" ");
 
 Chapter 4: Objects 
+    Objects access elements via strings called keys or property 
     Creating Objects 
-    Keys Without Quotes
+        Ex. 
+        var car = {
+            "manufacturer": "Nissan",
+            "year": 2014,
+            "color": "titanium"
+        };
+        Object literal = curly bracket and everything enclosed  
+        literal = whole value is written out at once, not built up in multiple steps
+        Key-value pair
+            Ex.
+                {"key1": 99}
+
+        Keys Without Quotes - same rule as variable name 
+            spaces are allowed for keys in quote
+            Ex. 
+            var car = {
+                manufacturer: "Nissan",
+                "year sold": 2014,
+                color: "titanium"
+            };
+        value of key-value pair can be any value type, even a variable
+
     Accessing Values in Objects 
+        Via square bracket 
+            Ex. car["color"];   // "titanium"
+        Via dot notation - for keys without space
+            Ex. car.color;
+        Object.keys(car); 
+        // returns an array containing all keys
+        // ["manufacturer", "year sold", "color"];
+
     Adding Values to Objects 
-    Adding Keys with Dot Notation 
+        Empty object: vat obj = {};
+        Add data to object:
+            obj["token"] = "item"; 
+        Key-value pairs are NOT stored in any particular order - do not code logic to depend on their sequence
+
+    Adding Keys with Dot Notation
+        Ex. 
+            var car = {};
+            car.color = "titanium"
+        Try to access key that does not exist in object will return undefined
+            car.door; // undefined
+
     Combining Arrays and Objects 
+        Ex.
+            var cars = [
+                { "manufacturer": "Nissan", "year": 2014, "color": "titanium"},
+                { "manufacturer": "Nissan", "year": 2013, "color": "silver"}
+            ];
+            cars[0]; // return first element
+            cars[1]["year"];    // 2013
+            cars[1].color;      // silver
+
     An Array of Friends 
+    
     Exploring Objects in the Console 
+
     Useful Things to Do with Objects 
-    Keeping Track of Owed Money 
+        Keeping Track of Owed Money 
     Storing Information About Your Movies 
     What You Learned 
+        Programming Challenges
+            var myCrazyObject = {
+            "name": "A ridiculous object",
+            "some array": [7, 9, { purpose: "confusion", number: 123 }, 3.3],
+            "random animal": "Banana Shark"
+            };
+            myCrazyObject["some array"][2].number; // 123
 Chapter 5: The Basics of HTML 
-Chapter 6: Conditionals and Loops 
+    Text Editors
+    Our First HTML Document
+        <h1>Hello world!</h1>
+        <p>My first web page.</p>
+
+    Tags and Elements
+        HTML document is made of elements
+        element starts with a start tag and ends with an end tag, like h1 and p
+        tag is made of element name enclosed by angle brackets <>
+        End tag have a forward slash (/) before the element name
+
+    Heading Elements
+        h1 is the top-level heading out of six level of headings (h1 to h6)
+        
+    The p Element defines separate paragraphs of text 
+
+    Whitespace in HTML and Block-Level Elements
+        Any whitespace in HTML is collapsed into a single space 
+        p and h1 are block-level element
+        block-level element:
+            display content in a saparate block
+            starting on a new line 
+            push following content on a new line 
+
+    Inline Elements: do NOT put content onto a new line 
+        <em> makes content italic 
+        <strong> makes content bold
+        un-matched nested tags cause page to break in strange Way
+
+    A Full HTML Document
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>My first proper HTML page</title>
+        </head>
+        <body>
+            <h1>Hello world!</h1>
+            <p>My <em>first</em> <strong>web page</strong>.</p>
+            <p>Let's add another <strong><em>paragraph</em></strong>.</p>
+        </body>
+        </html>
+
+        <!DOCTYPE html> is a declaration for HTML document
+        <html> the outermost element for ALL HTML document
+        <head> contains document's <title> element
+        <body> contains content to be displayed 
+
+    HTML Hierarchy
+        <html>
+            <head>
+                <title>
+            <body>
+                <h1>
+                <p>
+    Adding Links to Your HTML
+        Link Attributes
+            <p><a href="http://xkcd.com">Click here</a> to read some excellent comics.</p>
+        Title Attributes for link
+            On mouse hover over link: Display value of title attribute 
+                <a href="http://xkcd.com" title="xkcd: Land of geeky comics!">Click here</a>
+    What You Learned
+
+Chapter 6: Conditionals and Loops
+    Conditionals and loops = contorl structures 
+    Embedding JavaScript in HTML 
+
+    Conditionals
+    if Statements
+    if…else Statements
+    Chaining if…else Statements
+    Loops
+    while Loops
+    for Loops
+    What You Learned
+    Programming Challenges with map, reduce and filter
+    #1: Awesome Animals 
+        var animals = ["Cat", "Fish", "Lemur", "Komodo Dragon"];
+        var awsomeAnimals = animals.map(function(animal){
+            return "Awsome " + animal; 
+        });
+        awsomeAnimals; // ["Awesome Cat", "Awesome Fish", "Awesome Lemur", "Awesome Komodo Dragon"]
+    #2: Random String Generator 
+        var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        var randomString = "";
+        while (randomString.length < 6) {
+            randomString += alphabet[Math.floor(Math.random() * alphabet.length)];
+        }
+        console.log(randomString);
+    #3: h4ck3r sp34k - with map
+            var input = "javascript is awesome";
+            var output;
+            output = input.split('').map((letter) => {
+                switch(letter){
+                    case "a":
+                        return "4";
+                        break;
+                    case "e":
+                        return "3";
+                        break;
+                    case "i":
+                        return "1";
+                        break;
+                    case "o":
+                        return "0";
+                        break;
+                    default:
+                        return letter;
+                        break;
+                }
+            }).join('');
+            console.log(output);
+        h4ck3r sp34k - with reduce
+        var input = "javascript is awesome";
+        var output = input.split('').reduce((previous, current) => {
+            switch(current){
+                    case "a":
+                        return previous +"4";
+                        break;
+                    case "e":
+                        return previous +"3";
+                        break;
+                    case "i":
+                        return previous +"1";
+                        break;
+                    case "o":
+                        return previous +"0";
+                        break;
+                    default:
+                        return previous + current;
+                        break;
+                }
+        }, "");
+        console.log(output);
+
 Chapter 7: Creating a Hangman Game 
 Chapter 8: Functions 
 Part II: Advanced JavaScript
