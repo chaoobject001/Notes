@@ -447,6 +447,30 @@ Chapter 6: Conditionals and Loops
         console.log(output);
 
 Chapter 7: Creating a Hangman Game 
+    Interacting with a Player
+    
+    Creating a Prompt: a pop-up window for user input
+
+    Using confirm to Ask a Yes or No Question
+    Using Alerts to Give a Player Information
+    Why Use alert Instead of console.log?
+    xiv Contents in Detail
+    Designing Your Game 
+    Using Pseudocode to Design the Game
+    Tracking the State of the Word 
+    Designing the Game Loop 
+    Coding the Game 
+    Choosing a Random Word
+    Creating the Answer Array
+    Coding the Game Loop 
+    Ending the Game 
+    The Game Code 
+    What You Learned
+    Programming Challenges
+    #1: More Words 
+    #2: Capital Letters
+    #3: Limiting Guesses
+    #4: Fixing a Bug 
 Chapter 8: Functions 
 Part II: Advanced JavaScript
 Chapter 9: The DOM and jQuery 
