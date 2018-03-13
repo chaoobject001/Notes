@@ -450,12 +450,20 @@ Chapter 7: Creating a Hangman Game
     Interacting with a Player
     
     Creating a Prompt: a pop-up window for user input
-
     Using confirm to Ask a Yes or No Question
     Using Alerts to Give a Player Information
     Why Use alert Instead of console.log?
-    xiv Contents in Detail
-    Designing Your Game 
+
+    Designing Your Game
+        To Do:
+            1. pick a random word
+            2. Take player's guess
+            3. Quit the game if player wants to
+            4. Check that the player’s guess is a valid letter
+            5. Keep track of letters the player has guessed
+            6. Show the player their progress
+            7. Finish when the player has guessed the word
+         
     Using Pseudocode to Design the Game
     Tracking the State of the Word 
     Designing the Game Loop 
