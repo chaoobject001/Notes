@@ -465,10 +465,44 @@ Chapter 7: Creating a Hangman Game
             7. Finish when the player has guessed the word
          
     Using Pseudocode to Design the Game
+        Pick a random word
+        While word is not gussed {
+            Display current player progress
+            Get a guess from player
+            if plays wants to quit {
+                quit the game
+            } 
+            else if the guess is not a single character {
+                prompt player to pick a single character 
+            }
+            else {
+                if guessed character is part of the word {
+                    update game progress
+                }
+            }
+        } 
+        Prompt player on guessing the word
+
     Tracking the State of the Word 
+        by array of blanks for each letter in the word
+        each blank can be represented by the string "_"
+
     Designing the Game Loop 
+        A simple game loop
+            1. Take user input
+            2. Update game state
+            3. Display current state of game
+
     Coding the Game 
-    Choosing a Random Word
+        Choosing a Random Word
+            Ex. 
+                var words = [
+                    "Encapsulation",
+                    "Abstraction", 
+                    "Inheritance",
+                    "Polymorphism"
+                ];
+                var word = words[Math.floor(Math.random() * words.length)];    
     Creating the Answer Array
     Coding the Game Loop 
     Ending the Game 
