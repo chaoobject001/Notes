@@ -514,7 +514,16 @@ Chapter 7: Creating a Hangman Game
     Coding the Game Loop 
         while (remainingLetters > 0) {
             // show player progress
+            alert(answerArray.join(" "));
             // take player input
+            var guess = prompt("Guess a letter or click Cancel to stop playing.");
+            if (guess === null) {
+                break;
+            } else if (guess.length !== 1) {
+                alert("Please enter a single letter.");
+            } else {
+                // update the game with guess
+            }
             // update answerArray and remainingLetters for every correct guess
         }
         
