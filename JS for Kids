@@ -466,7 +466,7 @@ Chapter 7: Creating a Hangman Game
          
     Using Pseudocode to Design the Game
         Pick a random word
-        While word is not gussed {
+        While word is not guessed {
             Display current player progress
             Get a guess from player
             if plays wants to quit {
@@ -503,8 +503,21 @@ Chapter 7: Creating a Hangman Game
                     "Polymorphism"
                 ];
                 var word = words[Math.floor(Math.random() * words.length)];    
+    
     Creating the Answer Array
+        var answerArray = [];
+        for (var i = 0; i < word.length; ++i) {
+            answerArray[i] = "_";
+        }
+        var remainingLetters = word.length; // decremented for every correct letter guessed
+
     Coding the Game Loop 
+        while (remainingLetters > 0) {
+            // show player progress
+            // take player input
+            // update answerArray and remainingLetters for every correct guess
+        }
+        
     Ending the Game 
     The Game Code 
     What You Learned
