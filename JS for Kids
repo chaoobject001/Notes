@@ -518,17 +518,25 @@ Chapter 7: Creating a Hangman Game
             // take player input
             var guess = prompt("Guess a letter or click Cancel to stop playing.");
             if (guess === null) {
-                break;
+                break;  // user click Cnacel, prompt return null, exit loop
             } else if (guess.length !== 1) {
                 alert("Please enter a single letter.");
             } else {
                 // update the game with guess
+                for (var j = 0; j < word.length; ++j) {
+                    if (word[j] === guess) {
+                        // update answerArray and remainingLetters for every correct guess
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    }
+                }
             }
-            // update answerArray and remainingLetters for every correct guess
         }
+        // Ending the game
+        alert(answerArray.join(" "));
+        alert("Good job! The answer was " + word);
         
-    Ending the Game 
-    The Game Code 
+    The Game Code - done 
     What You Learned
     Programming Challenges
     #1: More Words 
