@@ -465,14 +465,78 @@ Chapter 7: Creating a Hangman Game
             7. Finish when the player has guessed the word
          
     Using Pseudocode to Design the Game
+        Pick a random word
+        While word is not guessed {
+            Display current player progress
+            Get a guess from player
+            if plays wants to quit {
+                quit the game
+            } 
+            else if the guess is not a single character {
+                prompt player to pick a single character 
+            }
+            else {
+                if guessed character is part of the word {
+                    update game progress
+                }
+            }
+        } 
+        Prompt player on guessing the word
+
     Tracking the State of the Word 
+        by array of blanks for each letter in the word
+        each blank can be represented by the string "_"
+
     Designing the Game Loop 
+        A simple game loop
+            1. Take user input
+            2. Update game state
+            3. Display current state of game
+
     Coding the Game 
-    Choosing a Random Word
+        Choosing a Random Word
+            Ex. 
+                var words = [
+                    "Encapsulation",
+                    "Abstraction", 
+                    "Inheritance",
+                    "Polymorphism"
+                ];
+                var word = words[Math.floor(Math.random() * words.length)];    
+    
     Creating the Answer Array
+        var answerArray = [];
+        for (var i = 0; i < word.length; ++i) {
+            answerArray[i] = "_";
+        }
+        var remainingLetters = word.length; // decremented for every correct letter guessed
+
     Coding the Game Loop 
-    Ending the Game 
-    The Game Code 
+        while (remainingLetters > 0) {
+            // show player progress
+            alert(answerArray.join(" "));
+            // take player input
+            var guess = prompt("Guess a letter or click Cancel to stop playing.");
+            if (guess === null) {
+                break;  // user click Cnacel, prompt return null, exit loop
+            } else if (guess.length !== 1) {
+                alert("Please enter a single letter.");
+            } else {
+                // update the game with guess
+                for (var j = 0; j < word.length; ++j) {
+                    if (word[j] === guess) {
+                        // update answerArray and remainingLetters for every correct guess
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    }
+                }
+            }
+        }
+        // Ending the game
+        alert(answerArray.join(" "));
+        alert("Good job! The answer was " + word);
+        
+    The Game Code - done 
     What You Learned
     Programming Challenges
     #1: More Words 
