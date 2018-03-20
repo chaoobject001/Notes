@@ -479,9 +479,75 @@ Chapter 7: Creating a Hangman Game
     #2: Capital Letters
     #3: Limiting Guesses
     #4: Fixing a Bug 
-Chapter 8: Functions 
+Chapter 8: Functions
+    Function: for code reuse and composition 
+    The Basic Anatomy of a Function
+        function () {
+            // function body
+        }
+    Creating a Simple Function 
+        var greet = function() {
+            console.log("Hello");
+        };
+    Calling a Function: 
+    Ex. Calling function without return value 
+        greet(); 
+        Hello
+       <undefined
+
+        return value is output by function
+        if no value is returned, "undefined" is returned 
+         
+    Passing Arguments into Functions
+    Printing Cat Faces! 
+    Passing Multiple Arguments to a Function
+    Returning Values from Functions 
+    Using Function Calls as Values 
+    Using Functions to Simplify Code
+    A Function to Pick a Random Word
+    A Random Insult Generator 
+    Making the Random Insult Generator into a Function
+    Leaving a Function Early with return 
+    Using return Multiple Times Instead of if...else Statements 
+    What You Learned 
+    Programming Challenges 
+    #1: Doing Arithmetic with Functions 
+    #2: Are These Arrays the Same? 
+    #3: Hangman, Using Functions 
+
 Part II: Advanced JavaScript
-Chapter 9: The DOM and jQuery 
+Chapter 9: The DOM and jQuery
+    DOM: Document Object Model
+    Selecting DOM Elements 
+        Using id to Identify Elements 
+        Selecting an Element Using getElementById
+            <h1 id="main-heading"> Hello </h1>
+            var headingElement = document.getElementById("main-heading")
+            => returns a DOM object that corresponds to id
+        
+        Replacing the Heading Text Using the DOM 
+        <script>
+            var headingElement = document.getElementById("main-heading");
+            console.log(headingElement.innerHTML);
+            var newHeadingText = prompt("Please provide a new heading:");
+            headingElement.innerHTML = newHeadingText;
+        </script>
+
+    Using jQuery to Work with the DOM Tree 
+        JQuery: a JS library to work with DOM elements
+        Loading jQuery on Your HTML Page 
+            https://code.jquery.com/jquery-2.1.0.js
+        Replacing the Heading Text Using jQuery 
+    Creating New Elements with jQuery 
+    Animating Elements with jQuery 
+    Chaining jQuery Animations 
+    What You Learned 
+    Programming Challenges 
+    #1: Listing Your Friends with jQuery
+    (And Making Them Smell!) 
+    #2: Making a Heading Flash
+    #3: Delaying Animations
+    #4: Using fadeTo
 Chapter 10: Interactive Programming 
 Chapter 11: Find the Buried Treasure! 
 Chapter 12: Object-Oriented Programming 
