@@ -114,13 +114,36 @@ Ch 2 Program Structure
 
     Keywords and reserved words: some JS environment may allow reserved word as variable name
      
-    The environment
-         
+    The environment = 
+        collection of variables and their values at a given time,
+        conatins variables as part of the language standard 
+  
     Functions 
-    The console.log function 
+        Function = a piece of grogram wrapped in a value
+        Execute (function) is also invokeing, calling or applying (functions)
+        Arguments = values given to function
+    
+    The console.log function
+        console.log is an expression that retrives property from value held by the console variable 
+        
     Return values 
+        Display text or dialog box is a "side-effect"
+        Function produces value by returning value 
+        Anything produces value is an expression in JavaScript 
+
     prompt and confirm 
-    Control flow 
+        confirm: 
+            user click OK to return true
+            user click Cancel to return false 
+        prompt: 
+            user input text, returned by prompt
+                
+    Control flow
+        Ex.
+            var theNumber = Number(prompt("pick a number", "")); 
+            Number convert string to a number; 
+            Similar functions are String and Boolean that convert values to those types 
+
     Conditional execution 
     while and do loops 
     Indenting Code 
