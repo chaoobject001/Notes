@@ -167,7 +167,7 @@ Ch 2 Program Structure
     Dispatching on a value with switch 
     Capitalization 
     Comments 
-    Summary 
+  Summary 
     Exercises 
       Looping a triangle
       var line = "";
@@ -178,20 +178,57 @@ Ch 2 Program Structure
         }
       }
 
+      FizzBuzz    
+      for (var i = 0; i <= 100; ++i) {
+        if (i % 15 === 0) {
+          console.log("FizzBuzz" + "\n");
+        } else if (i % 5 === 0) {
+          console.log("Buzz" + "\n");
+        } else if (i % 3 === 0) {
+          console.log("Fizz" + "\n");
+        } else {
+          console.log(i + "\n");
+        }
+      }
+
+      Chess board
+      var width = 8, height = 8;
+      
+      var oddLine = "";
+      var evenLine = "";
+
+      for (var i = 0; i < height; ++i) {
+        if (i%2) {
+          oddLine += "#";
+          evenLine += " ";
+        } else {
+          oddLine += " ";
+          evenLine += "#";
+        }
+      }
+
+      for (var j = 0; j < height; ++j) {
+        if (j%2) {
+          console.log(evenLine);
+        } else {
+          console.log(oddLine);
+        }
+      }
+
 Ch 3 Functions
-    Defining a function 
-    Parameters and scopes 
-    Nested scope 
-    Functions as values 
-    Declaration notation 
-    The call stack 
-    Optional Arguments 
-    Closure 
-    Recursion 
-    Growing functions 
-    Functions and side effects 
-    Summary 
-    Exercises 
+  Defining a function 
+  Parameters and scopes 
+  Nested scope 
+  Functions as values 
+  Declaration notation 
+  The call stack 
+  Optional Arguments 
+  Closure 
+  Recursion 
+  Growing functions 
+  Functions and side effects 
+  Summary 
+  Exercises 
 Ch 4 Data Structures: Objects and Arrays
     The weresquirrel 
     Data sets 
