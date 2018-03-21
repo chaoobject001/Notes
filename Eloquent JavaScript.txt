@@ -145,9 +145,21 @@ Ch 2 Program Structure
             Number convert string to a number; 
             Similar functions are String and Boolean that convert values to those types 
 
-    Conditional execution 
-        
+    Conditional execution - written with if keyword 
+			Ex. 
+				var theNumber = Number(prompt("Pick a number", ""));
+        if (!isNaN(theNumber))
+          alert("Your Number is the square root of " + theNumber * theNumber);
+
     while and do loops 
+      Ex. 
+        var number = 0;
+        while (number <= 12) {
+          console.log(number);
+          number += 2;
+        }
+      block = a sequence of statements enclosed in braces
+
     Indenting Code 
     for loops 
     Breaking Out of a Loop 
@@ -157,6 +169,15 @@ Ch 2 Program Structure
     Comments 
     Summary 
     Exercises 
+      Looping a triangle
+      var line = "";
+      for (var i = 0; i <= 6; ++i) {
+        line += "*";
+        for (var j = 0; j <= 6; ++j) {
+          console.log(line + '\n');
+        }
+      }
+
 Ch 3 Functions
     Defining a function 
     Parameters and scopes 
