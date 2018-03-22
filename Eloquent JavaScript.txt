@@ -231,11 +231,22 @@ Ch 3 Functions
       square(12); // => 144
 
     Function expression = an expression starts with keyword function
-    Function has parameters and body
+    Function has 0 to multiple parameters and body
     Body 
       - contains statement(s) to be executed when function is called 
       - enclosed within braces 
+    keyword return
+      - return value to calling code 
+      - if not follow by expression, return "undefined" 
   Parameters and scopes 
+    parameters 
+      - like regular variables
+      - initialized by caller of function
+    parameters & other variable created inside function are "local" to the function
+    variables created outside of any function are global
+      - global variables can be accessed from inside of a function
+       
+
   Nested scope 
   Functions as values 
   Declaration notation 
