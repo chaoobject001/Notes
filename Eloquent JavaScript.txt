@@ -216,7 +216,25 @@ Ch 2 Program Structure
       }
 
 Ch 3 Functions
-  Defining a function 
+  Function 
+    - wrapping a piece of program in a value
+      - to structure larger program 
+      - to reduce repetition 
+      - to associate names w/ subprograms
+      - to isolate subprogram from each other 
+  Defining a function
+    Function definition = variable definition for a function
+    Ex. a function that produces square of a given number 
+      var square = function(x) {
+        return x * x;
+      };
+      square(12); // => 144
+
+    Function expression = an expression starts with keyword function
+    Function has parameters and body
+    Body 
+      - contains statement(s) to be executed when function is called 
+      - enclosed within braces 
   Parameters and scopes 
   Nested scope 
   Functions as values 
