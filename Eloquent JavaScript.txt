@@ -246,8 +246,14 @@ Ch 3 Functions
     variables created outside of any function are global
       - global variables can be accessed from inside of a function
        
-
-  Nested scope 
+  Nested scope: functions created within other functions producing several degrees of locality 
+    Ex.
+      var landscape = function() {
+          result = "";
+          var flat = function(size) {
+              
+          }
+      };
   Functions as values 
   Declaration notation 
   The call stack 
