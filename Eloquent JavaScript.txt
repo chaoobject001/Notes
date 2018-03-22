@@ -197,7 +197,7 @@ Ch 2 Program Structure
       var oddLine = "";
       var evenLine = "";
 
-      for (var i = 0; i < height; ++i) {
+      for (var i = 0; i < width; ++i) {
         if (i%2) {
           oddLine += "#";
           evenLine += " ";
