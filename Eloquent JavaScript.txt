@@ -398,8 +398,32 @@ Ch 3 Functions
       }
       
     Recursion
+      function isEven(num) {
+        if (num === 0) {
+          return true;
+        } else if (num === 1) {
+          return false;
+        } else if (num > 0) {
+          return isEven(num - 2);
+        } else {
+          return isEven(num + 2);
+        }
+      }
 
     Bean counting
+      function countChar(token, char) {
+        var result = 0;
+        for (var count = 0; count < token.length; count++) {
+          if (token.charAt(count) === char) {
+            result++;
+          }
+        }
+        return result;
+      }
+      function countBs(token) {
+        return countChar(token, "B");
+      }
+
 Ch 4 Data Structures: Objects and Arrays
     The weresquirrel 
     Data sets 
