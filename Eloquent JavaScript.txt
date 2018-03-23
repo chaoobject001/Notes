@@ -336,11 +336,70 @@ Ch 3 Functions
     var twice = multiplier(2);
     console.log(twice(5)); // => 10 
 
-  Recursion - 
+  Recursion - a function calls itself
+    Ex. alternative implementation of power
+      function power(base, exponent) {
+        if (exponent === 0) 
+          return 1; // 0th power of any base is 1
+        else 
+          return base * power(base, exponent - 1); 
+      }
+      console.log(power(2, 3)); // => 8
+    Warning: in typical JavaScript implementation, 
+      this is about 10 times slower than looping
+    PRO:
+      Some problems are much easier to solve with recursion than loop
+      , like exploring or processing "branches", each branching out again into more branches
+      Ex.
+        function findSolution(target) {
+          function find(start, history) {
+            if (start === target) {
+              return history;
+            } else if (start > target) {
+              return null;
+            } else {
+              return find(start + 5, "(" + history + " + 5)") || find(start * 3, "(" + history + " * 3)");
+            }
+          }
+          return find(1, "1");
+        }
+
+        console.log(findSolution(24));
+        // => (((1 * 3) + 5) * 3)
+
   Growing functions 
+    The easier to find a good name for function, the better you understand the concept of the function
+    Pick out single concept to extract function from complex logic
+    Avoid to add cleverness unless it is absolutely needed 
+
   Functions and side effects 
-  Summary 
+    Two types of function (can be of both):
+      1. called for side effect
+      2. called for returned value
+    Functions that return values are useful in more situations
+    A pure function:
+      - No side-effects
+      - Independent from side effects of other code or global variables
+      - When called with the same parameters, always returns the same value 
+    However, use of side effect can sometimes be efficient
+
+  Summary
+    
   Exercises 
+    Minimum
+      function Minimum(first, second) {
+        if (first === second) {
+          return null;
+        } else if (first < second) {
+          return first;
+        } else {
+          return second;
+        }
+      }
+      
+    Recursion
+
+    Bean counting
 Ch 4 Data Structures: Objects and Arrays
     The weresquirrel 
     Data sets 
