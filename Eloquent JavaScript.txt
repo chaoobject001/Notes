@@ -247,19 +247,96 @@ Ch 3 Functions
       - global variables can be accessed from inside of a function
        
   Nested scope: functions created within other functions producing several degrees of locality 
+    - each local scope can also see all local scopes that contain it.
+
     Ex.
       var landscape = function() {
-          result = "";
-          var flat = function(size) {
-              
+        result = "";
+        var flat = function(size) {
+          for (var count = 0; count < size; count++)
+            result += "_";      
+        };
+        var mountain = function(size) {
+          result += "/";
+          for (var count = 0; count < size; count++) {
+            result += "'";
           }
-      };
-  Functions as values 
+          result += "\\";
+        };
+      flat(3);
+      mountain(4);
+      flat(6);
+      mountain(1);
+      flat(1);
+      return result;
+    };
+
+    console.log(landscape());
+
+    Lexical scoping: Variables in function bodies and at the top level of the program are visible 
+    Functions are the only thing that create a new scope 
+    Use "let" for bloack scoping
+
+  Functions as values: functions can be called or passed around like other values 
+  
   Declaration notation 
-  The call stack 
+    Function declaration with hoisting  
+      Ex.
+        function square(x) {
+          return x * x;
+        }
+    Function declaration is automatically hoisted to the top of current scope 
+    WARNING: DO NOT place function declaration inside an if block or loop!
+      - Different browser / platforms behave differently
+      - Forbidden by the standard!
+
+  The call stack: where computer stores context of program flow 
+    Everytime a function is called, the current context is put on top of "stack"
+    When function returns, the top context is then removed from top of stack  
+    , and then used to continue execution
+  
+    Store stack takes memory 
+    When stack gets too big, computer fail with a message like "out of stack space" or "too much recursion"
+
+    Ex. Recursion without kill condition 
+      function chicken() {
+        return egg();
+      }
+      function egg() {
+        return chicken();
+      }
+      console.log(chicken() + " came first.");
+
   Optional Arguments 
-  Closure 
-  Recursion 
+    Extra parameters passed into a function are ignored
+    If expected parameters are not passed into a function, the missing parameter is assigned with "undefined"
+    CON: No warning for passing the wrong number of arguments to functions
+    PRO: Enable "optional" arguments
+    Ex.
+      function power(base, exponent) {
+        if (exponent == undefined) 
+          exponent = 2; // if exponent is undefined, return base square
+        var result = 1;
+        for (var count = 0; count < exponent; count++) {
+          result *= base;
+        }
+        return result;
+      } 
+      console.log(power(4));    // => 16
+      console.log(power(4, 3)); // => 64 
+
+  Closure: reference a specific instance of local variable within an enclosing function 
+  Ex.
+    function multiplier(factor) {
+      return function(number) {
+        return factor * number;
+      };
+    }
+
+    var twice = multiplier(2);
+    console.log(twice(5)); // => 10 
+
+  Recursion - 
   Growing functions 
   Functions and side effects 
   Summary 
