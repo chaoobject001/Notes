@@ -425,23 +425,43 @@ Ch 3 Functions
       }
 
 Ch 4 Data Structures: Objects and Arrays
-    The weresquirrel 
-    Data sets 
-    Properties 
-    Methods 
-    Objects 
-    Mutability 
-    The lycanthrope’s log 
-    Computing correlation 
-    Objects as maps 
-    The final analysis 
-    Further arrayology 
-    Strings and their properties 
-    The arguments object 
-    The Math object 
-    The global object 
-    Summary 
-    Exercises 
+  Objects group values
+
+  The weresquirrel 
+
+  Data sets 
+    Array - a list of values b/t square brackets, separated by commas
+    Access element with index: listofNumbers[0]
+  
+  Properties 
+    Except null and undefined, all JS values have properties
+    Two common ways to access properties:
+      1. dot notation: 
+        value.x gets the property of value called "x"
+      2. square brackets:
+        value[x] tries to evaluate expression x and use the result as the property name 
+      If the propery name is NOT a valid variable name, it can ONLY be accessed by square brackets
+
+  Methods
+    In addition to length property, both string and array contains properties referring to function values
+    Ex. toUpperCase as a string's property of function value type
+    var doh = "Doh";
+    console.log(typeof doh.toUpperCase);  // => function
+    console.log(doh.toUpperCase());       // => "DOH"
+     
+  Objects 
+  Mutability 
+  The lycanthrope’s log 
+  Computing correlation 
+  Objects as maps 
+  The final analysis 
+  Further arrayology 
+  Strings and their properties 
+  The arguments object 
+  The Math object 
+  The global object 
+  Summary 
+  Exercises 
 Ch 5 Higher-Order Functions 
     Abstraction 
     Abstracting array traversal 
