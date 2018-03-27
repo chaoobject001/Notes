@@ -445,12 +445,42 @@ Ch 4 Data Structures: Objects and Arrays
   Methods
     In addition to length property, both string and array contains properties referring to function values
     Ex. toUpperCase as a string's property of function value type
-    var doh = "Doh";
-    console.log(typeof doh.toUpperCase);  // => function
-    console.log(doh.toUpperCase());       // => "DOH"
-     
-  Objects 
-  Mutability 
+      var doh = "Doh";
+      console.log(typeof doh.toUpperCase);  // => function
+      console.log(doh.toUpperCase());       // => "DOH"
+    Methods = Properties containing functions
+      Ex.
+        push  - Add value to the end of array
+        pop   - Remove and return value from the end of array
+        join  - return a string with all array elements connected by provided 
+  Objects
+    Object = arbitrary collection of properties, added or removed as needed
+    Properties whose names are not valid variable names or valid numbers have to be quoted
+    Two usages of curly braces:
+      1. start a block of statements
+      2. describe objects
+    Access a non-existing property produce value "undefined"
+    Assign an existing property with "=" operator repaces the property's value
+    Assign a non-existing property with "=" operator creates a new property
+    Apply unary operator "delete" to remove named property from an object
+      Ex.
+        var anObject = {left:1, right:2};
+        delete anObject.left;
+    Check if an object has specified property with binary "in" operator
+    Ex.
+      console.log("right" in anObject); // => true
+      console.log("left" in anObject); // => false
+    Array = object for storing sequence of things
+    Ex. 
+      typeof [1, 2];  // => "object"  
+
+  Mutability
+    values such as string, number or Booleans are immutable 
+    - they can be combined to derive new values 
+    - However, a specific value will always remain the same 
+
+    == operator return true when comparing 
+
   The lycanthrope’s log 
   Computing correlation 
   Objects as maps 
