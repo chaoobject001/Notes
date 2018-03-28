@@ -479,10 +479,47 @@ Ch 4 Data Structures: Objects and Arrays
     - they can be combined to derive new values 
     - However, a specific value will always remain the same 
 
-    == operator return true when comparing 
+    == operator 
+      return true when comparing the same object
+      return false when comparing different objects, even with same content 
+      No deep comparison built into JS
 
   The lycanthrope’s log 
+    Correlation = measure dependence b/t Variables, usually from -1 to 1
+    Zero correlation = two variables are not related
+    One correlation = two variables are perfectly related
+    Negative one correlation = two variables are perfectly related in opposite (one true; one false)
+
+    phi(φ) coefficient = correlation for binary variables
+
+    phi = (n11n00 - n10n01) / (n1x*n0x*nx1*nx0) ^ (1/2) 
+
+    n11: Squirrel, pizza        - 1   => table[3]
+    n00: No squirrel, no pizza  - 76  => table[0]
+    n01: No squirrel, pizza     - 9   => table[1]
+    n10: Squirrel, no pizza     - 4   => table[2]
+
+    n1x: all Squirrel regardless pizza -> (4+1) = 5
+    n0x: all No squirrel regardless pizza -> (76+9) = 85
+    nx1: all pizza, regardless squirrel -> (9+1) = 10
+    nx0: all No pizza, regardless squirrel -> (76+4) = 80
+
+    phi is about 0.069
+
   Computing correlation 
+    All results can be grouped as four element array ([76, 9, 4, 1]), from 00, 01, 10, 11
+    phi can be calculated as following:
+    Ex.
+      function phi(table) {
+        return (table[3] * table[0] - table[2] * table[1]) / 
+          Math.sqrt((table[2] + table[3]) *
+                    (table[0] + table[1]) *
+                    (table[1] + table[3]) *
+                    (table[0] + table[2])
+            );
+      }
+
+
   Objects as maps 
   The final analysis 
   Further arrayology 
