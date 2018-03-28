@@ -518,6 +518,8 @@ Ch 4 Data Structures: Objects and Arrays
                     (table[0] + table[2])
             );
       }
+      console.log(phi([76, 9, 4, 1]));  // => 0.068599434
+      
 
 
   Objects as maps 
