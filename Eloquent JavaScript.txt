@@ -519,11 +519,52 @@ Ch 4 Data Structures: Objects and Arrays
             );
       }
       console.log(phi([76, 9, 4, 1]));  // => 0.068599434
-      
 
+    To sum up all combination of a specific event v. squirrel incident
+    Ex.
+      function hasEvent(event, entry) {
+        return entry.events.indexOf(event) != -1;
+        // if an event does not exist in "events" indexOh() returns -1
+      }   
+      function tableFor(event, journal) {
+        var table = [0, 0, 0, 0]; // before lopping, initialize an empty table
+        for (var i = 0; i < journal.length; i++) {
+          var entry = journal[i], index = 0;  // iterate through each entry in journal, default: no event, no squirrel incident
+          if (hasEvent(event, entry)) index += 1;
+          if (entry.squirrel) index += 2;
+          table[index] += 1;  // add entry to one of the expected categories 
+        }
+        return table;
+      }
+      console.log(tableFor("pizza", JOURNAL));  // => [76, 9, 4, 1]
+  
+  Objects as maps
+    One possible way of storing records is to store records in an array 
+      - but lookup for a particular entry can be cumbersome
+      - require looping over the whole array
+    A better way:
+      Store records as named properties in an object
+      - create / access via []
+      - check for property with "in" operator 
+    Ex.
+      var map = {};
+      function storePhi(event, phi) {
+        map[event] = phi;
+      }
 
-  Objects as maps 
+      storePhi("pizza", 0.069);
+      storePhi("touched tree", -0.081);
+      console.log("pizza" in map);    // => true
+      console.log(map["touched tree"]);  // => -0.081
+
+    A map correlates values in one domain with another
+    Ex.
+      for (var event in map) {
+        console.log("The correlation of '" + event + "' is " + map[event]);
+      }  
+    
   The final analysis 
+  
   Further arrayology 
   Strings and their properties 
   The arguments object 
