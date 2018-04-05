@@ -564,8 +564,41 @@ Ch 4 Data Structures: Objects and Arrays
       }  
     
   The final analysis 
-  
-  Further arrayology 
+    [Require Journal records]
+
+  Further arrayology - some general array methods
+    shift() & unshift()
+    Ex.
+      var todoList = [];
+      function rememberTo(task) {
+        todoList.push(task);
+      }
+      function whatIsNext() {
+        return todoList.shift();  // remove from front of array
+      }
+      function urgentlyRememberTo(task) {
+        todoList.unshift(task); // add from front of array
+      }
+    
+    indexOf() & lastIndexOf()
+      indexOf() / lastIndexOf() returns index of the first / last occurrence in array
+      both take second parameter as alternative index to start from 
+      only works against primitive types in array
+    Ex. 
+      console.log([1, 2, 3, 2, 1].indexOf(2));      // => 1
+      console.log([1, 2, 3, 2, 1].lastIndexOf(2));  // => 3
+      console.log([1, 2, 3, 2, 1].indexOf(2, 2));   // => 3
+
+    find() & findIndex() 
+
+    findIndex() returns index of first element in array 
+      that satisfies the provided testing function.
+    
+    
+    slice()
+      returns 
+
+
   Strings and their properties 
   The arguments object 
   The Math object 
