@@ -589,10 +589,22 @@ Ch 4 Data Structures: Objects and Arrays
       console.log([1, 2, 3, 2, 1].lastIndexOf(2));  // => 3
       console.log([1, 2, 3, 2, 1].indexOf(2, 2));   // => 3
 
-    find() & findIndex() 
+    find() & findIndex() to search for reference type in array
 
-    findIndex() returns index of first element in array 
-      that satisfies the provided testing function.
+      find() returns value of first element in array 
+      that satisfies the provided testing function 
+      Ex. 
+        var data = [[1, 2], [3, 4]];
+        
+        function propertyZeroIsThree(item) {
+          return item[0] === 3;
+        }
+
+        var found = data.find(propertyZeroIsThree);
+        console.log(found); // => [3, 4] 
+
+      findIndex() returns index of first element in array 
+      that satisfies the provided testing function
     
     
     slice()
