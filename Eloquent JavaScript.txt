@@ -605,14 +605,65 @@ Ch 4 Data Structures: Objects and Arrays
 
       findIndex() returns index of first element in array 
       that satisfies the provided testing function
-    
+      Ex.
+        var data = [[1, 2], [3, 4]];
+        
+        function propertyZeroIsThree(item) {
+          return item[0] === 3;
+        }
+
+        var found = data.findIndex(propertyZeroIsThree);
+        console.log(found); // => 1
     
     slice()
-      returns 
-
+      takes one argument: return a new array starting from index given to the end of array
+      takes two arguments: start and end index and return a new array 
+      from start index to (end index - 1)
+      Ex.
+        console.log([0, 1, 2, 3, 4].slice(2, 4)); // => [2, 3]
+        console.log([0, 1, 2, 3, 4].slice(2)); // => [2, 3, 4]
+    
+    connect()
+      takes an array and return a new array with calling array followed by array passing in 
+      similar to + with string
+      Ex. remove one element at index provided
+        function remove (array, index) {
+          return array.slice(0, index).concat(
+            array.slice(index + 1)
+          );
+        }
+        console.log(remove([0, 1, 2, 3, 4], 2)); // => [0, 1, 3, 4]
 
   Strings and their properties 
-  The arguments object 
+    slice() & indexOf() works the same way as array
+    but indexOf() can take string with more than one character 
+    Ex.
+      console.log("coconuts".slice(4, 7));    // nut
+      console.log("coconuts".indexOf("nu"));  // => 4
+
+    trim() from both ends of string, but not the space in between non-whaitespace characters
+    Ex. 
+      console.log("  o kay \n ".trim()); // => "o kay"
+      
+    length property, charAt() and []
+    Ex.
+      var string = "abc";
+      console.log(string.length);     // => 3
+      console.log(string.charAt(0));  // => a
+      console.log(string[1]);         // => b
+
+  The arguments object
+    Every function has "arguments" property
+    "arguments" is an object that holds all arguments passing in 
+    Function can take more or fewer arguments than specified parameters 
+    The arguments object has length property for the number of arguments been passed in 
+    Hoever, arguments is NOT an array -> No slice() or indexOf()
+    Ex.
+      function argCounter() {
+        console.log("There are", arguments.length, "argument\(s\)." )
+      }
+      argCounter("one", "two", "three");  // => There are 3 argument(s).
+
   The Math object 
   The global object 
   Summary 
