@@ -664,12 +664,65 @@ Ch 4 Data Structures: Objects and Arrays
       }
       argCounter("one", "two", "three");  // => There are 3 argument(s).
 
-  The Math object 
+  The Math object
+    Math.max
+    Math.min
+    Math.sqrt
+
+    Math.sin / Math.asin
+    Math.cos / Math.acos
+    Math.tan / Math.atan
+
+    Math.PI
+    Ex. Given a circle with specified radius, center at (0,0), return a random point along the circle
+      function randomPointOnCircle(radius) {
+        var angle = Math.random() * 2 * Math.PI;  // a random angle in radians 
+        return {
+          x: radius * Math.cos(angle),
+          y: radius * Math.sin(angle)
+        };
+      }
+      console.log(randomPointOnCircle(2)); // => {x: -0.8981896522765914, y: -1.7869682002048206}
+
+    Math object acts as namespace so that these functions and values do not have to be global variables 
+    Warning: JavaScript does not stop or warn against duplicated variable!!!
+
+    Math.random() returns a pseudorandom number between zero (inclusive) and one (exclusive) => [0,1)
+    Math.floor() round down to the nearest whole number
+    Math.ceil() round up to the nearest whole number
+    Math.round() round to nearest whole number => round up on .5+, else round down
+
   The global object 
+    A global variable can be used as a property of global object
+    In browser, global object is "window" variable
+    Ex.
+      var myVar = 10;
+      console.log("myVar" in window); // => true
+      console.log(window.myVar);  // => 10
+
   Summary 
+    Array and object both group values
+    Other than null and undefined, values in JavaScript has properties
+    Properties are accessed via dot notation and [] notation
+    Methods are properties with values that are functions
+    Objects can also be map, assoicating values with name
+    "in" Operator 
+      checks if an object holds a property with given name
+      used by for loop  - for (var name in object) - to loop over object's properties 
+
   Exercises 
+    The sum of a range
+
+    Reversing an array
+
+    A list
+
+    Deep comparison
+    
 Ch 5 Higher-Order Functions 
+- Break down a solution into simpler concept that is represnted as separate functions 
     Abstraction 
+      
     Abstracting array traversal 
     Higher-order functions 
     Passing along arguments 
