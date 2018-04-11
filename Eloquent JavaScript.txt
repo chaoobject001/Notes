@@ -769,6 +769,14 @@ Ch 5 Higher-Order Functions
         
     Passing along arguments 
       apply() methof of JavaScript function
+      ex.
+        function transparentWrapping(f) {
+          return function() {
+            return f.apply(null, arguments);
+          };
+        }
+        // the returned function passes all given argument to f
+        // The first argument of apply(), null, simulate a method call
       
     JSON 
     Filtering an array 
