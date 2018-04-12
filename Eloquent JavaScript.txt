@@ -712,7 +712,52 @@ Ch 4 Data Structures: Objects and Arrays
 
   Exercises 
     The sum of a range
-
+      function range(start, end, step) {
+        if (step === undefined) {
+          let array = [];
+          while (start <= end) {
+            array.push(start++);
+          }
+          return array;
+        } else {
+          if (step < 0) {
+            // desending
+            if (start < end) {
+              return undefined
+            } else {
+              let array = [];
+              while (start >= end) {
+                array.push(start);                
+                start += step;
+                
+              }
+              return array;
+            }
+          } else if (step > 0) {
+            // asending
+            if (start > end) {
+              return undefined
+            } else {
+              let array = [];
+              while (start <= end) {
+                array.push(start);                
+                start += step;
+              }
+              return array;
+            }
+          } else {
+            return undefined;
+          }
+        }
+      }
+      function sum(a) {
+        var result = 0;
+        for (var i = 0; i < a.length; i++) {
+          result += a[i];
+        }
+        return result;
+      }
+      
     Reversing an array
 
     A list
