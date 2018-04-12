@@ -757,10 +757,40 @@ Ch 4 Data Structures: Objects and Arrays
         }
         return result;
       }
-      
+
     Reversing an array
+      function reverseArray(array) {
+        var newArray = [];
+		    var initialArrayLength = array.length;
+        for (var i = 0; i < initialArrayLength; i++) {
+          newArray.push(array.pop());
+        }
+        return newArray;
+      }
+      function reverseArrayInPlace(array) {
+        if (array.length % 2 === 0) {
+          // even
+          var switchRange= array.length / 2;
+          for (var i = 0; i < switchRange; i++) {
+            var temp = array[i];
+            array[i] = array[array.length - 1 - i];
+            array[array.length - i] = temp;
+            console.log(array);
+          }
+        } else {
+          // odd
+          var switchRange = Math.floor(array.length / 2);
+          for (var i = 0; i < switchRange; i++) {
+            var temp = array[i];
+            array[i] = array[array.length - 1 - i];
+            array[array.length - i] = temp;
+            console.log(array);
+          }
+        }
+      }
 
     A list
+      
 
     Deep comparison
     
