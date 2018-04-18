@@ -798,6 +798,16 @@ Ch 5 Higher-Order Functions
       Programer needs to abstract concept effortlessly 
 
     Abstracting array traversal 
+      Build abstraction to iterate over an array & do something to each element
+        Ex. forEach - available as standard array method
+          function forEach(array, action) {
+            for (var i = 0; i < array.length; i++)
+              action(array[i]); 
+          } 
+          forEach([1, 2, 3], console.log);
+          // 1
+          // 2
+          // 3
 
     Higher-order functions 
       Higher-order functions 
@@ -865,8 +875,48 @@ Ch 5 Higher-Order Functions
       Ex. 
         console.log(JSON.parse(string).born); // => 1980
 
-    Filtering an array 
-    Transforming with map 
+    Filtering an array
+      Ex. Filter out elements in array that fails test and return them in another array
+        function filter(array, test) {
+          var passed = [];
+          for (var i = 0; i< array.length; i++) {
+            if (test(array[i])) {
+              passed.push(array[i]);
+            }
+          }
+          return passed;
+        } 
+        var array = [1, 2, 3, 4, 5];
+        console.log(array.filter(function(element) {
+          return element > 3;
+        })); // => [4, 5]
+
+        // test function is called for each element, and a value is returned by test to determine if  
+        // the element been tested will be included in the returned array
+      A function is pure if it does not modifiy it's argument passed in
+      
+    Transforming with map
+      map method transforms an array by applying a function to each element AND
+      return a new array with same length as input array, filled with transformed elements 
+      Ex.
+        function map(array, transform) {
+          var mapped = [];
+          for (var i = ; i < array.length; i++) {
+            mapped.push(transform(array[i]));
+          }
+          return mapped; 
+        }
+
+        var overNinety = ancestry.filter(function(person) {
+          return person.died - peron.born > 90;
+        });
+
+        console.log(map(overNinety, function(person) {
+          return person.name;
+        }));
+        // return an array of names of people who lived over 90 years
+
+
     Summarizing with reduce 
     Composability 
     The cost 
