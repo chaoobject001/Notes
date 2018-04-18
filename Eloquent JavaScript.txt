@@ -917,10 +917,66 @@ Ch 5 Higher-Order Functions
         // return an array of names of people who lived over 90 years
 
 
-    Summarizing with reduce 
+    Summarizing with reduce - return single value with "reduce" or "fold" 
+      ex. sum of array or locate an element with highest / lowest value 
+      paramenters of reduce:
+        array
+        combining function 
+        start value 
+      ex.
+        function reduce(array, combine, start) {
+          var current = start;
+          for (var i = 0; i < array.length; i++) {
+            current = combine(current, array[i]);
+          }
+          return current;
+        }
+        
+        console.log(reduce([1, 2, 3, 4], function(a, b) {
+          return a + b;
+        }, 0)); // => 10
+      
+      Use array standard method "reduce"
+        arr.reduce(callback[, initialValue])
+        Ex.
+          const array1 = [1, 2, 3, 4];
+          // display highest value in array
+          const max = (accumulator, currentValue) => {
+	          if (accumulator > currentValue) {
+		          return accumulator;
+            } else {
+      	      return currentValue;
+            }
+          };
+          console.log(array1.reduce(max));  // => 4
+
     Composability 
+      Advantage of higher-order functions is for composing functions
+      
+      Ex. find the average of all the even / odd number in an array
+      var array = [1, 2, 3, 4, 5, 6];
+      function isEven(e) {
+        return e%2 === 0;
+      }
+
+      function isOdd(e) {
+        return e%2 !== 0;
+      }
+
+      function avg(array) {
+        function plus(a, b) {return a + b;}
+        return array.reduce(plus) / array.length;
+      }
+
+      console.log(avg(array.filter(isEven))); // print average value of even number => 4
+      console.log(avg(array.filter(isOdd))); // print average value of odd number => 3
+
     The cost 
-    Great-great-great-great-… 
+      function calls in JavaScript is expensive compare to loop bodies
+
+    Great-great-great-great-…
+      
+       
     Binding 
     Summary 
     Exercises 
