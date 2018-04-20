@@ -975,7 +975,66 @@ Ch 5 Higher-Order Functions
       function calls in JavaScript is expensive compare to loop bodies
 
     Great-great-great-great-…
+      Task: 
+        to traverse a tree (like family tree) and for each node, "reduce" the information into single value
+        until top / bottom / edge of the tree is reached or other condition is fullfilled
+      Ex. Identify DNA inherited from a particular ancestor for a given person in family tree
+      A reduction function with recursive call can be used to traverse the family tree from both partents side  
+      Ex.
+        // Assume that we create an object (byName) that holds all members of family tree as properties, 
+        // where each member's name is used as name of a property, and the value of the property is the person object
+        // where each person object has property mother and property father
+        var byName = {};
+        ancestry.forEach(function(person) {
+          byName[person.name] = person;
+        }); 
       
+        // reduceAncestors function takes 
+        // - a person object - (person)
+        // - a given function to reduce a node in family tree into a value - (f)
+        // - a default value to return at termination condition like edge of tree - (defaultValue) 
+        function reduceAncestors(person, f, defaultValue) {
+          function valueFor(person) {
+            if (person == null) {
+              return defaultValue; // at top end of family tree
+            } else { 
+              // apply given function f to both parents' nodes
+              return f(person, valueFor(byName[person.mother]), valueFor(byName[person.father]));
+            }
+            return valueFor(person);
+          }
+        }
+
+        // sharedDNA function takes 
+        // - a person object (person)
+        // - a person object reference by property fromMother
+        // - a person object reference by property fromFather 
+        function sharedDNA(person, fromMother, fromFather) {
+          if (person.name === "Pauwels van Haverbeke")
+            return 1; // 1: starting point - the same person has 100% identical DNA
+          else 
+            return (fromMother + fromFather) / 2; // 
+        }
+        var ph = byName["Philibert Haverbeke"];
+        console.log(reduceAncestors(ph, sharedDNA, 0) / 4); // => 0.00049
+      
+      Another Task:
+        function countAncestors(person, test) {
+          function combine(person, fromMother, fromFather) {
+            var thisOneCounts = test(person);
+            return fromMother + fromFather + (thisoneCounts ? 1 : 0);
+          }
+          return reduceAncestors(person, combine, 0);
+        }
+        function longLivingPercentage(person) {
+          var all = countAncestors(person, function(person) {
+            return true;
+          }); 
+          var longLiving = countAncestors(person, function(person) {
+            return (person.died - person.born) >= 70;
+          });
+          return longLiving / all;
+        }
        
     Binding 
     Summary 
