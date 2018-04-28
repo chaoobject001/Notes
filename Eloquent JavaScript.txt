@@ -1037,6 +1037,24 @@ Ch 5 Higher-Order Functions
         }
        
     Binding 
+      All functions have "bind" method
+      "bind" calls original function with some fixed arguments
+      The first argument is the object that will take the function as its method
+      Ex.
+        var theSet = ["Alpha", "Beta", "Gamma", "Theta"];
+        var inputSet = [ "Beta", "Gamma"]
+        function isInSet(set, character) {
+          return set.indexOf(character) > -1;
+        }
+
+        console.log(inputSet.filter(function(character) {
+          return isInSet(theSet, character);
+        }));  // => ["Beta", "Gamma"]
+
+        console.log(inputSet.filter(isInSet.bind(null, theSet)));  // => ["Beta", "Gamma"]
+
+
+
     Summary 
     Exercises 
 Ch 6 The Secret Life of Objects
