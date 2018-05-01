@@ -1,0 +1,104 @@
+Arrow Functions
+Introduction
+The Arrow Function
+  What is arrow function? How is it useful?
+  => suppose to replace "function" keyword
+  foo = () => 2; // or foo = x => 2;
+
+  function foo() {
+    return 2;
+  } 
+
+  but arrows can have variations - and this can be a problem
+  other than reability 
+Arrow Function Variations
+  () => 3;
+  x => 3;
+  _ => 3; // warning - Do not user - Can be confusing or cause error
+  Three things to do with parameters - all must be enclosed with parenthesis 
+    1. default values
+    2. spread
+    3. destructuring
+  
+  (...x) apply the gather operator on parameters 
+  (x,y) => 3; // multiple parameters need to be enclosed in parenthesis
+
+  x => {try {3;} catch(e) {} } // now need to use "return" keyword to return value
+  x => {return 3;} // like this
+
+  x => ({y: x})  // return a JSON object
+
+  arrow function are anonymous 
+    - cannot be recusive 
+    - cannot reference self easily 
+    - hard to debug with anonymous functions
+
+  Name inferencing 
+  var foo = x => 3;
+  foo.name; // "foo"
+  ...but it dos not work when arrow function is passed in as argument
+  foo( x => 3 )
+ 
+Promises and This
+  p.then( function(v) {return v.id} )
+  p.then( v => v.id )
+  if v is null then exception will be thrown from anonymous function
+  - it will be difficult to debug through stack trace 
+  
+  A better way might be naming the function:
+  p.then( function extractId(v) {return v.id} ) 
+  // the code is more readable and easier to debug through stack trace 
+
+Exercise 0: The Arrow Function
+Exercise 0 Solution
+
+Block Scope
+Let vs. Var
+Closures and Explicit Blocks
+Const
+When to Use Const
+Exercise 1: Variable Scoping
+Exercise 1 Solution
+
+Default Values and the Gather/Spread Operator
+Default Values
+Lazy Expressions
+Gather and Spread Operators, Part 1
+Gather and Spread Operators, Part 2
+Using the Gather and Spread Operators
+Exercise 2
+Exercise 2 Solution
+Babel
+
+Destructuring
+Audience Q&A: TypeScript vs. JavaScript
+Array Destructuring
+Destructuring and Default Values
+Dumping Variables
+Nested Array Destructuring
+Object Destructuring
+Nested Object Destructuring
+Destructuring and Function Parameters
+Advanced Destructuring
+Exercise 3
+Exercise 3 Solution
+
+Template Strings
+Concise Properties and Methods
+Template Strings
+Tag Functions
+Exercise 4
+Exercise 4 Solution
+
+Symbols, Iterators, and Generators
+Symbols
+Well-known Symbols
+Iterators
+Creating a Custom Iterator
+Generators
+Computed Generator Methods
+Exercise 5
+Exercise 5 Solution
+
+Ranges
+Optimizing Code for the Reader
