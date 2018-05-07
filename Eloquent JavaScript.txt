@@ -171,9 +171,8 @@ Ch 2 Program Structure
     Exercises 
       Looping a triangle
       var line = "";
-      for (var i = 0; i <= 6; ++i) {
-        line += "*";
         for (var j = 0; j <= 6; ++j) {
+          line += "*";
           console.log(line + '\n');
         }
       }
