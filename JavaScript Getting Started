@@ -1,0 +1,82 @@
+Module 1
+Course Overview
+
+Module 2
+Introduction and Our First App
+Introduction
+Learning JavaScript in Plunker
+Hello World
+
+Module 3
+JavaScript Beginnings
+Introduction
+Storing Information in Variables
+Understanding Code Errors
+Strings and Numeric Variables
+Simple Operators
+Commenting Code
+Starting Our Blackjack Application
+Summary
+
+Module 4
+Types and Arrays
+Introduction
+Type Basics: Strings and Numbers
+Boolean Types
+undefined and null
+Storing Multiple Values in Arrays
+Array Features
+Adding Arrays to Blackjack
+Summary
+
+Module 5
+Program Flow
+Introduction
+Conditionals Using if()
+if … else
+switch and case
+Looping with for()
+Looping with while()
+Adding Loops to Blackjack
+Summary
+
+Module 6
+Functions
+Introduction
+Function Basics
+Passing Information to Functions
+Function Return Values
+Function Scope
+Adding Functions to Blackjack
+Summary
+
+Module 7
+Objects
+Introduction
+Object Basics
+Passing Objects to Functions
+Arrays of Objects
+JavaScript Built-in Objects
+Adding Objects to Blackjack
+Summary
+
+Module 8
+Programming for Web Pages
+Introduction
+Setting up a Web Page
+Changing Text
+Handling a Button Click
+Removing and Adding Elements
+Adding a User Interface to Blackjack
+Summary
+
+Module 9
+Finishing Our Application
+Introduction
+Setting up the Game
+Shuffling Cards
+Calculating the Score
+Taking a Card or Staying
+Completing the Game
+Summary
+Course Summary
