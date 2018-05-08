@@ -1,0 +1,54 @@
+
+JavaScript Introduction
+
+Introduction
+Kyle's Work
+Introduction to Programming
+  You don't know JS: up & going
+  Source code is not really for computer - multiple source codes can be identical computer instruction
+  Source code is for developer to read and understand what the computer is doing
+  Avoid unfounded assumptions based on memory - aim for sensible code
+
+  Syntax + Grammer (rules) = how to write JS programs as "statements"
+
+Statements
+  Ex. a = b * 2; // In JS, statements ends with semicolon
+  2 is a literal value 
+  * is the muliplication operator 
+  A word without special meaning (keyword) is a variable, an identifier - like a or b
+  left side of assignment (=) is computed and assigned to the left hand side
+
+Expressions
+  Statements are composed of phrases, known as expressions
+  For ex. in a = ((b) * (2));
+  a is an expression
+  b is an expression
+  2 is an expression
+  b * 2 is an expression
+  a = b * 2 is an assignment expression and a statement 
+
+  a = b * 2 + foo(c * 3);
+  ((a) = (((b) * (2)) + ((foo)((c) * (3))));
+  adding parentheses can improve readability 
+  operation order typically goes from left to right, so b * 2 before foo
+  except when it is overridden by operator precedence or associativity  
+
+  In JS, 2, 2.0 are the same value 
+
+Executing a Program
+Practice Coding
+Input and Output
+
+2
+JavaScript Syntax
+Operators
+Values and Types
+Code Comments
+Variables and Blocks
+Conditional Statements
+Loops
+Functions
+Scope
+Challenge 1
+Challenge 1 Solution
+ECMAScript 6
