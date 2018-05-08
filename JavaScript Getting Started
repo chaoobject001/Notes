@@ -1,16 +1,33 @@
 Module 1
 Course Overview
 
-Module 2
-Introduction and Our First App
+Module 2: Introduction and Our First App
 Introduction
-Learning JavaScript in Plunker
-Hello World
+  JavaScript Applications
+    Web Pages
+    Business Applications (TypeScript)
+    Utility Applications
+    Games
+    Native App on mobile devices (CORDOVA)
+    Mac / Windows desktop app (Electron)
+    Server side & API (Node js)
 
-Module 3
-JavaScript Beginnings
+Learning JavaScript in Plunker (plnkr.co)
+  plnkr.co login via github account
+Hello World
+  edit script.js to console.log('Hello World!');
+  
+Module 3 JavaScript Beginnings
 Introduction
+  Storing Information in Variables
+  Variables Errors 
+  String & Numeric Variables
+  Simple Operators 
+  Comments
+  Starting Blackjack App
 Storing Information in Variables
+  What is variable:
+    camel casing 
 Understanding Code Errors
 Strings and Numeric Variables
 Simple Operators
