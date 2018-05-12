@@ -41,7 +41,24 @@ Executing a Program
   JavaScript compiles on the fly and run the compiled code immediately - Error caught early on 
   
 Practice Coding
+  JS has both static error and run-time error
+  JS catches syntax error by compiling code first then executing the compiled code
+  shift + enter for multiline input on console
+  
 Input and Output
+  alert("Hello World"); // pop-up with Hello World
+  alert itself is not part of JS, but part of the browser
+  console.log("Hello World"); // another simple way for output
+
+  The "< undefined" that usually at the end of execution:
+  console environment takes last statement and evaluate for a value, then show that value
+
+  ex. a = 2; // the result of assignment expression is the value assigned, so 2 is returned 
+  ex. var b = 2; // a var staement has no return value so undefined is returned 
+
+  Another way to get input: prompt()
+  ex. var age = prompt("What is your age?");
+  prompt() returns a string represents what is typed 
 
 2
 JavaScript Syntax
