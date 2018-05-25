@@ -1,0 +1,39 @@
+Router and Route Handler
+URL defines mode of operation:
+    CRUD on item x?
+URL is set by:
+    Initial page load
+    Manual edit
+    Click link or button
+    Other event in app
+
+Router maps URL to a Route Handler
+
+Route Handler...
+    renders a template
+    or, loads model that's then available to the template
+
+Template organize HTML layout with Handlebars template 
+    {{}} holds:
+        properties
+        helpers 
+        components 
+
+Model represents persistent state 
+    typically saved on web server, 
+    but also anywhere else, like browser's local storage 
+
+Component controls how user interface behave 
+    Component = handlebars template + source file in JS
+
+Hooks are methods called automatically in app
+    Ex.
+        Component Lifecycle Hooks: run code at component initial render, re-render or destroyed  
+            willRender() hooks get called before each time a component renders
+        Route Hooks: model() load model on route 
+
+
+
+
+
+
