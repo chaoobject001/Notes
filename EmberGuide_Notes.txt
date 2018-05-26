@@ -47,7 +47,16 @@ Directory Structure
     package.json: list of current npm dependencies for app, installed in node_modules directory 
     testem.js: ember test runner testem is configured here 
     ember-cli-build.js: describes how Ember CLI build app
-     
+
+Route and Template 
+  When creating a new page that can be visited via URL, generate a route
+  Ex. An about route
+    ember generate route about
+
+  Ember route is built with 3 parts:
+  1. An entry with Ember router that maps b/t route name and specific URL
+  2. A route handler file - setup for when the route is loaded
+  3. A route template displays content of page      
 
 
 
