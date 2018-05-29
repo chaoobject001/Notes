@@ -69,4 +69,13 @@ Vendor directory holds contents compiled into application like CSS files
 CSS file in vendor directory is then put into vendor.css
 vendor.css is referenced by app/index.html
 
+ember-cli-mirage
+  Mirage is a client HTTP stubbing library, serving as data source or backend server
+  Mirage creates fake data and mimic API that can be consumed by Ember Data as server request 
+
+Application adapter:
+  Ember Data uses application adapter to determine 
+
+
+
 
