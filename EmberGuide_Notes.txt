@@ -62,4 +62,11 @@ The Model Hook
   route handler loads model with data for the page
   function model() acts as a hook, it is called when user navigate to the page
 
+Installing Addons
+  Browse addons by https://emberobserver.com/
+
+Vendor directory holds contents compiled into application like CSS files
+CSS file in vendor directory is then put into vendor.css
+vendor.css is referenced by app/index.html
+
 
