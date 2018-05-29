@@ -48,7 +48,9 @@ Directory Structure
     testem.js: ember test runner testem is configured here 
     ember-cli-build.js: describes how Ember CLI build app
      
-
+The Model Hook
+  route handler loads model with data for the page
+  function model() acts as a hook, it is called when user navigate to the page
 
 
 
