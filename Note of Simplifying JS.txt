@@ -1,0 +1,90 @@
+Code Example: https://github.com/jsmapr1/simplifying-js/
+CHapter 01
+Tip 01: Signal Unchanging Values with const as default
+  const variable cannot be changed but it is NOT immutable
+  e.g. items in a const array CAN be changed 
+  const variable can be skimed over without tracking 
+
+  Ex. variables/const/const.js
+    const taxRate = 0.1;
+    const total = 100 + (100 * taxRate);
+    // Skip 100 lines of code
+    return `Your Order is ${total}`;  // value of total cannot be changed after declaration 
+  // vs. 
+    var taxRate = 0.1;
+    var total = 100 + (100 * taxRate);
+    // Skip 100 lines of code 
+    return `Your Order is ${total}`; // conditions may alter value of total
+  
+  Contrasting const and let to address what might change 
+  Ex. variables/const/const.js
+    const taxRate = 0.1;  // fixed - known-known
+    const shipping = 5.00;  // fixed - known-known 
+    let total = 100 + (100 * taxRate) + shipping; // value of total is NOT permanent - known-unknown 
+    // skip 100 lines of code 
+    return  `Your Order is ${total}`;
+
+  Changing value of a const variable is possible with objects, arrays or other collections
+  - but it's best to avoid mutations if possible 
+  Ex. variables/const/const.js
+    const discountable = [];
+    // lines skipped
+    for (let i = 0; i < cart.length; i++) {
+      if(cart[i].discountAvailable) {
+        discountable.push(cart[i]);
+      }
+    }
+  
+  Same example without mutations
+    const discountable = cart.filter(item => item.dscountAvailable);
+
+Tip 02: Reduce Scope Conflicts with let and const
+  let is block scope; var is lexically scoped 
+  block scope variables: exist only in blocks like if or for block
+  let and const cannot be redeclared with the same name
+  var can be redeclared with the same name in the same scope
+  Decalre different / expressive names to keep detail and intent clear
+
+Tip 03: Isolate information with Block Scoped variables
+  let prevents scope conflicts in for loops and other iterations
+  variables assigned with var are functionally scoped 
+    - they are always referred to the last value assigned w/in a function
+  Ex. variables/scope/scope.js
+    function addClick(items) {
+      for (let i = 0; i < items.length; i++) {
+        items[i].onClick = function () {
+          return i; // let variable (i) declared inside block are unique per iteration 
+        };
+      }
+      return items;
+    }
+
+Tip 04: Convert Variables to Readable Strings w/ Template Literals w/out concatenation 
+  Template literal is surrounded by backticks(`) 
+  Anything that's not a string is surrounded by curly braces prefixed with $
+  Ex. variables/literals/literals.js
+    function greet(name) {
+      return `Hi, ${name}`;
+    }
+    greet('Leo'); // "Hi, Leo"
+
+  method call within template literal is also possible
+  Ex.
+    return `Hi, ${name.toUpperCase()}!`; // "Hi, LEO" 
+  
+  Another example with URL:
+    return `https://${getProvider}/${image}?width=${parseInt(width, 10)}`;
+
+Chapter 02
+
+
+
+
+
+   
+
+
+  
+
+
+
