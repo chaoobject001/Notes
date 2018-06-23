@@ -75,7 +75,103 @@ Tip 04: Convert Variables to Readable Strings w/ Template Literals w/out concate
   Another example with URL:
     return `https://${getProvider}/${image}?width=${parseInt(width, 10)}`;
 
-Chapter 02
+Chapter 02  Manage Data Collection with Arrays
+  How data or collections like objects can be converted into arrays    
+  include()
+  Spread operator (...)
+
+Tip 05: Create Flexible Collections w/ Arrays
+  Structures for collection of data: maps, sets, weakmaps, weaksets, objects and arrays
+  arrays have method such as sort(), map(), filter() and reduce()
+
+  Ex. arrays/arrays/arrays.js - example of sort and spread operator 
+  const​ team = [​'Joe'​, ​'Dyan'​, ​'Bea'​, ​'Theo'​];
+  function alphabetizeTeam(team) {
+    return [...team].sort();
+  }
+
+  Ex. arrays/arrays/arrays.js - example of filter()
+    const staff = [{
+      name: 'Wesley',
+      position: 'musician',
+    }, {
+      name: 'Davis',
+      position: 'engineer'
+    }];
+
+    function getMusicians(staff) {
+      return staff.filter(m => m.position === 'musician');
+    }
+
+    getMusicians(staff); // [{name: "Wesley", position: "musician"}]
+  
+  To iterate over an object, one needs to get keys from Object.keys() then iterate over those 
+  Ex. arrays/arrays/arrays.js - example of Object.keys()
+    const game1 = {
+      player: 'Jim Jonas',
+      hits: 2,
+      runs: 1,
+      errors: 0
+    };
+
+    const game2 = {
+      player: 'Jim Jonas',
+      hits: 3,
+      runs: 0,
+      errors: 1
+    };
+
+    const total = {};
+
+    const stats = Object.keys(game1);
+    for (let i = 0; i < stats.length; i++) {
+      const stat = stats[i];
+      if(stat !== 'player') {
+        total[stat] = game1[stat] + game2[stat];
+      }
+    }
+
+  total; // { hits: 5, runs: 1, errors: 1}
+
+  Iterable: a way for program to go through a collection one item at a time while tracking current position
+  Any action applies to arrays also applies to any data structure with iterable (eg. string)
+  OR one that can be transformed into an iterable (like with Object.keys())
+
+  Conceptually an object is a key-value store that can also be an array of arrays - with the inner arrays holding only two items
+  Ex. object as key-value store vs. array of arrays
+    const dog = {name: 'Don', color: 'black'};  // object
+    const dogPair = [
+      ['name', 'Don'],
+      ['color', 'black']
+    ];  // array of arrays
+
+    function getName(dogPair) {
+      return dogPair.find(attribute => {
+        return attribute[0] === 'name';
+      })[1]
+    } 
+
+    getName(dogPair); // 'Don'
+
+  Object.entries() - convert object to an array of arrays
+  Ex.
+    const dog = {name: 'Don', color: 'black'};  // object
+    Object.entries(dog)[0]; // ['name', 'Don']
+
+Tip 06 Check Existence in an Array with Includes() (but without checking position)
+  Ex. arrays/includes/includes.js
+    const sections = ['contact', 'shipping'];
+    function displayShipping 
+
+
+
+
+
+
+
+
+
+
 
 
 
