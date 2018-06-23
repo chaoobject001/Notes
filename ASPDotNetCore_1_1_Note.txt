@@ -1,0 +1,22 @@
+Middleware
+middleware componeents handle HTTP requests
+each component has a limited and specific role
+many components are required for an app to work correctly 
+
+Ex.
+POST to /reviews
+    Logger Middleware Component 
+    Authorizer Middle Component 
+    Router Middleware Component
+Response with HTTP 200 OK
+    Router Middleware Component
+    Authorizer Middle Component
+    Logger Middleware Component 
+
+Logger logs info about every HTTP request
+Logger sees header, query string, cookies and access tokens, 
+and it can also change info about it, and/or stop processing request
+but most likely to log info and pass along to the next component
+
+middleware is a series of components executed in order 
+
