@@ -1,38 +1,46 @@
 Ch 1 Values, Types, and Operators
-    number 13 in bits => 
-        1 1 0 1 => 
-        1 * 2^3 + 1 * 2^2 + 0 * 2^1 + 1 * 2^0 =
-        8 + 4 + 1 = 13   
-    Values: chunks of bits that represnt pieces of information
-        6 basic types of value:
-            numbers, strings, Boolean, object, functions and undefined values
-    Numbers
-        A single number is stored in 64 bits - which can represnt 2^64 different numbers 
-        Overflow: a number does NOT fit into given amount of bits
-        Represent nonwhole number: extra bit to store position of decimal point
-        Negative number: one bit for sign of number
-        Actual whole number (integer) can be precisely stored: 9 quadrillion 15 zeros   
-        Scientific notation by "e", like 2.998e8 => 299,800,000
-        Precision: many number lose precision with only 64 bit bits available 
-        Treat fractional digits as approximation NOT precise number
-        Arithmetic operator precedence: 
-            (), 
-            %, *, /
-            +, -
-        Special numbers:
-            Infinity & -Infinity: positive and negative infinity 
-                Infinity - 1 is still infinity
-                Infinity computation is NOT mathmatically solid 
-            NaN: a value of number type, but Not-a-Number (NaN)
-                Infinity - Infinity = NaN
-                0 / 0 = NaN
+  number 13 in bits => 
+    1 1 0 1 => 
+    1 * 2^3 + 1 * 2^2 + 0 * 2^1 + 1 * 2^0 =
+    8 + 4 + 1 = 13   
+
+  Values: chunks of bits that represnt pieces of information
+    6 basic types of value:
+      numbers, strings, Boolean, object, functions and undefined values
+
+  Numbers
+    A single number is stored in 64 bits - which can represnt 2^64 different numbers 
+    Overflow: a number does NOT fit into given amount of bits
+    Represent nonwhole number: extra bit to store position of decimal point
+    Negative number: one bit for sign of number
+    Actual whole number (integer) can be precisely stored: 9 quadrillion (15 zeros)   
+    Scientific notation by "e", like 2.998e8 => 299,800,000
+    Precision: many number lose precision with only 64 bit bits available 
+    Treat fractional digits as approximation NOT precise number
+    Arithmetic operator precedence: 
+      (), 
+      %, *, /
+      +, -
+
+    Special numbers:
+      Infinity & -Infinity: positive and negative infinity 
+        Infinity - 1 is still infinity
+        Infinity computation is NOT mathmatically solid 
+      NaN: a value of number type, but Not-a-Number (NaN)
+        Infinity - Infinity = NaN
+        0 / 0 = NaN
+
     Strings
-        string is written by enclosing content in single / double quotes
-        escaping character with backslash (\)
-            ex. \" a quote preceed by backslash will be part of string, instead of end it
-                \n newline, \t tab 
-        concatenates strings with + operator 
-                
+      string is written by enclosing content in single / double quotes
+      escaping character with backslash (\)
+        ex. \" a quote preceed by backslash will be part of string, instead of end it
+            \n newline, \t tab 
+      concatenates strings with + operator
+      Template literal: Backtick-quoted strings
+        - able to span lines
+        - embeded variable or expressions
+          `half of 100 is ${100/2}`
+
     Unary operators operates on one value
         "typeof" operator:
             typeof 3.5; // => "number"
