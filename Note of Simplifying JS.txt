@@ -159,9 +159,230 @@ Tip 05: Create Flexible Collections w/ Arrays
     Object.entries(dog)[0]; // ['name', 'Don']
 
 Tip 06 Check Existence in an Array with Includes() (but without checking position)
+  Check for value in array with indexOf(); return -1 if no matching value
   Ex. arrays/includes/includes.js
     const sections = ['contact', 'shipping'];
-    function displayShipping 
+    function displayShipping(sections) {
+      return sections.indexOf('shipping') > -1;
+    }
+  
+  New method: includes() check if a value exist and return true or false 
+  Ex. arrays/includes/includes.js
+    const sections = ['contact', 'shipping'];
+    function displayShipping(sections) {
+      return sections.includes('shipping');
+    }
+
+Tip 07 Mold Arrays with the Spread Operator (with minimal code and side effects)
+  Spread Operator (...) converts an array to a list of items
+  Spread operator cannot be used on by itself - the info needs to be spread into something 
+  Ex. 
+    const items = ['item 0', 'item 1'];
+    const copyItems = [...items]; 
+  
+  Task: Remove an item from an array
+   
+  Solution 1: using only loop @ arrays/spread/problem.js
+    function removeItem(items, removable) {
+      const updated = [];
+      for (let i = 0; i < items.length; i++){
+        if (items[i] !== removable){
+          updated.push(items[i]);
+        }
+      }
+      return updated;
+    }
+
+  With array method splice(), the original array is modified, even for a const variable
+  splice(stating_index, number_of_items_to_be_removed)
+
+  Solution 2: using splice() @ arrays/spread/problem.js
+    function removeItem(items, removable) {
+      const index = items.indexOf(removable);
+      items.splice(index, 1);
+      return items;
+    }
+
+  With array method slice(), the original array is unchanged 
+  slice(inclusive_starting_index, exclusive_ending_index)
+
+  Solution 3: using slice() @ arrays/spread/problem.js
+    function removeItem(items, removable) {
+      const index = items.indexOf(removable);
+      return items.slice(0, index).concat(items.slice(index + 1));
+    }
+  
+  With slice() and spread operator to provide visual clue of sub array format 
+
+  Solution 4: using slice() & spread operator @ arrays/spread/spread.js
+    function removeItem(items, removable) {
+      const index = items.indexOf(removable);
+      return [...items.slice(0, index), ...items.slice(index + 1)];
+    }
+  
+  Task: Create a list of arguments for a function 
+
+  Solution: convert array to a list of function parameters @ arrays/spread/spread.js
+    const book = ['Reasons and Persons', 'Derek Parfit', 19.99];
+    function formatBook(title, author, price){
+      return `${title} by ${author} $${price}`;
+    }
+    formatBook(...book);
+
+Tip 08 Avoid Push Mutations with the Spread Operator
+  Task: avoid array mutation @ arrays/push/push.js
+  const cart = [
+ 	  {
+ 	    name: 'The Foundation Triology',
+ 	    price: 19.99,
+ 	    discount: false,
+ 	  },
+ 	  {
+ 	    name: 'Godel, Escher, Bach',
+ 	    price: 15.99,
+ 	    discount: false,
+ 	  },
+ 	  {
+ 	    name: 'Red Mars',
+ 	    price: 5.99,
+ 	    discount: true,
+ 	  },
+ 	];
+ 	
+ 	const reward = {
+ 	  name: 'Guide to Science Fiction',
+ 	  discount: true,
+ 	  price: 0,
+ 	};
+ 	
+ 	function addFreeGift(cart) {
+ 	  if (cart.length > 2) {
+ 	    /*
+      cart.push(reward); // mutate original cart array
+ 	    return cart;
+      */
+      return [...cart, reward]; // no change to original cart  
+ 	  }
+ 	  return cart;
+ 	}
+ 	
+ 	function summarizeCart(cart) {
+ 	  const discountable = cart.filter(item => item.discount);
+ 	  if (discountable.length > 1) {
+ 	    return {
+ 	      error: 'Can only have one discount',
+ 	    };
+ 	  }
+ 	  const cartWithReward = addFreeGift(cart);
+ 	  return {
+ 	    discounts: discountable.length,
+ 	    items: cartWithReward.length,
+ 	    cart: cartWithReward,
+ 	  };
+ 	}
+
+Tip 09 Avoid Sort Confusion with the Spread Operator 
+  Task: Sort the array multiple times while getting the same result with Spread Operator
+  Ex. Sort array of employees @ arrays/sort/sortMutate.js
+  const staff = [
+ 	  {
+ 	    name: 'Joe',
+ 	    years: 10,
+ 	  },
+ 	  {
+ 	    name: 'Theo',
+ 	    years: 5,
+ 	  },
+ 	  {
+ 	    name: 'Dyan',
+ 	    years: 10,
+ 	  },
+ 	];
+  function sortByYears(a, b) {
+    if(a.years === b.years) {
+      return 0;
+    }
+    return a.years - b.years;
+  }
+  const sortByName = (a, b) => {
+    if(a.name === b.name) { return 0; }
+    return a.name > b.name ? 1:-1;  
+  }; 
+
+  // sort by years of service
+  staff.sort(sortByYears);  // original array mutated 
+  staff.sort(sortByName);   // original array mutated again
+  staff.sort(sortByYears);  // original array mutated with different results from last time sorting by year  
+
+  // Fix: sort a copy of original array
+  [...staff].sort(sortByYears); // original array unchanged
+  [...staff].sort(sortByName);  // original array unchanged
+  [...staff].sort(sortByYears); // original array unchanged & same result as last time sorting by year 
+
+Chapter 03 
+  Maximize Code Clarity with Special Collections
+  Express intention when decalre variable 
+  Choose data collection to maintain simplicity and felxibility 
+    like objects used as key-value collection
+    Map & Set
+  Switch b/t structures 
+
+Tip 10 Use Objects for Static Key-Value Loopups
+  Objects are best collection for simple key-value lookups
+  When data are structurally different from others and not interchangable, a key-value collection might be more appropriate. 
+  - to share unchanging structured key-value data
+  Avoid to use objects for dynamic information that is updated frequently (or looped over, sorted) or unknown until runtime 
+  Ex. collection of colors in hex-code 
+    const colors = {
+      red: '#d10202',
+ 	    green: '#19d836',
+ 	    blue: '#0e33d8'
+    }
+  Ex. configuration @ collections/object/object.js
+    export const config = {
+      endpoint: 'http://pragprog.com,
+      key: 'secretkey'
+    }
+  
+  Task: Define static objects programmatically
+    Build an object within a function 
+    Pass object to another function
+    Information is collected, sent, then unpacked (in another function)
+
+  Ex. collections/object/object.js
+    function getBill(item) {
+      return {
+        name: item.name,
+        due: twoWeeksFromNow(),
+        total: calculateTotal(item.price)
+      };
+    }
+    const bill = getBill({
+      name: 'Room Cleaning',
+      price: 30
+    });
+    function displayBill(bill) {
+      return `Your total ${bill.total} for ${bill.name} is due on ${bill.due}`;
+    } 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
 
 
 
