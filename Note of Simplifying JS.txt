@@ -363,7 +363,139 @@ Tip 10 Use Objects for Static Key-Value Loopups
     });
     function displayBill(bill) {
       return `Your total ${bill.total} for ${bill.name} is due on ${bill.due}`;
-    } 
+    }
+
+Tip 11 Create Objects Without Mutations Using Object.assign()
+  Side note: Short-circuit evaluation 
+  The second argument is executed or evaluated only if the first argument does not suffice to determine the value of expression
+  JS returns the result of last value that halted the execution
+  
+  Task: evaluate to the first truthy value with OR (||)
+    console.log(false || null || "" || 0 || NaN || "Hello" || undefined); // Hello
+
+  Task: evaluate to the first falsy value with AND (&&)
+    console.log(1 && [] && {} && true && "World" && null && 2010);  // null
+  
+  Object.assign() takes a series of objects and updates the inner-most object with keys and values from outer objects,
+  then returns the updated first object
+  The outermost object has precedence over any inner objects.
+
+  Task: update object with Object.assign()
+  Ex.
+    const object1 = { a: 1, b: 2, c: 3 };
+    const object3 = { c: 4, d: 5 };
+    
+    const object2 = Object.assign(object3, object1);
+
+    console.log(object1.a, object1.b, object1.c, object1.d); // 1 2 3 undefined - object 1 unchanged
+    console.log(object2.a, object2.b, object2.c, object2.d); // 1 2 3 5         - object 2 changed
+    console.log(object3.a, object3.b, object3.c, object3.d); // 1 2 3 5         - object 3 changed
+  
+  Alternatively, to keep object3 (default) unchanged, supply Object.assign() with empty object as first argument
+  Ex. 
+    const object1 = { a: 1, b: 2, c: 3 };
+    const object3 = { c: 4, d: 5 };
+    
+    const object2 = Object.assign({}, object3, object1);
+
+    console.log(object1.a, object1.b, object1.c, object1.d); // 1 2 3 undefined         - object 1 unchanged
+    console.log(object2.a, object2.b, object2.c, object2.d); // 1 2 3 5                 - object 2 changed
+    console.log(object3.a, object3.b, object3.c, object3.d); // undefined undefined 4 5 - object 3 unchanged
+
+  Task: update nested object with Object.assign() - deep copying 
+    Copying with previous approach will cross-reference the objects, so when either the original or cpoy object been changed, 
+    both will be impacted 
+    Ex. collections/assign/assign.js 
+    const defaultEmployee = {
+      name: {
+        first: '',
+        last: '',
+      },
+      years: 0
+    };   
+    // create employee object with dientical content of defaultEmployee
+    const employee = Object.assign({}, defaultEmployee); 
+    // assign value 'Joe' to name.first property 
+    // defaultEmployee's name.first property is also assigned the value 'Joe'
+    employee.name.first = 'Joe';
+
+    const employee2 = Object.assign(
+      {},
+      defaultEmployee,
+      {
+        name: Object.assign({}, defaultEmployee.name)
+      }
+    );
+    // apply Object.assign() to specific nested property (name)
+    // with this approach, defaultEmployee is unchanged 
+
+Tip 12 Update information with Object Spread 
+  object spread operator has yet to be part of the spec - but is a popular new addition in ES6
+  However, value with the same key will be replaced by the last declared 
+  Task: Update flat object with object spread operator
+  Ex.
+    const book = {
+      title: 'Reasons and Persons',
+      author: 'Derek Parfit'
+    };
+    const update = {...book, year: 1984};
+    // { title: 'Reasons and Persons', author: 'Derek Parfit', year: 1984}
+
+  Task: Update nested object with object spread operator 
+  Ex.
+    const defaultEmployee = {
+      name: {
+        first: '',
+        last: '',
+      },
+      years: 0
+    }; 
+
+    const employee = {...defaultEmployee, name: {
+      ...defaultEmployee.name
+    }};
+
+    employee.name.first = 'Joe';
+
+    employee;
+    /*
+    {
+      name: {
+        first: 'Joe',
+        last: '',
+      },
+      years: 0
+    }
+    */
+    
+    defaultEmployee;
+    /*
+    {
+      name: {
+        first: '',
+        last: '',
+      },
+      years: 0
+    }
+    */
+
+Tip 13 Update Key-Value Data Clearly w/ Maps
+
+
+
+
+
+    
+
+
+
+
+  
+
+
+
+
+
   
 
 
