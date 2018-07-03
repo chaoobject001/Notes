@@ -480,6 +480,11 @@ Tip 12 Update information with Object Spread
     */
 
 Tip 13 Update Key-Value Data Clearly w/ Maps
+  Task: Use Map object for key-value collections of frequently updated data 
+  Map as alternative to object
+   when Key-value pairs are frequently added or removed
+   when key is NOT a string 
+  
 
 
 
