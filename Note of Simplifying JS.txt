@@ -479,11 +479,163 @@ Tip 12 Update information with Object Spread
     }
     */
 
-Tip 13 Update Key-Value Data Clearly w/ Maps
-  Task: Use Map object for key-value collections of frequently updated data 
+Tip 13 Update Key-Value Data Clearly w/ Maps 
   Map as alternative to object
    when Key-value pairs are frequently added or removed
    when key is NOT a string 
+  
+  Task: Adding or removing values to map
+  Ex. 
+    // shape of each item is the same in array
+    const dogs = [
+      {name: 'max', size: 'small', breed:'boston terrier', color: 'black'},
+      {name: 'don', size: 'large', breed:'labrador', color: 'black'},
+      {name: 'max', size: 'small', breed:'boston terrier', color: 'black'}
+    ];
+    // Then create a collection of applied filters, each containing a key (color) and a value (black)
+    // to add a filter, remove a filetr and clear all filter values ...
+
+  Try to complete the task with standard objects ...
+  Ex.  
+    let filters = {}; // make an empty object to hold information 
+    function addFilters(filters, key, value) {
+      filters[key] = value; // method on object
+    }
+    function deleteFilters(filters, key) {
+      // operator defined by JS
+      delete filters[key]; // using delete may leave undefined holes in array
+    }
+    function clearFilters(filters) {
+      filters = {}; // variable re-assignment
+      return filters;
+    }
+
+  Map is more predictable, which leads to productivity 
+
+  Side Note: Browser Engine 
+    JS is interpreted by engines
+    Chrom and Node use V8 engineer
+    Firefox uses SpiderMonkey
+    IE and Edge use Chakra 
+    Key lookup in object is linear but can be logarithmic when implemented natively 
+    -> big object is more expensive than big map 
+  
+  Ex. 
+    let filters = new Map();  // declare filters with let b/c map will be mutated 
+    filters.set('breed', 'labrador');  
+    filters.get('breed');  // labrador
+    
+    // add multiple values with chaining 
+    let filters = new Map()
+      .set('breed', 'labrador')
+      .set('size', 'large')
+      .set('color', 'chocolate');
+    filters.get('size');  // large
+
+    // add multiple values with 2-D array
+    let filters = new Map(
+      [
+        ['breed', 'labrador'],
+        ['size', 'large'],
+        ['color', 'chocolate']
+      ]
+    ); 
+    filters.get('color');  // chocolate
+
+    // Use Array.from() to transform a map into a 2-D key-value array
+    console.log(Array.from(filters)); 
+    console.log(Array.from(filters.keys())); // ['breed', 'size', 'color']
+
+    // Use delete() method to remove value
+    filters.delete('color');
+    filters.get('color');   // undefined 
+
+    // Use clear() method to remove allkey-value pairs 
+    filters.clear();
+    filters.get('size');   // undefined 
+
+  Adding or removing values with map
+  Ex. 
+    const petFilters = new Map();
+    
+    function addFilters(filters, key, value) {
+      filters.set(key, value);
+    }
+
+    function deleteFilters(filters, key) {
+      filters.delete(key);
+    }
+
+    function clearFilters(filters) {
+      filters.clear();
+    }
+
+  Why use Map over Object as collection:
+    Object cannot use integer as key
+    but Map can
+    Ex. 
+      let errors = new Map([
+        [100, 'Invalid name'],
+        [110, 'Name should only contain letters'],
+        [200, 'Invalid color']
+      ]);
+
+      errors.get(100); // 'Invalid name'
+      errors.keys();   // MapIterator {100, 110, 200}
+  MapIterator allows looping through data
+  
+Tip 14 Iterate Over Key-Value Data w/ Map and Spread Operator  
+  Looping over object is complicated - iterate over map instead
+  Task: Lopping over object
+  Ex. collections/mapSpread/object.js
+    const filters = {
+      color: 'black',
+      breed: 'labrador'
+    };
+
+    function getAppliedFilters(filters) {
+      const keys = Object.keys(filters);
+      const applied = [];
+      for (const key of keys){
+        applied.push(`${key}:${filters[key]}`);
+      }
+      return `Your filters are: ${applied.join(',')}`; 
+    }
+    
+    // Loop over object in sorted sequence 
+    function getSortedAppliedFilters(filters) {
+      const keys = Object.keys(filters);
+      keys.sort();
+      const applied = [];
+      for (const key in keys) {
+        applied.push(`${key}:${filters[key]}`);
+      }
+      return `Your filters are: ${applied.join(',')}`; 
+    }
+  
+  Task: Iterate over map with for ... of loop
+  Ex. collections/mapSpread/iterate.js
+    const filters = new Map()
+      .set('color', 'black')
+      .set('breed', 'labrador');
+    // iterate over map with for ... of loop
+    function checkFilters(filters) {
+      for (const entry of filters) {
+        console.log(entry);
+      }
+    } 
+    // ['color', 'black']
+    // ['breed', 'labrador'] 
+  
+  Side Note: Map method entries() returns a MapIterator of the key-value of a mapas group of pairs
+  filters.entries();
+  // MapIteraotr { ['color', 'black'], ['breed', 'labrador'] }
+  
+
+
+
+
+  
   
 
 
