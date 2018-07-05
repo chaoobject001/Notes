@@ -48,11 +48,11 @@ Ch 1 Values, Types, and Operators
         minus operator can be both unary and binary operator 
     
     Boolean values: true & false
-        Comparisons as a way to produce Boolean value
-        Ex. 3 > 2; // => true
-        Uppercase is always "LESS" than Lowercase
-        string Comparison is based on Unicode standard (as a sequence of numbers)  
-            - Goes over from left to right, one character at a time
+      Comparisons as a way to produce Boolean value
+      Ex. 3 > 2; // => true
+      Uppercase is always "LESS" than Lowercase
+      String comparison is based on Unicode standard (as a sequence of numbers)  
+        - Goes over from left to right, one character at a time
         NaN: The only value in JavaScript that does not equal to itself (nonsensical computation)
         Logical operators: AND , OR, NOT
         precedence (low to high):
@@ -62,7 +62,7 @@ Ch 1 Values, Types, and Operators
                 console.log(true ? 1: 2);   // => 1
                 console.log(false ? 1: 2);  // => 2
 
-    Undefined values: null and undefined
+    Empty values: null and undefined
         values without information - possiblely interchangeable?
 
     Automatic type conversion
