@@ -630,6 +630,69 @@ Tip 14 Iterate Over Key-Value Data w/ Map and Spread Operator 
   Side Note: Map method entries() returns a MapIterator of the key-value of a mapas group of pairs
   filters.entries();
   // MapIteraotr { ['color', 'black'], ['breed', 'labrador'] }
+
+  Assign variables using destructuring 
+
+  Ex. collections/mapSpread/iterate.js
+  // takes instance of map or MapIterator
+  function getAppliedFilters(filters) {
+    const applied = [];
+    for (const [key, value] of filters) {
+      applied.push(`${key}:${value}`);
+    }
+    return `Your filter are: ${applied.join(', ')}.`;
+  }
+
+  However, with this approach, the order of iteration is the same as map itself and cannot be changed 
+
+  Task: Sort Map with the spread operator 
+  Spread operator returns a list of key-value pairs on map
+  Ex. 
+    ...filters; // ['color', 'black'], ['breed', 'labrador']
+  spread operator needs to be spread into something 
+    [...filters]; // [['color', 'black'], ['breed', 'labrador']]
+  A comparer function is required to sort a 2-D array (by Key)
+  Ex. 
+    function sortByKey(a, b) {
+      return a[0] > b[0] ? 1:-1
+    }
+
+    function getSortedAppliedFilters(filters) {
+      const applied = [];
+      for (const [key, value] of [...filters].sort(sortByKey)) {
+        applied.push(`${key}:${value}`)
+      }
+      return `Your filters are: ${applied.join(',')}.`;
+    }
+  
+  Alternatively, map() method of array can be used here:
+    1. Convert map into array
+    2. Sort array
+    3. Convert each pair to a key:value string
+    4. Join array to create a string
+    5. Return string as part of template string 
+
+  Ex. collections/mapSpread/mapSpread.js
+    function getSortedApliedFilters(filters) {
+      const applied = [...filters]
+        .sort(sortByKey)
+        .map( ([key, value]) => {
+          return `${key}:${value}`;
+        })
+        .join(',');
+      return `Your filters are: ${applied}.`;
+    }
+    // 'Your filters are: breed:labrador, color:black.'
+
+Tip 15 Create Maps w/out Side effects
+  
+
+
+
+
+
+
+
   
 
 
