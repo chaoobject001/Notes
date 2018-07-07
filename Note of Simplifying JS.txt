@@ -685,7 +685,27 @@ Tip 14 Iterate Over Key-Value Data w/ Map and Spread Operator 
     // 'Your filters are: breed:labrador, color:black.'
 
 Tip 15 Create Maps w/out Side effects
-  
+  Task: Apply a set of defaults to a map while taking inputs from user
+  Ex. collections/mapSideEffects/sideEffects.js
+    const defaults = new Map()
+      .set('color', 'brown')
+      .set('breed', 'beagle')
+      .set('state', 'kansas'); // default setting
+    
+    const filters = new Map()
+      .set('color', 'black'); // user input 
+    
+    function applyDefaults(map, defaults) {
+      for(const [key, value] of defaults) {
+        if (!map.has(key)) {
+          map.set(key, value);
+        }
+      }
+    }
+
+
+
+
 
 
 
