@@ -703,6 +703,67 @@ Tip 15 Create Maps w/out Side effects
       }
     }
 
+    applyDefaults(filters, defaults); // filters is now mutated 
+  Task: Apply a set of defaults to a map without mutating the original map by copying the map
+    Copy map by:
+      1. using the spread operator to create list of pairs
+      2. pass in array of pairs to create new map
+    Ex. collections/mapSideEffects/copy.js
+      function applyDefaults(map, defaults) {
+        const copy = new Map([...map]);
+        for(const [key, value] of defaults) {
+          if(!map.has(key)) {
+            map.set(key, value);
+          }
+        }
+        return copy;
+      }
+  
+  Side Note: Map keys are unique - the latest value update persist 
+  Task: Apply a set of defaults to a map without mutating the original map 
+    by combining maps with spread operator
+    function applyDefaults(map, defaults) {
+      return new Map([...map, ...defaults]);
+    }
+
+Tip 16 Keep Unique Values with Set 
+  Task: pull unique items from an array with Set
+  Ex. 
+    const colors = ['black', 'black', 'chocolate'];
+    const unique = new Set(colors); // Set {'black', 'chocolate'}
+  
+  Task: spread operator with Set to get array of unique items 
+  Ex. collections/set/set.js
+    function getUnique(array) {
+      return [...new Set(array)];
+    }
+  
+  Task: get unique values from an array of objects in one iteration
+  Ex. collections/set/set.js
+    function getUniqueColors(dogs) {
+      const unique = new Set();
+      for(const dog of dogs) {
+        unique.add(dog.color);
+      }
+      return [...unique];
+    }
+
+  Task: get unique values from an array of objects with reduce()
+  Ex.
+    function getUniqueColorsReduce(dogs) {
+    const colors =
+      [...dogs.reduce(
+        (colors, { color }) => 
+          colors.add(color), 
+        new Set()
+      )];
+    return colors;
+    }
+
+Chapter 4 Write Clear Conditionals
+
+  
+
 
 
 
