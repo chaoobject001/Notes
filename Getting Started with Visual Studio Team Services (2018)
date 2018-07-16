@@ -1,0 +1,258 @@
+Course Overview
+  Why use VSTS
+  How to manage Code
+  DevOps related questions
+  VSTS streamline QA
+  Feature Extensions
+  Migrate existing stuff   
+VSTS vs TFS
+  What is VSTS?
+    VSTS based on TFS (~ TFS in the cloud)
+  History of TFS
+    Team Foundation Server 2005 replace SourceSafe
+    TFS2005 has:
+      Source Control
+      Automated Build
+      Project Management Tools
+      Bug / Defect Tracking 
+      Dashboards & Reports
+        - SharePoint
+        - SQL Server Reporting Services
+      Needs Visual Studio 
+    
+    Team Fundation Server 2018:
+      Source Control
+        - TFVC
+        - Git
+      Automated Build (3rd v.)
+      Automated Release (2nd v.)
+      QA Testing & Defect Tracking: manage and run manual test cases
+      Project Management tools:
+        - Agile / Scrum
+        - Kanban
+        - Waterfall
+        - CMMI
+      Dashboard 
+      Extensions & Integrations
+      Almost anything move to Web
+
+      TFS 2018 is cross-platform 
+        - nearly all are browser-based
+        - Visual Studio: Windows
+        - Visual Studio Code: Windows, Mac OS, Linux
+        - Visual Studio for Mac
+        - Plug-in for Eclipse, IntelliJ, Android Studio
+        - Xcode
+        - Xamarin 
+        - Corss-platform command line client 
+        - Jenkins
+        - Git
+
+      TFS is package software - require delivery 
+      VSTS has MicroSoft to:
+        host Application
+        serve as System Admin
+        writes software
+        applies patches 
+
+Getting Started
+  Creating Your First Project
+    Requirements:
+      MicroSoft Account (MSA)
+      Visual Studio Team Searvices
+    1. Login with MSA
+    2. Pick domain name for XXX.visualstudio.command
+    3. Pick code repo 
+    4. pick region to host
+    5. Load project page
+
+  The Structure of Your Project + Demo of the Azure Portal
+    Your new Project (a Team Project)
+    Team Project: represented 1 software effort or 1 company
+    i.e. collection of related stuff:
+      Code version Control
+      Project management 
+      Build & Release tools
+      (optional?) Testing & QA tools
+      Wiki
+      Dashboards for Reporting
+    
+    VSTS Account 
+      is actually VSTS "tenant" in cloud
+      In terms of TFS - this is team project collection (TPC)
+        - a TPC can have many team Projects
+      an account is the container of all these Projects 
+    
+    VSTS account vs. VSTS Project - one account holds many Projects
+
+    To View VSTS account, use Azure protal (https://portal.azure.com)
+    for following info:
+      Subscription info
+      User Types
+      Users
+      Billing & Licensing info
+      Build & Deployment 
+      Cloud-based load test
+    
+    Once login, look up "Team Searvices accounts" for more details
+    Select a specific account attached to current MSA
+      Essentials:
+        location of data center 
+        URL
+        Status
+      Under "Account Settings"
+        Properties
+        Users:
+          Number of users available to add
+        CI/CD
+        Cloud based load testing 
+    "Team Searvices accounts" is useful in troubleshooting for services or billing 
+
+  User Types & Security in VSTS + Adding Users Using Microsoft Accounts
+    Adding Users
+      Two types:
+        Microsoft Account (MSA) users - easier 
+        Azure Active Directory (AAD) user 
+          - orginational account (Org Id)
+          - additional control 
+    
+    View security setup for VSTS Account 
+      
+
+
+
+Account Types, Features, and Billing
+5m 38s
+Demo: Attach VSTS to an Azure Subscription & Link to Azure Active Directory
+4m 12s
+User Management with Azure Active Directory (AAD)
+1m 48s
+Demo: Add Azure Active Directory (AAD) Users to VSTS
+4m 57s
+Demo: Add Microsoft Account (MSA) Users to an AAD-linked VSTS
+3m 2s
+Demo: Managing User Licenses and VSTS Extensions
+4m 31s
+Permissions Overview
+2m 57s
+Demo: Permissions Management
+6m 6s
+Summary
+0m 44s
+4
+Managing Your Source Code with VSTS
+60m 39s
+Overview
+0m 39s
+Why Version Control + Version Control Options in VSTS
+3m 30s
+Git vs. TFVC
+5m 27s
+TFVC Demo, Part 1: Create a Project and Connect with Visual Studio
+4m 55s
+TFVC Demo, Part 2: Create a Workspace Mapping and Initialize the Repository
+2m 49s
+TFVC Demo, Part 3: Add Code and Check-in Pending Changes
+2m 44s
+TFVC Demo, Part 4: TFVC Through the Web Interface
+1m 41s
+TFVC Demo, Part 5: Associate a Bug to a Check-in
+3m 15s
+Git + VSTS
+2m
+Git Demo, Part 1: Create a Project + Initialize the Git Repository
+3m 54s
+Git Demo, Part 2: Connect Visual Studio to a Git Repository in VSTS
+4m 20s
+Git Demo, Part 3: Git from the VSTS Web Interface + Staying Up-to-date in Visual Studio
+1m 55s
+Git Demo, Part 4: Associate a Bug to a Git Commit
+3m 28s
+Branching and Merging
+1m 23s
+Demo: Branching and Merging with Git
+6m 34s
+Code Reviews
+1m 26s
+Demo: Code Reviews Using Git Pull Requests
+9m 30s
+Summary
+1m 1s
+5
+Building, Deploying, and DevOps with VSTS
+41m 43s
+Overview
+0m 27s
+Automated Builds: Why Do I Care?
+6m 30s
+Build Demo, Part 1: Tour of the Sample Application
+3m 10s
+Build Demo, Part 2: Create a Build Definition
+3m 57s
+Build Demo, Part 3: Run the Build
+2m 36s
+Build Demo, Part 4: Artifacts, Triggers, and Variables
+2m 15s
+Release Demo, Part 1: Create a Release Definition
+4m 30s
+Release Demo, Part 2: Run the Release and Deploy to Azure
+1m 10s
+Release Demo, Part 3: Edit Configuration Details as Part of the Release
+6m 14s
+Release Demo, Part 4: Multi-environment Releases and Approvals
+4m 30s
+Release Demo, Part 5: Run a Multi-environment Release with Approvals
+5m 7s
+Summary
+1m 12s
+6
+Managing Your Projects & Teams Using VSTS
+33m 47s
+Intro
+1m 5s
+Work Items and VSTS Project Management
+2m 58s
+Demo: Work Items and Work Item Queries
+7m 44s
+Scrum Demo, Part 1: Manage a Product Backlog
+6m 46s
+Scrum Demo, Part 2: Plan a Sprint
+7m 34s
+Scrum Demo, Part 3: Use the Scrum Board in the Daily Scrum
+2m 41s
+Scrum Demo, Part 4: Visualize Progress with the Burndown Chart and Dashboard
+4m 2s
+Summary
+0m 54s
+7
+QA Testing and Defect Tracking with VSTS
+30m 6s
+Intro
+1m 2s
+New QA vs. Old QA
+10m
+Test Case Demo, Part 1: A Basic Test Case
+5m 12s
+Test Case Demo, Part 2: More Detailed Test Case
+4m 26s
+Demo: Run a Test Case and Create a Video Recording
+4m 56s
+Demo: Run a Test Case and Create a Bug with a Screenshot
+3m 32s
+Summary
+0m 56s
+8
+Migrating Existing Projects to VSTS
+18m 13s
+Intro
+0m 45s
+Options for Migrating to VSTS
+4m 52s
+Demo: Migrate from GitHub to VSTS
+2m 32s
+Demo: Migrate from Git to VSTS
+3m 32s
+Demo: Migrate Code to TFVC
+5m 27s
+Summary and Thanks
+1m 3s
