@@ -20,3 +20,41 @@ but most likely to log info and pass along to the next component
 
 middleware is a series of components executed in order 
 
+Contollers 
+In larger applications, MVC is typically combined with other design patterns, 
+like data access and messaging patterns, to create a full application stack.
+
+controller handles HTTP requests - 
+then to gather and combine all the necessary data and package it in model objects, 
+which act as data carriers to the views
+
+In ASP.NET Core MVC application,
+model is sent to the view then rendered into HTML
+In an ASP.NET Core Web API application,
+a resource, often in the form of JSON, is returned 
+
+The MVC pattern creates a separation of concerns between the model, view, and controller
+
+Routing
+ASP.NET MVC routing sends HTTP resuest to the correct controller
+Multiple routes are evaluated in the order they are been added
+Convention-based routing / Attribute routing 
+
+Convention-based routing in the Startup class specifies:
+  controller (class)'s name
+  action (public method)'s name
+  (possibly) parameter values (string, integer, GUID)
+
+  Within Startup.cs, Configure method, set configuration with app.UseMvc()
+  - using Lambda expression
+    app.UseMvc(
+      routes => {
+        routes.MapRoute(
+          name: "default",
+          template: "{}"
+        );  
+      }
+    );
+
+  - using method call   
+
