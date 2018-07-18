@@ -1,0 +1,396 @@
+Preface
+  Recommanded text editor: Atom (atom.io)
+  Who this book is for
+  What this book covers
+    Ch 01 Getting Set Up 
+      - What is Node and Why
+      - Node installation 
+    Ch 02 Node Fundamental pt 1
+      - building Node app
+      - module basics
+      - requiring own files
+      - 3rd party NPM modules
+    Ch 03 Node Fundamental pt 2
+      - yargs
+      - JSON
+      - addNote function
+      - refactor and test
+    Ch 04 Node Fundamental pt 3
+      - read & write from files
+      - advanced yargs config
+      - debug
+      - ES6 new features
+    Ch 05 Basics of Asynchronous Programming in Node.js
+      - concepts, terms and technologies of async programming
+      - weather app
+    Ch 06 Callbacks in Asynchronous Programming
+      - callbacks, HTTPS requests, and error handling  
+      - fetch reral-time data from forecast API
+    Ch 07 Promises in Asynchronous Programming
+      - Promises: how & why  
+      - use Promises in weather App
+    Ch 08 Web Servers in Node
+      - Web server & version control
+      - Express
+    Ch 09 Deploying Applications to Web
+      - Git & GitHub
+      - Deployment
+    Ch 10 Testing the Node Applications Pt 1
+      - setup
+      - framework
+      - asynchronous testing
+    CH 11 Testing the Node Applications Pt 2   
+      - test Express app
+      - advanced tet method
+
+  To get the most out of this book
+    list of modules:
+      lodash
+      nodemon
+      yargs
+      request
+      axios
+      express
+      hbs
+      heroku
+      rewire
+
+    Download the example code files
+      https://github.com/PacktPublishing/Learning-Node.js-Development
+
+        Conventions used
+    Get in touch
+        Reviews
+Ch 01 Getting Set Up
+    Node.js installation
+        Node.js version confirmation
+        Installing Node
+            Verifying installation: node -v
+    What is Node?
+        Differences between JavaScript coding using Node and in the browser
+    Why use Node
+        Blocking and non-blocking software development
+            The working of blocking I/O
+            The working non-blocking I/O
+        Blocking and non-blocking examples using Terminal
+            Node community – problem solving open source libraries
+    Different text editors for node applications
+    Hello World – creating and running the first Node app
+        Creating the Node application
+        Running the Node application
+    Summary
+Node Fundamentals – Part 1
+    Module basics
+        Using case for require()
+            Initialization of an application
+            The built-in module to use require()
+                Creating and appending files in the File System module
+                The OS module in require()
+                Concatenating user.username
+                Using template strings
+    Require own files
+        Making a new file to load other files
+        Exporting files from note.js to use in app.js
+            A simple example of the working of the exports object
+            Exporting the functions
+                Exercise – adding a new function to the export object
+                Solution to the exercise
+    Third-party modules
+        Creating projects using npm modules
+        Installing the lodash module in our app
+        Installation of lodash
+            Using the utilities of lodash
+                Using the _.isString utility
+                Using _.uniq
+        The node_modules folder
+    Global modules
+        Installing the nodemon module
+        Executing nodemon
+    Getting input
+        Getting input from the user inside the command line
+            Accessing the command-line argument for the notes application
+                Adding if/else statements
+                Exercise – adding two else if clauses to an if block
+                Solution to the exercise
+            Getting the specific note information
+    Summary
+Node Fundamentals – Part 2
+    yargs
+        Installing yargs
+        Running yargs
+            Working with the add command
+            Working with the list command
+                The read command
+                Dealing with the errors in parsing commands
+                The remove command
+            Fetching command
+    JSON
+        Converting objects into strings
+        Defining a string and using in app as an object
+        Converting a string back to an object
+        Storing the string in a file
+            Writing the file in the playground folder
+            Reading out the content in the file
+    Adding and saving notes
+        Adding notes
+            Adding notes to the notes array
+            Fetching new notes
+        Trying and catching code block
+        Making the title unique
+    Refactoring
+        Moving functionality into individual functions
+            Working with fetchNotes
+            Working with saveNotes
+        Testing the functionality
+    Summary
+Node Fundamentals – Part 3
+    Removing a note
+        Using the removeNote function
+        Printing a message of removing notes
+    Reading note
+        Using the getNote function
+            Running the getNote function
+        The DRY principle
+            Using the logNote function
+    Debugging
+        Executing a program in debug mode
+        Working with debugging
+        Using debugger inside the notes application
+    Listing notes
+        Using the getAll function
+    Advanced yargs
+        Using chaining syntax on yargs
+            Calling the .help command
+            Adding the options object
+                Adding the title
+                Adding the body
+        Adding support to the read and remove commands
+            Adding the titleOption and bodyOption variables
+            Testing the remove command
+    Arrow functions
+        Using the arrow function
+        Exploring the difference between regular and arrow functions
+            Exploring the arguments array
+    Summary
+Basics of Asynchronous Programming in Node.js
+    The basic concept of asynchronous program
+        Illustrating the async programming model
+    Call stack and event loop
+        A synchronous program example
+            The call stack
+            Running the synchronous program
+            A complex synchronous program example
+        An async program example
+            The Node API in async programming
+            The callback queue in async programming
+            The event loop
+            Running the async code
+    Callback functions and APIs
+        The callback function
+            Creating the callback function
+                Running the callback function
+            Simulating delay using setTimeout
+        Making request to Geolocation API
+            Using Google Maps API data in our code
+                Installing the request package
+                Using request as a function
+                Running the request
+        Pretty printing objects
+            Using the body argument
+    Making up of the HTTPS requests
+        The response object
+        The error argument
+        Printing data from the body object
+            Printing the formatted address
+            Printing latitude and longitude
+    Summary
+Callbacks in Asynchronous Programming
+    Encoding user input
+        Installing yargs
+        Configuring yargs
+            Printing the address to screen
+        Encoding and decoding the strings
+            Encoding URI component
+            Decoding URI component
+        Pulling the address out of argv
+    Callback errors
+        Checking error in Google API request
+            Adding the if statement for callback errors
+            Adding if else statement to check body status property
+                Testing the body status property
+    Abstracting callbacks
+        Refactoring app.js and code into geocode.js file
+            Working on request statement
+            Creating geocode file
+        Adding callback function to geocodeAddress
+            Setting up the function in geocodeAddress function in app.js
+            Implementing the callback function in geocode.js file
+            Testing the callback function in geocode.js file
+    Wiring up weather search
+        Exploring working of API in the browser
+            Exploring the actual URL for code
+        Making a request for the weather app using the static URL
+        Error handling in the the callback function
+            Another way of error handling
+            Testing the error handling in callback
+    Chaining callbacks together
+        Refactoring our request call in weather.js file
+            Defining the new function getWeather in weather file
+            Providing weather directory in app.js
+            Passing the arguments in the getWeather function
+                Printing errorMessage in the getWeather function
+            Implementing getWeather callback inside weather.js file
+                Adding dynamic latitude and longitude
+                Changing console.log calls into callback calls
+        Chaining the geocodeAddress and getWeather callbacks together
+            Moving getWeather call into geocodeAddress function
+            Replacing static coordinates with dynamic coordinates
+            Testing the chaining of callbacks
+    Summary
+Promises in Asynchronous Programming
+    Introduction to ES6 promises
+        Creating an example promise
+           Calling the promise method then
+        Running the promise example in Terminal
+        Error handling in promises
+        Merits of promises
+    Advanced promises
+        Providing input to promises
+            Returning the promises
+        Promise chaining
+            Error handling in promises chaining
+              The catch method
+        The request library in promises
+            Testing the request library
+    Weather app with promises
+        Fetching weather app code from the app.js file
+        Axios documentations
+        Installing axios
+        Making calls in the app-promise file
+            Making axios request
+            Error handling in axios request
+                Error handling with ZERO_RESULT body status
+        Generating the weather URL
+        Chaining the promise calls
+    Summary
+Web Servers in Node
+    Introducing Express
+        Configuring Express
+            Express docs website
+            Installing Express
+        Creating an app
+            Exploring the developer tools in the browser for the app request
+            Passing HTML to res.send
+        Sending JSON data back
+            Error handling in the JSON request
+    The static server
+        Making an HTML page
+            The head tag
+            The body tag
+        Serving the HTML page in the Express app
+            The call to app.listen
+    Rendering templates
+        Installing the hbs module
+        Configuring handlebars
+        Our first template
+            Getting the static page for rendering
+            Injecting data inside of templates
+            Rendering the template for the root of the website
+    Advanced templates
+        Adding partials
+            Working of partial
+            The Header partial
+        The Handlebars helper
+            Arguments in Helper
+    Express Middleware
+        Exploring middleware
+            Creating a logger
+            Printing message to file
+        The maintenance middleware without the next object
+            Testing the maintenance middleware
+    Summary
+Deploying Applications to Web
+    Adding version control
+        Installing Git
+            Git on macOS
+            Git on Windows
+            Testing the installation
+        Turning the node-web-server directory into a Git repository
+        Using Git
+            Adding untracked files to commit
+            Making a commit
+    Setting up GitHub and SSH keys
+        Setting up SSH keys
+            SSH keys documentations
+            Working on commands
+                Generating a key
+            Starting up the SSH agent
+        Configuring GitHub
+            Testing the configuration
+        Creating a new repository
+            Setting up the repository
+    Deploying the node app to the Web
+        Installing Heroku command-line tools
+            Log in to Heroku account locally
+            Getting SSH key to Heroku
+        Setting up in the application code for Heroku
+            Changes in the server.js file
+            Changes in the package.json file
+        Making a commit in Heroku
+        Running the Heroku create command
+    Summary
+Testing the Node Applications – Part 1
+    Basic testing
+        Installing the testing module
+        Testing a Node project
+            Mocha – the testing framework
+            Creating a test file for the add function
+                Creating the if condition for the test
+            Testing the squaring a number function
+        Autorestarting the tests
+    Using assertion libraries in testing Node modules
+        Exploring assertion libraries
+        Chaining multiple assertions
+            Multiple assertions for the square function
+        Exploring usage of expect with bogus test
+            Using toBe and toNotBe to compare array/objects
+            Using the toEqual and toNotEqual assertions
+            Using toInclude and toExclude
+        Testing the setName method
+    The asynchronous testing
+        Creating the asyncAdd function using the setTimeout object
+        Writing the test for the asyncAdd function
+            Making assertion for the asyncAdd function
+            Adding the done argument
+        The asynchronous testing for the square function
+           Creating the async square function
+            Writing test for asyncSquare
+                Making assertions for the asyncSquare function
+    Summary
+Testing the Node Applications – Part 2
+    Testing the Express application
+        Setting up testing for the Express app
+        Testing the Express app using SuperTest
+            The SuperTest documentation
+            Creating a test for the Express app
+            Writing the test for the Express app
+                Testing our first API request
+                Setting up custom status
+                Adding flexibility to SuperTest
+        Creating an express route
+            Writing the test for the express route
+    Organizing test with describe()
+        Adding describe() for individual methods
+        Adding the route describe block for the server.test.js file
+    Test spies
+        Creating a test file for spies
+        Creating a spy
+        Setting up spies assertions
+            More details out of spy assertion
+        Swapping of the function with spy
+            Installing and setting up the rewire function
+            Replacing db with the spy
+            Writing a test to verify swapping of the function
+    Summary
+    Conclusion
+    
