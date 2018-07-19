@@ -62,13 +62,31 @@ Preface
     Get in touch
         Reviews
 Ch 01 Getting Set Up
-    Node.js installation
-        Node.js version confirmation
-        Installing Node
-            Verifying installation: node -v
-    What is Node?
-        Differences between JavaScript coding using Node and in the browser
-    Why use Node
+Node.js installation
+  Node.js version confirmation
+    Installing Node
+    Verifying installation: node -v
+  What is Node?
+    JS taken out of context of browser
+    Gain additional features such as:
+      - Write Node app w/ JS syntax
+      - Manipulate file sys, creating & removing folders
+      - Query DB directly
+      - Create web servers
+    V8 runtime engine (written in C++): convert JS into machine code
+  Differences between JavaScript coding using Node and in the browser
+    Inside browser, "window" is the global object
+      - it stores every variables
+    In Node, "global" is the counter-part
+
+    Inside browser, "document" stores a reference to Document Object Model (DOM)
+    In Node, there is "process" - it can be viewed by running process from Node
+
+    process.exit() is a command to shut down current Node process
+    process.exit(0); // things exited without error
+    OR
+    Leave Node by using Ctrl + C twice 
+  Why use Node
         Blocking and non-blocking software development
             The working of blocking I/O
             The working non-blocking I/O
