@@ -2,6 +2,7 @@ Code Example: https://github.com/jsmapr1/simplifying-js/
 CHapter 01
 Tip 01: Signal Unchanging Values with const as default
   const variable cannot be changed but it is NOT immutable
+  const declaration creates a read-only reference (one-time assignment) to a value  
   e.g. items in a const array CAN be changed 
   const variable can be skimed over without tracking 
 
@@ -761,6 +762,49 @@ Tip 16 Keep Unique Values with Set
     }
 
 Chapter 4 Write Clear Conditionals
+  - Write clean and predictable JS code by cleaning up conditional expressions
+  - Review basics:
+    truthy and falsy values 
+    ternary expression 
+    short circuiting 
+
+Tip 17 Shorten Conditionals with Falsy Values
+  Equivalency & Identity 
+  
+  Equivalent values are same values but of different type
+  Equivalent value is checked with '=='
+
+  1 == '1' // true 
+
+  Identical values are of strict equality of the same type
+
+  1 === '1' // false
+  1 === 1 // true 
+
+  Objects, like instances of array, are checked by refernce 
+
+  Eg. An empty string is "equal" to false but they are not "identical" 
+    '' == false // true 
+  List of falsy values:
+    false
+    null
+    0
+    NaN
+    ''
+    ""
+    undefined
+  Arrays and objects are always truthy, even when they are empty 
+
+  Potential issue with unintented mutation: 
+    (Delete) Removing key value pair will default the (non-exist) value to undefined, 
+    which is a falsy value 
+
+  
+
+
+  
+
+
 
   
 
