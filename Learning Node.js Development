@@ -142,8 +142,15 @@ Node.js installation
   Summary
 Node Fundamentals – Part 1
   Module basics
+    - use modules with require() function
+      require() does three things:
+      1. Load modules bundled w/ Node.js: 
+        like HTTP module (make web server) or fs module (access file system)
+      2. Use prewritten libraries 
+      3. Require other files of own app
     Using case for require()
       Initialization of an application
+        
         The built-in module to use require()
           Creating and appending files in the File System module
           The OS module in require()
