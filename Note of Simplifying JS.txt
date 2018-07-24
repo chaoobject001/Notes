@@ -798,7 +798,11 @@ Tip 17 Shorten Conditionals with Falsy Values
   Potential issue with unintented mutation: 
     (Delete) Removing key value pair will default the (non-exist) value to undefined, 
     which is a falsy value 
+  To avoid this issue: 
+    1. prevent data from mutation
+    2. use strict equivalency (=== / !==)
 
+Tip 18 CHeck Data Quickly with Ternary Operator 
   
 
 
