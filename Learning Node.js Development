@@ -66,6 +66,7 @@ Node.js installation
   Node.js version confirmation
     Installing Node
     Verifying installation: node -v
+  
   What is Node?
     JS taken out of context of browser
     Gain additional features such as:
@@ -74,6 +75,7 @@ Node.js installation
       - Query DB directly
       - Create web servers
     V8 runtime engine (written in C++): convert JS into machine code
+  
   Differences between JavaScript coding using Node and in the browser
     Inside browser, "window" is the global object
       - it stores every variables
@@ -86,52 +88,100 @@ Node.js installation
     process.exit(0); // things exited without error
     OR
     Leave Node by using Ctrl + C twice 
+  
   Why use Node
-        Blocking and non-blocking software development
-            The working of blocking I/O
-            The working non-blocking I/O
-        Blocking and non-blocking examples using Terminal
-            Node community – problem solving open source libraries
-    Different text editors for node applications
-    Hello World – creating and running the first Node app
-        Creating the Node application
-        Running the Node application
-    Summary
+    Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient
+    Node is an event-driven, non-blocking language (enviornmant?). 
+    I/O is time-consuming - non-blocking I/O process multiple requests without preventing other tasks been completed 
+  
+  Blocking and non-blocking software development
+    Eg. Blocking - operations executed in sequence  
+      var getUserSync = require('./getUserSync');
+
+      var user1 = getUserSync('123');   // wait for result from I/O, getUserSync('123') 
+      console.log('user1', user1);      // Non-I/O operation - executed right away
+
+      var user2 = getUserSync('321');   // wait for result from I/O, getUserSync('321') 
+      console.log('user2', user1);      // Non-I/O operation - executed right away
+
+      var sum = 1 + 2;                  // Non-I/O operation - executed right away
+      console.log(`The sum is ${sum}`); // Non-I/O operation - executed right away
+    
+    Non-Blocking: run multiple operations at the same time
+    For each operation in Node.js
+      Given event loop attaches a listener for pending event 
+      When event takes place 
+      Then callback function is invoked  
+    Node.js is single threaded, but with Non-blocking context, 
+    next operation can be started while previous event loops are pending 
+    without wasting additional resources (CPU, RAM, etc...)
+
+    Eg. Non-Blocking
+      var getUser = require('./getUser');
+      getUser('123', function (user1) {
+        console.log('user1', user1);
+      });
+
+      getUser('321', function (user2) {
+        console.log('user2', user2);
+      });
+
+      var sum = 1 + 2;
+      console.log(`The sum is ${sum}`);
+
+  Blocking and non-blocking examples using Terminal
+    Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient
+
+  Node community – problem solving open source libraries
+    - and all the modules are non-blocking 
+
+  Different text editors for node applications: Atom or VS Code
+  Hello World – creating and running the first Node app
+    Creating the Node application
+    Running the Node application
+  Summary
 Node Fundamentals – Part 1
-    Module basics
-        Using case for require()
-            Initialization of an application
-            The built-in module to use require()
-                Creating and appending files in the File System module
-                The OS module in require()
-                Concatenating user.username
-                Using template strings
-    Require own files
-        Making a new file to load other files
-        Exporting files from note.js to use in app.js
-            A simple example of the working of the exports object
-            Exporting the functions
-                Exercise – adding a new function to the export object
-                Solution to the exercise
-    Third-party modules
-        Creating projects using npm modules
-        Installing the lodash module in our app
-        Installation of lodash
-            Using the utilities of lodash
-                Using the _.isString utility
-                Using _.uniq
-        The node_modules folder
-    Global modules
-        Installing the nodemon module
-        Executing nodemon
-    Getting input
-        Getting input from the user inside the command line
-            Accessing the command-line argument for the notes application
-                Adding if/else statements
-                Exercise – adding two else if clauses to an if block
-                Solution to the exercise
-            Getting the specific note information
-    Summary
+  Module basics
+    - use modules with require() function
+      require() does three things:
+      1. Load modules bundled w/ Node.js: 
+        like HTTP module (make web server) or fs module (access file system)
+      2. Use prewritten libraries 
+      3. Require other files of own app
+    Using case for require()
+      Initialization of an application
+        
+        The built-in module to use require()
+          Creating and appending files in the File System module
+          The OS module in require()
+          Concatenating user.username
+          Using template strings
+  Require own files
+    Making a new file to load other files
+      Exporting files from note.js to use in app.js
+        A simple example of the working of the exports object
+        Exporting the functions
+          Exercise – adding a new function to the export object
+          Solution to the exercise
+  Third-party modules
+    Creating projects using npm modules
+    Installing the lodash module in our app
+    Installation of lodash
+      Using the utilities of lodash
+        Using the _.isString utility
+        Using _.uniq
+    The node_modules folder
+  Global modules
+    Installing the nodemon module
+    Executing nodemon
+  Getting input
+    Getting input from the user inside the command line
+      Accessing the command-line argument for the notes application
+        Adding if/else statements
+        Exercise – adding two else if clauses to an if block
+        Solution to the exercise
+        Getting the specific note information
+  Summary
 Node Fundamentals – Part 2
     yargs
         Installing yargs
