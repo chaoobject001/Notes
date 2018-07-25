@@ -1,0 +1,130 @@
+Module 1: Course Overview
+  Track dependencies 
+  Write Scripts
+  Publish module
+
+Module 2: NPM Basics
+  Introduction
+    https://github.com/joeeames/NPMPlaybookCourse
+  What Is a Package?
+    Package v. Module
+      Module: single JS file with some functionality 
+      Package: contains one or more modules inside and package.json (w/ metadata about package)
+  Typical NPM Usage: look at others sample or starter project
+    To clone project using git:
+      1. git clone https://github.com/joeeames/NPMPlaybookCourse
+      2. move into the directory (cd NPMPlaybookCourse)
+      3. npm install (install dependencies in package.json)
+      4. npm start (per scripts section in package.json)
+      5. npm test (per scripts section in package.json)
+
+  NPM Help
+    npm -h:  list npm commands
+    npm {command} -h: specific help with the command 
+    npm help {command} - open docs in browser
+    npm help-search {search_token}: list all npm docs with the search_token
+
+  NPM Shortcuts
+    list of frequent shorthand command: https://docs.npmjs.com/misc/config
+
+  Creating a Package.json
+    Two types of projects: 
+      1. For Users (Web app...)
+      2. 3rd party package for others to consume 
+    For Users:
+      Create package.json to:
+        - Track Dependencies (download & install via NPM)
+        - Create scripts
+      To create package.json:
+      1. npm init: followed by series of questions; hit enter key for default option
+        The questions have to do with publishing on GitHub
+      2. some dependencies will be added automatically 
+      To create package.json w/ all defaults accepted: npm init -y
+
+  Setting Defaults for npm init
+    such as: 
+      npm set init-author-name 'Charles Kuo'
+      npm set init-license 'MIT'
+    to check for default setting:
+      npm get init-author-name 
+    to remove setting:
+      npm config delete init-author-name
+    npm set / npm get are shorts for npm config set / npm config get
+    All the setting s are stored in .npmrc file - located at the root of user directory   
+    - like C:\Users\charlesk\.npmrc
+
+  Installing Packages
+    npm install {name of package inside registry}
+    to save dependencies saved in package.json:
+      npm install {name of package inside registry} -S
+      or
+      npm i {name of package inside registry} -S
+    to install package needed ONLY for development, Not production:
+      npm i {name of package inside registry} -D
+
+  Listing Installed Packages
+    ls node_modules/
+    - list packages installed, or
+    npm list 
+    
+    to list dependencies with specified depth (eg. 1 level deep; 0 for packaged installed by myself)
+    npm list --depth 1 
+
+    to list all dependencies globally 
+    npm list --global true
+
+    to list more details info on dependencies
+    npm list --long true
+
+    to list dependencies in JSON
+    npm list --json true
+
+    to list dependencies in parseable format without JSON
+    npm list --parseable true
+
+    to list only Dev dependencies 
+    npm list --dev true
+
+    to list only non-Dev dependencies 
+    npm list --prod true
+
+    list can also be shorten as 'ls'
+
+  Installing Global Packages 
+    - allows command to be used in command line 
+    npm i {package_name} -g
+    When package installed globally, the node module is not installed in sub-directory of current directory
+    Use list command to see what libraries are installed
+
+  Removing a Package
+    to uninstall a package:
+      npm uninstall {package_name} 
+    to uninstall a package & remove it from dependencies 
+      npm uninstall {package_name} --save
+    or
+      npm rm {package_name}
+      npm un {package_name}
+      npm r {package_name}
+    add -g flag to unstall from global Repo
+    
+  Installing Specific Versions
+  Installing Existing Dependencies
+  Updating Packages
+
+Module 3: Advanced NPM
+  Installing from a Git Repo
+  Installing from a Gist
+  Installing from a Folder
+  The NPM Registry
+  Searching for Packages
+  Pruning
+  The NPM Repo Command
+  Upgrading NPM
+  Using Simple Scripts
+
+Module 4: Publishing Your Own Package
+  Setting up Your NPM User for Publishing
+  Preparing Your Project for Publishing
+  Publishing Your Package
+  Publishing an Update
+  Releasing a Beta Version
