@@ -802,8 +802,35 @@ Tip 17 Shorten Conditionals with Falsy Values
     1. prevent data from mutation
     2. use strict equivalency (=== / !==)
 
-Tip 18 CHeck Data Quickly with Ternary Operator 
+Tip 18 CHeck Data Quickly with Ternary Operator
+  Ternary operator produce predictable code by reducing the number of variables assigned
+  Instead of defining or assign variable inside if / else block like:
+  Eg. 
+    let permissions;
+    if (title === 'manager') {
+      permissions = ['time', 'pay'];
+    } else {
+      permissions = ['time'];
+    }
+  A shorten version w/ ternary operator:
+  Eg.
+    const permissions = title === 'manager' ? ['time', 'pay']:['time'];
   
+  Warning: avoid to chain multiple ternary expressions
+  When nested ternary expressions are needed, it is best to refactor into a function
+  eg.
+    function getTimePermissions({title}) {
+      if(title === 'manager') {
+        return ['time', 'overtimeAuthorization', 'pay'];
+      }
+      if(title === 'supervisor') {
+        return ['time', 'overtimeAuthorization']
+      }
+      return ['time'];
+    }
+    const permissions = getTimePermissions({title:'employee'}); // ['time']
+  
+Tip 19 Maximize Efficiency w/ Short Circuiting 
 
 
   
