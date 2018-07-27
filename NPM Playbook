@@ -108,6 +108,38 @@ Module 2: NPM Basics
     add -g flag to unstall from global Repo
     
   Installing Specific Versions
+    install package without any specification will get the latest version 
+    install package of specific version:
+      semantic versioning: major_version.minor_version.patch_number
+      major_version: No longer backward compitable 
+      minor_version: New features 
+      patch_number: Bug fix, performance improvement with No change in functionalities 
+      eg. get version 1.8.2
+        npm i package@1.8.2
+      eg. get latest version of 1.8
+        npm i package@"1.8.x" 
+        npm i package@"1.8"
+      eg. get anything pass version 1.1.0 (exclude 1.1.0)
+        npm i package@">1.1.0"
+      eg. get anything pass version 1.1.0 (include 1.1.0)  
+        npm i package@">=1.1.0"
+      eg. get anything pass version 1.1.0 (include 1.1.0) but below 1.4.0
+        npm i package@">=1.1.0 <1.4.0"
+      eg. install latest version of package with --save
+        This will edit dependencies in package.json
+        "dependencies": {
+          "package": "^1.8.3"
+        } 
+        The '^' ensure at time of install, if package published any version later than 1.8.3.
+        The newest version above 1.8.3 will be installed 
+      eg. Install specific version and NOT letting NPM upgrade
+      npm i package@1.8.2 --save --save-exact
+      in package.json:
+        "dependencies": {
+          "package": "1.8.2"
+        } 
+
+
   Installing Existing Dependencies
   Updating Packages
 
