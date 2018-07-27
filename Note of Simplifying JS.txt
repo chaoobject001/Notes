@@ -831,7 +831,53 @@ Tip 18 CHeck Data Quickly with Ternary Operator
     const permissions = getTimePermissions({title:'employee'}); // ['time']
   
 Tip 19 Maximize Efficiency w/ Short Circuiting 
+  || op to check and assign with default operand as needed 
+  eg. 
+    const name = "charles" || "Who am I"; // "charles" b/c it's truthy
 
+    function getIconPath(icon) {
+      const path = icon.path || 'default.png'; 
+      // if icon is undefined, 'path' will be assigned with 'default.png' 
+      return path;
+    } 
+
+  && op to check for error in combinations of requirements -  all must be true else default
+  eg.
+    function getImage(config) {
+      const images = config.images;
+      return images && images.length ? images[0] : 'default.png';
+      // return images[0] only if images is defined and has length more than 0
+    }
+  For combination check of even more requirements, refactor w/ function or RegEx
+
+Chapter 5 Simplify Loops
+  - avoid mutations
+  - return predictable results
+  - concise (as short as possible)
+  - arrow function turns simple loop into one-liner 
+
+Tip 20 Simplify Looping with Arrow Functions
+  callback functions: functions passed in as parameter to other Functions
+  function injection with callback: pass in a function to return a customized result
+  eg.
+    let capitalize = name => name[0].ToUpperCase() + name.slice(1);
+    function applyCustomGreeting(name, callback) {
+      return callback(capitalize(name)); // return a function that takes specified parameters
+    }
+
+  One of the ideal case for arrow function:
+    - Simple anonymous function 
+    - one-liner
+    - single parameter
+
+  eg. in combination w/ previous example 
+    applyCustomGreeting('joe', function(name) {
+      return `Oh, hi ${name}!`;
+    }); // "Oh, hi Joe!"
+
+Tip 21 Write Shorter Loops with Array Methods
+  
+  
 
   
 
