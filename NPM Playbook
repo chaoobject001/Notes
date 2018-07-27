@@ -147,8 +147,6 @@ Module 2: NPM Basics
         "dependencies": {
           "package": "1.8.2"
         } 
-
-
   
   Updating Packages
 
