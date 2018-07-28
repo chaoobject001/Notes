@@ -130,8 +130,9 @@ Module 2: NPM Basics
         "dependencies": {
           "package": "^1.8.3"
         } 
-        The '^' ensure at time of install, if package published any newest major version later than 1.8.3.
-        The newest major version above 1.8.3 will be installed 
+        The '^' ensure at time of install, if package published any newest major version later than 1.8.3,
+        which is the latest of 1.x and the newest major version above 1.8.3 will be installed 
+        
         To install newest minor version:
           use "package": "~1.8.3" to get latest of version 1.8.x
         
@@ -149,6 +150,7 @@ Module 2: NPM Basics
         } 
   
   Updating Packages
+
 
 Module 3: Advanced NPM
   Installing from a Git Repo
