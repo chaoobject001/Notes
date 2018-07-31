@@ -150,22 +150,126 @@ Module 2: NPM Basics
         } 
   
   Updating Packages
-
-
+    npm update
+    npm i {package} --save
+      update to the latest minor version
+    npm update {package} 
+      update one dependency at a time
+    npm update -g 
+      update global dependencies - can be a long process with wide impact   
+      alternatively 
+      npm update -g {package}
+        update one library at a time maybe a safer approcah 
+    
 Module 3: Advanced NPM
-  Installing from a Git Repo
-  Installing from a Gist
-  Installing from a Folder
-  The NPM Registry
-  Searching for Packages
-  Pruning
-  The NPM Repo Command
-  Upgrading NPM
-  Using Simple Scripts
+  Installing from a Git Repo using URL
+    default: npm install {package}
+    npm install {Full URL from github or other locations}
 
+  Installing from a Gist (GitHub Gist)
+    1. copy hash from URL (gist.github.com/{user}/{hash})
+    2. npm install gist:{hash}
+      Note: the Gist must have package.json of its own
+      Gist will be marked as extraneous 
+    To save the gist into package.json with --save option
+      npm install gist:{hash} --save 
+    Within package.json, the dependency will be listed as
+      "package": "gist:{hash}"
+        
+  Installing from a Folder (private, non-public-NPM packages)
+    npm install ../path/to/folder 
+    To save the package into package.json with --save option
+      npm install c:\path\to\folder --save 
+
+  The NPM Registry listed all packages published through npm
+    go to package directly from url: npm.im/{package}
+    
+  Searching for Packages
+    npm search {package} 
+    or go to npmjs.com and use search field on top
+
+  Pruning - to remove packages not listed in package.json
+    by default: npm rm {package} to remove package specified in package.json
+    else:
+      npm prune
+        - remove any package not listed in package.json
+    Prepare for production deployment:
+      npm prune --production 
+        - remove all dev dependencies 
+      
+  The NPM Repo Command
+    npm repo {package}
+      opens official npm package repo page in browser 
+          
+  Upgrading NPM
+    run with admin privileges:
+      run: npm i npm@latest -g
+
+  Using Simple Scripts w/ npm
+    Default script:
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    }, ...
+
+    to run test: npm test
+
+    Two main default scripts: test and start script
+
+    start script is to start application, like npm start 
+
+    Create specific script's name for customized behavior 
+    eg. 
+      npm run {customed_name_of_script}
+        
 Module 4: Publishing Your Own Package
   Setting up Your NPM User for Publishing
+    goto npmjs.com and click sign-up
+      after account creation, run command
+        npm adduser
+      and enter username, password and Email (public info!)
+            
   Preparing Your Project for Publishing
+    1. Setup project in git
+      git init
+      git remote add origin {URL_To_Repo} 
+    2. Create package.json
+      npm init
+        Pay attention to every question
+    3. git add .
+    4. git commit -m "First check-in"
+    5. git push
+    6. If upstream is not yet to be set up, git push origin master
+
   Publishing Your Package
+    npm publish 
+      to post to npm (then shown version number)
+    npm info {package}
+    npm repo {package}
+    To set version, only do this after committed and push change to file:
+      git tag {like_1.0.2}
+    
+    git push --tags
+      This can be verified in GitHub under Master branch with "Tags" tab
+      Also, marked as release in GitHub
+
   Publishing an Update
+    1. making chnages to code
+      - manually change "version" in package.json
+      - Or, let npm do it automatically
+      
+      git add .
+      git commit -m "fixed message"
+      , then run one of the following 
+
+      npm version patch 
+      npm version minor
+      npm version major
+
+    2. update the version
+      git push --tags
+      git push
+
+    3. publish package
+      npm publish 
+
   Releasing a Beta Version
