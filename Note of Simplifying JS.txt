@@ -876,8 +876,64 @@ Tip 20 Simplify Looping with Arrow Functions
     }); // "Oh, hi Joe!"
 
 Tip 21 Write Shorter Loops with Array Methods
+  for loop and for ... of loop may present unnecessary clutter 
   
+  eg. loop to convert price strings into floating point values (loops/methods/problem.js)
+    const prices = ['1.0', '2.15'];
+    const formattedPrices = [];
+    for (let i = 0; i < prices.length; i++) {
+      formattedPrices.push(parseFloat(prices[i]));
+    }
   
+  As new limitations applied, code clusters increase 
+  Code become less predictable 
+
+  eg. loop to ONLY convert price strings into floating point values (loops/methods/problem.js)
+    const prices = ['1.0', '2.15'];
+    const formattedPrices = [];
+    for (let i = 0; i < prices.length; i++) {
+      const price = parseFloat(prices[i]);
+      if (price) {
+        formattedPrices.push(price);
+      }
+    }
+  
+  With the exception of reduce(), most array methods change size of array or shape (key / value pairs) of data
+  List of common methods:
+    map()
+      change shape but not size 
+      Example: Get the value of a key across similar items
+    
+    sort()
+      change order but no change in size or shape
+    
+    filter()
+      change size but not shape 
+      Example: Get ONLY items of specific property value 
+    
+    find()
+      change size to 1 but not shape; does not return an array 
+
+    forEach()
+      use shape; no return 
+
+    reduce() 
+      change shape and size as needed 
+  
+  Rewrite "loop to convert price strings into floating point values":
+    const formattedPrices = price.map(price => parseFloat(price));
+  
+  Rewrite "loop to ONLY convert price strings into floating point values":
+    const formattedPrices = price.map(price => parseFloat(price)).filter(price => price);
+    // falsy values will be pulled
+
+Tip 22 Create Arrays of same size with map()
+  
+
+
+
+
+
 
   
 
