@@ -272,4 +272,32 @@ Module 4: Publishing Your Own Package
     3. publish package
       npm publish 
 
-  Releasing a Beta Version
+  Releasing an Alpha / Beta Version
+  When releasing new feature as beta, in package.json:
+    Set "version": "1.1.0-beta.0",
+    This is updated from "1.0.3" to "1.1.0-beta.0"
+    product is currently in beta and this is the initial version of beta (beta.0)
+    later it can be incremented as beta.1 or beta.2 and so on
+    this change needs to be added manually 
+  In command line:
+    git add . 
+      add chnages
+    git commit -m "beta version with languages"
+      commit the chnages
+    git tag 1.1.0-beta.0
+      give the same version of tag as in package.json
+    git push 
+      push the chnages
+    git push --tags
+      push the tags
+    npm publish --tag beta
+      publish this version and tag it as beta version
+  To install beta version:
+    npm i {package}@beta
+  To verify versions:
+    npm info {package}
+    will display info that contains something like following:
+      'dist-tag': { latest: '1.0.3', beta: '1.1.0-beta.0' },
+
+      
+
