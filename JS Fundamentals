@@ -1,100 +1,105 @@
 Module 1: Course Overview
+  new syntax
+  code organization
+  communication w/ web services
+  error handling and security 
+  setup JS dev environment 
 
 Module 2: Introduction and Setup
-Course Objectives and Overview
-JavaScript Versions and History
-Tooling for This Course
-Setting up a Development Environment
+  Course Objectives and Overview
+  JavaScript Versions and History
+  Tooling for This Course
+  Setting up a Development Environment
 
 Module 3: Language Features
-Introduction
-Constants
-let and var for Variable Declarations
-Rest Parameters
-Destructuring Arrays
-Destructuring Objects
-Spread Syntax
-typeof()
-Common Type Conversions
-Controlling Loops
-Summary
+  Introduction
+  Constants
+  let and var for Variable Declarations
+  Rest Parameters
+  Destructuring Arrays
+  Destructuring Objects
+  Spread Syntax
+  typeof()
+  Common Type Conversions
+  Controlling Loops
+  Summary
 
 Module 4: Operators
-Introduction
-Equality Operators
-Unary Operators
-Logical (Boolean) Operators
-Relational Operators
-Conditional Operator
-Assignment Operators
-Operator Precedence
-Summary
+  Introduction
+  Equality Operators
+  Unary Operators
+  Logical (Boolean) Operators
+  Relational Operators
+  Conditional Operator
+  Assignment Operators
+  Operator Precedence
+  Summary
 
 Module 5: Functions and Scope
-Introduction
-Function Scope
-Block Scope
-IIFE's
-Closures
-The this Keyword
-call and apply
-bind
-Arrow Functions
-Default Parameters
-Summary
+  Introduction
+  Function Scope
+  Block Scope
+  IIFE's
+  Closures
+  The this Keyword
+  call and apply
+  bind
+  Arrow Functions
+  Default Parameters
+  Summary
 
 Module 6: Objects and Arrays
-Introduction
-Constructor Functions
-Prototypes
-Expanding Objects Using Prototypes
-JSON - JavaScript Object Notation
-Array Iteration
-Summary
+  Introduction
+  Constructor Functions
+  Prototypes
+  Expanding Objects Using Prototypes
+  JSON - JavaScript Object Notation
+  Array Iteration
+  Summary
 
 Module 7: Classes and Modules
-Introduction
-Class Basics
-Constructors and Properties
-Methods
-Inheritance
-Creating a Module
-Importing a Module
-Summary
+  Introduction
+  Class Basics
+  Constructors and Properties
+  Methods
+  Inheritance
+  Creating a Module
+  Importing a Module
+  Summary
 
 Module 8: Programming the BOM and DOM
-Introduction
-The window Object
-Timers
-The location Object
-The document Object
-Selecting DOM Elements
-Modifying DOM Elements
-Summary
+  Introduction
+  The window Object
+  Timers
+  The location Object
+  The document Object
+  Selecting DOM Elements
+  Modifying DOM Elements
+  Summary
 
 Module 9: Promises and Error Handling
-Introduction
-Errors in JavaScript
-Error Handling Using try and catch
-Developer Defined Errors
-Creating a Promise
-Settling a Promise
-Summary
+  Introduction
+  Errors in JavaScript
+  Error Handling Using try and catch
+  Developer Defined Errors
+  Creating a Promise
+  Settling a Promise
+  Summary
 
 Module 10: Data Access Using HTTP
-Introduction
-HTTP Requests Using XHR
-HTTP Requests Using jQuery
-HTTP POST Using jQuery
-Summary
+  Introduction
+  HTTP Requests Using XHR
+  HTTP Requests Using jQuery
+  HTTP POST Using jQuery
+  Summary
 
 Module 11: Forms
-Introduction
-Preventing Form Submission
-Accessing Form Fields
-Showing Validation Errors
-Posting from JavaScript
-Summary
+  Introduction
+  Preventing Form Submission
+  Accessing Form Fields
+  Showing Validation Errors
+  Posting from JavaScript
+  Summary
 
 Module 12: Security and Building for Production
 Introduction
