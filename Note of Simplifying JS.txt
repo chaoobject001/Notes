@@ -928,8 +928,106 @@ Tip 21 Write Shorter Loops with Array Methods
     // falsy values will be pulled
 
 Tip 22 Create Arrays of same size with map()
+  Every array method takes a callback function that applies to each member 
+  Except reduce(), the callback function takes one argument - the individual member 
+  eg. map() as simplified loop
+    // normal loop
+    const instruments = [];
+    for (let i = 0; i < band.length; i++) {
+      const instrument = band[i].instrument;
+      instruments.push(instrument);
+    }
+
+    // refactor into saperate functions
+    function getInstrument(member) {
+      return member.instrument;
+    }
+
+    for (let i = 0; i < band.length; i++) {
+      const instrument = band[i].instrument;
+      instruments.push(getInstrument(band[i]));
+    }    
+
+    // remove loop
+    const instruments = band.map(getInstrument);
+
+    // convert named function into anonymous function
+    const instruments = band.map( member => member.instrument );
+
+Tip 23 Pull Out Subsets of Data with filter() and find()
+  Change size and retain shape
+  Note: 
+    match() method on string returns an array of info if there is a match
+    else, return null
+    eg. 
+      'Dave'.match(/Dav/)     // ["Dav", index: 0, input: "Dave", groups: undefined]
+      'Michelle'.match(/Dav/) // null
+      
+  eg. return subset of array by specific criteria 
+    // loop approach
+    const daves = [];
+    for (let i = 0; i < team.length; i++) {
+      if(team[i].match(/Dav/)) {
+        daves.push(team[i]);
+      }      
+    }
+  
+  The same task can be done with filter():
+  filter() takes function that returns true / false value 
+  
+  eg. return subset of array by filter() with specific criteria
+    const daves = team.filter(member => member.match(/Dav/));
+  
+  To get only one or first match by find():
+  eg. 
+    // loop approach
+    let memorialInstructor;
+    for(let i = 0; i < instructors.length; i++) {
+      if(instructors[i].libraries.includes('Memorial')) {
+        memorialINstructor = instructors[i];
+        break;
+      }
+    }
+
+    // find() approach
+    const memorialInstructor = 
+      instructors.find(instructor => {
+        return instructor.libraries.includes("Memorial");
+      });
+
+  Warning: 
+    If there is no match, filter() returns an empty array 
+    but find() returns undefined
+
+  To add default behavior to find() with short circuiting 
+  eg. 
+    const image = [{
+      path:'./me.jpg',
+      profile: false
+    }];
+    const profile = images.find(image => image.profile) || {path: './default.jpg'};
+
+  Note: currying reduce arguments down to one
+    /* data
+      {
+        name: 'Jim',
+        libraries: ['MERIT']
+      }
+    */
+    const findByLibrary = library => instructor => {
+      return instructor.libraries.include(library);
+    } 
+    const librarian = instructors.find(findByLibrary('MERIT'));
+
+  Tip 24 Apply Consistent Actions with forEach()
   
 
+
+
+
+
+
+  
 
 
 
