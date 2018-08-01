@@ -7,9 +7,35 @@ Module 1: Course Overview
 
 Module 2: Introduction and Setup
   Course Objectives and Overview
+    Applications in: 
+      Browsers
+      Desktop app - Electron
+      Mobile device - Cordova
+      Server - Node.js
+    Overview:
+      Intro & Setup
+      JS feature
+      Operator
+      Functions and Scope
+      Objects & Arrays
+      Class & Modules
+      Program BOM (Browser Object Model) & DOM (Document Object Model)
+      Promises & Error Handling 
+      Data Access Using HTTP
+      Forms (validation)
+      Security 
+      Building for PROD
+
   JavaScript Versions and History
   Tooling for This Course
+    node and VS code
+    webpack via npm
+    webpack-starter 
+
   Setting up a Development Environment
+    webpack-starter
+    git clone {URL}
+    
 
 Module 3: Language Features
   Introduction
