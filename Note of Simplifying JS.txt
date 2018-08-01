@@ -1020,7 +1020,22 @@ Tip 23 Pull Out Subsets of Data with filter() and find()
     const librarian = instructors.find(findByLibrary('MERIT'));
 
   Tip 24 Apply Consistent Actions with forEach()
-  
+    eg. sned email to each club member
+      for (let i = 0; i < club.length; i++) {
+        sendEmail(club[i]);    
+      }
+    
+    forEach() is predictable and can be chained w/ other methods
+    forEach() takes a function that
+      takes an individual member of the array
+      but the return statement (defined or not) does nothing, and 
+      any action taken is a side-effect, an action performed outside of the scope of the function 
+
+    eg. sned email to each club member w/ forEach()  
+      club.forEach(member => sendMail(member));
+
+  Tip 25 Combine Methods with Chaining   
+
 
 
 
