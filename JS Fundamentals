@@ -33,13 +33,20 @@ Module 2: Introduction and Setup
     webpack-starter 
 
   Setting up a Development Environment
-    webpack-starter
-    git clone {URL}
-    
+    https://github.com/chaoobject001/JSFundamentals
 
 Module 3: Language Features
   Introduction
   Constants
+    const declaration creates a read-only reference to a value
+    const variable needs to be initialied at declaration
+    let has block-Scope
+    eg. 
+      if(true) {
+        let cardId = 100;
+      } 
+      console.log(cardId);
+      
   let and var for Variable Declarations
   Rest Parameters
   Destructuring Arrays
