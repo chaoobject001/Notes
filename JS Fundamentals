@@ -40,16 +40,43 @@ Module 3: Language Features
   Constants
     const declaration creates a read-only reference to a value
     const variable needs to be initialied at declaration
+    
+  let and var for Variable Declarations
     let has block-Scope
     eg. 
       if(true) {
         let cardId = 100;
       } 
       console.log(cardId);
-      
-  let and var for Variable Declarations
+    
   Rest Parameters
+    eg. 
+      function sendCars(...allCarIds) {
+        allCarIds.forEach( id => console.log(id) );
+      }
+      sendCars(100, 200, 555); 
+    When mixing normal parameters with rest parameters, the rest parameters need to be placed last
+    - rest parameters as the remaining parameters 
+    eg.
+      sendCars('ABC', 1, 2, 3);
+
   Destructuring Arrays
+    eg.
+      let carIds = [1, 2, 3];
+      let [car1, car2, car3] = carIds;
+    
+    Destructuring array w/ rest parameters
+    eg. 
+      let carIds = [1, 2, 3];
+      let car1, remainingCars;
+      [car1, ...remainingCars] = carIds;
+
+      console.log(car1, remainingCars);
+    
+    Skipping first two members and stor the rest:
+    eg.
+      [, , ...remainingCars] = carIds;
+ 
   Destructuring Objects
   Spread Syntax
   typeof()
