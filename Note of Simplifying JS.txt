@@ -1035,8 +1035,20 @@ Tip 23 Pull Out Subsets of Data with filter() and find()
       club.forEach(member => sendMail(member));
 
   Tip 25 Combine Methods with Chaining   
+  eg.
+    sailors
+      .filter(sailor => sailor.active)
+      .map(sailor => sailor.email || `${sailor.name}@wiscsail.io`)
+      .forEach(sailor => sendEmail(sail));
 
+  Downside:
+    Each time calling a new method, the returned array is iterated over
+    - but this is not a serious issue unless data sets are large
 
+  Order of methods execution matters 
+    - wrong results can be produced (like empty array) without been addressed as an error 
+
+  
 
 
 
