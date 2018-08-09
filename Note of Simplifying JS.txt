@@ -1165,15 +1165,68 @@ Tip 27 Reduce Loop Clutter with for...in and for...each
     for ... of (objects)
   
   Cases to be aware of potential inefficient or cumbersome use of array methods
-  Possible inefficiency:
-    Exist loop when encounter unexpected results - further iteration become waste 
-  Possible cumbersome:
-    When working with collection that is NOT an array
-    When working with an object, create array of keys with Object.keys()
-    Using spread operator ton Map to get array of pairs 
+    Possible inefficiency:
+      Exist loop when encounter unexpected results - further iteration become waste 
+    Possible cumbersome:
+      When working with collection that is NOT an array
+      When working with an object, create array of keys with Object.keys()
+      Using spread operator to Map to get array of pairs 
   
   Scenario:
+    An app that select and compare multiple sets of info, like firm and services provided
+    each firm can have ID and name, stored in a map
+    eg.
+      const firms = new Map()
+        .set(10, 'lvie Group')
+        .set(23, 'Soundscaping Source')
+        .set(31, 'Big 6');
     
+    To iterate over the info for various task, Map needs to be converted into array 
+    for the For loop
+    eg. find a firm that's unavailable 
+      const entries = [...firms];
+      for (let i = 0; i < entries.length; i++) {
+        const [id, name] = entries[i];
+        if (!isAvailable(id)) {
+          return `${name} is not available`;
+        }
+      }
+      return 'All firms are available';
+    
+    Alternatively , use find() to find an unavailable firm (the first one)
+    eg.
+      const unavailable = [...firms].find((firm) => {
+        const [id] = firm;
+        return !isAvailable(id); 
+      });
+
+      console.log(unavailable ? `${unavailable[1]} is NOT available`: "All firms are available");
+    
+    OR, use reduce() to create default response - or locate the last unavailable firm 
+    eg.
+      const message = [...firms].reduce((message, firm) => {
+        const [id, name] = firm;
+        if(!isAvailable(id)) {
+          return `${name} is unavailable`;
+        } 
+        return message;
+      }, "All firms are available");
+    
+    All three methods above required conversion to array from map first
+    However, Map's property, "MapIterator" allows iteration over map directly 
+    with for ... of loop
+
+    
+
+
+
+
+
+
+
+
+
+
    
 
 
