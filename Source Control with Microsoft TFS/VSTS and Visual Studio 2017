@@ -1,0 +1,104 @@
+
+Course Overview
+2m 26s
+Course Overview
+2m 26s
+2
+Version Control
+33m 38s
+Course Introduction
+0m 54s
+Course Objectives
+0m 43s
+Module Outline
+0m 50s
+Source Control Fundamentals
+1m 34s
+Types of Source Control Systems
+3m 4s
+Centralized and Distributed Source Control Systems
+4m 59s
+Create a Team Project with Centralized and Distributed Source Control in VSTS
+2m 26s
+Branching
+3m 13s
+Connecting to Team Foundation Version Control and Creating a Branch
+10m 6s
+Continuous Integration
+1m 38s
+Continuous Integration with Visual Studio Team Services
+3m 27s
+Summary
+0m 40s
+3
+Source Control with Git on TFS or VSTS
+51m 46s
+Introduction
+0m 45s
+Overview
+0m 45s
+Understanding Git
+0m 36s
+Git is All About a Graph of Nodes
+1m 36s
+Creating a Git Repo in TFS/VSTS
+6m
+Basic Git Operations
+0m 49s
+Cloning a Git Repo in Visual Studio
+1m 5s
+Basic Git Operations-2
+2m 46s
+Using Fetch, Push, and Pull
+3m 5s
+Git Branching
+1m 15s
+Branch, Merge, and Rebase
+2m 8s
+Merge and Rebase
+7m 10s
+The Git Pull Request
+1m 1s
+Pull Requests in TFS/VSTS
+4m 7s
+Branching Strategies and CI/CD
+1m 1s
+Git Hub Flow
+1m 59s
+Git Flow
+1m 6s
+The Git Flow Branching Strategy
+1m 48s
+Git Flow Branches
+3m 3s
+Main, Supporting, and Hotfix Branch
+2m 37s
+Git Flow in Action
+6m 2s
+Summary
+0m 51s
+4
+Implementing Continuous Integration
+24m 57s
+Introduction
+0m 33s
+Outline
+0m 55s
+Continuous Integration
+1m 4s
+Setting up Continuous Integration for TFVC
+5m 10s
+Setting up TFVC Gated Check-in
+0m 31s
+Setting up Gated Check-in
+3m 44s
+Setting up Continuous Integration Builds with Git
+0m 26s
+Setting up Continuous Integration with Git
+4m 54s
+Setting up Git Branch Policies
+0m 30s
+Setting up Branch Policies
+6m 23s
+Summary
+0m 42s
