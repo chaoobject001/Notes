@@ -1019,22 +1019,22 @@ Tip 23 Pull Out Subsets of Data with filter() and find()
     } 
     const librarian = instructors.find(findByLibrary('MERIT'));
 
-  Tip 24 Apply Consistent Actions with forEach()
-    eg. sned email to each club member
-      for (let i = 0; i < club.length; i++) {
-        sendEmail(club[i]);    
-      }
+Tip 24 Apply Consistent Actions with forEach()
+  eg. sned email to each club member
+    for (let i = 0; i < club.length; i++) {
+      sendEmail(club[i]);    
+    }
     
-    forEach() is predictable and can be chained w/ other methods
-    forEach() takes a function that
-      takes an individual member of the array
-      but the return statement (defined or not) does nothing, and 
-      any action taken is a side-effect, an action performed outside of the scope of the function 
+  forEach() is predictable and can be chained w/ other methods
+  forEach() takes a function that
+    takes an individual member of the array
+    but the return statement (defined or not) does nothing, and 
+    any action taken is a side-effect, an action performed outside of the scope of the function 
 
-    eg. sned email to each club member w/ forEach()  
-      club.forEach(member => sendMail(member));
+  eg. sned email to each club member w/ forEach()  
+    club.forEach(member => sendMail(member));
 
-  Tip 25 Combine Methods with Chaining   
+Tip 25 Combine Methods with Chaining   
   eg.
     sailors
       .filter(sailor => sailor.active)
@@ -1049,86 +1049,136 @@ Tip 23 Pull Out Subsets of Data with filter() and find()
     - wrong results can be produced (like empty array) without been addressed as an error
       when required property is removed at the wrong chaining step 
 
-  Tip 26 Transform Array Data with reduce()
-    reduce() most predictable and flexible 
-    reduce() can change both size and / or shape of array 
-    eg.
-      const callback = function(collectedValues, item) {
-        return [...collectedValues, item];
-      };
-      const saying = ['veni', 'vedi', 'veci'];
-      const initialValue = [];
-      const copy = saying.reduce(callback, initialValue);
+Tip 26 Transform Array Data with reduce()
+  reduce() most predictable and flexible 
+  reduce() can change both size and / or shape of array 
+  eg.
+    const callback = function(collectedValues, item) {
+      return [...collectedValues, item];
+    };
+    const saying = ['veni', 'vedi', 'veci'];
+    const initialValue = [];
+    const copy = saying.reduce(callback, initialValue);
 
-    Here callback function takes two arguments
-    reduce() return value - carry
-    carry can be integer to a collection like Set
+  Here callback function takes two arguments
+  reduce() return value - carry
+  carry can be integer to a collection like Set
 
-    reduce() takes two arguments: 
-      callback function 
-      initial value (optional) to hold return values, also as a hint of what is returned  
-    
-    reduce() always return the carry item
+  reduce() takes two arguments: 
+    callback function 
+    initial value (optional) to hold return values, also as a hint of what is returned  
+   
+  reduce() always return the carry item
 
-    eg. get a list of unique values from collection (loops/reduce/reduce.js)
-      const dogs = [
-        {
-          name: 'max',
-          size: 'small',
-          breed: 'boston terrier',
-          color: 'black'
-        },
-        {
-          name: 'don',
-          size: 'large',
-          breed: 'labrador',
-          color: 'black'
-        },
-        {
-          name: 'shadow',
-          size: 'medium',
-          breed: 'labrador',
-          color: 'chocolate'
-        }
-      ];
+  eg. get a list of unique values from collection (loops/reduce/reduce.js)
+    const dogs = [
+      {
+        name: 'max',
+        size: 'small',
+        breed: 'boston terrier',
+        color: 'black'
+      },
+      {
+        name: 'don',
+        size: 'large',
+        breed: 'labrador',
+        color: 'black'
+      },
+      {
+        name: 'shadow',
+        size: 'medium',
+        breed: 'labrador',
+        color: 'chocolate'
+      }
+    ];
 
+    const colors = dogs.reduce((colors, dog) => {
+      if (colors.includes(dog.color)) {
+        return colors
+      }
+      return [...colors, dog.color]
+    }, []);
+
+    1. To read reduce() method, start at the end and verify what type of object is intialized & returned  
+      In this case, an empty array []
+      Starting with an explicit carry value helps code readability 
+    2. Identify the name of the initial value of the returned 
+      It is typically "carry" but in this case "colors"
+      Make sure carry value is returned, else there is a TypeError
+    3. Two tasks in this reduce():
+      - change size: return a subset of data (unique)
+      - change shape: only the values of color property returned
+      
+    Since reduce() can change size or shape of array, it can re-create other array method
+    eg. 
+      const colors = dogs.map(dog => dog.color);
+      // reduce() equivalent  
       const colors = dogs.reduce((colors, dog) => {
-        if (colors.includes(dog.color)) {
-          return colors
-        }
         return [...colors, dog.color]
       }, []);
-
-      1. To read reduce() method, start at the end and verify what type of object is intialized & returned  
-        In this case, an empty array []
-        Starting with an explicit carry value helps code readability 
-      2. Identify the name of the initial value of the returned 
-        It is typically "carry" but in this case "colors"
-        Make sure carry value is returned, else there is a TypeError
-      3. Two tasks in this reduce():
-        - change size: return a subset of data (unique)
-        - change shape: only the values of color property returned
-      
-        Since reduce() can change size or shape of array, it can re-create other array method
-        eg. 
-          const colors = dogs.map(dog => dog.color);
-          // reduce() equivalent  
-          const colors = dogs.reduce((colors, dog) => {
-            return [...colors, dog.color]
-          }, []);
         
-          // reduce() equivalents for find()
-          const shadowFound = dogs.find(dog => dog.name === "shadow");
-          const shadowFoundByReduce = dogs.reduce((shadowFoundByReduce, dog) => {
-            return dog.name === "shadow"? dog : {};
-          }, {});
+      // reduce() equivalents for find()
+      const shadowFound = dogs.find(dog => dog.name === "shadow");
+      const shadowFoundByReduce = dogs.reduce((shadowFoundByReduce, dog) => {
+        return dog.name === "shadow"? dog : {};
+      }, {});
 
-          // reduce() equivalents for filter()
-          const blackDogsFiltered = dogs.filter(dog => dog.color === "black");
-          const blackDogsReduced = dogs.reduce((blackDogsReduced, dog) => {
-            return dog.color === "black"? [...blackDogsReduced, dog] : blackDogsReduced;
-          }, []);
-          
+      // reduce() equivalents for filter()
+      const blackDogsFiltered = dogs.filter(dog => dog.color === "black");
+      const blackDogsReduced = dogs.reduce((blackDogsReduced, dog) => {
+        return dog.color === "black"? [...blackDogsReduced, dog] : blackDogsReduced;
+      }, []);
+
+      Use reduce() when other simplaer methods cannot complete the task 
+      eg. Get unique values for all keys from all dog objects
+        const filters = dogs.reduce((filters, dog) => {
+          filters.breed.add(dog.breed);
+          filters.size.add(dog.size);
+          filters.color.add(dog.color);
+          return filters;
+        }, 
+        {
+          breed: new Set(),
+          size: new Set(),
+          color: new Set()
+        });  
+
+      eg. Get count by breed with reduce
+        const aggregated = dogs.reduce((breeds, dog) => {
+          const count = breeds[dog.breed] || 0; 
+          return {
+            ...breeds,
+            [dog.breed]: count + 1;
+          };
+        }, {});
+        
+      eg. Get count by breed with Map
+        const aggregated = dogs.reduce((breeds, dog) => {
+          const count = breeds.get(dog.breed) || 0; 
+          breeds.set(dog.breed, count + 1);
+          return breeds;
+        }, new Map());
+
+Tip 27 Reduce Loop Clutter with for...in and for...each
+  Maintain clarity with 
+    for ... in (iterables)
+    for ... of (objects)
+  
+  Cases to be aware of potential inefficient or cumbersome use of array methods
+  Possible inefficiency:
+    Exist loop when encounter unexpected results - further iteration become waste 
+  Possible cumbersome:
+    When working with collection that is NOT an array
+    When working with an object, create array of keys with Object.keys()
+    Using spread operator ton Map to get array of pairs 
+  
+  Scenario:
+    
+   
+
+
+
+
 
 
 
