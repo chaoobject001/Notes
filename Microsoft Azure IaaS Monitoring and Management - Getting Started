@@ -1,0 +1,34 @@
+Course Overview
+Module 2: Reviewing Service and Resource Health
+Overview
+Demo: Check Azure Service Status
+Monitoring - The Big Picture
+Azure Resource Logs
+Demo: Review Azure VM Diagnostics
+Demo: Investigate Azure VM Metrics
+Demo: Introducing Azure Monitor
+Azure Monitor Components
+Application Insights
+Demo: Introducing Application Insights
+Summary
+Module 3: Introducing Azure Management Solutions
+Overview
+The Azure Monitoring Mindset
+Instance-level Monitoring
+Azure Monitor
+Azure Management Solutions
+Demo: Create a Workspace
+The Insight and Analytics Solution
+Demo: Install an Azure Management Solution
+Demo: Work with Service Map
+Demo: Work with Network Performance Monitor
+Summary
+Module 4: Deep Analysis with Microsoft Azure Log Analytics
+Overview
+How Log Analytics Works
+Demo: Set up Log Analytics in Azure
+Log Analytics Search Reference
+Demo: Getting Started with Log Search
+Demo: Performing Log Searches
+Demo: Viewing and Interpreting Results
+Summary
