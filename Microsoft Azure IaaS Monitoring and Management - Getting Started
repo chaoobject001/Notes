@@ -1,34 +1,74 @@
 Course Overview
+  On MS Azure cloud platform in Infrastructure as a Service (IaaS)
+  On monitoring and management scenario 
 Module 2: Reviewing Service and Resource Health
-Overview
-Demo: Check Azure Service Status
-Monitoring - The Big Picture
-Azure Resource Logs
-Demo: Review Azure VM Diagnostics
-Demo: Investigate Azure VM Metrics
-Demo: Introducing Azure Monitor
-Azure Monitor Components
-Application Insights
-Demo: Introducing Application Insights
-Summary
+  Overview
+    goals:
+      Where to observe Azure service status 
+      Azure Monitor - central hub to monitor IaaS deployment 
+      Activity and Diagnostics log: what do they mean, what kind of data is stored and best approach to monitoring 
+      Applications Insight - manage Azure App Service web app, APIs, lopic apps and mobile apps 
+    Specific Terms and UI differences:
+      Feature in Public Preview does not have Service Level Agreement  
+      When features are GA (Generally Available) - they have SLA
+    Operations Management Suite (OMS)
+      Once sapreate from Azure
+      Services migrating to Azure Resource Manager   
+      Specific service for this course: Log Analytics 
+    Log Analytics 
+      Use Azure Log Analytics (v2)
+      New query language (like SQL in Powershell)
+
+  Demo: Check Azure Service Status
+    azure.com -> Support -> Azure Status Dashboard 
+    OR
+    https://portal.azure.com
+
+  Monitoring - The Big Picture
+  Azure Resource Logs
+  Demo: Review Azure VM Diagnostics
+  Demo: Investigate Azure VM Metrics
+  Demo: Introducing Azure Monitor
+  Azure Monitor Components
+  Application Insights
+  Demo: Introducing Application Insights
+  Summary
 Module 3: Introducing Azure Management Solutions
-Overview
-The Azure Monitoring Mindset
-Instance-level Monitoring
-Azure Monitor
-Azure Management Solutions
-Demo: Create a Workspace
-The Insight and Analytics Solution
-Demo: Install an Azure Management Solution
-Demo: Work with Service Map
-Demo: Work with Network Performance Monitor
-Summary
+  Overview
+    How to monitor Azure IaaS solutions
+      Insight and Analytics solution  
+        Create a workspace in Azure protal 
+        On boarding VMs and apps
+        Service Map
+        Network Performance Monitor in the I&A solution
+      
+  The Azure Monitoring Mindset
+    Pets vs. Cattle
+      Caring for individual server as pet
+      vs. 
+      Managing multitude of machines (on-premises and cloud-based)
+    1. What is available in Azure?
+    2. How to use / when to use each tool?
+    3. Actual monitoring, trouble shooting, performance tuning workflow - what to look out for?
+    4. How to address issue? both manually and automatically
+
+
+
+  Instance-level Monitoring
+  Azure Monitor
+  Azure Management Solutions
+  Demo: Create a Workspace
+  The Insight and Analytics Solution
+  Demo: Install an Azure Management Solution
+  Demo: Work with Service Map
+  Demo: Work with Network Performance Monitor
+  Summary
 Module 4: Deep Analysis with Microsoft Azure Log Analytics
-Overview
-How Log Analytics Works
-Demo: Set up Log Analytics in Azure
-Log Analytics Search Reference
-Demo: Getting Started with Log Search
-Demo: Performing Log Searches
-Demo: Viewing and Interpreting Results
-Summary
+  Overview
+  How Log Analytics Works
+  Demo: Set up Log Analytics in Azure
+  Log Analytics Search Reference
+  Demo: Getting Started with Log Search
+  Demo: Performing Log Searches
+  Demo: Viewing and Interpreting Results
+  Summary
