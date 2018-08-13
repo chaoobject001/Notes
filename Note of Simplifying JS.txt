@@ -1214,7 +1214,9 @@ Tip 27 Reduce Loop Clutter with for...in and for...each
     
     All three methods above required conversion to array from map first
     However, Map's property, "MapIterator" allows iteration over map directly 
-    with for ... of loop
+    with for ... of loop. 
+    for ... of loop iterate over members of collection
+    
 
     
 
