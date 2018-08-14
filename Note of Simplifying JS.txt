@@ -1216,8 +1216,51 @@ Tip 27 Reduce Loop Clutter with for...in and for...each
     However, Map's property, "MapIterator" allows iteration over map directly 
     with for ... of loop. 
     for ... of loop iterate over members of collection
+    eg. for ... of version of reduce()
+      for (const firm of firms) {
+        const [id, name] = firm;  // const is block-scoped 
+        if (!isAvailable(id)) {
+          return `${name} is not available`;
+        }
+      }
+      return 'All firms are available';
     
+    Potential downside of for...of
+      - lose predictability 
+      - avoid side effect and mutation
+    
+    for ... in loop iterate over properties of an object
+    Convert map of firms into an object, then get properties with for ... in loop 
+    eg. 
+      const firms = {
+ 	      '10': 'Ivie Group',
+ 	      '23': 'Soundscaping Source',
+ 	      '31': 'Big 6',
+ 	    };
+      for (const id in firms) {
+        if(!isAvailable(parseInt(id, 10))) {
+          return `${firms[id]} is not available`;    
+        }
+      }
+      return 'All firms are available';
+    
+    Before using for ... in loop, consider 
+      extracting keys with Object.keys(), or 
+      extracting values with Object.values()
+    
+    Avoid object mutation as looping through it - 
+      especially when properties are added or modified   
 
+Chapter 6 Clean Up Parameters and Return Statements
+  How to plan for changing function arguments 
+  How to create parameters for clean flexibility 
+
+  Tip 28 Create Default Parameters
+
+
+
+
+    
     
 
 
