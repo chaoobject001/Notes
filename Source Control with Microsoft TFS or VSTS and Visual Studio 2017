@@ -1,0 +1,225 @@
+Module 1: Course Overview
+  Systems: TFS or VSTS
+    Team Foundation Version Control
+    Git
+  Setup Git
+  Concepts 
+  Fundamantal Operations: 
+    Create or Clone repo
+    Add new file to local repo
+    Push to central server for sharing
+  Additional commands
+    Commit
+    Push 
+    Fetch 
+    Pull
+    Advance commands:
+      branch 
+      rebase
+  Popular branching strategies 
+    GitFlow
+    GitHub Flow
+  Gated check-in
+    Setup CI, branch policies and Gated check-in
+
+Module 2: Version Control
+  Course Introduction
+    Git
+  Course Objectives
+    Understand and use source control
+    Primary on Git
+  Module Outline
+    Source control fundamentals
+    Types of source control systems
+    Types supported by TFS and VSTS
+    Branching Concepts
+    CI
+  Source Control Fundamentals
+    Make changes to files and keep history
+      Roll back file
+      Identify who has changed what over time
+    Some systems also track binary files - but not all
+    Ability to roll back file as needed
+    Ability to audit changes 
+    Foundation to continuous delivery 
+  Types of Source Control Systems
+    Centralized System: Client Server Model
+      User access master copy via the client
+      With a copy of project tree stored in local machine
+      Changes go to master copy before reaching other users
+    Distributed System: Repos as peers
+      Local repo w/ version history + working copy
+  Centralized and Distributed Source Control Systems
+    Centralized System typically used in organization
+      Strength: 
+        Handle large codebase
+        Fine level permission control
+        Usage monitoring 
+        Exclusive locking 
+    Distributed System
+      Strength:
+        Full offline experience & Speed 
+          - roll back, branch and merge locally
+        Fast operation
+        Access full history locally 
+          - Who make what change and when
+        Cross platform 
+        Popularity 
+        Pull request for code review (from GitHub)
+  Create a Team Project with Centralized and Distributed Source Control in VSTS
+    TFVC can co-exist with Git under the same project
+  Branching
+    Branching allows coding in isolation 
+      - To build something that's not code complete without breaking code base
+    Branching = make a copy of source + apply changes to that copy
+    Copy vs. Branch
+      Relationship and history w/ source is awlays maintained
+        - This information is useful when merging with main branch 
+      Branch is created with intent to merge back to where it is made from
+    At merge, a traceable history to branch and parent is made
+    Git can combine multiple commits on branch into one bigger change, then merge into main branch
+      - the changes made to source are available for auditing
+    Branching Patterns: HOW & WHEN to create branch should be standardized
+      - which branch to maintaine
+      - which branch go into production
+      TFVC: branches are created on server by default, availabe to everyone in the team
+      Git: branches are created locally first, published later
+      Guide to branching: http://bit.ly/branchingguide
+  
+  Connecting to Team Foundation Version Control and Creating a Branch
+    Start VS 2017 -> Team Explorer -> Manage Connection
+    With option for GitHub and VSTS
+    When connect, repos are available based on the login credentials 
+    Once connected with repo, workspace (where server files are mapped to local machine) can be set up
+    Once workspace is created, files on server can be downloaded to local workspace via Source Control Explorer 
+    At this point, user may opt to add project folders to workspace folder 
+    Then open the added project (.csproj file) in visual studio 
+      - use the IDE to filter out items not wanted in version control system, like binaries generated in OBJ folder
+    Right click on newly added solution in solution explorer 
+      - Select "Add solution to Source Control"
+    Right click on newly added solution in solution explorer, Again
+      - Select "Check In..."
+    Add Comment, then click "Check In" (The new project is now available on server)
+    
+    To Create a New Branch:
+      Inside Source Control Explorer, R-Click the newly added folder, select "Branching and Merging" -> "Branch"
+      Name the new feature branch -> Then click OK (Branch created)
+        Recommand to check "Download the target item to your workspace" &
+        "Immediately convert source folder to branch (enable visualization)"
+
+    To verify the branch relationship:
+      R-Click on branch 
+      Select "Advance" -> "Properties" -> select "Relationship" panel
+
+    To switch from main branch to different branch:
+      Open "Source Control Explorer"
+      Double click on solution inside the branch to switch to
+      Verify files in solution explorer is now in folder for different branch
+      (Optional: Merge back to Main branch) 
+        Add some comment to code and check in
+        Go back to Source Explorer
+        R-Click on the branch with changes 
+        Select "View History"
+        Select changeset to merge 
+        Click "Track Changeset" button on top
+        Click "Visualize" button to see the relationship b/t the selected changeset to a specific branch
+        Click "Timeline Tracking" button on top to see the feature & main branch timeline
+        Drag and drop changeset from one timeline to another (feature to main) to start merge wizard
+        (Click through "Next" to verify folder location and changeset number, then confirm merge )
+        The change now is a pending change on main branch (But NOT committed YET)
+        On main branch, select files with pending change, R-Click then select "Check in Pending Changes",
+          provide comment and then "Check In"
+        (Visualize history again) Now the changeset has been merged from feature branch timeline to the main branch timeline
+
+  Continuous Integration
+    Put changeset to source ASAP to reduce time of working in isolation -> need for CI
+    CI: the practice of merging all devs' working copies to a shared mainline several times a day
+    However, the new code need to be validated -> consistently build and verify code behaviors with unit test 
+
+  Continuous Integration with Visual Studio Team Services
+    Demo
+  Summary
+    
+Module 3: Source Control with Git on TFS or VSTS
+  Introduction
+    Option to setup multiple Git repos in a project
+    How to set it up using Git as source provider 
+  Overview
+    Understanding Git & Set up repo 
+    Basic Git operation in VS
+    Git Branching 
+    Branching strategies and CI/CD
+      Git Flow
+      Git Hub Flow
+  Understanding Git - to avoid losing code!
+  Git is All About a Graph of Nodes
+    At the creation of a new repo, the only thing created is the administration of the graph 
+    One reference called head points to the start of the graph at the FIRST commit
+    A git commit is a node (in a graph) that contains a pointer to the data 
+      - In Git, every commit contains a pointer to the snapshot of ALL data
+    When NEW code is committed, a new node is created with a "parent" pointer points to the previous commit
+    There is always at least ONE reference - the Head: This is where we are at the repo
+    All tasks in Git are:
+      Manipulating nodes
+      Referencing nodes  
+    References make commits reachable
+      Head, Tag, Branch
+  Creating a Git Repo in TFS/VSTS (DEMO)
+    VSTS -> Code (Tab) -> 
+    1. git init on source folder in command prompt
+    eg. 
+      C:\TestServerAndInMemoryDbDemo>git init
+      Initialized empty Git repository in C:/TestServerAndInMemoryDbDemo/.git/
+    2. Create .gitignore file to avoid to upload binary files 
+      A template for Visual Studio can be found at https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
+      Click "Raw" button 
+      Copy and Paste the file into a new text file (x.gitignore for now)
+      (On command prompt) Run "ren x.gitignore .gitignore"
+      This is not possible to do in file explorer
+    3. Add .gitignore to LOCAL repo
+      (On command prompt) Run 
+        git add .gitignore
+    4. Commit the change
+      (On command prompt) Run 
+        git commit -m "git ignore"
+    5. At this point, Add all files in local folder
+      (On command prompt) Run 
+        git add * 
+    6. Commit the change to local repo
+      (On command prompt) Run 
+        git commit -m "Initial sources"
+    
+    ....
+
+    Add remote origin points to VSTS server 
+
+  Basic Git Operations
+  Cloning a Git Repo in Visual Studio
+  Basic Git Operations-2
+  Using Fetch, Push, and Pull
+  Git Branching
+  Branch, Merge, and Rebase
+  Merge and Rebase
+  The Git Pull Request
+  Pull Requests in TFS/VSTS
+  Branching Strategies and CI/CD
+  Git Hub Flow
+  Git Flow
+  The Git Flow Branching Strategy
+  Git Flow Branches
+  Main, Supporting, and Hotfix Branch
+  Git Flow in Action
+  Summary
+
+Module 4: Implementing Continuous Integration
+  Introduction
+  Outline
+  Continuous Integration
+  Setting up Continuous Integration for TFVC
+  Setting up TFVC Gated Check-in
+  Setting up Gated Check-in
+  Setting up Continuous Integration Builds with Git
+  Setting up Continuous Integration with Git
+  Setting up Git Branch Policies
+  Setting up Branch Policies
+  Summary
