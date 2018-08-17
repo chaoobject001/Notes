@@ -1,0 +1,39 @@
+Lesson 1: Create T-SQL SELECT Queries
+Learning Objectives
+  Write efficient query using 
+    predicate filters
+    proper query structure 
+  How query are processed to satisfy business requirement 
+  Set operator constructs results 
+    construct results from multiple query 
+    UNION & UNION ALL behavior  
+  Identify query that returns expected results based on
+    Table structure and/or Data 
+1.1 T-SQL Overview  (Identify proper SELECT query structure)
+  SQL - Structured Query Language
+    Developed by IBM 
+    Adpated by ANSI and ISO
+    declarative programming language to manage data in relational DB
+  
+  Relational DB
+    Concept of table - relation itself 
+      Rows and tuples 
+      Attributes (Columns)
+    A Set in relation - NON-ordered
+  
+  T-SQL - Transact-SQL
+    A Set-based declarative language 
+  
+  Categories of T-SQL
+    Data Definition Language (DDL) Statements 
+      Used to define DB objects: 
+        CREATE, ALTER, DROP
+    Data Control Language (DCL) Statements 
+      Used to manage security permission 
+        GRANT, REVOKE, DENY
+    Data Manipulation Language (DML) Statements 
+      Used to query and modify data 
+        SELECT, INSERT, UPDATE, DELETE
+    
+
+
