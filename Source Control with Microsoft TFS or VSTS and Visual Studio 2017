@@ -217,12 +217,72 @@ Module 3: Source Control with Git on TFS or VSTS
           - the yet-to-commit changes can get lost when pulling changes
           - Always commit first before pull  
   
-  Using Fetch, Push, and Pull
+  Using Fetch, Push, and Pull (DEMO)
+
   Git Branching
+    Master branch: At least one branch in Git
+    Branch = Pointer to a node in the tree of commits
+    Create branch is fast, just make a new pointer to the current commit node 
+    
+    Create branch locally, then publish a branch to server to share  
+    
+    Merge: local operation to create a change on target branch
+      After edit on local workspace is done, commit changes to local branch
+      This needs to be pushed to server before sharing
+  
   Branch, Merge, and Rebase
-  Merge and Rebase
+    Standard Merge: Changes are made to both Master and Feature branch
+      "Merge" command can be used to merge branch to master
+      This will create a new commit node on Master branch that contains merged changes
+    
+    Fastforward Merge: w/ No changes on master branch
+      The originating node on master that creates branch has yet changed
+      Move pointer to the end of master to the end of branch 
+      Thus, end of branch = end of master 
+      No new commit node is created   
+    
+    Rebase: Changes are made to both Master and Feature branch
+      Before merge to main branch, need to catch up with changes on master  
+      "Catch up": replay each change in master branch on feature branch 
+      Then fastforward merge to consolidate master and feature branch 
+
+  (Branch and) Merge and Rebase - DEMO
+    (On VSTS) Open "Code" tab, verify commits 
+    (On VS) Team Explorer -> Branches 
+      R-Click on Master -> Select "New Local Branch From..."
+      -> Name the feature branch and click "Create Branch"
+    
+    (Go back to Master branch - double click on Master Branch)
+      Make some changes on master branch then commit it
+      -> Sync -> Push
+      (Now master is one commit node before feature branch)
+    
+    (Go back to Master branch - double click on Master Branch)
+      Make some changes on feature branch then commit it
+      -> Sync -> Push
+      Verify that change in feature branch is registered with "View History..."
+    
+    (Go back to Branches)
+      R-Click on master -> Select "Merge From ..."
+      -> Click "Merge" (creates "Merge Commit")
+      Verify that change in feature branch is now on master branch (with a new commit) with "View History..."
+      R-Click on master branch and "Push" to the server
+    
+    (Now Repeat the same task on another feature with Rebase )
+      First delete previous feature branch
+
+      ... more details to cover
+
   The Git Pull Request
+    Scenario: A request from someone else who creates feature branch to take the change and merge into main code line
+    Pull request: 
+      A tooling to 
+        have some discussion / review on the submitted code 
+        change the code again before merge
+        setup standard mechanism to perform the merge 
+
   Pull Requests in TFS/VSTS
+    
   Branching Strategies and CI/CD
   Git Hub Flow
   Git Flow
