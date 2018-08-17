@@ -194,8 +194,29 @@ Module 3: Source Control with Git on TFS or VSTS
     Add remote origin points to VSTS server 
 
   Basic Git Operations
+    Clone: Use repo / source code already in server   
+  
   Cloning a Git Repo in Visual Studio
+    (DEMO) VSTS -> "Clone" button -> Select Clone in VS option
+    -> Specify where to clone in local machine (with VS)
+    -> Verify previous changes and history 
+  
   Basic Git Operations-2
+    After "Clone", add source code and make changes to sources on loacl machine
+    Then notify source control system of changes, use "Stage" to stage changes to Git
+    Once a consistent sources staged, use "Commit" to commit to the local repo 
+    To share changes in local, "Push" to any other clone 
+      - like any machine with the same repo, but likely a server
+    For others to get our code:
+      1. Fetch: 
+        ONLY Check IF there are changes from other repos
+        Get list of changes from other source repos (but NOT actual changes)
+      2. Pull:
+        Pull changes to local repo, and updates any file locally with changes from server 
+        When pulling, there can be NO local changes pending 
+          - the yet-to-commit changes can get lost when pulling changes
+          - Always commit first before pull  
+  
   Using Fetch, Push, and Pull
   Git Branching
   Branch, Merge, and Rebase
