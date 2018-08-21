@@ -281,9 +281,30 @@ Module 3: Source Control with Git on TFS or VSTS
         change the code again before merge
         setup standard mechanism to perform the merge 
 
-  Pull Requests in TFS/VSTS
+  Pull Requests in TFS/VSTS (DEMO)
+    Create a feature branch from main branch
+    Switch workspace to the new feature branch and add code changes
+    R-Click on the changed file and select Commit to commit to local repo
+    Stage the file then add commit message
+    Sync with server then push to server
+    Notice that after push to feature branch, there is a link for
+    "Create a pull request". Click on it.
+    Notice that a browser window titled "Create Pull Request" is opened
+    Add title and description, select reviewer and work item ID for the PR, then click "Create"
+    
+    (For reviewers to work with the PR)
+    Code (tab) -> "Pull Requests" then select a specific PR
+    Select "Files" to view changes in file
+    Comment inline as needed 
+    Reviewer and vote for Approve, Approve w/ suggestions, Wait for author or Reject
+      if a PR is "Rejected", then it cannot be merged 
+    Selecting "Complete" will merge changes into branch 
     
   Branching Strategies and CI/CD
+    When moving to continuous delivery, keep branching at a minimum
+    Consider feature toggles over branching 
+    
+
   Git Hub Flow
   Git Flow
   The Git Flow Branching Strategy
