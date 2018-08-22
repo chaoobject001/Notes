@@ -303,13 +303,118 @@ Module 3: Source Control with Git on TFS or VSTS
   Branching Strategies and CI/CD
     When moving to continuous delivery, keep branching at a minimum
     Consider feature toggles over branching 
-    
 
-  Git Hub Flow
+  Git Hub Flow 
+    One stable massive branch to release from 
+    Feature branch with the name of feature been worked on at the moment 
+    To share code, create PR
+    To deploy feature, 
+      first deploy feature to production and varified there is no issues
+      then merge to Master
+        - This merge needs to be standardized: 
+            such as: Always rebase? Simple merge? 
+            Squash all commits to one single change that gets merge?
+            Or keep individual commit as part of the final history 
+      Merge to main is often done through PR
+      Track which feature move to main and eventually part of product 
+    Git Hub Flow
+      Best suited for continuous deployment  
+      Release multiple times a day
+      Delivery of Software as a Service (SAAS) - cloud based solution
+    
   Git Flow
+    A set of branches 
+      Master: always stable to release 
+      others work up to the release of the software in production
+        Hotfix
+        Release 
+        Dev
+        Feature X
+    Software delivered in build cycles 
+      Work up to a milestone
+      Stablized the build 
+      Release
+    Common for projects w/ deliverable like 
+      NuGet packages
+      Libraries 
+      Complex suite w/ many integrations
+    Continuous Delivery is possible but require discipline and process
+
   The Git Flow Branching Strategy
+    source: https://nvie.com/posts/a-successful-git-branching-model/
+    
+    Origin: 
+      a central git server
+      source of truth for a centralized build and release process
+        members can work distributed in isolation
+        push to and pull from server as needed
+    
+    At start of work:
+      Create a clone of repository
+      Work locally on assigned feature
+      When done, pushes changes up to central repo
+
+    Multiple members work on the same feature:
+      1. Publish to the branch collaborate on, or 
+      2. Share branch with those interested, but other members won't see the work until pushed to the central server 
+
   Git Flow Branches
+    Branch types:
+      Master: 
+        only commit stable changes
+        only release from master into production
+        all commits are fully tested, stable and don't need additional work
+        assume to go to production asap
+      Dev:
+        where development is done
+        contains all committed and tested features after work is done in feature branches
+        also assume to be always stable
+      Release:
+        short-live branch 
+        only for stablizing codebase 
+        only fix issue found in final acceptance test
+        should be able to add stright to master and release to production
+      Feature:
+        Where work is done
+        Roll back as needed
+        Merge to Dev branch after work is done
+        Delete feature branch
+        Merge to dev with additional flag, no fast forward will keep local history and add to dev branch 
+        Or squash code changes before merging 
+    
+    Keep branch histry as a record for traceability 
+    Keep history as stright line
+      Use Rebase to keep history as stright line 
+      No fast forward commit is recommanded   
+
+      Hotfix: 
+        production issue that need immediate fix
+          merge directly into master & dev
+
   Main, Supporting, and Hotfix Branch
+    Main branches: Master / Dev / Release 
+      Always release from Master (primary branch - Always stable)
+      Daily work done on Dev branch
+      Release branch created to stablize (and move to master) for release 
+        - this branch is optional if you have high confidence on code quality
+        - Merge to master / Merge back to dev at the same time - so that stablized code feedback to the next release 
+    Supporting branches: Feature
+      Whenever there are code changes, create feature branch 
+      For cooperation:
+        Share branch to push to and pull from each other 
+        Alternatively, central help:
+          public feature branch to origin repo
+          use it as central hub for committing the changes 
+          once done, merge to DEV branch then delete branch
+        Although feature branch is never kept, 
+          branch history can be kept OR
+          squash history before commit 
+    Hotfix branch
+      Create new branch off latest Master commit 
+      Make changes (and maybe few commits) and test
+      Merge change into Master and Dev branch 
+      Delete branch after issue fixed 
+
   Git Flow in Action
   Summary
 
