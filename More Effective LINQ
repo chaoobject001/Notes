@@ -1,0 +1,145 @@
+Module 1: Course Overview
+  Constructing LINQ pipeline 
+  Extending LINQ
+  Optimizing performance
+  Test and debug LINQ code
+
+  Goal: Apply LINQ in all situations and expend & optimize accordingly 
+
+Module 2: Discovering the Power of LINQ
+  Why LINQ is Awesome
+    Started in C# 3 (2007)
+    Language features LINQ is based on:
+      Lambda Expression
+      Extension Methods
+      Anonymous Types
+      Query Expression Syntax 
+      Generics 
+      "yield" & "var" keyword
+
+  Lambda Expressions
+    pass anonymous functions into methods 
+    work best as short one-line function
+    eg. 
+      customers.Where(c => c.Email !=  null)
+      // filter a list of customers w/ Email
+
+  Extension Methods
+    Extend any existing type - even if not created by user - by adding methods
+    Extension methods 
+      must be static methods of a static class
+      must use "this" keyword in method declaration 
+      class where the method xetends from is in method declaration
+    eg. 
+      static class StringExtensions
+      {
+        public static string Shout(this string s) 
+        {
+          return s.ToUpper() + "!!!!";
+        }
+      }
+    The library of framework methods that power LINQ are all extension methods on IEnumerable<T> 
+    For IEmumerable<T>, LINQ extension methods are available 
+    Many extension methods also return IEmumerable<T>, they can be chained into pipelines
+    LINQ pipelines should make code more readable, not less
+
+  Anonymous Types and the 'var' Keyword
+    "var":
+      compiler infers type 
+      
+  Query Expression Syntax
+  Generics and the 'yield' Keyword
+  Collections are Everywhere
+  Introducing LINQPad
+  What to Expect in the Rest of this Course
+
+Module 3: Thinking in Patterns
+  Module Introduction
+  LINQ Challenge - Motorsport Scores
+  Get to Know the Available LINQ Extensions
+  Spot the Pattern #1 - Filtering Collections
+  Spot the Pattern #2 - Finding One Item
+  Spot the Pattern #3 - True for Everything?
+  Spot the Pattern #4 - Transforming Objects
+  Spot the Pattern #5 - How Many like This?
+  Spot the Pattern #6 - Grouping Things
+  Using Productivity Tools to Spot Patterns
+  LINQ Challenge Solution - Motorsport Scores
+  Module Summary
+
+Module 4: Unleashing the Power of Pipelines
+  Module Introduction
+  Transforming Elements
+  Filtering Elements
+  Reducing Sequences
+  Generating Sequences
+  Expanding Sequences
+  Reordering Sequences
+  The Power of Pipelines
+  LINQ Challenge - Album Duration
+  LINQ Challenge - Range Expansion
+  Real World LINQ - Find in Files
+  Real World LINQ - Parsing Log Files
+  Real World LINQ - Orphaned Project Files
+  Module Summary
+
+Module 5: Writing Clean and Readable Code
+  Module Introduction
+  Why Clean Code Matters
+  LINQ Challenge - Sort by Age
+  LINQ Challenge - Bishop Moves
+  Using the LINQ Query Expression Syntax
+  LINQ Challenge - Longest Book
+  Module Summary
+
+Module 6: Extending LINQ
+  Module Introduction
+  Demo: Creating an Extension Method
+  Demo: Concatenating Strings
+  Demo: Creating a MaxBy Extension Method
+  LINQ Challenge: Counting Pets
+  LINQ Challenge: Swim Length Times
+  Demo: Using MoreLINQ's Batch Extension Method
+  LINQ Challenge: Counting Consecutive Sales
+  Module Summary
+
+Module 7: Avoiding Unnecessary Work with Laziness
+  Module Introduction
+  Deferred Execution
+  Demo: RSS Downloader
+  Breaking Out Early
+  Avoiding Multiple Enumeration
+  Multiple Enumeration and Databases
+  Multiple Enumeration and Correctness
+  Returning IEnumerable<T>
+  Module Summary
+
+Module 8: Optimizing Performance
+  Module Introduction
+  When Should You Optimize?
+  Is LINQ Always the Right Choice?
+  Speeding up LINQ with LinqOptimizer and PLINQ
+  Understanding the Implementation
+  Optimizing LINQ to Entities
+  Demo: Avoiding Returning too Much Data
+  Demo: Avoiding Select N+1
+  Module Summary
+
+Module 9: Testing and Debugging Effectively
+  Module Introduction
+  Demo: Debugging LINQ Queries in Visual Studio
+  Demo: Pipeline Tracing with Extension Methods
+  Testing LINQ Queries
+  Testing LINQ to Entity Framework
+  Exception Handling in LINQ Queries
+  Demo: Suppressing Errors in LINQ Pipelines
+  Module Summary
+
+Module 10: Embracing a Functional Style
+  Module Introduction
+  Declarative Code
+  Chaining Functions
+  Higher Order Functions
+  Being Lazy
+  Avoiding Side Effects
+  Course Summary and Bonus Content
