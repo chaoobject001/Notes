@@ -141,8 +141,18 @@ Module 3: Thinking in Patterns
       like takeWhile
 
   Spot the Pattern #1 - Filtering Collections
-    
-
+    Filter with Where() taking Lambda Expression
+    eg. Iterate over customer with Non-null or Non-empty Email property
+      foreach (var c in customers.Where(c => !String.IsNullOrEmpty(c.Email))) 
+      {...}  
+    Filter with query expression syntax
+    eg. 
+      foreach (var customer in
+        from c in customers
+        where !String.IsNullOrEmpty(c.Email)
+        select c) 
+      { ... }
+      
   Spot the Pattern #2 - Finding One Item
   Spot the Pattern #3 - True for Everything?
   Spot the Pattern #4 - Transforming Objects
