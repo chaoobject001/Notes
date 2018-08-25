@@ -44,11 +44,43 @@ Module 2: Discovering the Power of LINQ
     LINQ pipelines should make code more readable, not less
 
   Anonymous Types and the 'var' Keyword
-    "var":
-      compiler infers type 
-      
+    "var": compiler infers type 
+      eg. var dict = new Dictionary<string, Customer>();
+    "var": allows Anonymous Types
+      eg. var x = new { Author = "Mark Seemann", Title = "Dependency Injection in .NET" };
+    Anonymous Type with EXACT same properties are consider of same type
+      eg. var y = new { Author = "Martin Fowler", Title = "Patterns of Enterprise Architecture" }
+          // same type as var x above
+          var books = new[] {x, y}; // array of the smae Anonymous Type
+    Anonymous Type infer property names automatically
+      eg. 
+        var author = "Adam Nathan";
+        var title = "WPF 4"
+        var book = new { author, title }; // but the property name is now lower case...
+    For LINQ, Anonymous Type is used to pass state through different stages of LINQ pipeline
+    preferable to tuples 
+
   Query Expression Syntax
+    Keywords introduced the same time as LINQ
+    Similar to SQL syntax
+    eg. 
+      var query =
+        from c in customers
+        group c by c.Country into countryGroup
+        orderby countryGroup.Key
+        select countryGroup;
+    The syntax or LINQ is not only for DB
+      LINQ to Entities (EF): convert into SQL with Expression Tree
+      LINQ to Objects: an in-memory collection of objects 
+        like list of strings or array of customers
+    Query Expression Syntax VS. Extension Methods (chained)
+      special cases for each approach
+
   Generics and the 'yield' Keyword
+    Generics: Create methods and classes that are NOT limited to only work with a specific type
+      eg. List<T> makes list of any type
+    Extend LINQ with customized generic 
+
   Collections are Everywhere
   Introducing LINQPad
   What to Expect in the Rest of this Course
