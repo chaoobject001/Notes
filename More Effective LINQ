@@ -77,19 +77,72 @@ Module 2: Discovering the Power of LINQ
       special cases for each approach
 
   Generics and the 'yield' Keyword
-    Generics: Create methods and classes that are NOT limited to only work with a specific type
+    Generics: Create methods and classes 
+      that are NOT limited to only work with a specific type
       eg. List<T> makes list of any type
-    Extend LINQ with customized generic 
+    Extend LINQ with customized generic method
+      eg.
+        // generic method that can operate on an IEnumerable<T>
+        public static IEnumerable<T> Double<T>(this IEnumerable<T> source)
+        {
+          foreach (var s in source) 
+          {
+            yield return s;
+            yield return s;
+            // Whenever returning an IEnumerable sequence
+            // call "yield return" for each element of the sequence to be emitted 
+            // use "yield break" to exist method early 
+          }
+        } 
+  
+  Expression Trees: turn Lambda Expressions into data structure for inspection or manipulation
 
   Collections are Everywhere
-  Introducing LINQPad
-  What to Expect in the Rest of this Course
+    LINQ can be used w/ collections or sequences of data
+      In-memory objects
+      DB queries
+      Algorithmically generated data
+    LINQ brings functional programming style into C#
 
+  Introducing LINQPad
+
+  What to Expect in the Rest of this Course
+    Different "best practices" of LINQ
+      Mod 2: Thinking in patterns 
+        - spot place to apply LINQ
+      Mod 3: Unleashing the Power of Pipelines 
+        - chaining LINQ operators and extension methods
+      Mod 4: Writing Clean and Readable Code 
+        - write LINQ pipelines that are easy to understand and maintain 
+      Mod 5: Extending LINQ
+        - customized LINQ extension methods & use 3rd party extensions
+      Mod 6: Avoiding unnecessary work
+        - avoid code execution unless really need to
+      Mod 7: Optimizing Performance of LINQ queries 
+      Mod 8: Test & Debug effectively w/ LINQ
+      Mod 9: Embracing functional style
+        - identify key functional concepts
+      
 Module 3: Thinking in Patterns
   Module Introduction
+    Looping through collections
+      Switch from into imperative style (how to do) to declarative style (what to do)
+      Declarative style: expresses intent with succinct code 
+
   LINQ Challenge - Motorsport Scores
+    // calculate total score without the lowest 3 
+    // starting with ...
+    "10, 5, 0, 8, 10, 1, 4, 0, 10, 1".Split(',')
+    // return string array
+
   Get to Know the Available LINQ Extensions
+    MSDN -> System.Linq / Enumerable / Methods
+      know what are available in LINQ to simplify code 
+      like takeWhile
+
   Spot the Pattern #1 - Filtering Collections
+    
+
   Spot the Pattern #2 - Finding One Item
   Spot the Pattern #3 - True for Everything?
   Spot the Pattern #4 - Transforming Objects
