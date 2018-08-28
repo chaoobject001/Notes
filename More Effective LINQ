@@ -154,10 +154,64 @@ Module 3: Thinking in Patterns
       { ... }
       
   Spot the Pattern #2 - Finding One Item
+    Identify order by spacific order Id
+    guess: use Single() -
+      return the ONLY element that satisfied condition 
+      throw InvalidOperationException if none or more than one elements are found    
+    
+    Recommandation #1: FirstOrDefault() - 
+      find first item in collection that matches a particular condition or 
+      return null or default value if none found
+      eg. return first order with matching id
+        Order orderToRefund = orders.FirstOrDefault(o => o.Id == orderId);
+
+    recommandation #2: First() 
+      find first item in collection that matches a particular condition or
+      throw InvalidOperationException if none found
+      eg.
+        Order orderToRefund = orders.First(o => o.Id == orderId);
+
   Spot the Pattern #3 - True for Everything?
+    Any() determines whether any element exists or satisfies a condition  
+      return true if any element pass the condition 
+      return flase otherwise 
+    eg. Set the flag to true if any order was refunded
+      bool anyRefunded = orders.Any( o => o.Status == "Refunded"); 
+
+    All() determines whether all elements satisfy a condition 
+      return true if sequence is empty OR all elements in sequence pass the condition
+      return flase otherwise
+    eg. Set flag to flase if NOT all orders are delivered 
+      bool allDelivered = orders.All( o => o.Status == "Delivered");
+      
   Spot the Pattern #4 - Transforming Objects
+    Select() maps each element and return IEnumerable<T> of the same size
+    eg. Convert an array of file path to an IEnumerable<T> sequence of file size for each file
+      paths.Select( p => new FileInfo(p).Length )
+
+    Apply ToList(), ToArray(), ToDictionary() to create List, array or Dictionary from IEnumerable
+    eg. Create Dictionary form IEnumerable sequence 
+      paths.Select(p => new FileInfo(p)).ToDictionary( p => p.Name, p => p.Length);
+      // Name is used as key and Length is used as value  
+
   Spot the Pattern #5 - How Many like This?
+    Count() 
+      returns the number of elements that pass the given condition 
+      OR given no lambda expression, returns the total number of elements in sequence
+      eg. return the number of refunded orders
+        orders.Count( o => o.Status == "Refunded" )  
+
+    Sum()
+      returns sum of values return from lambda expression given to each element
+      eg. Sum of orders' amount
+        orders.Sum( o => o.Amount )
+
   Spot the Pattern #6 - Grouping Things
+    GroupBy() 
+      given lambda expression that returns key for grouping
+      returns an IEnumerable sequence of IGrouping objects, each with a key (specified by lambda expression)
+      eg. 
+        
   Using Productivity Tools to Spot Patterns
   LINQ Challenge Solution - Motorsport Scores
   Module Summary
