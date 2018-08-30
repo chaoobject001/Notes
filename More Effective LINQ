@@ -134,6 +134,30 @@ Module 3: Thinking in Patterns
     // starting with ...
     "10, 5, 0, 8, 10, 1, 4, 0, 10, 1".Split(',')
     // return string array
+    
+    // My approach:
+    // 1. Convert string array into List of integer with Select()
+    // 2. Sort the List
+    // 3. Remove the last 3 items
+    // 4. Sum up the list
+    var scores = "10,5,0,8,10,1,4,0,10,1".Split(',');
+    var scoresAsInt = scores.Select(s => int.Parse(s));
+    var scoresAsOrderedIntWithoutLowest3 = scoresAsInt.OrderBy(i => i).Skip(3);
+    var totalScoreWithoutLowest3 = scoresAsOrderedIntWithoutLowest3.Sum();
+    Console.WriteLine(totalScoreWithoutLowest3);
+
+    // solution: as C# expression in LINQPad
+    "10, 5, 0, 8, 10, 1, 4, 0, 10, 1".Split(',')
+      .Select(int.Parse)
+      .OrderBy(n => n)
+      .Skip(3)
+      .Sum()
+
+    // This LINQ pipeline contains following:
+    // 1. turn strings into integers with Select(int.Parse)
+    // 2. Sort integer in ascending order - use element itself as key for sorting with OrderBy(n => n)
+    // 3. Discard lowest 3 scores with Skip(3)
+    // 4. Sum all numbers with Sum()
 
   Get to Know the Available LINQ Extensions
     MSDN -> System.Linq / Enumerable / Methods
@@ -211,22 +235,121 @@ Module 3: Thinking in Patterns
       given lambda expression that returns key for grouping
       returns an IEnumerable sequence of IGrouping objects, each with a key (specified by lambda expression)
       eg. 
-        
+        orders.GroupBy(o => o.CustomerId)
+        // retuens Enumerable sequence of IGrouping objects 
+        // Each IGrouping object has a key for the group
+        // The key is specified by o.CustomerId
+        // The IGrouping object also contains Enumerable sequence of the CustomerId
+    
+    To turn results of GroupBy() into Dictionary  
+      ToDictionary() takes two lambda expressions: 
+        1st returns value for dictionary key 
+        2nd returns value for dictionary value
+      Each of the IGrouping objects can also be converted into list for the value of dictionary 
+      eg. 
+        orders.GroupBy(o => o.CustomerId)
+          .ToDictionary(g => g.Key, g => g.ToList())
+        // group key is set to be dictionary key
+        // group contents are converted into List and used as dictionary value 
+      
   Using Productivity Tools to Spot Patterns
+    ReSharper
+
   LINQ Challenge Solution - Motorsport Scores
+    See "LINQ Challenge - Motorsport Scores" above
+  
   Module Summary
+    Learn to see repeating patterns, especially when dealing with collections or sequences
+    LINQ simplify code by replacing imperative code to expressive declarative code
+    Find and use productivity tools like ReSharper 
+    LINQ extension methods can be chained into pipeline to solve multi-step problem
 
 Module 4: Unleashing the Power of Pipelines
   Module Introduction
+    Chaining LINQ to make pipeline
+    Use cases of pipeline
+    Building blocks / Nodes of pipeline
   Transforming Elements
+    Each stage of pipeline transforms data into the format that are more useful
+
   Filtering Elements
+    Distinct() Remove duplications
+    OfType<T>() Only keep objects of Type T 
+    Order of operations may change outcome drastically
+
   Reducing Sequences
+    Take entire sequence and collapse it into one object
+    likw Count(), Sum(), All(), Any()
+    other example like String.Concat() method to turn IEnumerable<string> sequence into single string 
+    * to 1 methods: IEnumerable<T> in, single value out
+      First(), Count(), Min(), FirstOrDefault(), Sum(), 
+      Max(), Last(), All(), Any(), LastOrDefault(),
+      String.Concat(), Aggregate()
+
   Generating Sequences
+    * to 1 method:
+      Enumerable.Range() takes start number (2) and length (4) 
+      to create sequence of incrementing numbers: 2, 3, 4, 5
+      
+      String.Split() split string into IEnumerable<string> sequence with delimit character
+
+      Enumerable.Repeat() repeats an element for specified number of times
+      
+      Regex.Matches() returns all matches on RegEx
+
   Expanding Sequences
+    SelectMany() 
+      turns each element of input sequence into another sequence 
+      then combine them all together into one sequence - that can be longer or shorter 
+    
   Reordering Sequences
+    Example methods:
+      OrderBy() for ascending sorting 
+      OrderByDescending() for descending sortig 
+      ThenBy() follows OrderBy w/ a secondary sort order 
+      Reverse() emits all inpout elements in reverse order 
+      GroupBy()  
+    
+    Reordering methods may require the whole sequence in memory 
+      - Reverse cannot return result until entire list is consumed  
+    
+    LINQ to Entities: Reordering and Grouping at DB
+
   The Power of Pipelines
+    Solve complex problems w/ manay simple steps 
+    LINQ operate on a Pull rather than Push modle - nothing go through pipeline unless result is requested 
+    Request via:
+      foreach statement
+      LINQ extension method 
+
   LINQ Challenge - Album Duration
+    "2:54,3:48,4:51,3:32,6:15,4:08,5:17,3:13,4:16,3:55,4:53,5:35,4:24"
+    1. Turn input string into sequence of strings representing each track duration
+    2. Parse each string into TimeSpan by TimeSpan.Parse(t), 
+      but prefix each token with "0:" to denote zero hour - TimeSpan("0:" + t)
+    3. Add Total time with Aggregate() and + operator 
+      - Aggregate(TimeSpan.Zero, (t1, t2) => t1 + t2)
+      OR Aggregate((t1, t2) => t1 + t2)
+
+    "2:54,3:48,4:51,3:32,6:15,4:08,5:17,3:13,4:16,3:55,4:53,5:35,4:24"
+      .Split(',')
+      .Select(t => TimeSpan.Parse("0:" + t))
+      .Aggregate((t1, t2) => t1 + t2)
+
   LINQ Challenge - Range Expansion
+    Expand the range 
+    e.g. "2,3-5,7" should expend to 2, 3, 4, 5, 7
+    "1,2-5,7".Split(',')
+      .Select(s => s.Split('-'))
+      .Select(n => new {start = int.Parse(n.First()), end = int.Parse(n.Last())})
+      .SelectMany(r => Enumerable.Range(r.start, r.end - r.start + 1))
+    
+    1. Select(s => s.Split('-'))
+      For element containing '-', return an array of two element
+      For element without '-', return an array of one element
+    2. Select(n => new {start = int.Parse(n.First()), end = int.Parse(n.Last())})
+      Project each element into a    
+
   Real World LINQ - Find in Files
   Real World LINQ - Parsing Log Files
   Real World LINQ - Orphaned Project Files
