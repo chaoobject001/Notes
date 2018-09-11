@@ -348,9 +348,28 @@ Module 4: Unleashing the Power of Pipelines
       For element containing '-', return an array of two element
       For element without '-', return an array of one element
     2. Select(n => new {start = int.Parse(n.First()), end = int.Parse(n.Last())})
-      Project each element into a    
+      Project each element into an anonymous object 
+      where "start" stores first element of a sequence and "last" stores the last element of a sequence 
+      when the sequence has only one element, both properties stores the same value 
+    3. SelectMany(r => Enumerable.Range(r.start, r.end - r.start + 1))
+      Enumerable.Range(r.start, r.end - r.start + 1) generate a integral numbers 
+      of length (r.end - r.start + 1) from (r.start)
+    
+    Additional constraints: overlapping ranges with unsorted sequence 
+    By extending pipeline with more methods to sort and remove duplicate 
+    eg. "6, 1-3, 2-4" should expand to "1, 2, 3, 4, 6"
+      "6, 1-3, 2-4"
+        .Select(s => s.Split('-'))
+        .Select(n => new {start = int.Parse(n.First()), end = int.Parse(n.Last())})
+        .SelectMany(r => Enumerable.Range(r.start, r.end - r.start + 1))
+        .OrderBy(r => r)
+        .Distinct()
+    1. OrderBy(r => r) sorts sequence in ascending order 
+    2. Distinct() remove duplicates 
 
-  Real World LINQ - Find in Files
+  Real World LINQ - Find in Files (DEMO)
+    
+
   Real World LINQ - Parsing Log Files
   Real World LINQ - Orphaned Project Files
   Module Summary
