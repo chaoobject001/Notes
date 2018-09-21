@@ -368,6 +368,38 @@ Module 4: Unleashing the Power of Pipelines
     2. Distinct() remove duplicates 
 
   Real World LINQ - Find in Files (DEMO)
+    Search w/in text file like diagnostics file 
+      task: get (log) files containing specific token in file name   
+        eg. 
+          var logFiles = disgsContainer.ListBlobs("skypevoicechangerpro/2015/02", true)
+                          .OfType<CloudBlockBlob>()
+                          .Select(b => new {
+                            Blob = b, Name = String.Join("-", b.Name.Split('/').Take(5)) + ".csv"})
+                          .Where(b => !File.Exists(Path.Combine(downlodFolder, b.Name)));
+
+      1. disgsContainer.ListBlobs("skypevoicechangerpro/2015/02", true)
+        Get all the log files within that container with the specified prefix
+      2. OfType<CloudBlockBlob>()
+        Check every elements in collection for specified type, 
+        if element is of the type, it will be ccast into the type specified, 
+        else, it will be filtered out
+      3. Select(b => new {Blob = b, Name = String.Join("-", b.Name.Split('/').Take(5)) + ".csv"})
+        Create local file name that will download this file
+      4. Where(b => !File.Exists(Path.Combine(downlodFolder, b.Name)))
+        Filter out files that are downloaded already (exist locally)
+
+      task: Search for specific phrase in the files
+        eg.
+           // specify which folder the files are in
+           var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocument);
+           var diagsFolder = Path.Combine(myDocs, "skypevoicechanger", "diags");
+           
+           var fileType = ".csv"; // file type to search for  
+             
+           var searchTerm = "User Submitted"; //    
+
+      
+
     
 
   Real World LINQ - Parsing Log Files
