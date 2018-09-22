@@ -1,0 +1,89 @@
+Your 1st day w/ powershell
+
+Module 1: Course Overview
+  PowerShell consoles
+  Customization tips
+  Intro to alias, cmdlets
+  Providers and psdrives
+  
+Module 2: Introduction and Welcome
+  Intro and Course Scenario
+    Assumption: Win Admin w/ some experience 
+  Course Objectives
+    Interacting w/ PowerShell consoles
+    Understanding PowerShell Commands
+    Using Help
+  Setting up a Lab Environment
+    AutoLab
+  Related Material and Summary
+    The case of PowerShell - Mak Minasi
+    PowerShell: Getting Started - Michael Bender
+    Learn PowerShell in a Month of Lunches
+
+Module 3: Diving into PowerShell
+  Meet the Traditional PowerShell Console
+    PowerShell is a management engine 
+      - that built on .Net Framework
+      - hosted by an application
+    Commands and experience might differ based on 
+      - hosting application
+      - specific .Net framework 
+    Traditional PowerShell Console: PowerShell engine in cmd window
+    Graphical Console (ISE: integrated scripting editor): 
+      installed by default on client OS like windows 10, but not on server operation system
+  DEMO:
+    Determine current version of PowerShell
+    $psversiontable
+  Meet the PowerShell ISE
+    script pane
+    command pane
+
+Module 4: PowerShell Help
+  Updating PowerShell Help (DEMO)
+    To learn more about a command 
+      help [command]
+    To update help
+      update-help
+    To update help more than once a day
+      update-help -force
+      
+  Learning How to Find and Interpret Help (stop @ 2:39)
+    eg. part of the reult of ">help get-service"
+    SYNTAX
+    Get-Service [-ComputerName <String[]>] [-DependentServices] -DisplayName <String[]> [-Exclude <String[]>]
+    [-Include <String[]>] [-RequiredServices] [<CommonParameters>]
+
+    Get-Service [-ComputerName <String[]>] [-DependentServices] [-Exclude <String[]>] [-Include <String[]>]
+    [-InputObject <ServiceController[]>] [-RequiredServices] [<CommonParameters>]
+
+    Get-Service [[-Name] <String[]>] [-ComputerName <String[]>] [-DependentServices] [-Exclude <String[]>]
+    [-Include <String[]>] [-RequiredServices] [<CommonParameters>]
+
+    There are 3 separate ways to use cmdlet "get-service", each way is known as a "parameter set"
+    comdlet behavior can be modified with parameters
+    example of parameter: "-ComputerName", all parameters start w/ '-' followed by parameter name 
+
+    [-ComputerName <String[]>]
+      ComputerName parameter expects an array of String 
+    
+    Parameter enclosed in [] is optional
+
+  Using Help in the PowerShell ISE
+  Using the About Help Topics
+  Summary
+
+Module 5: Getting Started with PowerShell
+  Learning How to Run PowerShell Commands
+  Learning How to Discover Commands
+  Learning How to Run Non-PowerShell Commands
+  Learning How to Use Aliases
+  Learning How to Use Show-command
+  Learning How to Navigate the Shell
+  Summary
+
+Module 6
+  What's Next?
+  Ending Your First Day with PowerShell
+  Your PowerShell Tomorrow
+  Next Steps with PowerShell
+  Summary
