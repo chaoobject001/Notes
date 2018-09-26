@@ -390,15 +390,48 @@ Module 4: Unleashing the Power of Pipelines
 
       task: Search for specific phrase in the files
         eg.
-           // specify which folder the files are in
-           var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocument);
-           var diagsFolder = Path.Combine(myDocs, "skypevoicechanger", "diags");
+          // specify which folder the files are in
+          var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocument);
+          var diagsFolder = Path.Combine(myDocs, "skypevoicechanger", "diags");
            
-           var fileType = ".csv"; // file type to search for  
+          var fileType = ".csv"; // file type to search for  
              
-           var searchTerm = "User Submitted"; //    
+          var searchTerm = "User Submitted"; // 
 
-      
+          Directory.EnumerateFiles(diagsFolder, fileType)
+            .SelectMany(file => File.ReadAllLines(file))
+            .Where(line => Regex.IsMatch(line, searchTerm)); 
+          // 1. return IEnumerable<String> where each String is path of ".csv" file in diagsFolder
+          // 2. return IEnumerable<String> where each String is a line from each file path given
+          // 3. return IEnumerable<String> where each String is a line containing searchTerm
+
+      task: Search for specific phrase in the files and Identify sources 
+        eg. 
+          // Rewrite linq as following   
+          Directory.EnumerateFiles(diagsFolder, fileType)
+            .SelectMany(file => File.ReadAllLines(file))
+            .Select((line, index) => new {
+              File = file,
+              Text = line,
+              LineNumber = index + 1
+            })
+            .Where(line => Regex.IsMatch(line.Text, searchTerm));
+          // New edit: Select() takes lambda expression where inputs are line of text and zero based index
+          // Anonymous objects returned at the end each contains file path, line of text and line number
+
+      task: Search for specific phrase in the files and Identify sources, then take first 10 results
+        eg. 
+          // Rewrite linq as following   
+          Directory.EnumerateFiles(diagsFolder, fileType)
+            .SelectMany(file => File.ReadAllLines(file))
+            .Select((line, index) => new {
+              File = file,
+              Text = line,
+              LineNumber = index + 1
+            })
+            .Where(line => Regex.IsMatch(line.Text, searchTerm))
+            .Take(10); // Take only first 10 results
+            
 
     
 
