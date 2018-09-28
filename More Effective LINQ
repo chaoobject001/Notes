@@ -432,10 +432,13 @@ Module 4: Unleashing the Power of Pipelines
             .Where(line => Regex.IsMatch(line.Text, searchTerm))
             .Take(10); // Take only first 10 results
             
-
-    
-
   Real World LINQ - Parsing Log Files
+    Task: Extract specific information categories from files sucah as date, license number, isFirstTime 
+      eg. 
+        // files location and type
+        var myDocs = Environment.GetFolderPath(Environment.SpeialFolder.MyDocuments);
+        var diagsFolder = Path.Combine(myDocs, "SkypeVoiceChanger", "diags");
+        
   Real World LINQ - Orphaned Project Files
   Module Summary
 
