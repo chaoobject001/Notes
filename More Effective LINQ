@@ -438,7 +438,36 @@ Module 4: Unleashing the Power of Pipelines
         // files location and type
         var myDocs = Environment.GetFolderPath(Environment.SpeialFolder.MyDocuments);
         var diagsFolder = Path.Combine(myDocs, "SkypeVoiceChanger", "diags");
+        var fileType = "*.csv";
+
+        Directory.EnumerateFiles(diagsFolder, fileType)
+          .SelectMany(file => File.ReadAllLines(file)
+            .Skip(1)
+            .Select(line => line.Split(','))
+            .Where(parts => parts.Length > 8))
+          .Where(parts => Regex.IsMatch(parts[8], "Checking license for"))
+          .Select(parts => new 
+          {
+            Date = DateTime.Parse(parts[0])   
+            License = Regex.Match(parts[8], @"\d+").Value
+            FirstTime = Regex.Match(parts[9], @"True|False").Value   
+          })
+          .Where(x => x.License.Length >= 6)
         
+        /* 
+          LINQ pipeline 
+            1. SelectMany() read all the lines from each file given 
+            2. skip over the first line, cloumn names, in each file with Skip(1)
+            3. split each line by ',' b/s file type is CSV
+            4. filter out collection with 8 or less strings to avoid blank lines 
+            5. search for collection with matching phrase on index 8 
+            6. Extract specific information from each line / collection and store them in an anonymous object
+              Date = DateTime.Parse(parts[0])   
+              License = Regex.Match(parts[8], @"\d+").Value
+              FirstTime = Regex.Match(parts[9], @"True|False").Value  
+            7. Filter out object w/ License Length 6 or more     
+        */
+
   Real World LINQ - Orphaned Project Files
   Module Summary
 
