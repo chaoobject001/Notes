@@ -1,0 +1,168 @@
+Module 1: Course Overview
+  Course Overview
+    Attack by scanning software used or created 
+      b/c dev forgot to look at security during SDLC
+    Good practice and common security risk
+    Topics:
+      Different options models to follow SDLC
+      Five phases of software development
+      How are vulnerabilities created?
+
+Module 2: What’s the Software Development Life Cycle (SDLC)?
+  Course Introduction
+    Wide surface of attack coming from many IOT devices 
+      - (Rush to) connect a device without determining if there is any vulnerabilities in software 
+    Digital Lust
+      Rapid adaptation of 3rd party software or in-house development for convenience 
+      App start in simple environment 
+        -> grow toinvolve different infrastructure, technology, business and workflow 
+    Learning objectives:
+      What is SDLC?
+      Software Development Phases   
+      Software Development Models - different ways to apply security during development 
+      Software Vulnerabilities 
+      Coding Best Practices
+      Security Web Testing
+    Module overview:
+      What's the prblem? - how security becomes an issue
+      Do we really need SDLC? 
+        - Advantages / Disadvantages
+        - Benefits / Goals
+
+  What's the Problem?
+    New app that track users and monitors systems
+      - add more features
+      - link to AD -> link to HR app
+      - monitor: 
+        Link to AD
+        Security
+        Mobile
+        Services
+        Changes 
+        Remote
+        Updatees 
+        Alerts
+      - Link to SQL
+    Each connection now has potential to be an attack vector 
+    
+    What is (typical) SDLC?
+      Planning -> Requirement analysis -> Design
+      -> Implementation -> Testing -> Maintenance
+    
+    In terms of version:
+      Alpha -> Beta -> RC (Release candidate) -> RTM (Release to manufacturing) -> Patches / Service packs -> Revamp
+      More code changes & access as we move from one stage to the next
+
+    Who is involved? Each owns different types of resources and can create some types of attach vector force
+      Stackholders
+      Project Managers
+      Software Architect
+      Software Designer
+      Developer
+      Tester
+
+  Do You Really "Need" a SDLC
+    - helps to understand specific needs of different users or customers
+    - In-house development w/out consultation 
+  
+    Advantages / Disadvantages of NOT having SDLC
+    + Easy to learn - save time in the short run
+    + Easy to use - clear purpose / scope
+    - No clear start/stop with task
+    - Scales poorly
+    - Brittle code
+    - Does not match users needs
+    - Skip / ignore important tasks 
+
+    Benefits of SDLC
+      Documentation: 
+        TO DO, NOT TO DO, Warnings, clear vision of behavior 
+      Maintenance:
+        Works for a long time
+        Clearly identify loop holes and avoid them with minimum cost
+
+    SDLC does:
+      Creates goals of each phase / setep 
+      Marks clear steps to perform 
+      Reviews work in organized manner
+      Produce tangiable item
+      Give direction for the next phase 
+    
+    Different lifecycles
+      - different steps, different time links associated to thme (months to years)
+      - help with conception to End of Life (EoL)
+
+  Summary
+    Problems w/ security and software development and How
+    The need for SDLC (for 2+ person project)
+      - Advantages / Disadvantages
+      - Benefits and Goals
+
+
+Module 3: Software Development Phases
+  Introduction
+  Planning Phase
+  Requirement Phase
+  Design Phase
+  Implementation Phase
+  Testing Phase
+  Deployment Phase
+  Maintenance Phase
+  End-of-Life Phase
+  Summary
+
+Module 4: Software Development Models
+  Introduction
+  Code-and-Fix
+  Waterfall
+  Agile
+  Iterative
+  Spiral
+  Summary
+
+Module 5: Software Vulnerabilities
+  Introduction
+  How Does It Happen?
+  Input Validation
+  Buffer Overflow
+  Command Injection
+  Summary
+
+Module 6: Coding Best Practices
+  Introduction to Coding Best Practices
+  What's the Goal Here?
+  Input Validation
+  Output Encoding
+  Authentication & Password Management
+  Session Management
+  Access Control
+  Cryptographic Practices
+  Error Handling & Logging
+  Data Protection
+  Communication Security
+  System Configuration
+  Database Security
+  File Management
+  Memory Management
+  General Coding Practices
+  Summary
+
+Module 7: Code Reviews
+  Introduction to Coding Review
+  Why a Code Review?
+  Types of Reviews
+  Incorporate These 3 Outlines
+  Some Common Sense Tips
+  Summary
+
+Module 8: Security Testing in Action
+  Introduction
+  Intercept Proxies
+  DEMO: Create a Hackable Web Server
+  DEMO: Burp Suite
+  DEMO: OWASP ZAP
+  Web Application Firewalls
+  DEMO: Nikto
+  Source Authenticity
+  Reverse Engineering
+  Module/Course Summary
