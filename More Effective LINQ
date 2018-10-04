@@ -453,6 +453,7 @@ Module 4: Unleashing the Power of Pipelines
             FirstTime = Regex.Match(parts[9], @"True|False").Value   
           })
           .Where(x => x.License.Length >= 6)
+          .Dump();
         
         /* 
           LINQ pipeline 
@@ -468,10 +469,62 @@ Module 4: Unleashing the Power of Pipelines
             7. Filter out object w/ License Length 6 or more     
         */
 
-  Real World LINQ - Orphaned Project Files
+    Additional Task: Identify unique license aomong extracted records
+      eg. 
+        // Continue from previous example
+        .Where(x => x.License.Length >= 6)
+        .Select(e => e.License)
+        .Distinct()
+        .Dump();
+      /* 
+        LINQ pipeline 
+          1. Select(e => e.License) takes only license number from each entry
+          2. Distinct() removes all duplicate 
+      */
+    
+  Real World LINQ - Orphaned Project Files (DEMO)
+    Task: Locate Orphaned Project Files - not part of any C# project
+    eg. 
+      // in Main()
+      var sourceFolder = @"C:\path\to\source\files";
+      var allCSharpFiles = 
+        Directory.EnumerateFiles(sourceFolder, "*.cs", SearchOption.AllDirectories)
+        .Where(p => !p.Contains(@"\obj\"))
+        .Where(p => !p.Contains(@"\bin\"))
+        .ToList();
+        
+      /*
+        LINQ pipeline
+        1. Directory.EnumerateFiles(sourceFolder, "*.cs", SearchOption.AllDirectories) find all C# files in project folder
+        2. Where(p => !p.Contains(@"\obj\")) filter out any path contain "obj" folder
+        3. Where(p => !p.Contains(@"\bin\")) filter out any path contain "bin" folder
+        4. ToList() convert sequence to a List
+      */
+
+      var allCSharpFilesInProjects = 
+        Directory.EnumerateFiles(sourceFolder, "*.csproj", SearchOption.AllDirectories)
+        .FindCSharpFiles()
+        .ToList();
+      /*
+        LINQ pipeline
+        1. Directory.EnumerateFiles(sourceFolder, "*.csproj", SearchOption.AllDirectories) find all csproj files (XML) in project folder
+        2. FindCSharpFiles() returns all C sharp files referenced by project 
+        3. ToList() convert sequence to a List
+      */
+
+      static class MyExtensions {
+        public static IEnumerable<string> FindCSharpFiles(this IEnumerable<string> projectPaths) {
+          string xmlNamespace = "{}";
+
+          return from projectPath in projectPaths
+            let 
+        }
+      }
+
   Module Summary
 
 Module 5: Writing Clean and Readable Code
+
   Module Introduction
   Why Clean Code Matters
   LINQ Challenge - Sort by Age
