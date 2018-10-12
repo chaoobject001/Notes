@@ -1,0 +1,114 @@
+Module 1: Introduction
+  Transact-SQL / T-SQL
+    Create a table, work w/ columns and types 
+    Changing data w/ INSERT, UPDATE, DELETE 
+    Reading Data w/ SELECT
+    Querying multiple tables w/ JOIN
+    Arranging data w/ TOP, ORDER BY, OFFSET
+    Analysis w/ Aggregates (SUM, COUNT, etc)
+    Many to Many, Self-referencing Relationships
+    Working w/ Strings and Dates
+    SQL Server Express 2017 and SQL Server Management Studio is used for this note
+    Install and connect to SQL Server locally 
+    In SQL Server Management Studio, under local server, R-click on "Databases" to create new DB
+
+Module 2: Working with Tables
+  Creating / Droping a Table
+    Select DB to add table under
+      SQL: 
+        create table Users(
+          email varchar(50)
+        );
+      F5 / "Execute" to run this
+      Message: Commands completed successfully.
+
+      To see changes made by SQL query in UI, R-click under "Tables" to "Refresh" under Object Explorer 
+      R-click "dbo.Users" and expend "Columns" to see "email (varchar(50), null)"
+
+    To remove this table: 
+      SQL: drop table Users;
+
+  Primary Keys: Integer
+    Primary Keys uniquely identify each row in a table - relational theory
+    Create a table w/ primary keys
+      SQL:
+        create table Users(
+          Id integer primary key
+        );
+      Columns: Id(PK, int, not null) with a key icon
+
+      R-click "dbo.Users" and [Edit Top 200 Rows] and enter 1 for Id fields twice 
+        - "Violation of PRIMARY KEY constraint" error
+        - Primary Keys are unique
+
+  Primary Keys: GUID
+    Need to identify data outside of DB - an Enterprise-wide Id that is always unique in any settings, GUID 
+    SQL:
+      create table Users(
+        Id uniqueidentifier primary key
+      );
+    Columns: Id(PK, uniqueidentifier, not null)
+    in program, GUID can be generated via entity framework 
+    
+  Primary Keys: Auto-incrementing
+    
+  Tangent: Choosing a Primary Key
+  Composite Keys
+  Defining Columns
+  Basic Column Constraints
+  Column Defaults
+  Naming Conventions
+
+Module 3: Working with Data
+  Inserting Data
+  Bulk Inserts
+  Updates
+  Updates with Criteria
+  Bulk Updates
+  Delete
+  Bulk Deletes
+
+Module 4: Querying Data
+  Installing Chinook
+  Simple Select
+  Select Columns
+  Aliasing Columns
+  Column Expressions
+  Tangent: Naming Things
+
+Module 5: Joining Tables
+  Inner Joins
+  Subqueries
+  Left and Right Joins
+  Full Joins
+
+Module 6: Filtering, Sifting, and Sorting Data
+  Ordering Results
+  Limiting Results
+  Sequential Ordering
+  Filtering by Sets
+  Offsetting Results
+
+Module 7: Aggregates and Analysis
+  Basic Aggregates
+  Grouping Results
+  A Simple Sales Query
+  Tangent: Checking Your Numbers
+  Constraining Aggregate Results
+
+Module 8: Many to Many and Self-referencing Relationships
+  Adding Data to a Many to Many
+  Querying a Many to Many
+  Many to Many Table Constraints
+  Querying a Self-referencing Table with a Subquery
+  Querying a Self-referencing Table Using a Join
+
+Module 9: Essential String and Date Functions
+  Querying Strings with a Partial Match
+  Partial String Results with Substring
+  Editing String Results with Replace
+  Fixing Bad Data with Trim
+  Fixing Bad Data with Rtrim Len and Datalength
+  Slicing Dates with Datepart
+  Doing Date Math with Datediff
+  Summary and Goodbye
