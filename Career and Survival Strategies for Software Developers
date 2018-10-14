@@ -1,0 +1,280 @@
+Module 1: Introduction
+  Why this course?
+    Thins not taought in school
+    Things not talked about
+    Challenges:
+      Technical - keep up w/ changes & choose a focus
+      Professional - company politics & managers
+      Financial - evaluate offer
+
+  Why I have the nerve to teach this course.
+    Coding while working in distinct roles / positions
+    Breadth and Depth
+  How do you define success?
+    Why do we cecome software dev
+      love to program
+      love challenges
+      creative
+      money
+      better at dealing w/ machine
+    Identify motivation is part of the process that defines success
+
+    Which mesaurement of success?
+      Money
+      Firends & Family
+      Recognition
+      Fame
+      Make a difference
+
+    Define goals:
+      If you don't know what you want, you won't get it
+      How technical do you want to be?
+        Software development can lead to many related careers
+      Are they stealing your life?
+
+  Generalizing can be fun.
+    There will always be exceptions somewhere, somehow
+    Interpret everything in your personal context
+
+Module 2: The Just-in-time Programmer
+  Why you need an education strategy
+    Education
+      Knowledage - what we know, eg. languages and platform
+      Skils - how we use knowledage, eg. desin, create, debug, test
+      Judgment - choose the right approach for the specific problem 
+    
+    Education strategy need to fight great pace of obsolescence
+
+    What is your education strategy?
+      Formal or informal education?
+      Educational resources
+        Classes
+        Conference, webinars, user groups
+        Articles, blog, forums / search
+        Books
+      Educational triage
+        choose what to learn
+          Breadth vs. Depth
+        Dealing w/ new technologies
+          Life on the bleeding edge
+        Planning for obsolescence  
+
+  Are you a programmer, or a software developer?
+    When asked to write some code:
+      Programmer write code 
+      Software developer ask questions:
+        - How does it fit in the business process? Are the requirements thought out & understandable?
+          Anything left out?
+        - Are you sure you understand what will cost in terms of time and money?
+          Does it fit in your budget?
+        - Who will support it? What level of diagnostics and instrumentation should be built-in?
+          How about for unit tests and other high level test? 
+          What testing tool do you have available? Have you budget for this?
+        - What kind of documentation will it need and who will write it?
+          Where does this fit in the overall schedule?
+        - How might it interact with other code? 
+          Any potential interactions and/or compatibility issues w/ existing software?
+        - What platform will it run on? Are there scalability or capacity issues?
+          Any future enhancement plan? 
+        - How might it impact future development? How might it be enhanced in the future?
+          Knowing them now helps setting up the architecture for enhancement later
+        - Can you find / buy / reuse other software instead?
+        ...
+        And provide a solution
+      
+      Programmer solve problem with code; Software developer solve problem sometimes using code
+
+    Languages don't matter (that much)
+      Programmers care about individual languages
+      Software developers care about language characteristics
+        - Strong / loose typing
+        - Case sensitivity
+        - Object oriented / (Single or multiple) Inheritance / Interface / Properties
+          Variable scoping and lifetime
+        - Functional
+        - Data types
+        - Platform integration 
+        - Tooling: Interpreted / Compiled / something in between
+        - Control structures
+      Language may not matter from technical perspective 
+        - but it does matter from business perspective, eg. how to find support and resources for the future
+      Languages are secondary to platforms
+    
+    Software life cycle costs:
+      Typical software life cycle costs:
+        - Requirements and design - 20%
+        - Code and unit test - 10%
+        - QA / Deployment - 10%
+        - Maintenance - 60%
+      As a business decision, choose b/t 2 languages:
+        Language A: Not very popular, but better tooling to reduce coding cost by 50%
+                    Developers are hard to find and expensive
+        Language B: Very popular, developers are cheap and easy to find 
+      B might be a better choice - saving from long term cost of software life cycle cost 
+
+  Formal Education
+    What formal education gets you:
+      a bit closer to be a software developer
+        learn how to learn any computer language rather than use a specific one
+        learn how to think about software life cycle cost instead of just focusing on coding efficiency 
+        learn how to ask right questions when starting a project
+      Discipline to learn what you NEED, not always what you want 
+      Networking
+      Credibility
+    
+    CS Undergraduate level are the same everywhere
+      Courses listing numerous languages or classes on business programming in Excel 
+      - this is NOT CS
+      CS Foundamentals: 
+        Language theory 
+        algorithms
+        database principles 
+        computer graphics 
+        compiler design
+        theory of OS
+    
+    Go where you like - enviornment, culture and atmosphere
+    Find one with reasonable cost - not necessary the highest ranking
+    Consider level of competition 
+    Location and industry connections 
+
+    Building a Foundation
+      You cannot know everything
+      You cannot keep up w/ what's new 
+
+      so now what to do?
+
+      choose carefully what you should learn 
+        Greatest benefit comes from learning how to learn 
+          - Know how to find and choose sources of info efficiently 
+          - Know what to learn now, what to learn later, and what NOT to learn 
+      Learn the fundamentals:
+        Platforms and standards like REST and JSON when learning web application
+
+      Learning the foundamentals to be the "Just in time programmer"
+
+  Resources (as you need them)
+    College / Classes (schools or training companies)
+      con:
+        Too slow to find solution in time or for on-going education
+        Instructors need to keep up too
+        If instructions are preferred - find specilaized consultants or firms in training on that topic
+        but they may lack some real-world experience
+      pro:
+        build or supplement fundamentals
+
+    Conferences or workshops
+      con:
+        best at quick introduction but limited value for any depth
+      pro:
+        Networking
+        Share information and experiences
+        
+    Dcumentation
+      con:
+        (little if any) workbook & documentation for initial setup only
+      pro: 
+        usually the primary source of information
+        mostly accurate
+        best material draw directly from development team - but can be dry
+
+    Search (articles, blog, forums and references)
+      con:
+        quickly answer and solve problem or find relevant content as first step
+      pro:
+        beaware of its limits - mostly for urgent or common questions
+
+    Forums
+      con: 
+        tough or particular questions require attention from experts
+        - companys create evangelists or MVP program to encourage experts to monitor 
+          or contribute to technology
+      pro: easy questions are often answered 
+    
+    Books / Video courses
+      con:
+        no longer serve as only reference  
+        internet is faster
+      pro: 
+        present infomation in logical, easy to understand manner
+        teaching fundamentals
+        explain key concepts 
+        low cost 
+        best practice based on expert experience in the field 
+    
+    DIY - experimentation, trial and error, reverse engineering 
+      con:       
+      pro:
+        fit your own need
+        only way for newest technology
+
+  Navigating the Swamp
+    Breadth v. Depth
+      Breadth: build foundation in multiple subject area
+      Depth: briefly specialize in targeted subject as needed
+        - specialized expertise won't last
+    Temporary specialization 
+      Sometime it's harder to let go knowledge than gaining it
+      Don't let specialization become your identity or change the way you see yourself  
+    The positive side of obsolescence 
+      New race. Level playfield 
+    The ultimate solution for obsolescence - leave the race
+      Management and Real-estate 
+      Logistics 
+      Budgeting
+
+
+
+  Choosing Technologies
+
+Module 3: The Software Developer Life-Cycle
+  Every Career is Different
+  Algorithms and Energy Drinks
+  The Mid-career Dilemma
+  Other Paths
+  Old Programmers
+  The Economics of Hiring Programmers
+
+Module 4: Beyond Technology
+  Introduction
+  Verbal Skills
+  Writing Skills
+  Interpersonal Skills
+  Management Skills
+  Economics and Financial Skills
+
+Module 5: On the Job
+  Introduction
+  Getting a Job
+  All companies, Large and Small
+  Large Companies
+  Mid-size Companies
+  Small Companies
+  Consulting
+  Entrepreneur
+  Corporate Myths
+
+Module 6: Evaluating a Job Offer
+  Introduction
+  Company Size and Industry
+  About the Company
+  About the People
+  The Position
+  Financials
+  Stock Options
+
+Module 7: You and Your Money
+  Introduction
+  Keeping Score
+  Cash Flow
+  Net Worth
+  The Surprising Truth to Increasing Net Worth
+  Considering Costs and Benefits
+  The Secret of Investing
+  Other Considerations
+
+Module 8: Other Topics
+  Your Brand
+  Contracts
+  Side Projects
+  Taking Care of Yourself
