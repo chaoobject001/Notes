@@ -40,6 +40,9 @@ Technologies
       
       C#
         LINQ Fundamentals with C# 6.0 - by Scott Allen
+        More Effective LINQ - by Mark Heath
+
+        C# Path
 
       Test tooling
         Postman Fundamentals - by Nate Taylor
