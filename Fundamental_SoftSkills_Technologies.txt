@@ -1,0 +1,58 @@
+Fundamentals
+
+  Algorithms and Data Structures
+  Algorithms and Data Structures - Part 1 & 2 by Robert Horvick
+  An Introduction to Algorithmics - by Rasmus Amossen
+  Using Advanced Data Structures in Modern Applications - by Rasmus AmossenAdvanced
+
+  Compiler
+  Introduction to the .NET Compiler Platform - by Bart De Smet
+
+  Networking 
+  Networking Concepts and Protocols - by Ross Bagurdes
+  Network Fundamentals and Protocols - by Daniel Lachance
+
+  Protocols:
+  HTTP Fundamentals - by Scott Allen
+  HTML Fundamentals - by Matt Milner
+  HTML5 Fundamentals - by Craig Shoemaker
+  [book] DOM Enlightenment: Exploring JavaScript and the Modern DOM
+  https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
+
+  Architecture 
+  Microservices Architecture - by Rag Dhiman
+  Encapsulation and SOLID - by Mark Seemann
+  Design Patterns Library
+
+  DB Theory
+  [Book] Relational Theory for Computer Professionals: What Relational Databases Are Really All About
+  Relational Database Design - by Hugo Kornelis
+
+
+Soft Skills
+  Communication path
+
+Technologies
+  Now:
+    Direct:
+      DB 
+        Developer's T-SQL Playbook - by Rob Conery
+      
+      C#
+        LINQ Fundamentals with C# 6.0 - by Scott Allen
+
+      Test tooling
+        Postman Fundamentals - by Nate Taylor
+        Debugging Your Website with Fiddler and Chrome DevTools - by Robert Boedigheimer
+        Fiddler - by Robert Boedigheimer
+        [Need update] Using The Chrome Developer Tools - by John Sonmez
+
+
+    Indirect:
+      ASP.NET MVC 5 Path
+      ASP.NET MVC 5 Fundamentals - by Scott Allen
+
+  Pivot:
+    Blockchain Fundamentals - by Jan-Erik Sandberg
+    R Programming Fundamentals - by Abhishek Kumar
+  
