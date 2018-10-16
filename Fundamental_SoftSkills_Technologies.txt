@@ -34,6 +34,10 @@ Soft Skills
 
 Technologies
   Now:
+    System under test:
+      Web Pay / Payroll - Compass courses
+
+
     Direct:
       DB 
         Developer's T-SQL Playbook - by Rob Conery
@@ -56,6 +60,18 @@ Technologies
       ASP.NET MVC 5 Fundamentals - by Scott Allen
 
   Pivot:
-    Blockchain Fundamentals - by Jan-Erik Sandberg
+    Salesforce
+    
+    Block Chain
+      Blockchain Fundamentals - by Jan-Erik Sandberg
+    
+    Big Data
     R Programming Fundamentals - by Abhishek Kumar
+
+    Machine learning 
+
+    Data Analytics
+
+
+
   
