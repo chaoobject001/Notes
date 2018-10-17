@@ -36,15 +36,20 @@ Technologies
   Now:
     System under test:
       Web Pay / Payroll - Compass courses
-
+      PRP
 
     Direct:
+      Testing: 
+        Lessons Learned in Software Testing: A Context-Driven Approach
       DB 
         Developer's T-SQL Playbook - by Rob Conery
       
       C#
         LINQ Fundamentals with C# 6.0 - by Scott Allen
         More Effective LINQ - by Mark Heath
+        C# Best Practices: Collections and Generics - by Deborah Kurata
+        C# Collections Fundamentals - Simon Robinson
+        C# Events, Delegates and Lambdas - by Dan Wahlin
 
         C# Path
 
