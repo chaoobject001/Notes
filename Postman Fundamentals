@@ -1,0 +1,110 @@
+Postman Fundamentals
+Module 1: Course Overview
+  Making API request using different Environments
+  Automated testing an API
+  Scripting API workflows 
+  Documenting an API
+
+  Course goal: Maximize interactions w/ any APi
+
+Module 2: Setting the Stage
+  Setting the Stage
+    Using Postman to interact w/ API
+    API reach both front end and back end 
+    
+    Roles:
+      App Dev - does not use API directly 
+        - mock data when API is not quite ready yet
+        - setup application without clicking through UI or enter data
+      API dev - design & implement API
+        - use Postman to test and document API
+    
+    Postman simplifies working with APIs
+
+  Getting Started: Postman
+    Use Postman to hit real API and get real data
+    Install Postman via Chrome App store
+      chrome://apps
+      select webstore application
+      search for Postman
+      intsall Postman as Chrome application
+      pro: install Postman on Mac & PC & Linux
+    
+    Install Postman as a stand alone application
+      Load getpostman.com
+      Download accordingly 
+
+  Getting Started: API
+    Get project to run locally
+      Install Git and Node.js 
+      Get project from https://github.com/taylonr/postman
+      
+
+  The Path Ahead
+
+Module 3: Postman Basics
+  Postman Basics
+  GETting Books
+  Adding a New Item to Inventory
+  History
+  Authorization
+  Preset Headers
+  Environments
+  Import
+  Proxy
+  Generating Code
+  Sync
+  Summary
+
+Module 4: Testing Requests
+  Testing Requests
+  Meet the API Team
+  Pre-built Tests
+  Test Syntax
+  Basic Tests
+  Using Other Libraries
+  Summary
+
+Module 5: Collections
+  Collections
+  Using Tests on the Front End
+  Creating Collections
+  Collection Runner
+  Using Variables
+  Pre-request Scripts
+  Data Files
+  Initializing Test Data
+  Refactor: Loop Over Users
+  Refactor: Loop Over Wishlists
+  Scenario Tear Down
+  Running Your Refactored Collection
+  Executing Tests
+  Testing from the Command Line
+  Summary
+
+Module 6: Mock Server
+  Mock Server
+  Faking out Data
+  First Mock
+  Additional Responses
+  Mocking a Feature
+  Mocking Response Codes
+  Postman Matching Algorithm
+  Summary
+
+Module 7: Documentation
+  Documentation
+  The Need for Documentation
+  Documenting a Collection
+  Detailed Request Documentation
+  Publishing Documentation
+  Custom Theme
+  Recap
+
+Module 8: Team Tools
+  Team Tools
+  Setting up Postman Pro
+  Sharing Collections
+  Postman Integrations
+  Pro API
+  Course Review
