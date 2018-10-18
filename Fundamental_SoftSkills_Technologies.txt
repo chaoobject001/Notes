@@ -18,6 +18,7 @@ Fundamentals
   HTML5 Fundamentals - by Craig Shoemaker
   [book] DOM Enlightenment: Exploring JavaScript and the Modern DOM
   https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
+  Hands-on JavaScript Project: JSON - by Paul Cheney
 
   Architecture 
   Microservices Architecture - by Rag Dhiman
@@ -59,6 +60,8 @@ Technologies
         Fiddler - by Robert Boedigheimer
         [Need update] Using The Chrome Developer Tools - by John Sonmez
 
+      Coding tooling 
+        Using Git with a GUI - by Xavier Morera
 
     Indirect:
       ASP.NET MVC 5 Path
