@@ -18,8 +18,7 @@ Fundamentals
   HTML5 Fundamentals - by Craig Shoemaker
   [book] DOM Enlightenment: Exploring JavaScript and the Modern DOM
   https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
-  Hands-on JavaScript Project: JSON - by Paul Cheney
-
+  
   Architecture 
   Microservices Architecture - by Rag Dhiman
   Encapsulation and SOLID - by Mark Seemann
@@ -37,20 +36,25 @@ Technologies
   Now:
     System under test:
       Web Pay / Payroll - Compass courses
-      PRP
+
 
     Direct:
-      Testing: 
-        Lessons Learned in Software Testing: A Context-Driven Approach
+      Security:
+        Secure Software Development - by Dale Meredith
+        Web Application Penetration Testing with Burp Suite - by Sunny Wear
+        Advanced Web Application Penetration Testing with Burp Suite - by Sunny Wear
+        CSSLP®: Secure Software Testing - by Kevin Henry
+      
+      Performance:
+        Google lighthouse
+
+
       DB 
         Developer's T-SQL Playbook - by Rob Conery
       
       C#
         LINQ Fundamentals with C# 6.0 - by Scott Allen
         More Effective LINQ - by Mark Heath
-        C# Best Practices: Collections and Generics - by Deborah Kurata
-        C# Collections Fundamentals - Simon Robinson
-        C# Events, Delegates and Lambdas - by Dan Wahlin
 
         C# Path
 
@@ -60,10 +64,9 @@ Technologies
         Fiddler - by Robert Boedigheimer
         [Need update] Using The Chrome Developer Tools - by John Sonmez
 
-      Coding tooling 
-        Using Git with a GUI - by Xavier Morera
-
     Indirect:
+      Building a Deployment Pipeline for .NET Applications - by Kenneth Truyers
+
       ASP.NET MVC 5 Path
       ASP.NET MVC 5 Fundamentals - by Scott Allen
 
