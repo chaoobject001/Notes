@@ -36,15 +36,27 @@ Module 2: Setting the Stage
 
   Getting Started: API
     Get project to run locally
-      Install Git and Node.js 
+      Install Git, Node.js, PostgresSQL 
       Get project from https://github.com/taylonr/postman
       
-
   The Path Ahead
-
+    Postman Basics: UI walk through - basic requests and API calls
+    Testing Requests: Use Postman to Test API
+    Collections: 
+      Group similar API calls
+      Combine collections and testing to script application
+    Mock server: to return request
+      For prototyping or working ahead of API development to prevent block
+    Documentations:
+      Postman helps w/ documentation on how API works
+      
 Module 3: Postman Basics
   Postman Basics
+    Make basic API requests in different environments
+    Other customization 
+      
   GETting Books
+
   Adding a New Item to Inventory
   History
   Authorization
