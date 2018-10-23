@@ -52,16 +52,156 @@ Module 2: Setting the Stage
       
 Module 3: Postman Basics
   Postman Basics
-    Make basic API requests in different environments
-    Other customization 
-      
+    Example scenario:
+      Dependent features developed in parallel 
+        Some required dependencies are not available during development 
+        Postman can make request while application can develop feature of the same effect
+    Postman use cases:
+      Make basic API requests in different environments
+      Other customization 
+    Prerequisites: 
+      Configure DB & initializing API
+      command:
+        Create DB:
+          npm run db:create  
+            This will create DB "postman_dev" with seed data
+        Start API:
+          npm run start:dev
+
   GETting Books
+    Testing if API project is running on local 
+      On browser URL, input "http://localhost:3000/landing"
+      Browser should display "Pluralsight Sample API Running!"
+    
+    Working with API via Postman
+      GET localhost:3000/Books
+        Headers 
+          Key: G-TOKEN Value: ROM831ESV
+        Click [Send] blue button  
+          Expected: 200 OK JSON response with "Time" and "Size" data
+      
+      GET localhost:3000/Books/1
+        Expected:
+          {
+            "id": 1,
+            "title": "Don't Waste Your Life",
+            "author": "John Piper",
+            "publicationDate": "2003-05-16",
+            "isbn": "1593281056",
+            "createdAt": "2018-10-17T23:33:16.413Z",
+            "updatedAt": "2018-10-17T23:33:16.413Z"
+          }    
+      
+      GET localhost:3000/Books/search
+        Click [Params] button to add Key / Value pairs: "title" / "waste"
+        Verify that correct query string is attached to URL: http://localhost:3000/Books/search?title=waste
+        Expected:
+          [
+            {
+              "id": 1,
+              "title": "Don't Waste Your Life",
+              "author": "John Piper"
+            }
+          ]
+        Additional query parameters can be added in key / value table and query string will be updated accordingly 
+        Multiple key / value pairs can be toggle on and off by the check boxes next to a specific pair
+        - this is useful in managing numerous query parameters at the same time 
+
+      Download request response 
+        When all the url, header and query parameters are ready, instead of click blue [Send] button,
+        click the drop down arrow next to it and select the option [Send and Download]
+        and specify where to save the response 
+        In this case, no response will be displayed, it is downloaded to local folder instead 
+
+        This function is useful to mock out different responses and use it for coding reference 
 
   Adding a New Item to Inventory
+    POST http://localhost:3000/Books
+    Click [Body] tab below URL text field 
+    Click radio button [raw]
+    Input JSON in the text box under [raw]
+    eg.
+      {
+        "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "author": "Robert C. Martin",
+        "isbn": "9780132350884",
+        "release date": "2008-08-11"
+      }
+    Update additional header info:
+      "Content-Type" / "application/json"
+    Expected response:
+      {
+        "id": 5,
+        "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "author": "Robert C. Martin",
+        "isbn": "9780132350884",
+        "updatedAt": "2018-10-22T23:30:46.556Z",
+        "createdAt": "2018-10-22T23:30:46.556Z",
+        "publicationDate": null,
+          "links": [
+            {
+              "rel": "self",
+              "href": "http://localhost:3000/Books/5"
+            }
+          ]        
+      }
+    Inside the response, the href link can be also used in Postman 
+    as GET http://localhost:3000/Books/5
+    but Header info needs to be added again as Key: G-TOKEN Value: ROM831ESV
+    Expected response:
+    {
+      "id": 5,
+      "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+      "author": "Robert C. Martin",
+      "publicationDate": null,
+      "isbn": "9780132350884",
+      "createdAt": "2018-10-22T23:27:56.501Z",
+      "updatedAt": "2018-10-22T23:27:56.501Z"
+    }
+
+    The example above shows how to use header and body tabs as part of request
+    Other options: 
+       Authorization Menu Item can also be used as part of request 
+
   History
+    Postman [History] pane on the left panel records previous requests
+    Previous requests are grouped by the date; "Today" is on the top 
+    Click each row / request to display the specific previous request 
+    Old requests can be re-send this way
+
   Authorization
+    DELETE http://localhost:3000/books/7 
+    requires Authorization lest the API service returns 401 
+
+    Click [Authorization] tab to expend drop down with multiple types of auth
+    Select [Basic Auth] and enter "Username" and "Password" (both are "admin")
+    Click [Update Request] and observe [Headers] count increased by 1 
+    Select [Headers] tab and observe 
+      a new "Authorization" header with 
+      a value of "Basic" and then Base64 encoded string of admin and admin for username and password
+    Click will result in 204 No Content, a success message - nothing to return when deleting something 
+
+    GET http://localhost:3000/books/ now does not display deleted entry 
+
   Preset Headers
+    Postman can track various settings of previous requests w/ preset headers
+    Possible Headers
+      Potentially a request may need numerous headres 
+    Manage Headers by Presets:
+      Select a previous request from History with commonly used Headers
+      Click [Headers] / [Presets] / [Manage Presets]
+      Click [Add] for a new group of Headers
+      Enter "Header Preset Name", then input key / value pairs
+      Click [Add] to create a new Preset
+      
+    The new Preset can now be used under a new tab:
+      Input new URL
+      Click [Headers] / [Presets] / [(Previously Created Preset Name)]
+      Verify the key values pairs are now in Headers of current new request 
+      
   Environments
+    Different Headers for different environments
+    
   Import
   Proxy
   Generating Code
