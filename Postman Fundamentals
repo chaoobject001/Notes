@@ -200,8 +200,52 @@ Module 3: Postman Basics
       Verify the key values pairs are now in Headers of current new request 
       
   Environments
-    Different Headers for different environments
-    
+    Different Headers for different environments - local, dev, test, prod, etc...
+    Create dev and test environments with following commands:
+      npm run start:dev
+      npm run start:test
+    Verify that each API services listening on its own port number:
+      dev:  3000
+      test: 3030
+      - making changes to different routes and setting can be tedious 
+    Add new environment (variables):
+      Click gear wheel icon on top right to open "MANAGE ENVIRONMENTS"
+      Click [Add] button to add a new enviornment via "Add Environment Pane"
+      Input environment name like dev 
+      Add variable like "host" with value "localhost:3030"
+    Use enviornment: 
+      Use top right drop down to select environment 
+      GET http://localhost:3030/books/ referencing host variable in dev environment
+      URL input: http://{{host}}/books
+      Environment can be switched by top right drop down without explictly define host variable 
+    Duplicate enviornment:
+      To cover multiple enviornments with similar variables,
+      create an initial environment with complete set of variables
+      Click the duplicate icon in "MANAGEMENT ENVIRONMENTS" modal for a copy of environment 
+      Edit environment name and update variables' values accordingly 
+    Download environment:
+      Click the download icon in "MANAGEMENT ENVIRONMENTS" modal for a copy of environment 
+      Download enviornment variables as JSON file 
+      Eg. 
+        {
+	        "id": "d931485c-24f1-46b1-acf9-43abfad0b923",
+	        "name": "Dev",
+	        "values": [
+            {
+              "key": "host",
+              "value": "localhost:3030",
+              "description": "",
+              "enabled": true
+            }
+          ],
+          "_postman_variable_scope": "environment",
+          "_postman_exported_at": "2018-10-24T01:36:02.772Z",
+          "_postman_exported_using": "Postman/6.4.4"
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    Import environment:
+      Click the [Import] button in the bottom of "MANAGEMENT ENVIRONMENTS" pane
+      Then select file 
+
   Import
   Proxy
   Generating Code
