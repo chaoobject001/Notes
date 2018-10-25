@@ -247,19 +247,169 @@ Module 3: Postman Basics
       Then select file 
 
   Import
+    Capture API request sent from UI by Postman for debugging or modification:
+    1. Record API request from UI via Browser DevTool > Network (tab)
+    2. R-Click on the request to capture 
+    3. Use the option Copy > Copy as cURL (bash) 
+    4. Open Postman > [Import] (button on top)
+    5. Select option "Paste Raw Text" and paste cURL into the empty text pad below
+    6. Click [Import] button
+    7. Verify the request is duplicated in Postman ready to be sent or modified or debug or data-driven test
+    
   Proxy
+    Another way to capture API request by proxy 
+    1. Click Postman button on top row with tooltip "Capture API requests with Postman"
+       to open modal titled "PROXY SETTINGS"
+    2. Click "Connect" button to capture API request; Verify and record "Port" value on pane
+    3. Look up IP address of local machine 
+    4. On device to monitor, add local machine IP, with port number specified on Postman, as a proxy  
+    5. Browse to specific web site or use APP from monitored device 
+    6. Verify HTTP requests registered in History (default storage) 
+
   Generating Code
+    Create code snippet to access Web API (like in an AJAX call)
+    1. Select from History the request to make in code 
+    2. Under the url field, select "Code" to open "GENERATE CODE SNIPPETS" modal
+    3. Select "javascript jquery AJAX"
+    4. Adjust code generated as needed:
+       For example, make changes to settings.data to emulate user input from form
+       by pasting this code into an HTML for test harness   
+
   Sync
+    Sync information across multiple instances of Postman 
+    1. Click [Sign in] button
+    2. Sign in with username and password or sign in w/ google
+    3. Once sign in, Postman will sync across multiple browsers with same 
+       requests, header presets, environments, environmental variables and other features   
+
   Summary
+    Make verb based requests: GET, POST, PUT, DELETE
+    Manipulate headers
+    Authorize request
+    Send data in with request body
+    Track Requests
+    Capture & duplicate / modify tracked requests
+    Setup different environment for different variables like host in request URL
 
 Module 4: Testing Requests
   Testing Requests
+    Test API
+    Create regression test to run before API deployment 
+    Programmatically interact with API via collections 
+
   Meet the API Team
+    Test entire request life cycle from request to response 
+    Build library to run cutomnized test
+    CD / CI integration for regression test 
+    
   Pre-built Tests
+    Start w/ create and send a request in Postman 
+    Select [Tests] tab under URL field 
+    Select one of the snippets from right pane as starting template 
+    Click [Send] to re-send a request and run test after response 
+    Verify test results by selecting "Test Results" tab below
+
   Test Syntax
+    Eg. 
+      pm.test("Status code is 200", function() {
+        pm.response.to.have.status(200);
+      });
+
+      pm: object to provide everthing required for creating test
+      test: 
+        function takes two parameters: 
+          1. test name as string that describe the test  
+          2. function to be executed for the test, takes no property, verify passing condition   
+      response: object represents data retuned from API
+
+    pm property "info" contains infomation about the script that is being executed, such as request ID
+    pm property "global" 
+    pm property "environment" 
+
+    For assertions:
+      have.status
+      have.header
+      have.body
+      have.jsonBody
+
+    For more reference: www.getpostman.com/docs/      
+    Look for "Scripts" section
+
   Basic Tests
+    Verify the number of books in the JSON response from  
+      pm.test("Return 21 books", function() {
+        const books = pm.response.json();
+        pm.expect(books.length).to.eql(21);
+      });
+
+    Check if every book has title 
+      pm.test("Every book should have title", () => {
+        const books = pm.response.json();
+        pm.expect(books.every(
+          book => {
+            return book.title !== undefined;
+          }
+        )).to.be.true;
+      });
+    
+    Refactor previous test
+      const titleIsDefined = (book) => {
+        return book.title !== undefined;
+      }
+      pm.test("Every book should have title", () => {
+        const books = pm.response.json();
+        pm.expect(books.every(titleIsDefined)).to.be.true;
+      });
+
   Using Other Libraries
+    To interact with Date and Time, like "Create date is equal to today"
+      const moment = require('moment');
+      pm.test("Create date is equal to today", () => {
+        const data = pm.response.json();
+
+        pm.expect(moment(data.createdAt).format('MM/DD/YYYY'))
+          .to.eql(moment().format('MM/DD/YYYY'));
+      });
+
+
+    Lodash is available via a global underscore, '_'
+    eg. 
+      const books = pm.response.json();
+    can be re-written as following: 
+      const books = _.result(pm, 'response.json');
+      // look for 'response.json' function within pm, and execute the function when found 
+    
+    Other libaraies can be accessed via require function, such as: const moment = require('moment');
+      atob → v2.0.3
+      btoa → v1.1.2
+      chai → v3.5.0
+      cheerio → v0.22.0
+      crypto-js → v3.1.9-1
+      csv-parse/lib/sync → 1.2.1
+      lodash → v4.17.4 (when used with require, the inbuilt _ object is for v3.10.1)
+      moment → v2.18.1 (sans locales)
+      postman-collection → v1.2.0
+      tv4 → v1.2.7
+      uuid → (the module loaded is a shim for original module)
+      xml2js → 0.4.19
+
+    A number of NodeJS modules are also available:
+      path
+      assert
+      buffer
+      util
+      url
+      punycode
+      querystring
+      string_decoder
+      stream
+      timers
+      events
+
   Summary
+    Pre-Built Tests for simple scenarios
+    Custom Built Tests on the request or response
+    Import libraries (if available)
 
 Module 5: Collections
   Collections
