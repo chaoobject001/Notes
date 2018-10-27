@@ -413,9 +413,66 @@ Module 4: Testing Requests
 
 Module 5: Collections
   Collections
+    Save requests into collections & Use collections w/in Postman
   Using Tests on the Front End
+    Automate API requests to setup test
   Creating Collections
+    Open Postman > New tab
+    Creat following request: POST http://localhost:3000/households
+      with previous Headers Key / Value pair from Preset
+    Body > Select "Raw" radio button 
+      > Create one JSON object and set "name" property for household name
+      > [Send] request
+    Keep track of response value of "id" for future request 
+
+    Click [Save] nect to [Send] to open modal "SAVE REQUEST"
+    Add new collection by Clicking [Create Collection] 
+    Input name for the new collection > Click Checkbox > Click [Save to {collection name}]
+    Verify "Collections" tab is selected then Close extended side panel 
+
+  Add more requests:
+    For "Create a user" request
+      Open a new tab > Select [POST] with URL: http://localhost:3000/users
+      Select [Body] tab > [Raw] radio button > input following JSON & Send request
+        {
+          "email": "test01@test.com",
+          "firstName": "First",
+          "lastName": "User",
+          "householdId": 1
+        }
+      Response:
+        {
+          "id": 1,
+          "email": "test01@test.com",
+          "firstName": "First",
+          "lastName": "User",
+          "householdId": 1,
+          "wishlistId": 1,
+          "updatedAt": "2018-10-27T01:36:46.226Z",
+          "createdAt": "2018-10-27T01:36:46.226Z",
+          "links": [
+              {
+                  "rel": "self",
+                  "href": "http://localhost:3000/users/1"
+              }
+          ]
+        }
+      
+      User created with a auto-generated wishlist, "householdId": 1
+      Save request as "Create User" to "Household Wishlists" collection  
+    
+    For "Add book to wishlist":
+      Open a new tab > Select [POST] with URL: http://localhost:3000/whishlists/{wishlistId}/books/{bookId}
+      No body for this request- just add book 1 to wishlist 1
+      Save the request 
+    
+    For "Get all books from a household":
+      GET http://localhost:3000/households/1/wishlistBooks with Header preset 
+
+    Duplicate and Rename requests in collection for creating second user and adding book for seoncd user 
+
   Collection Runner
+    
   Using Variables
   Pre-request Scripts
   Data Files
