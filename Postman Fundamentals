@@ -472,8 +472,45 @@ Module 5: Collections
     Duplicate and Rename requests in collection for creating second user and adding book for seoncd user 
 
   Collection Runner
-    
+    Use collection to start a repeatable process
+      To open collection runner:
+        Mouse hover the collection to run
+        Click arrow button to open second pane
+        Click the [Run] button 
+      To run this collection, click the button below, [Run Household Wishlist]
+
+    After collection run, verify users with GET http://localhost:3000/users
+    For duplicated entry with unique wishlistId: 
+      verify books under that wishlist with GET http://localhost:3000/wishlists/5/books   
+      (if the wishlistId of the entry is 5)
+      While the wishlist has "name" and "id", its "books" property is an empty array
+      As for wishlistId 1 and 2, there is only one book for each of them b/c API will not add the same book in same wishlist
+
   Using Variables
+    Use Postman to programmatically update request so data's setup correctly 
+    1. Go to Household Wishlists and select "Create Household" request and send it
+    2. Within JSON response of "Create Household" request, there is an id property, like "id": 4 
+       Every user requires a household
+    3. Open "Test" tab and look for snippet for "Set a global variable"
+    4. Modify the default variables and values to the following: 
+       pm.globals.set("householdId", pm.response.json().id);
+       This will set the value of property "id" of next json response to variable "householdId" in global scope
+       (Save request first) 
+    5. Verify the variable "householdId" and its value with "Enviornment Quick Look" icon
+       
+    To use variable "householdId" in global scope:
+    1. Replace hardcoded value of "householdId" in subsequenct requests' body with {{householdId}}
+       "householdId": {{householdId}} 
+    
+    Create global variable for each of the user's wishlist Id so it can be added
+    
+
+
+
+
+
+
+
   Pre-request Scripts
   Data Files
   Initializing Test Data
