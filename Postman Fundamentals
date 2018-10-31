@@ -493,7 +493,7 @@ Module 5: Collections
        Every user requires a household
     3. Open "Test" tab and look for snippet for "Set a global variable"
     4. Modify the default variables and values to the following: 
-       pm.globals.set("householdId", pm.response.json().id);
+        pm.globals.set("householdId", pm.response.json().id);
        This will set the value of property "id" of next json response to variable "householdId" in global scope
        (Save request first) 
     5. Verify the variable "householdId" and its value with "Enviornment Quick Look" icon
@@ -502,15 +502,22 @@ Module 5: Collections
     1. Replace hardcoded value of "householdId" in subsequenct requests' body with {{householdId}}
        "householdId": {{householdId}} 
     
-    Create global variable for each of the user's wishlist Id so it can be added
+    Create global variable for each of the users' wishlist Id from response of POST request that create user
+    For each POST request, set wishlistId property in JSON response to be the value of new global variable 
+    Such as: 
+      pm.globals.set("firstWishlistId", pm.response.json().wishlistId); 
+
+    For POST request to add a book, the request can be configured to take whislist Id dynamiclly:
+      http://{{host}}/wishlists/{{firstWishlistId}}/books/1 
     
+    For GET request to get household book, the request can be configured to take household dynamiclly
+      http://{{host}}/households/{{householdId}}/wishlistBooks
 
+    Once the collection is run again, click on the resulting URL to observe that
+    response body now contains two books - one from each user   
 
-
-
-
-
-
+    Environment variables can be toggled from "Collection Runner" tab at top from the results panel
+    
   Pre-request Scripts
   Data Files
   Initializing Test Data
