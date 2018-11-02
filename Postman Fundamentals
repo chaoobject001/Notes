@@ -519,7 +519,45 @@ Module 5: Collections
     Environment variables can be toggled from "Collection Runner" tab at top from the results panel
     
   Pre-request Scripts
+    [Pre-Request Scripts] -> [Request] -> [Response] -> [Test] 
+    Pre-Request Scripts sets up data for Requests or Test
+    Eg. Create random name and email address to be used as user info
+      // Under Pre-request Script
+      const users = [{
+        email:"RU01@test.com",
+        firstName: "Arya",
+        lastname: "Stark"
+        }, {
+        email:"RU02@test.com",
+        firstName: "John",
+        lastname: "Snow"
+        }, {
+        email:"RU03@test.com",
+        firstName: "Brynden",
+        lastname: "Rivers"
+        }, {
+        email:"RU04@test.com",
+        firstName: "Tyrion",
+        lastname: "Lannister"
+      }];
+
+      const user = _.sample(users); // draw random user form users
+
+      pm.globals.set("email", user.email);
+      pm.globals.set("firstName", user.firstName);
+      pm.globals.set("lastName", user.lastName);
+
+    Update body of Request POST http://{{host}}/users referencing global variables 
+      {
+        "email": {{email}},
+        "firstName": {{firstName}},
+        "lastName": {{lastName}},
+        "householdId": {{householdId}} 
+      }   
+
   Data Files
+    Hardcode test data makes update difficult - use data files to bypass this  
+
   Initializing Test Data
   Refactor: Loop Over Users
   Refactor: Loop Over Wishlists
