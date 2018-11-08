@@ -524,10 +524,32 @@ Module 4: Unleashing the Power of Pipelines
   Module Summary
 
 Module 5: Writing Clean and Readable Code
-
   Module Introduction
   Why Clean Code Matters
+    Clean Code by Robert C Martin - Code that is easy for human to understand 
+    Programmer spend more time "reading" code than "writing" code 
+
+    Does LINQ make code more readable?
+      - Lambda expression or anonymous object can be confusing 
+
+    LINQ extension methods makes code readable with streamlined declarative code from imperative (by command) code
+      Declarative Code:
+        decimal maxAmount = orders.Max(o => o.Amount);
+      
+      V.S. Imperative Code:
+        decimal maxAmount = 0M;
+        foreach (var order in orders) 
+        {
+          if (order.Amount > maxAmount)
+            maxAmount = order.Amount;
+        } 
+
+    LINQ can also complicate code by:
+      Building pipeline with too many stages and obscure the overall objective 
+      Over-complicated lambda expression by nesting LINQ pipeline within lambda expressions that are already inside another LINQ pipeline 
+
   LINQ Challenge - Sort by Age
+  
   LINQ Challenge - Bishop Moves
   Using the LINQ Query Expression Syntax
   LINQ Challenge - Longest Book
