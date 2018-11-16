@@ -549,6 +549,12 @@ Module 5: Writing Clean and Readable Code
       Over-complicated lambda expression by nesting LINQ pipeline within lambda expressions that are already inside another LINQ pipeline 
 
   LINQ Challenge - Sort by Age
+    Input: a list of name and date of birth in a sting 
+    Output: name and age in year
+      1. Split the input string by ';' into strings of name and DOB 
+      2. Select to transform Array of strings into Array of Arrays, where each inner array contains
+         one name string and one DOB string 
+      3.   
   
   LINQ Challenge - Bishop Moves
   Using the LINQ Query Expression Syntax
