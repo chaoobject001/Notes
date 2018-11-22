@@ -567,9 +567,9 @@ Module 5: Writing Clean and Readable Code
 	    .Select(n => n.Split(','))
 	    .Select(n => new { Name = n[0].Trim(), DOB = ParseDOB(n[1])})
 	    .OrderByDescending(n => n.DOB)
-	    .Select(n => { return new{ Name = n.Name, Age = GetAge(n.DOB)}; });	
+	    .Select(n => { return new { Name = n.Name, Age = GetAge(n.DOB) }; });	
 
-      // referenced methods
+      // referenced "helper" methods
       static DateTime ParseDOB(string DOB) => DateTime.ParseExact(DOB.Trim(), "d/m/yyyy", CultureInfo.InvariantCulture);
 
       static int GetAge(DateTime DOB) 
@@ -581,6 +581,18 @@ Module 5: Writing Clean and Readable Code
       }
   
   LINQ Challenge - Bishop Moves
+    Given a bishop piece is on any square of the board
+    Return all the possible squares it can move to 
+    General approach: 
+      enumerate over all 64 squares and filter out the ones that bishop cannot move to 
+      Ranks (1-8) are rows and files (a-h) are columns
+    1. Enumerable.Range('a', 8) returns sequence from 'a' up to 8 char total [a,...,h], represented in ASCII value 
+    2. SelectMany(x => 
+         Enumerable.Range('1', 8),
+         (f, r) => new { File = (char)f, Rank = (char)r } 
+       )
+
+
   Using the LINQ Query Expression Syntax
   LINQ Challenge - Longest Book
   Module Summary
