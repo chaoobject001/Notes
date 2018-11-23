@@ -93,15 +93,38 @@ Module 2: What’s the Software Development Life Cycle (SDLC)?
       - help with conception to End of Life (EoL)
 
   Summary
-    Problems w/ security and software development and How
-    The need for SDLC (for 2+ person project)
+    Problems w/ security and software development and How security becoming an issue
+    The need for SDLC (at least for 2+ person project)
       - Advantages / Disadvantages
       - Benefits and Goals
 
 
 Module 3: Software Development Phases
   Introduction
+    1. Planning Phase
+    2. Requirements Phase: requirements for security  
+    3. Design Phase: Background items likes SQL servers or 3rd party services accounts utilized (if any)  
+    4. Implementation Phase: white box perspective 
+    5. Testing Phase: similar to implementation phase, from black box perspective
+    6. Deployment Phase: 
+        how to push the product out 
+        what account are used
+        what are client side requirements 
+    7. Maintenance Phase
+    8. End-of-Life Phase    
+  
   Planning Phase
+    Ideas to blueprint by:
+      senior team members
+      customers
+      marketing
+      industry domain expert
+    ... to create basic project approach 
+    Then,
+      Train devs and testers on importance of security   
+      Acquire security analysis tool 
+    ... to ensure secure development environment 
+    
   Requirement Phase
   Design Phase
   Implementation Phase
