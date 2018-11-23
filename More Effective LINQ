@@ -524,11 +524,75 @@ Module 4: Unleashing the Power of Pipelines
   Module Summary
 
 Module 5: Writing Clean and Readable Code
-
   Module Introduction
   Why Clean Code Matters
+    Clean Code by Robert C Martin - Code that is easy for human to understand 
+    Programmer spend more time "reading" code than "writing" code 
+
+    Does LINQ make code more readable?
+      - Lambda expression or anonymous object can be confusing 
+
+    LINQ extension methods makes code readable with streamlined declarative code from imperative (by command) code
+      Declarative Code:
+        decimal maxAmount = orders.Max(o => o.Amount);
+      
+      V.S. Imperative Code:
+        decimal maxAmount = 0M;
+        foreach (var order in orders) 
+        {
+          if (order.Amount > maxAmount)
+            maxAmount = order.Amount;
+        } 
+
+    LINQ can also complicate code by:
+      Building pipeline with too many stages and obscure the overall objective 
+      Over-complicated lambda expression by nesting LINQ pipeline within lambda expressions that are already inside another LINQ pipeline 
+
   LINQ Challenge - Sort by Age
+    Input: a list of name and date of birth in a sting 
+    Output: name and age in year
+      1. Split the input string by ';' into strings of name and DOB 
+      2. Select to transform Array of strings into Array of Arrays, where each inner array contains
+         one name string and one DOB string 
+      3. Select from each inner array to create an anonymous object containing 
+         property "Name" as string and property "DOB" Datetime object. 
+         Parse DOB string with DateTime.ParseExact() method. 
+         Each anonymous object will be added into an IOrderedEnumerable sequeence  
+      4. Sort the sequence by DOB in descending order - from latest to earliest date
+      5. Project into another sequence of anonymous object with age instead of DOB utilize a method defined else where
+    
+    LINQ pipeline:
+    	"Jason Puncheon, 26/06/1986; Jos Hooiveld, 22/04/1983; Kelvin Davis, 29/09/1976; Luke Shaw, 12/07/1995; Gaston Ramirez, 02/12/1990; Adam Lallana, 10/05/1988"
+	    .Split(';')
+	    .Select(n => n.Split(','))
+	    .Select(n => new { Name = n[0].Trim(), DOB = ParseDOB(n[1])})
+	    .OrderByDescending(n => n.DOB)
+	    .Select(n => { return new { Name = n.Name, Age = GetAge(n.DOB) }; });	
+
+      // referenced "helper" methods
+      static DateTime ParseDOB(string DOB) => DateTime.ParseExact(DOB.Trim(), "d/m/yyyy", CultureInfo.InvariantCulture);
+
+      static int GetAge(DateTime DOB) 
+      {
+        DateTime today = DateTime.Today;
+          int age = today.Year - DOB.Year;
+          if (DOB > today.AddYears(-age)) age--;
+        return age;
+      }
+  
   LINQ Challenge - Bishop Moves
+    Given a bishop piece is on any square of the board
+    Return all the possible squares it can move to 
+    General approach: 
+      enumerate over all 64 squares and filter out the ones that bishop cannot move to 
+      Ranks (1-8) are rows and files (a-h) are columns
+    1. Enumerable.Range('a', 8) returns sequence from 'a' up to 8 char total [a,...,h], represented in ASCII value 
+    2. SelectMany(x => 
+         Enumerable.Range('1', 8),
+         (f, r) => new { File = (char)f, Rank = (char)r } 
+       )
+
+
   Using the LINQ Query Expression Syntax
   LINQ Challenge - Longest Book
   Module Summary

@@ -52,39 +52,512 @@ Module 2: Setting the Stage
       
 Module 3: Postman Basics
   Postman Basics
-    Make basic API requests in different environments
-    Other customization 
-      
+    Example scenario:
+      Dependent features developed in parallel 
+        Some required dependencies are not available during development 
+        Postman can make request while application can develop feature of the same effect
+    Postman use cases:
+      Make basic API requests in different environments
+      Other customization 
+    Prerequisites: 
+      Configure DB & initializing API
+      command:
+        Create DB:
+          npm run db:create  
+            This will create DB "postman_dev" with seed data
+        Start API:
+          npm run start:dev
+
   GETting Books
+    Testing if API project is running on local 
+      On browser URL, input "http://localhost:3000/landing"
+      Browser should display "Pluralsight Sample API Running!"
+    
+    Working with API via Postman
+      GET localhost:3000/Books
+        Headers 
+          Key: G-TOKEN Value: ROM831ESV
+        Click [Send] blue button  
+          Expected: 200 OK JSON response with "Time" and "Size" data
+      
+      GET localhost:3000/Books/1
+        Expected:
+          {
+            "id": 1,
+            "title": "Don't Waste Your Life",
+            "author": "John Piper",
+            "publicationDate": "2003-05-16",
+            "isbn": "1593281056",
+            "createdAt": "2018-10-17T23:33:16.413Z",
+            "updatedAt": "2018-10-17T23:33:16.413Z"
+          }    
+      
+      GET localhost:3000/Books/search
+        Click [Params] button to add Key / Value pairs: "title" / "waste"
+        Verify that correct query string is attached to URL: http://localhost:3000/Books/search?title=waste
+        Expected:
+          [
+            {
+              "id": 1,
+              "title": "Don't Waste Your Life",
+              "author": "John Piper"
+            }
+          ]
+        Additional query parameters can be added in key / value table and query string will be updated accordingly 
+        Multiple key / value pairs can be toggle on and off by the check boxes next to a specific pair
+        - this is useful in managing numerous query parameters at the same time 
+
+      Download request response 
+        When all the url, header and query parameters are ready, instead of click blue [Send] button,
+        click the drop down arrow next to it and select the option [Send and Download]
+        and specify where to save the response 
+        In this case, no response will be displayed, it is downloaded to local folder instead 
+
+        This function is useful to mock out different responses and use it for coding reference 
 
   Adding a New Item to Inventory
+    POST http://localhost:3000/Books
+    Click [Body] tab below URL text field 
+    Click radio button [raw]
+    Input JSON in the text box under [raw]
+    eg.
+      {
+        "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "author": "Robert C. Martin",
+        "isbn": "9780132350884",
+        "release date": "2008-08-11"
+      }
+    Update additional header info:
+      "Content-Type" / "application/json"
+    Expected response:
+      {
+        "id": 5,
+        "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "author": "Robert C. Martin",
+        "isbn": "9780132350884",
+        "updatedAt": "2018-10-22T23:30:46.556Z",
+        "createdAt": "2018-10-22T23:30:46.556Z",
+        "publicationDate": null,
+          "links": [
+            {
+              "rel": "self",
+              "href": "http://localhost:3000/Books/5"
+            }
+          ]        
+      }
+    Inside the response, the href link can be also used in Postman 
+    as GET http://localhost:3000/Books/5
+    but Header info needs to be added again as Key: G-TOKEN Value: ROM831ESV
+    Expected response:
+    {
+      "id": 5,
+      "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+      "author": "Robert C. Martin",
+      "publicationDate": null,
+      "isbn": "9780132350884",
+      "createdAt": "2018-10-22T23:27:56.501Z",
+      "updatedAt": "2018-10-22T23:27:56.501Z"
+    }
+
+    The example above shows how to use header and body tabs as part of request
+    Other options: 
+       Authorization Menu Item can also be used as part of request 
+
   History
+    Postman [History] pane on the left panel records previous requests
+    Previous requests are grouped by the date; "Today" is on the top 
+    Click each row / request to display the specific previous request 
+    Old requests can be re-send this way
+
   Authorization
+    DELETE http://localhost:3000/books/7 
+    requires Authorization lest the API service returns 401 
+
+    Click [Authorization] tab to expend drop down with multiple types of auth
+    Select [Basic Auth] and enter "Username" and "Password" (both are "admin")
+    Click [Update Request] and observe [Headers] count increased by 1 
+    Select [Headers] tab and observe 
+      a new "Authorization" header with 
+      a value of "Basic" and then Base64 encoded string of admin and admin for username and password
+    Click will result in 204 No Content, a success message - nothing to return when deleting something 
+
+    GET http://localhost:3000/books/ now does not display deleted entry 
+
   Preset Headers
+    Postman can track various settings of previous requests w/ preset headers
+    Possible Headers
+      Potentially a request may need numerous headres 
+    Manage Headers by Presets:
+      Select a previous request from History with commonly used Headers
+      Click [Headers] / [Presets] / [Manage Presets]
+      Click [Add] for a new group of Headers
+      Enter "Header Preset Name", then input key / value pairs
+      Click [Add] to create a new Preset
+      
+    The new Preset can now be used under a new tab:
+      Input new URL
+      Click [Headers] / [Presets] / [(Previously Created Preset Name)]
+      Verify the key values pairs are now in Headers of current new request 
+      
   Environments
+    Different Headers for different environments - local, dev, test, prod, etc...
+    Create dev and test environments with following commands:
+      npm run start:dev
+      npm run start:test
+    Verify that each API services listening on its own port number:
+      dev:  3000
+      test: 3030
+      - making changes to different routes and setting can be tedious 
+    Add new environment (variables):
+      Click gear wheel icon on top right to open "MANAGE ENVIRONMENTS"
+      Click [Add] button to add a new enviornment via "Add Environment Pane"
+      Input environment name like dev 
+      Add variable like "host" with value "localhost:3030"
+    Use enviornment: 
+      Use top right drop down to select environment 
+      GET http://localhost:3030/books/ referencing host variable in dev environment
+      URL input: http://{{host}}/books
+      Environment can be switched by top right drop down without explictly define host variable 
+    Duplicate enviornment:
+      To cover multiple enviornments with similar variables,
+      create an initial environment with complete set of variables
+      Click the duplicate icon in "MANAGEMENT ENVIRONMENTS" modal for a copy of environment 
+      Edit environment name and update variables' values accordingly 
+    Download environment:
+      Click the download icon in "MANAGEMENT ENVIRONMENTS" modal for a copy of environment 
+      Download enviornment variables as JSON file 
+      Eg. 
+        {
+	        "id": "d931485c-24f1-46b1-acf9-43abfad0b923",
+	        "name": "Dev",
+	        "values": [
+            {
+              "key": "host",
+              "value": "localhost:3030",
+              "description": "",
+              "enabled": true
+            }
+          ],
+          "_postman_variable_scope": "environment",
+          "_postman_exported_at": "2018-10-24T01:36:02.772Z",
+          "_postman_exported_using": "Postman/6.4.4"
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    Import environment:
+      Click the [Import] button in the bottom of "MANAGEMENT ENVIRONMENTS" pane
+      Then select file 
+
   Import
+    Capture API request sent from UI by Postman for debugging or modification:
+    1. Record API request from UI via Browser DevTool > Network (tab)
+    2. R-Click on the request to capture 
+    3. Use the option Copy > Copy as cURL (bash) 
+    4. Open Postman > [Import] (button on top)
+    5. Select option "Paste Raw Text" and paste cURL into the empty text pad below
+    6. Click [Import] button
+    7. Verify the request is duplicated in Postman ready to be sent or modified or debug or data-driven test
+    
   Proxy
+    Another way to capture API request by proxy 
+    1. Click Postman button on top row with tooltip "Capture API requests with Postman"
+       to open modal titled "PROXY SETTINGS"
+    2. Click "Connect" button to capture API request; Verify and record "Port" value on pane
+    3. Look up IP address of local machine 
+    4. On device to monitor, add local machine IP, with port number specified on Postman, as a proxy  
+    5. Browse to specific web site or use APP from monitored device 
+    6. Verify HTTP requests registered in History (default storage) 
+
   Generating Code
+    Create code snippet to access Web API (like in an AJAX call)
+    1. Select from History the request to make in code 
+    2. Under the url field, select "Code" to open "GENERATE CODE SNIPPETS" modal
+    3. Select "javascript jquery AJAX"
+    4. Adjust code generated as needed:
+       For example, make changes to settings.data to emulate user input from form
+       by pasting this code into an HTML for test harness   
+
   Sync
+    Sync information across multiple instances of Postman 
+    1. Click [Sign in] button
+    2. Sign in with username and password or sign in w/ google
+    3. Once sign in, Postman will sync across multiple browsers with same 
+       requests, header presets, environments, environmental variables and other features   
+
   Summary
+    Make verb based requests: GET, POST, PUT, DELETE
+    Manipulate headers
+    Authorize request
+    Send data in with request body
+    Track Requests
+    Capture & duplicate / modify tracked requests
+    Setup different environment for different variables like host in request URL
 
 Module 4: Testing Requests
   Testing Requests
+    Test API
+    Create regression test to run before API deployment 
+    Programmatically interact with API via collections 
+
   Meet the API Team
+    Test entire request life cycle from request to response 
+    Build library to run cutomnized test
+    CD / CI integration for regression test 
+    
   Pre-built Tests
+    Start w/ create and send a request in Postman 
+    Select [Tests] tab under URL field 
+    Select one of the snippets from right pane as starting template 
+    Click [Send] to re-send a request and run test after response 
+    Verify test results by selecting "Test Results" tab below
+
   Test Syntax
+    Eg. 
+      pm.test("Status code is 200", function() {
+        pm.response.to.have.status(200);
+      });
+
+      pm: object to provide everthing required for creating test
+      test: 
+        function takes two parameters: 
+          1. test name as string that describe the test  
+          2. function to be executed for the test, takes no property, verify passing condition   
+      response: object represents data retuned from API
+
+    pm property "info" contains infomation about the script that is being executed, such as request ID
+    pm property "global" 
+    pm property "environment" 
+
+    For assertions:
+      have.status
+      have.header
+      have.body
+      have.jsonBody
+
+    For more reference: www.getpostman.com/docs/      
+    Look for "Scripts" section
+
   Basic Tests
+    Verify the number of books in the JSON response from  
+      pm.test("Return 21 books", function() {
+        const books = pm.response.json();
+        pm.expect(books.length).to.eql(21);
+      });
+
+    Check if every book has title 
+      pm.test("Every book should have title", () => {
+        const books = pm.response.json();
+        pm.expect(books.every(
+          book => {
+            return book.title !== undefined;
+          }
+        )).to.be.true;
+      });
+    
+    Refactor previous test
+      const titleIsDefined = (book) => {
+        return book.title !== undefined;
+      }
+      pm.test("Every book should have title", () => {
+        const books = pm.response.json();
+        pm.expect(books.every(titleIsDefined)).to.be.true;
+      });
+
   Using Other Libraries
+    To interact with Date and Time, like "Create date is equal to today"
+      const moment = require('moment');
+      pm.test("Create date is equal to today", () => {
+        const data = pm.response.json();
+
+        pm.expect(moment(data.createdAt).format('MM/DD/YYYY'))
+          .to.eql(moment().format('MM/DD/YYYY'));
+      });
+
+
+    Lodash is available via a global underscore, '_'
+    eg. 
+      const books = pm.response.json();
+    can be re-written as following: 
+      const books = _.result(pm, 'response.json');
+      // look for 'response.json' function within pm, and execute the function when found 
+    
+    Other libaraies can be accessed via require function, such as: const moment = require('moment');
+      atob → v2.0.3
+      btoa → v1.1.2
+      chai → v3.5.0
+      cheerio → v0.22.0
+      crypto-js → v3.1.9-1
+      csv-parse/lib/sync → 1.2.1
+      lodash → v4.17.4 (when used with require, the inbuilt _ object is for v3.10.1)
+      moment → v2.18.1 (sans locales)
+      postman-collection → v1.2.0
+      tv4 → v1.2.7
+      uuid → (the module loaded is a shim for original module)
+      xml2js → 0.4.19
+
+    A number of NodeJS modules are also available:
+      path
+      assert
+      buffer
+      util
+      url
+      punycode
+      querystring
+      string_decoder
+      stream
+      timers
+      events
+
   Summary
+    Pre-Built Tests for simple scenarios
+    Custom Built Tests on the request or response
+    Import libraries (if available)
 
 Module 5: Collections
   Collections
+    Save requests into collections & Use collections w/in Postman
   Using Tests on the Front End
+    Automate API requests to setup test
   Creating Collections
+    Open Postman > New tab
+    Creat following request: POST http://localhost:3000/households
+      with previous Headers Key / Value pair from Preset
+    Body > Select "Raw" radio button 
+      > Create one JSON object and set "name" property for household name
+      > [Send] request
+    Keep track of response value of "id" for future request 
+
+    Click [Save] nect to [Send] to open modal "SAVE REQUEST"
+    Add new collection by Clicking [Create Collection] 
+    Input name for the new collection > Click Checkbox > Click [Save to {collection name}]
+    Verify "Collections" tab is selected then Close extended side panel 
+
+  Add more requests:
+    For "Create a user" request
+      Open a new tab > Select [POST] with URL: http://localhost:3000/users
+      Select [Body] tab > [Raw] radio button > input following JSON & Send request
+        {
+          "email": "test01@test.com",
+          "firstName": "First",
+          "lastName": "User",
+          "householdId": 1
+        }
+      Response:
+        {
+          "id": 1,
+          "email": "test01@test.com",
+          "firstName": "First",
+          "lastName": "User",
+          "householdId": 1,
+          "wishlistId": 1,
+          "updatedAt": "2018-10-27T01:36:46.226Z",
+          "createdAt": "2018-10-27T01:36:46.226Z",
+          "links": [
+              {
+                  "rel": "self",
+                  "href": "http://localhost:3000/users/1"
+              }
+          ]
+        }
+      
+      User created with a auto-generated wishlist, "householdId": 1
+      Save request as "Create User" to "Household Wishlists" collection  
+    
+    For "Add book to wishlist":
+      Open a new tab > Select [POST] with URL: http://localhost:3000/whishlists/{wishlistId}/books/{bookId}
+      No body for this request- just add book 1 to wishlist 1
+      Save the request 
+    
+    For "Get all books from a household":
+      GET http://localhost:3000/households/1/wishlistBooks with Header preset 
+
+    Duplicate and Rename requests in collection for creating second user and adding book for seoncd user 
+
   Collection Runner
+    Use collection to start a repeatable process
+      To open collection runner:
+        Mouse hover the collection to run
+        Click arrow button to open second pane
+        Click the [Run] button 
+      To run this collection, click the button below, [Run Household Wishlist]
+
+    After collection run, verify users with GET http://localhost:3000/users
+    For duplicated entry with unique wishlistId: 
+      verify books under that wishlist with GET http://localhost:3000/wishlists/5/books   
+      (if the wishlistId of the entry is 5)
+      While the wishlist has "name" and "id", its "books" property is an empty array
+      As for wishlistId 1 and 2, there is only one book for each of them b/c API will not add the same book in same wishlist
+
   Using Variables
+    Use Postman to programmatically update request so data's setup correctly 
+    1. Go to Household Wishlists and select "Create Household" request and send it
+    2. Within JSON response of "Create Household" request, there is an id property, like "id": 4 
+       Every user requires a household
+    3. Open "Test" tab and look for snippet for "Set a global variable"
+    4. Modify the default variables and values to the following: 
+        pm.globals.set("householdId", pm.response.json().id);
+       This will set the value of property "id" of next json response to variable "householdId" in global scope
+       (Save request first) 
+    5. Verify the variable "householdId" and its value with "Enviornment Quick Look" icon
+       
+    To use variable "householdId" in global scope:
+    1. Replace hardcoded value of "householdId" in subsequenct requests' body with {{householdId}}
+       "householdId": {{householdId}} 
+    
+    Create global variable for each of the users' wishlist Id from response of POST request that create user
+    For each POST request, set wishlistId property in JSON response to be the value of new global variable 
+    Such as: 
+      pm.globals.set("firstWishlistId", pm.response.json().wishlistId); 
+
+    For POST request to add a book, the request can be configured to take whislist Id dynamiclly:
+      http://{{host}}/wishlists/{{firstWishlistId}}/books/1 
+    
+    For GET request to get household book, the request can be configured to take household dynamiclly
+      http://{{host}}/households/{{householdId}}/wishlistBooks
+
+    Once the collection is run again, click on the resulting URL to observe that
+    response body now contains two books - one from each user   
+
+    Environment variables can be toggled from "Collection Runner" tab at top from the results panel
+    
   Pre-request Scripts
+    [Pre-Request Scripts] -> [Request] -> [Response] -> [Test] 
+    Pre-Request Scripts sets up data for Requests or Test
+    Eg. Create random name and email address to be used as user info
+      // Under Pre-request Script
+      const users = [{
+        email:"RU01@test.com",
+        firstName: "Arya",
+        lastname: "Stark"
+        }, {
+        email:"RU02@test.com",
+        firstName: "John",
+        lastname: "Snow"
+        }, {
+        email:"RU03@test.com",
+        firstName: "Brynden",
+        lastname: "Rivers"
+        }, {
+        email:"RU04@test.com",
+        firstName: "Tyrion",
+        lastname: "Lannister"
+      }];
+
+      const user = _.sample(users); // draw random user form users
+
+      pm.globals.set("email", user.email);
+      pm.globals.set("firstName", user.firstName);
+      pm.globals.set("lastName", user.lastName);
+
+    Update body of Request POST http://{{host}}/users referencing global variables 
+      {
+        "email": {{email}},
+        "firstName": {{firstName}},
+        "lastName": {{lastName}},
+        "householdId": {{householdId}} 
+      }   
+
   Data Files
+    Hardcode test data makes update difficult - use data files to bypass this  
+
   Initializing Test Data
   Refactor: Loop Over Users
   Refactor: Loop Over Wishlists

@@ -48,11 +48,34 @@ Module 2: Working with Tables
         Id uniqueidentifier primary key
       );
     Columns: Id(PK, uniqueidentifier, not null)
+      PK: primary key
+      uniqueidentifier: GUID
+
     in program, GUID can be generated via entity framework 
     
   Primary Keys: Auto-incrementing
+    Useful for integer based key; Can laso be done for GUID
+    SQL:
+      create table Users(
+        Id integer primary key identity(1,1), 
+        email varchar(50)
+      );
+    Id: integer as primary key, starting from 1, increment by 1 for each new record 
+    Open "Edit top 200 rows" twice to eliminate the UI error message when manually input email fields each time
     
   Tangent: Choosing a Primary Key
+    Here is three types of primary keys
+    create table Users {
+      -- Id integer primary key identity(1, 1): Integer based primary key, auto-incremented by 1, starting from number 1 each time
+      -- Integer is fast and small. However, there is max integer count (about 2 billion)      
+      -- Id uniqueidentifier primary key default newid(): A uniqueidentifier (GUID), auto-incrementing using newid() function, which generate GUID 
+                                                          Works well when there are not too many records in DB; GUID takes up more space
+                                                          Using newsequentialid() method (instead of newid()) to add new Id makes its easier to sort by indexer 
+      -- email varchar(50) not null: string as primary key:
+      --   email as primary key - CON: email generally has business value to application; it helps identify user and communicate with user; but often changeable  
+
+    }
+    
   Composite Keys
   Defining Columns
   Basic Column Constraints
