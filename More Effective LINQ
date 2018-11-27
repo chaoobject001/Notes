@@ -581,7 +581,7 @@ Module 5: Writing Clean and Readable Code
       }
   
   LINQ Challenge - Bishop Moves
-    Given a bishop piece is on any square of the board
+    Given a bishop piece is on c6 square of the board
     Return all the possible squares it can move to 
     General approach: 
       enumerate over all 64 squares and filter out the ones that bishop cannot move to 
@@ -591,6 +591,14 @@ Module 5: Writing Clean and Readable Code
          Enumerable.Range('1', 8),
          (f, r) => new { File = (char)f, Rank = (char)r } 
        )
+       For each file, 8 ranks are created, this expression will produce 64 anonymous objects 
+       (one for each position on the board)
+    3. Where(x => Math.Abs(x.File - 'c') == Math.Abs(x.Rank - '6')) 
+       Filter out any squares that are not along the two diagonal lines crossing at c6
+    4. Where(x => x.File != 'c')
+       Filter out starting position 
+    5. Select(x => string.Format($"{x.File}{x.Rank}")) 
+       Format the sequence 
 
 
   Using the LINQ Query Expression Syntax
