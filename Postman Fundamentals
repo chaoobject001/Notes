@@ -519,9 +519,9 @@ Module 5: Collections
     Environment variables can be toggled from "Collection Runner" tab at top from the results panel
     
   Pre-request Scripts
-    [Pre-Request Scripts] -> [Request] -> [Response] -> [Test] 
+    General flow so far: [Pre-Request Scripts] -> [Request] -> [Response] -> [Test] 
     Pre-Request Scripts sets up data for Requests or Test
-    Eg. Create random name and email address to be used as user info
+    Eg. Under "Pre-request Script" Create random name and email address to be used as user info
       // Under Pre-request Script
       const users = [{
         email:"RU01@test.com",
