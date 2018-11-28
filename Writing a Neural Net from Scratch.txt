@@ -1,0 +1,103 @@
+Writing a Neural Net from Scratch - Joe Albahari
+https://www.youtube.com/watch?v=z8DY5DndmxI
+
+What is Neuron?
+  One or more inputs, usually at least two
+  All inputs have weights
+  Total input = bias + all inputs
+
+  [Input(1), ... Input(n)] and bias -> total input -> activation function -> output 
+
+  Total input goes through activation function and return an output
+  In this case, all values are numbers
+
+The simplest neuron is perceptron
+  [Total Input] -> [Comparator: total input > 0 ?] -> [Output]
+  Comparator ia the activation function here
+  If total input > 0, output is 1; else it's 0
+
+  Assume this comparator has 3 inputs and their weights are:
+    Input(1) has weight(1) = 0.5
+    Input(2) has weight(2) = -1.0
+    Input(3) has weight(3) = 1.5
+  
+  Also, Bias = -1.5
+  
+  For a set of inputs:
+    Input(1) = 8
+    Input(2) = 5
+    Input(3) = 2
+  
+  Total input = (8 * 0.5) + (5 * -1.0) + (2 * 1.5) + (-1.5) = 0.5
+  Total input > 0; Therefore the output is 1
+
+The state of of neuron has two aspects:
+  Long-term state made of bias and weights, determines neuron's behavior 
+  Transient state:
+    When neuron is firing, there is output
+    And intermediate variables in determining output like total input 
+
+Application: NAND gate 
+  Assuming OFF = 0 and ON = 1
+  Truth table
+  Input A   Input B   Output
+  0         0         1
+  1         0         1
+  0         1         1
+  1         1         0
+
+Build NAND gate w/ Perceptron 
+  Weight(1) = Weight(2) = -2
+  Bias = 3
+  For Input A = 1, Input B = 0, Total input = (1 * -2) + (0 * -2) + 3 = 1
+  Since total input > 0, the output is 1 (ON)
+
+How to get perceptron to learn about correct values for weights and bias
+  Can these values be learned from examples?
+  1.  Initialize random (relatively) small values for weights and bias
+      For example, Weight(1) = 0.2, Weight(2) = -0.3, Bias = -0.1
+  2.  Pass in training data: Input(1) = 0, Input(2) = 1
+      Total input = (0 * 0.2) + (1 * -0.3) + -0.1 = -0.4
+      Since total input < 0, the output is 0 (OFF)
+      However, the desired output is 1 (ON)
+  3.  If little changes are made to weights and bias, would it make output that is less wrong?
+      Unlikely - since comparative function (comparator) is either ON or OFF (like square wave function)
+      - it is not conducive to learning  
+      Instead, comparative function can be turned into logistic sigmoid (more smooth continuous curve)
+      with uncertain area in between 
+      This also has the advantage for building networks of neurons and connect them together.
+      - because the output is fractional number, it become more expressive 
+  4.  The formula for logistic sigmoid: y = 1 / (1 + e^-x)
+      This is rather expensive to calculate quickly - especially with large sample size and neuron network
+  5.  A good substitution is Rectified Linear Unit (ReLU) 
+        double Relu (double x) => x >= 0 ? x : 0; 
+  6.  In most cases, improvements can be made with Leaky Rectified Linear Unit (Leaky ReLU) that
+      by making result leaky when x < 0
+        double Relu (double x) => x >= 0 ? x : x / 100;
+      so we have a quick neuron that returns fractional numbers instead oof whole numbers
+  7.  To interpret fractional numbers as ON or OFF: 
+      For example, when output = 0.2, and 0.2 is closer to 0 (OFF) than 1 (ON)
+      Therefore result is interpreted as 0 (OFF)
+      Error = actual output - desired output = 0.2 - 0 = 0.2 
+      (If desired output is 1, error would be -0.8)
+  8.  Discourage individual high error over general low error 
+      - individual high error may result in wrong outut while multiple low errors can produce correct output w/ overall higher error
+      For example:
+        Case 1: total error = .2 + .2 + .2 + .2 = .8
+        Case 2: total error = 0 + 0 + 0 + .6 = .6
+        while case 2 has lower total error, there is one wrong output, 
+        but all outputs from case 1 are correct - and that's preferred  
+  9.  Instead of minimize total error, Loss is the veriable to minimize 
+      Loss function can be defined in many ways, but for categorization - sum of (error)^2 is usually used
+      Loss  = sum of (error)^2
+            = sum of (actual output - desired output)^2
+      To produce mathmatical symmetry, Loss = 1/2 * SUM(error)^2
+      Alternatively, instead of sum, average / mean can be used
+      Loss is also known as Cost 
+  10. Loss is not usually calculated:
+       
+
+
+
+
+
