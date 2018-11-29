@@ -557,8 +557,35 @@ Module 5: Collections
 
   Data Files
     Hardcode test data makes update difficult - use data files to bypass this  
+    A basic example of data file:
+    1. Create a new collection with orange dropdown "+ New" from top right and choose Collection
+    2. Name the new collection "Books"
+    3. Create a new POST request http://{{host}}/books  
+    4. Add preset header
+    5. For Body, use "raw" option with following:
+      {
+        "title": {{title}},
+        "author": {{author}},
+        "isbn": {{isbn}},
+        "publicationDate": {{publicationDate}}
+      } 
+    6. Save request as "Create Book"
+    7. Store it in Nooks collection
+    8. Open collection runner for "Books"
+    9. Set Environment to "Dev"
+    10.Set Data to file: books.json  
+    11.After selecting file, verify file content with preview (Set Data File Type to "application/json" first)
+    12.Verify that "Iterations" is updated from 1 to 4 (the length of array of JSON in datafile)
+    13.Click Run Books button in Collection Runner
+    14.4 books created with the same info as in data file, books.json
+    15.Change "Iteration" to 10 and re-run the collection
+    16.Verify that all the book from #4 on are the same - once end of array is reached, the runner just keep using the last good value in file
+    
+    Postman handles the iterations through the data file 
 
   Initializing Test Data
+    Use Pre-request Script & Data Files to make test data setup easier
+    
   Refactor: Loop Over Users
   Refactor: Loop Over Wishlists
   Scenario Tear Down
