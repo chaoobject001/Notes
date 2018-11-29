@@ -585,6 +585,13 @@ Module 5: Collections
 
   Initializing Test Data
     Use Pre-request Script & Data Files to make test data setup easier
+    General Flow:
+      Set up variables for the data to create - like number of users, number of books to add to various wishlits
+      Create users via looping until number of users are present 
+      Add books to newly created wishlist until number of books to add are reached
+      Clean up variable and data 
+    
+    1. 
     
   Refactor: Loop Over Users
   Refactor: Loop Over Wishlists
