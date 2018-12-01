@@ -616,7 +616,17 @@ Module 5: Collections
         pm.globals.set("bookIds", ids);
     }); 
     
+    Also, ensure that under "Tests" tab still has following:
+      pm.globals.set("householdId", pm.response.json().id); // saves value of JSON response property "id" to global variable "householdId"
+
   Refactor: Loop Over Users
+    Clean up how users are created - Under Pre-request Script, randomly create user w/ test data file 
+    Pre-request Script:
+      const users = data.users;
+      const user = _sample.(users)  
+
+
+
   Refactor: Loop Over Wishlists
   Scenario Tear Down
   Running Your Refactored Collection
