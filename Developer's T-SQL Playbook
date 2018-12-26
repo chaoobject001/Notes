@@ -77,10 +77,62 @@ Module 2: Working with Tables
     }
     
   Composite Keys
-  Defining Columns
-  Basic Column Constraints
+    Using two fields together as composite primary key 
+      create table Users(
+        Id integer primary key identity(1, 1),
+        email varchar(50)
+        -- Autoincrement integer primary key
+        -- start from 1, increase 1 each time 
+      );
+
+      create table Users_Roles(
+        UserId integer,
+        RoleId integer,
+        primary key(UserId,RoleId)
+        -- relationship b/t role and user is unique
+      );
+
+      create table Roles(
+        Id integer primary key identity(1, 1),
+        Name varchar(50)
+      );
+
+  Defining Columns & Basic Column Constraints
+    drop table Users;
+    create table Users(
+      Id integer primary key identity(1, 1),
+      Email varchar(255) not null unique,
+      -- varchar for alphanumeric characters
+      -- nvarchar for UTF-8 support 
+      MoneySpent decimal(10,2),
+      -- decimal(length, precision)
+      -- rounding will happen to 2nd decimal in this case
+      CreatedAt datetime not null,
+      First varchar(50),
+      Last varchar(50),
+      Bio varchar(MAX)
+      -- if space is of conern, use varchar or varchar(MAX)
+    );
+
   Column Defaults
+    drop table Users;
+    create table Users(
+      Id integer primary key identity(1, 1),
+      Email varchar(255) not null unique,
+      -- for unique entry there is no point for default value 
+      -- this is the only field needed to create a new entry 
+      MoneySpent decimal(10,2) default 0, 
+      CreatedAt datetime not null default getdate(),
+      -- getdate() returns current date
+      First varchar(50),
+      Last varchar(50),
+      Bio varchar(MAX)
+    );
+
   Naming Conventions
+    Keywords are all CAPS in some convention 
+    For fileds and tables' names camel casing can be used 
+     
 
 Module 3: Working with Data
   Inserting Data
