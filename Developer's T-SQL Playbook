@@ -131,12 +131,24 @@ Module 2: Working with Tables
 
   Naming Conventions
     Keywords are all CAPS in some convention 
-    For fileds and tables' names camel casing can be used 
-     
+    For fileds and tables' names camel casing can be used - some conventions use all lower or all upper case
+    For primary key (in Users table), some convention opt to use UserId instead of Id
+    - UserId may be easier to identify in a joined query
+    Table name may be pluralized (Users) or singular (User) as a type
 
 Module 3: Working with Data
   Inserting Data
   Bulk Inserts
+    Download chinook DB from github
+    Navigate to chinook-database-master\ChinookDatabase\DataSources
+    Extract Chinook_SqlServer_AutoIncrementPKs
+    Open and Execute Chinook_SqlServer_AutoIncrementPKs (Optionally from SQL Server Management Studio)
+
+    Execute following SQL query to bulk insert
+      insert into Users(Email, First, Last)
+      select Email,FirstName,LastName
+      from Chinook.dbo.Customer
+  
   Updates
   Updates with Criteria
   Bulk Updates
@@ -149,7 +161,7 @@ Module 4: Querying Data
   Select Columns
   Aliasing Columns
   Column Expressions
-  Tangent: Naming Things
+  Tangent: Naming Things - No Spaces in Column Names
 
 Module 5: Joining Tables
   Inner Joins
