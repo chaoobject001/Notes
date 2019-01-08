@@ -5,7 +5,7 @@ Module 1: Course Overview
   Scripting API workflows 
   Documenting an API
 
-  Course goal: Maximize interactions w/ any APi
+  Course goal: Maximize interactions w/ any API
 
 Module 2: Setting the Stage
   Setting the Stage
@@ -16,7 +16,7 @@ Module 2: Setting the Stage
       App Dev - does not use API directly 
         - mock data when API is not quite ready yet
         - setup application without clicking through UI or enter data
-      API dev - design & implement API
+      API Dev - design & implement API
         - use Postman to test and document API
     
     Postman simplifies working with APIs
@@ -49,6 +49,7 @@ Module 2: Setting the Stage
       For prototyping or working ahead of API development to prevent block
     Documentations:
       Postman helps w/ documentation on how API works
+    Team features - require money
       
 Module 3: Postman Basics
   Postman Basics
