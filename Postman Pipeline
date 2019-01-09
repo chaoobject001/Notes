@@ -1,0 +1,12 @@
+npm install newman 
+    version 1.*
+    Command: custom
+    Command and arguments: install newman -g
+Run Newman
+    version 1.*
+    Tool: C:\Users\tfsbuild\AppData\Roaming\npm\newman
+    Arguments: run API_collection.json -k -e STG.json -r junit,cli --reporter-junit-export $(System.DefaultWorkingDirectory)
+Publish test results:
+    Test result format*: JUnit
+    Test results files*: **/newman-*.xml
+    Search folder: $(System.DefaultWorkingDirectory)
