@@ -10,3 +10,16 @@ Publish test results:
     Test result format*: JUnit
     Test results files*: **/newman-*.xml
     Search folder: $(System.DefaultWorkingDirectory)
+
+Reference material:
+https://www.guru99.com/testing-rest-api-manually.html
+https://smartbear.com/learn/api-testing/testing-a-rest-api/
+https://smartbear.com/learn/api-testing/rest-testing-for-beginners/
+https://smartbear.com/learn/api-testing/what-is-api-testing/
+https://smartbear.com/learn/api-testing/data-driven-testing-for-apis/
+https://modeling-languages.com/automatic-generation-of-test-cases-for-rest-apis/
+https://www.katalon.com/resources-center/blog/web-api-testing-interview-questions/
+https://restfulapi.net/http-status-codes/
+
+https://alvinalexander.com/blog/post/testing/generic-test-plan-for-testing-wizard-in-gui-application
+https://www.guru99.com/what-everybody-ought-to-know-about-test-planing.html
