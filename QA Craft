@@ -31,10 +31,46 @@ so they should be given feedback indicating when the computer expects to be done
 Feedback during the delay is especially important if the response time is likely to be highly variable, since users will then not know what to expect.
 
 
-[How to write code in a maintainable way, the ideal way?]
+[How to "write code in a maintainable way", the ideal way?]
+SOLID
+  Single Responsibility Principle
+  Open for extension / close for modiication
+  Liskov substitution principle - inter-changable subtype based on "contract" like inheritance / interface
+  Interface segregation principle - Clients should depend ONLY on method they use
+  Dependency inversion principle - depend on abstraction, not concretions
+
+
 [Express the desire to "learn the right lesson"]
+  Q: What are the "Right Lessons" for test automation developer
+
 [Need to understand and internalize unique needs of different customers' - this helps sets more apporiate priorities]
+
 ["methodical point of view" with QA]
-[a QA person and software engineer- a bridged role]
+"code as infrastructure" in terms of testing
+  => treat infrastructure as code 
+  => test and debug infrastructure
+  => use case, test case and test automation should include 
+  the configuration and environments as part of the controlled variables aand test data set
+  that can be switched and tested like the rest of the code base
+
+
+["a QA person and software engineer- a bridged role"]
+Acceptance Test: 
+  A test written by the business for the purpose of ensuring that the production code does what 
+  the business expects it to do. The authors of these tests are business people, 
+  or technical people who represent the business. i.e. Business Analysts, and QA.
+
 [.NET]
+Instrumentation of code 
+System.Diagnostics.Trace.WriteLine("messages about the execution at runtime");  
+System.Diagnostics.Debug.WriteLine("DEBUG conditional compilation symbol is defined for debug builds");  
+
+MOQ pattern
+
+  Arrange - create mock object for application under test (AUT)
+  Accept - execute AUT for a state change
+  Assert - verify AUT state
+
+moqObjectClassName.Setup(x =>x.MethodToSetupTestData(It.IsAny<InputType>))
+  .Retuen(() => valueToBeReturnedByMethodToSetupTestData);
 
