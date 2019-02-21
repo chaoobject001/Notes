@@ -1,0 +1,105 @@
+Module 01: Course Overview
+
+Module 02: Testing Your JavaScript
+  Introduction
+    Course outline
+      Mocha
+      Chai for assert
+      Sinon for mocking
+      Combination 
+      Edge cases
+      Istanbul for code coverage 
+
+    In this module:
+      Definitions: Unit / Integration / Functional test
+
+    Fast changes with Node - how to adjust
+
+  Types of Testing
+    Unit test  
+      Test just smallest available piece
+      Mock everything else (with Sinon) 
+      Functional Test
+        Ex. 
+          // ['admin', 'user'], 'admin'
+          function isAuthorized(neededRole) {
+            return roles.indexOf(neededRole) >= 0;
+          }
+      
+    Integration test
+      Mock external resources: Sinon & Stubs
+    
+    Functional test
+      AKA End tot End / Black Box test
+        Everything works together
+  
+  Node Versions
+    Aggressive release cycle
+    NVM - uses different versions of Node
+      creationix/nvm from github
+      command: which node 
+        - identify current installed node version
+      command: nvm install 7.9 
+        - install node version 7.9
+      command: nvm use --lts
+        - use current LTS version of Node
+      This course will use version 6.10 (LTS at the time)
+      
+  Things Change
+    What to do when things change?
+    http://bit.ly/JonsMochaCourse
+
+  Summary
+
+Module 03: Testing with Mocha
+  Introduction
+    Mocha is a test runner 
+    Mechanics of Mocha
+    Describes and its...
+    Lifecycle
+    Managing what tests execute 
+    
+  Testing Mocha
+  Our First Test
+  What Is an Assert
+  Testing Something Real
+  Scripts
+  Testing Async
+  Working with Timeouts
+  Hooks
+  Scoping in Hooks
+  When Hooks Go Bad
+  Pending Tests
+  Summary
+
+Module 04
+  BDD Style Assertions
+  Introduction
+  Installing Chai
+  Expecting Behaviors
+  Natural Language Asserts with Should
+  Testing Objects
+  Dealing with Nulls
+  Working with Promises
+  Summary
+
+Module 05
+  Spys, Stubs, and Mocks
+  Introduction
+  Setting up Get Index
+  Working with Spys
+  Watching Existing Functions
+  Stubbing Functions
+  Mocks
+  Summary
+
+Module 06 Testing Real Things
+  Introduction
+  GitChecker
+  Setting up Tests
+  Mocking HTTP
+  Mocking Second Call
+  Validating Parameters
+  Testing the Controller
+  Code Coverage with Istanbul
+  Summary
