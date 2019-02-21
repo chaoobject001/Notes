@@ -1,0 +1,54 @@
+Docker and Kubernetes: The Big Picture
+
+Module 01: Course Overview
+Module 02: Course Introduction
+  Course Intro
+
+Module 03: Containers: Primer
+Containers: Primer
+The Bad Old Days
+Hello VMware
+VM Warts
+Containers
+Container Demo
+Recap
+
+Module 04: Docker
+Docker
+Docker, Inc.
+Docker the Technology
+Docker Demo
+Docker Summary
+
+Module 05: Kubernetes
+Kubernetes
+Kubernetes: History
+Kubernetes: The Short and Skinny
+Recap
+
+Module 06: Preparing to Thrive in a Container World
+Preparing to Thrive in a Container World
+Individual Preparedness
+Organization Preparedness
+Recap
+
+Module 07: Suitable Workloads
+Suitable Workloads
+Low-hanging Fruit
+State & Legacy Apps
+Recap
+
+Module 08: Enterprise and Production Readiness
+Enterprise and Production Readiness
+Docker
+Kubernetes
+Ecosystem
+Summary
+
+Module 09: A Word on Orchestration
+A Word on Orchestration
+Orchestration
+Summary
+
+Module 10: What Next?
+What Next?
