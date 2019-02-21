@@ -1,17 +1,122 @@
 Docker and Kubernetes: The Big Picture
 
 Module 01: Course Overview
+  Basics on containers
+  Docker and Kubernetes
+  Microservices and cloud-native
+  Thrive in a container world
+  Current state of the union
+
 Module 02: Course Introduction
   Course Intro
+    Aim of the game 
+      Get up to speed
+      Give directions 
+      Cover fundamentals
+    Containers Primer
+      What are containers? cf. to VM?
+      How about Microservices and cloud native?
+    Docker
+    Kubernetes
+    How to prepare (as individuals and organizations) - to thrive ina container world?
+    Different types of workloads and apps - if there are good fit for container?
+    Enterprise & Production Readiness - how do they fit together?
+      products availbe 
+      what works vs. what doesn't 
+    Orchestration
+    What's next   
 
 Module 03: Containers: Primer
-Containers: Primer
-The Bad Old Days
-Hello VMware
-VM Warts
-Containers
-Container Demo
-Recap
+  Containers: Primer
+    What is container, microservices, cloud native       
+  
+  The Bad Old Days
+    Applications run business -> no applications, no business
+    Applications (mostly) run on service
+      Around early to mid-2000, (mostly) one app per server (big and expensive)
+    Scenario:
+      Business needs a new application
+      IT needs to buy a new server - expensive up front and after
+        Hard to estimate how big or how fast the server needs to be 
+        Error on the safe side - big and fast server 
+          But what a waste of resources! 
+  
+  Hello VMware / Hypervisors
+    Extract more performance out of the same hardware
+    Run multiple applications on single server
+
+  VM Warts
+    Shaort coming of VMware / Hypervisors
+      Single server host multiple VM
+      Each VM utilize part of the whole resource
+      Each VM requires own OS 
+      Duplication of OS cause wastes in: 
+        hardware resources 
+        licensing fee
+        admin cost
+          security / anti-virus
+          patch
+          update and more...
+        
+  Containers
+    One server, one OS, multiple applications
+    For each application, there is a container
+    Each container is a part of OS
+    Containers are smaller and more efficient / run app faster 
+
+  Container Demo
+    ubuntu w/ Docker
+      log on to host (linux server with Docker installed)
+      The server can be VM/ bare metal or a laotop
+    Docker does Linux and Windows
+    In general, 
+      Docker on Linux only runs Linux app
+      Docker on Windows only runs Windows app
+
+    command: docker image ls
+    An image is a pre-packed application / VM template - everything needed to run an app in single bundle
+
+    To fire up an container from an image:
+    command: docker container run -d --name web -p 8080:8080 nigelpoulton/ctr-demo:1 
+    Interpretation:
+      docker container run      - run a new container
+      nigelpoulton/ctr-demo:1   - off this image (specified here)
+      web -p 8080:8080          - expose it on the network port (specified here)
+
+    After command is executed, there is an unique ID of the container displayed that is up and running 
+
+    For user, the necessary information is the IP address (34.247.174.207) of the server 
+    and that the application is exposed on port 8080
+    ex. The application can be accessed from browser with following URL: 34.247.174.207:8080
+
+    To stop container:
+    command: docker stop web 
+
+    To restart container:
+    command: docker container start web
+
+  Recap
+    Modernizing traditional app: move legacy app into containers
+    Microservices
+    Cloud native 
+
+    Monolith / legacy app 
+      single binary / program to do all: Web, Search, Auth, Stock, Cart, Check out, etc...
+      Hard to fix one part without moving others
+      The only way to roll out a fix is to take the entire app down 
+
+    Microservices / Cloud native 
+      - build & manage app in a way to cloud computing requirement, 
+        so individual services (like front end) can be scaled independent of other parts (like back end)
+        and each feature can be iterate independently 
+      - can be deployed in cloud enviornment or on-prem
+        Developer only need to touch smaller subset of the code base to update feature
+        Ops only need to launch updated version of the updated service 
+
+    Containers = 
+      virtualization 2.0 - improved upon Hypervisors and pave the way for Microservices / Cloud native apps
+
+    Containers and virtualization lives side by side (No complete replacing VM with containers)
 
 Module 04: Docker
 Docker
