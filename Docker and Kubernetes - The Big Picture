@@ -120,11 +120,60 @@ Module 03: Containers: Primer
 
 Module 04: Docker
 Docker
-Docker, Inc.
+  The company - Docker, Inc.
+  The technology - Docker Project
+Docker, Inc. (SF company)
+  Start as dotCloud - provide developer platform on top of AWS
+  Containers are used to work with AWS and in-house tooling that go with it 
+  The technology known as docker = dock + worker
+  Different way to build and ship software
 Docker the Technology
-Docker Demo
-Docker Summary
+  Container = fast light-weight VM
+  Docker makes it easy to run app inside container 
+    Containerizing Apps
+  Open source on GitHub
+  Community Edition (CE)
+    Open source w/ many contributors
+    Quick release cycle
+  Enterprise Edition (EE)
+    Slower release cycle 
+    Additional features
+    Official support (contract)
+Docker Demo w/ workflow
+  A typical app...
+    Web, API Gateway, Catalog, Shopping Cart
+  In cloud native microservices context, each services was coded saperately, within its own container   
+  so that each service can be fixed/ updated independent of the rest 
 
+  To begin...
+    1. Take code  
+    2. Build into docker image (stopped container / template on how to build a container)
+    3. Push image to registry 
+    4. Start container from registry 
+
+    Step 1:
+      Move to directory with from project directory that holds all dependencies 
+      command: docker image build -t nigelpoulton/ctr-demo:2 .
+      docker image build      - tell docker to build image
+      nigelpoulton/ctr-demo:2 - this is what the image will be called
+      .                       - build image file out of all the files in this diectory and below
+    
+      This command takes codes and package them as an image (stopped content)
+
+      command: docker image ls nigelpoulton/ctr-demo:2
+
+      command: docker image push nigelpoulton/ctr-demo:2
+        This will push image to docker hub registry
+        On-prem registry can also be used
+
+      command: docker container run -d --name web -p 8000:8080 nigelpoulton/ctr-demo:2
+        This will run the app
+        The app noe wuns on localhost:8000
+
+Docker Summary
+  This is the key to move to cloud native modern microservices design 
+  How to scale: docker swarm or Kubernetes
+  
 Module 05: Kubernetes
 Kubernetes
 Kubernetes: History
