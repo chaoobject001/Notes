@@ -171,14 +171,22 @@ Docker Demo w/ workflow
         The app noe wuns on localhost:8000
 
 Docker Summary
-  This is the key to move to cloud native modern microservices design 
+  This is the key to move to modern cloud native microservices design 
   How to scale: docker swarm or Kubernetes
-  
+
 Module 05: Kubernetes
-Kubernetes
-Kubernetes: History
-Kubernetes: The Short and Skinny
-Recap
+  Kubernetes
+  Kubernetes: History
+    Google: Services like gmail or search are run on containers
+    In-house technology to manage all these containers: Borg -> Omega -> Kubernetes
+    Cloud Native Computing Foundation 
+    Kubernetes is backed by manay organizations: 
+      Amazon, Azure, Google all host Kubernetes services    
+      IBM and many others
+    Kubernetes can be on-prem as well (backed by service contracts), even on laptop development environments
+
+  Kubernetes: The Short and Skinny
+  Recap
 
 Module 06: Preparing to Thrive in a Container World
 Preparing to Thrive in a Container World
