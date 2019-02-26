@@ -186,6 +186,18 @@ Module 05: Kubernetes
     Kubernetes can be on-prem as well (backed by service contracts), even on laptop development environments
 
   Kubernetes: The Short and Skinny
+    It does most things
+    Docker provide ability to start / stop delete individual container - low level mechanism 
+    Kubernetes focus on - "conducting" scheduling, scaling, healing, updating of individual containers
+      - higher level mechanism
+      How many containers draw on it 
+      Which node to run them on
+      When to scale up or down 
+      Update container without downtime
+
+
+
+
   Recap
 
 Module 06: Preparing to Thrive in a Container World
