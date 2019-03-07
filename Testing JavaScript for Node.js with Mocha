@@ -60,7 +60,17 @@ Module 03: Testing with Mocha
     Managing what tests execute 
     
   Testing Mocha
+    1. Create a fresh directory, then run command: npm init
+    2. Install Mocha (twice)
+      1.  run command: npm install -g mocha
+          This will install mocha globally 
+      2.  verify installation with command: mocha --version
+      3.  run command: npm install --save mocha
+          This will install mocha locally 
+          Verify installation under package.json under property dependencies.mocha
+           
   Our First Test
+    
   What Is an Assert
   Testing Something Real
   Scripts
@@ -72,11 +82,25 @@ Module 03: Testing with Mocha
   Pending Tests
   Summary
 
-Module 04
-  BDD Style Assertions
+Module 04 BDD Style Assertions
   Introduction
+    Chai for better Assertions
+    Two options for BDD style:
+      1. expect
+      2. should
+    
   Installing Chai
+    npm install chai --save
+    ... to install chai under project directory
+  
   Expecting Behaviors
+    expect(something).to... // a way to mimic natural language
+      expect(something).to.be...
+        expect(auth).to.be.true
+        expect(auth).to.be.false
+      expect(something).to.equal...
+      expect(something).to.have...
+
   Natural Language Asserts with Should
   Testing Objects
   Dealing with Nulls
