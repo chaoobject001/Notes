@@ -102,6 +102,12 @@ Module 04 BDD Style Assertions
       expect(something).to.have...
 
   Natural Language Asserts with Should
+    "Should" adds itself to Object.prototype
+      so that it appends itself to everything
+      something.should ... // should - clear, natural language
+        auth.should.be.ture ...
+        
+
   Testing Objects
   Dealing with Nulls
   Working with Promises
