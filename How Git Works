@@ -1,0 +1,66 @@
+How Git Works
+
+Module 01: Git Is Not What You Think
+Introduction
+  How does Git internals work?
+  Porcelain commands:
+     git add
+     git commit
+     git push
+     git pull
+     git branch
+     git checkout
+     git merge
+     git rebase
+     ...
+  Plumbling Commands - the basic building blocks:
+    git cat-file
+    git hash-object
+    git count-objects
+    ...
+  To master Git, don't worry about learning the commands 
+    - Learn The Model
+    - Then comes deeper understanding of commands 
+
+Git Is an Onion - layered
+  Wikipedia: Git is a Distributed Revision Control System
+  ... a simpler way to see Git - a Revision Control System
+  ... a even simpler way to see Git - a Stupid Content Tracker for contensts, file and directories 
+  ... at its core, Git is a Persistent Map that maps keys to values
+  
+Meet SHA1
+Storing Things
+First Commit!
+Versioning Made Easy
+One More Thing: Annotated Tags
+What Git Really Is
+
+Module 02: Branches Demystified
+Introduction
+What Branches Really Are
+The Mechanics of the Current Branch
+Let's Merge!
+Time Travel for Developers
+Merging Without Merging
+Losing Your HEAD
+Objects and References
+
+Module 03: Rebasing Made Simple
+Introduction
+What a Rebase Looks Like
+An Illusion of Movement
+Taking out the Garbage
+The Trade-offs of Merges
+The Trade-offs of Rebases
+Tags in Brief
+A Version Control System
+
+Module 04: Distributed Version Control
+Introduction
+A World of Peers
+Local and Remote
+The Joy of Pushing
+The Chore of Pulling
+Rebase Revisited
+Getting Social
+The Whole Onion
