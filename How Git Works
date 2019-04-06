@@ -27,8 +27,29 @@ Git Is an Onion - layered
   ... a simpler way to see Git - a Revision Control System
   ... a even simpler way to see Git - a Stupid Content Tracker for contensts, file and directories 
   ... at its core, Git is a Persistent Map that maps keys to values
+  Following will deal with the layers from inside out
   
 Meet SHA1
+  At the core Git is a Map 
+    - a table with keys and values
+    values: any sequence of bytes, like text file or binary file
+    Given a value, Git can calculate a key for it, a hash
+    SHA1 is the algorithm for the calculation
+    Every content has its own unique string SHA1 value
+    SHA1s are 20 bytes in hexadecimal format (20 X 2 ^8) -> 40 hex digits
+    These values will be the keys to store content in map
+  
+  Every object in Git has its own SHA1 
+    so do directories and commits 
+  
+  What happen when SHA1 collide? Data over-write can happen, but unlikely 
+    SHA1s are unique in the universe
+  
+    
+
+      
+
+
 Storing Things
 First Commit!
 Versioning Made Easy
