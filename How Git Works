@@ -45,13 +45,57 @@ Meet SHA1
   What happen when SHA1 collide? Data over-write can happen, but unlikely 
     SHA1s are unique in the universe
   
-    
-
-      
-
-
 Storing Things
+  Git as "persistent" map:
+  To make a content persistent, add "-w" to following command under Git Bash
+    > echo "Apple Pie" | git hash-object --stdin -w 
+  
+  However, since there is no repository specified, the content cannot be saved
+    thus following is displayed on console: 
+    fatal: Not a git repository (or any of the parent directories): .git
+  
+  To create a repository, use a high level procelain command: git init
+    > git init
+    Initialized empty Git repository in {current working directory}/.git/
+  This command creates a new hidden subdirectory called .git 
+
+  With a repo ready, re-execute following command 
+    > echo "Apple Pie" | git hash-object --stdin -w 
+    23991897e13e47ed0adb91a0082c31c82fe0cbe5
+  Content is now saved without issue 
+  
+  Inside the hidden folder .git, there is a directory named "objects"
+  This is "object database" - stores objects that represents content 
+  Inside "objects" directory, a directory "23" 
+    "23" is the first two hexadecimal digits of the SHA1 of the fist saved content ("23"991897e13e47ed0adb91a0082c31c82fe0cbe5)    
+    Inside folder 23 is a file named with the remaining digits of the SHA1 (23"991897e13e47ed0adb91a0082c31c82fe0cbe5")    
+    - 991897e13e47ed0adb91a0082c31c82fe0cbe5
+    This scheme prevents one single huge cluttered directory 
+
+    The file is a "blob" of data 
+      blob is a generic piece of content 
+    
+    However, the original content cannot be read directly 
+    Git add a small header and compress content to save space
+
+  Another plumbling command can be used to look at the content of blob directly
+    > git cat-file
+  git cat-file takes SHA1 as argument 
+    with option -t 
+      $ git cat-file 23991897e13e47ed0adb91a0082c31c82fe0cbe5 -t
+      blob
+    Git returns the type of file, "blob"
+
+    with option -p 
+      $ git cat-file 23991897e13e47ed0adb91a0082c31c82fe0cbe5 -p
+      Apple Pie
+    
+    Git returns the readable content of file ("Apple Pie")
+  This is the core of Git
+  
 First Commit!
+  Git as "content tracker":
+  
 Versioning Made Easy
 One More Thing: Annotated Tags
 What Git Really Is
