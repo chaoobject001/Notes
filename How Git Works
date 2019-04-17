@@ -315,11 +315,58 @@ One More Thing: Annotated Tags
   4. Annotated Tags
 
 What Git Really Is
+  The leafs are blobs
+  Other trees are recursive containing blobs and others trees
+  At this level, Git is similar to a file systems, with commits to keep track of different versions 
 
 Module 02: Branches Demystified
-Introduction
-What Branches Really Are
-The Mechanics of the Current Branch
+  Introduction
+    This module will show Git as a Revision Control System with branches and merges
+  What Branches Really Are
+    Git create branch for user at initial commit 
+      Run "git branch" to look at branches  
+        c:\cookbook>git branch
+        * master
+    Verify what is branch at .git directory 
+      Git normally place branch under 
+        .git\refs directory, and 
+        .git\refs\heads sub-directory
+          contains a file called "master"
+          The content of "master" file can be shown as
+            c:\cookbook>type .git\refs\heads\master
+            7cdce97c601c1aaab8b01d8b2371bae0cab05d3a
+          - this is the SHA1 of the current commit, as seen here
+
+          c:\cookbook>git log
+          commit 7cdce97c601c1aaab8b01d8b2371bae0cab05d3a (HEAD -> master, tag: mytag)
+          Author: Charles Kuo <CharlesK@ashn.com>
+          Date:   Fri Apr 12 19:12:03 2019 -0700
+
+              Add cake
+
+          commit daac1a720653a95c427071fc251b69a6d0f46ec6
+          Author: Charles Kuo <CharlesK@ashn.com>
+          Date:   Thu Apr 11 18:53:20 2019 -0700
+
+              First commit!
+    
+    The project so far has two linked commits
+    The "master" branch is just a reference points to a commit - hence why branches are in the ".git\refs" folder
+    The "master" branch does not have special status, like any other branches
+    
+    Run "git branch lisa" to create new branch called lisa 
+      c:\cookbook>git branch lisa
+      c:\cookbook>git branch
+        lisa
+      * master
+    
+    "lisa" branch, like "master" is also placed under .git\refs\heads
+    "lisa" branch points to the same commit as master by having the same SHA1 as content
+      c:\cookbook>type .git\refs\heads\lisa
+      7cdce97c601c1aaab8b01d8b2371bae0cab05d3a    
+
+  The Mechanics of the Current Branch
+    
 Let's Merge!
 Time Travel for Developers
 Merging Without Merging
