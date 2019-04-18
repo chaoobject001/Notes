@@ -366,6 +366,45 @@ Module 02: Branches Demystified
       7cdce97c601c1aaab8b01d8b2371bae0cab05d3a    
 
   The Mechanics of the Current Branch
+    When run command "git branch", the current branch is marked with '*'
+      c:\cookbook>git branch
+        lisa
+      * master
+    
+    Under .git folder, HEAD file contains reference to where current branch is:
+    In this case, the master brnch 
+      c:\cookbook>type .git\HEAD
+      ref: refs/heads/master
+    
+    HEAD is just a reference to a branch 
+
+    Now, make update to recipes/apple_pie.txt by adding following content:
+      pre-made pastry
+      1/2 cup butter
+      3 tablespoons flour
+      1 cup sugar
+      8 Granny Smith apples 
+    
+    Verify git status with command "git status"
+      c:\cookbook>git status
+      On branch master
+      Changes not staged for commit:
+        (use "git add <file>..." to update what will be committed)
+        (use "git checkout -- <file>..." to discard changes in working directory)
+
+              modified:   recipes/apple_pie.txt
+
+      no changes added to commit (use "git add" and/or "git commit -a")
+    
+    Run command "git add" to stage the changes
+      c:\cookbook>git add recipes/apple_pie.txt
+    
+    Run command "git commit" to commit the staged change to repo
+      c:\cookbook>git commit -m "Add recipe"
+      [master 8cce64a] Add recipe
+      1 file changed, 7 insertions(+), 1 deletion(-)
+
+
     
 Let's Merge!
 Time Travel for Developers
