@@ -404,9 +404,53 @@ Module 02: Branches Demystified
       [master 8cce64a] Add recipe
       1 file changed, 7 insertions(+), 1 deletion(-)
 
+    Run command "git checkout" to switch working directory to another branch 
+      and set HEAD reference to the latest commit of the new branch
+      
+      c:\cookbook>git checkout lisa
+      Switched to branch 'lisa'
 
+      c:\cookbook>type .git\HEAD
+      ref: refs/heads/lisa
+
+      At this commit, the content is switched to previous version 
+    
+    Add lisa's version of addition to apple_pie.txt
+      pre-made pastry
+      1/2 cup butter
+      3 tablespoons flour
+      1 cup sugar
+      1 tbsp cinnamon
+      10 Granny Smith apples 
+    
+    Stage this change with "git add"
+      c:\cookbook>git add recipes/apple_pie.txt
+    
+    Commit lisa's version with "git commit"
+      c:\cookbook>git commit -m "Add Lisa's version of the pie"
+      [lisa 983b4fd] Add Lisa's version of the pie
+      1 file changed, 8 insertions(+), 1 deletion(-)
+    
+    Verify that lisa branch now reference lateest commit with "git log"
+      c:\cookbook>git log
+      commit 983b4fdccafe02b5ee7b028b308a71a3bafc6d8e (HEAD -> lisa)
+      Author: Charles Kuo <CharlesK@ashn.com>
+      Date:   Thu Apr 18 19:21:31 2019 -0700
+
+          Add Lisa's version of the pie
+
+      commit 7cdce97c601c1aaab8b01d8b2371bae0cab05d3a (tag: mytag)
+      Author: Charles Kuo <CharlesK@ashn.com>
+      Date:   Fri Apr 12 19:12:03 2019 -0700
+
+          Add cake
+
+      commit daac1a720653a95c427071fc251b69a6d0f46ec6
+      Author: Charles Kuo <CharlesK@ashn.com>
+      Date:   Thu Apr 11 18:53:20 2019 -0700
     
 Let's Merge!
+  
 Time Travel for Developers
 Merging Without Merging
 Losing Your HEAD

@@ -1,0 +1,400 @@
+PostgreSQL: Introduction to SQL Queries
+Beginner
+2h 19m
+by Pinal Dave
+Feb 21, 2019
+Testing JavaScript with Jasmine and TypeScript
+Intermediate
+2h 42m
+by Tony Curtis
+Feb 7, 2019
+Node.js Testing Strategies
+Intermediate
+2h 39m
+by Rob Conery
+Feb 7, 2019
+Testing JavaScript for Node.js with Mocha
+Intermediate
+2h 28m
+by Jonathan Mills
+Feb 7, 2019
+Ruby on Rails - A Jumpstart for .NET Developers
+Intermediate
+2h 39m
+by Dustin Davis
+Feb 2, 2019
+.NET Regular Expressions
+Intermediate
+3h 29m
+by Dan Sullivan
+Nov 28, 2018
+Building a Deployment Pipeline for .NET Applications
+Intermediate
+1h 46m
+by Kenneth Truyers
+Oct 16, 2018
+Getting Started with TeamCity
+Beginner
+4h 3m
+by Wes Higbee
+Oct 15, 2018
+Automation with PowerShell Scripts
+Beginner
+2h 55m
+by Jeff Hicks
+Sep 13, 2018
+More Effective LINQ
+Intermediate
+4h 26m
+by Mark Heath
+Aug 23, 2018
+SQL Server: Transact-SQL Basic Data Retrieval
+Beginner
+3h 53m
+by Joe Sack
+Aug 20, 2018
+Developer's T-SQL Playbook
+Beginner
+2h 6m
+by Rob Conery
+Aug 20, 2018
+SQL Server: Building Simple Asynchronous Applications
+Beginner
+1h 38m
+by Jonathan Kehayias
+Aug 20, 2018
+Microsoft Azure IaaS Monitoring and Management - Getting Started
+Intermediate
+1h 24m
+by Tim Warner
+Aug 10, 2018
+Design a Monitoring Strategy for Infrastructure in Microsoft Azure
+Advanced
+1h 59m
+by John Savill
+Aug 9, 2018
+Continuous Delivery and DevOps with TFS and VSTS 2018, Release Management
+Beginner
+1h 52m
+by Marcel de Vries
+Aug 9, 2018
+Feature Toggles, Package Management and Versioning in Microsoft TFS and VSTS 2017
+Beginner
+1h 10m
+by Marcel de Vries
+Aug 9, 2018
+Source Control with Microsoft TFS/VSTS and Visual Studio 2017
+Beginner
+1h 52m
+by Marcel de Vries
+Aug 9, 2018
+Accessing SQL Server Databases from PowerShell
+Beginner
+55m
+by Vlad Catrinescu
+Aug 3, 2018
+SQL Server: Introduction to Query Store
+Beginner
+3h 2m
+by Erin Stellato
+Aug 3, 2018
+Extracting Database Information: Business Coding Playbook
+Beginner
+2h 13m
+by Rusty Divine
+Aug 3, 2018
+Building Command Line Applications in Node.js
+Intermediate
+3h 2m
+by Paul O'Fallon
+Jul 31, 2018
+Acceptance Testing in Node.js
+Intermediate
+3h 19m
+by Amy Dredge
+Jul 23, 2018
+Getting Started with Visual Studio Team Services (2018)
+Beginner
+4h 13m
+by Benjamin Day
+Jul 12, 2018
+Continuous Delivery and DevOps with TFS and VSTS 2018, Managing Builds
+Beginner
+1h 29m
+by Marcel de Vries
+Jul 9, 2018
+Introduction to Xamarin.Forms
+Intermediate
+3h 48m
+by Jim Wilson
+Jul 3, 2018
+Moving Beyond the Basics with Xamarin.Forms
+Intermediate
+2h 19m
+by Matthew Soucoup
+Jul 3, 2018
+Play by Play: Xamarin Mobile Development
+Intermediate
+1h 17m
+by Lars Klint and Filip Ekberg
+Jul 3, 2018
+Building an Enterprise Mobile Application with Xamarin.Forms
+Intermediate
+3h 1m
+by Gill Cleeren
+Jul 3, 2018
+XAML for Xamarin.Forms
+Beginner
+1h 14m
+by Jesse Liberty
+Jul 3, 2018
+Beginning Automated Testing of Xamarin Applications
+Beginner
+59m
+by Jesse Liberty
+Jul 3, 2018
+Building Your First Mobile Application with Xamarin.Forms and Visual Studio 2017
+Beginner
+3h 3m
+by Jesse Liberty
+Jul 3, 2018
+JavaScript Build Automation With Gulp.js
+Intermediate
+4h 52m
+by John Papa
+May 14, 2018
+Good Parts of JavaScript and the Web
+Intermediate
+10h 55m
+by Douglas Crockford
+Apr 29, 2018
+Xamarin: The Big Picture
+Beginner
+2h 15m
+by Gill Cleeren
+Apr 3, 2018
+Testing Clientside JavaScript
+Intermediate
+4h 50m
+by Joe Eames
+Feb 28, 2018
+Using The Chrome Developer Tools
+Beginner
+2h 50m
+by John Sonmez
+Feb 28, 2018
+Visual Studio Data Tools for Developers
+Intermediate
+3h 17m
+by Deborah Kurata
+Dec 21, 2017
+TFS Build 2015: First Look
+Intermediate
+1h 42m
+by Esteban Garcia
+Nov 17, 2017
+Visual Studio Team Services: Migrating from TFS
+Beginner
+3h 53m
+by Scott Tate
+Oct 26, 2017
+Building a RESTful API with ASP.NET Core
+Intermediate
+8h 10m
+by Kevin Dockx
+Oct 6, 2017
+DevOps Skills for Developers with Visual Studio and TFS 2017
+Intermediate
+8h 47m
+by Benjamin Day
+Oct 6, 2017
+HTML5 Fundamentals
+Beginner
+3h 47m
+by Craig Shoemaker
+Oct 6, 2017
+Building an Enterprise Application with ASP.NET Core MVC
+Intermediate
+6h 38m
+by Gill Cleeren
+Oct 6, 2017
+ASP.NET Core Fundamentals
+Beginner
+5h 49m
+by Scott Allen
+Oct 6, 2017
+ASP.NET Core MVC Testing Fundamentals
+Intermediate
+2h 56m
+by Jason Roberts
+Oct 6, 2017
+Building Your First ASP.NET Core Web Application
+Beginner
+4h 53m
+by Gill Cleeren
+Oct 6, 2017
+Building Your First API with ASP.NET Core
+Beginner
+4h 21m
+by Kevin Dockx
+Oct 6, 2017
+Tracking Real World Web Performance
+Beginner
+1h 37m
+by Nik Molnar
+Sep 21, 2017
+Load Testing with Visual Studio 2013
+Intermediate
+3h 7m
+by Benjamin Day
+Sep 21, 2017
+Authenticating Your AngularJS SPA with ASP.NET Web API and Auth0
+Beginner
+1h 2m
+by Ajden Towfeek
+Sep 8, 2017
+Building an Integration with Visual Studio Team Services API
+Intermediate
+8h 59m
+by Patrick Neborg
+Sep 8, 2017
+C# Best Practices: Improving on the Basics
+Beginner
+4h 50m
+by Deborah Kurata
+Sep 8, 2017
+Accelerated C# Fundamentals
+Beginner
+6h 17m
+by Scott Allen
+Sep 8, 2017
+Dynamic C# Fundamentals
+Intermediate
+2h 50m
+by Jason Roberts
+Sep 5, 2017
+Play by Play: C# Q&A with Scott Allen and Jon Skeet
+Intermediate
+1h 15m
+by Rob Conery, Scott Allen and Jon Skeet
+Sep 5, 2017
+Building AngularJS and Node.js Apps with the MEAN Stack
+Intermediate
+4h 4m
+by Joe Eames
+Sep 1, 2017
+Become a Full-stack .NET Developer - Advanced Topics
+Intermediate
+4h 20m
+by Mosh Hamedani
+Sep 1, 2017
+Become a Full-stack .NET Developer - Architecture and Testing
+Intermediate
+3h 59m
+by Mosh Hamedani
+Sep 1, 2017
+Become a Full-stack .NET Developer
+Beginner
+5h 34m
+by Mosh Hamedani
+Sep 1, 2017
+Visual Studio Code
+Beginner
+4h 11m
+by John Papa
+Aug 29, 2017
+Using ServiceStack to Build APIs
+Intermediate
+5h 27m
+by John Sonmez
+Aug 25, 2017
+An MVC4, iOS And Android App With ServiceStack, Xamarin and C#
+Intermediate
+3h 16m
+by John Sonmez
+Aug 25, 2017
+Getting Started with ASP.NET MVC, ServiceStack and Bootstrap
+Intermediate
+2h 36m
+by Jesse Liberty
+Aug 25, 2017
+JavaScript Objects and Prototypes
+Intermediate
+48m
+by Jim Cooper
+Aug 22, 2017
+Rapid ES6 Training
+Intermediate
+4h 15m
+by Mark Zamoyta
+Aug 18, 2017
+Object-oriented Programming in JavaScript - ES6
+Beginner
+2h 27m
+by Mark Zamoyta
+Aug 18, 2017
+Rapid JavaScript Training
+Intermediate
+5h 43m
+by Mark Zamoyta
+Aug 18, 2017
+Testing Web Applications with CodedUI
+Intermediate
+3h 47m
+by Marcel de Vries
+Aug 15, 2017
+Introduction to Docker on Windows with Visual Studio 2017
+Beginner
+4h 31m
+by Marcel de Vries
+Aug 10, 2017
+Building a Continuous Delivery Pipeline with TFS and Visual Studio 2015
+Beginner
+6h 29m
+by Marcel de Vries
+Aug 10, 2017
+DevOps Skills for Developers with Visual Studio & TFS 2015
+Intermediate
+7h 7m
+by Benjamin Day
+Aug 10, 2017
+Ember.js Fundamentals
+Intermediate
+4h 57m
+by Rob Conery
+Aug 10, 2017
+Getting Started with Ember 2
+Beginner
+1h 56m
+by Noel Peden
+Aug 10, 2017
+Automated Acceptance Testing with SpecFlow and Gherkin
+Intermediate
+2h 51m
+by Jason Roberts
+Jul 26, 2017
+SpecFlow Tips and Tricks
+Intermediate
+1h 28m
+by Jason Roberts
+Jul 26, 2017
+Executable Specifications: End-to-End Acceptance Testing With SpecFlow
+Intermediate
+2h 56m
+by Elton Stoneman
+Jul 26, 2017
+Automated Business Readable Web Tests with Selenium and SpecFlow
+Intermediate
+2h 24m
+by Jason Roberts
+Jul 26, 2017
+Business Readable Automated Tests with SpecFlow 2.0
+Intermediate
+3h 33m
+by Jason Roberts
+Jul 26, 2017
+ALM with TFS 2012 Fundamentals
+Intermediate
+5h 34m
+by Benjamin Day
+Jul 13, 2017
