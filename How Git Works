@@ -450,8 +450,60 @@ Module 02: Branches Demystified
       Date:   Thu Apr 11 18:53:20 2019 -0700
     
 Let's Merge!
-  
+  Switch back to branch 'master'
+    Run: "git checkout master"
+  Verify which branch HEAD is pointing to 
+    Run: "git branch" 
+    c:\cookbook>git branch
+      lisa
+    * master
+  Merge content from other branch into current working branch 
+    Run: "git merge lisa"
+    - this where a CONFLICT will be shown 
+  Verify merge conflict details
+    Run: "git status"
+    - this is where specific file(s) will be highlighted in red for merge conflict
+    such as, "both modified:  recipes/apple_pie.txt" 
+
+  Merge conflict needs to be resolved manually
+    1. Open the file listed in red with an editor 
+    2. The conflict section may looks something like this...
+      Apple Pie
+
+      pre-made pastery
+      1/2 cup butter
+      3 tablespoons flour
+      1 cup sugar 
+      <<<<<<< HEAD
+      8 Granny Smith apples
+      =======
+      1 tbsp cinnamon 
+      10 Granny Smith apples
+      >>>>>>> lisa
+    3. From HEAD to === is what stored at current branch; below === is from the incoming branch  
+    4. Type final edition after merge directly into the file, like this...
+      Apple Pie
+
+      pre-made pastery
+      1/2 cup butter
+      3 tablespoons flour
+      1 cup sugar
+      1 tbsp cinnamon 
+      9 Granny Smith apples
+    5. Save in the change in current working directory 
+    6. Verify status with "git status" - the unmerged path is still highlighted in red
+    7. Run command "git add {path/to/merged_file}", like 
+      "git add recipes/apple_pie.txt"
+    8. Verify status with "git status" - the unmerged path is NOW highlighted in green - ready to be committed 
+    9. Run "git commit"
+      Vim editor poped up 
+      User is prompted to add / edit the default merge message - but user can just save and quit 
+    10. Run "git log" to verify the newest commit 
+    11. Look inside the commit with cat-file command: "git cat-file -p {7 digits of SHA1 of the commit}"
+      Merge is just another commit - with TWO parents (A commit can have many parents)
+ 
 Time Travel for Developers
+  
 Merging Without Merging
 Losing Your HEAD
 Objects and References
