@@ -503,9 +503,78 @@ Let's Merge!
       Merge is just another commit - with TWO parents (A commit can have many parents)
  
 Time Travel for Developers
-  
+  History and Content
+    Objects DB contains Commits, Trees, Blobs and Annotated Tags
+      - arranged in graph, referencing each other
+      - commits point to partents (commits)
+      - commits point to trees
+      - trees point to other trees or blobs
+    References b/t commits track History
+    All other references track Content
+      Git reuses content so multiple commits can track the same content 
+      Following reference from one commit, there is a complete snapshot of all contents at the time of that commit 
+
+  Merge Commits
+    Git content management is simple
+    Git (mostly) does not care about working directory - other than warning about un-committed changes before checkout, 
+    but more so about immutable & persistent objects in DB
+
 Merging Without Merging
+  Merge from a branch that has been merged with current branch, 
+  which contains its own latest commit and latest commit from current branch 
+  In such ase, Git points the HEAD and latest commit of current branch to the latest commit of THAT branch 
+  - essentially, no new commit is created 
+  - this is known as "Fast-forward"
+
+  c:\cookbook>git checkout lisa
+  Switched to branch 'lisa'
+
+  c:\cookbook>git merge master
+  Updating 983b4fd..df95e07
+  Fast-forward
+  recipes/apple_pie.txt | 6 +++++-
+  1 file changed, 5 insertions(+), 1 deletion(-)
+
 Losing Your HEAD
+  Directly checkout a commit instead of a branch
+    1. Identify the latest commit (or any other commit with "git log")
+    c:\cookbook>git log
+    commit df95e079fe1bd8bd537fa50759ade52986f6d828 (HEAD -> master, lisa)
+    Merge: 8cce64a 983b4fd
+    Author: Charles Kuo <CharlesK@ashn.com>
+    Date:   Mon Apr 22 17:14:01 2019 -0700
+
+        Merge branch 'lisa'
+    
+    2. Run "git checkout" followed by the first 6 digits of the SHA1 of desired commit 
+    c:\cookbook>git checkout df95e0
+    Note: checking out 'df95e0'.
+
+    You are in 'detached HEAD' state. You can look around, make experimental
+    changes and commit them, and you can discard any commits you make in this
+    state without impacting any branches by performing another checkout.
+
+    If you want to create a new branch to retain commits you create, you may
+    do so (now or later) by using -b with the checkout command again. Example:
+
+      git checkout -b <new-branch-name>
+
+    HEAD is now at df95e07 Merge branch 'lisa' 
+    
+    3. Verify the HEAD points to a commit, NOT a branch
+      c:\cookbook>type .git\HEAD
+      df95e079fe1bd8bd537fa50759ade52986f6d828
+
+    4. Run git branch to verify current working directory is NOT on ANY branch
+      c:\cookbook>git branch
+      * (HEAD detached at df95e07)
+        lisa
+        master
+    
+    5. Open recipes/apple_pie.txt and make some chnage to content 
+      
+
+
 Objects and References
 
 Module 03: Rebasing Made Simple
