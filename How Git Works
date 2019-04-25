@@ -571,15 +571,88 @@ Losing Your HEAD
         lisa
         master
     
-    5. Open recipes/apple_pie.txt and make some chnage to content 
-      
+    5. Open recipes/apple_pie.txt and make some change to content then verify 
+      c:\cookbook>git status
+      HEAD detached at 10ab12b
+      Changes not staged for commit:
+        (use "git add <file>..." to update what will be committed)
+        (use "git checkout -- <file>..." to discard changes in working directory)
 
+              modified:   recipes/apple_pie.txt
+
+      no changes added to commit (use "git add" and/or "git commit -a")
+    
+    6. Stage change and commit change 
+      c:\cookbook>git add recipes/
+
+      c:\cookbook>git commit -m "Add more apples"
+      [detached HEAD f5b9b4c] Add more apples
+      1 file changed, 2 insertions(+), 1 deletion(-)
+
+    7. There is no branch - The new commit is referenced by HEAD only 
+      c:\cookbook>git log
+      commit f5b9b4c8a372684b45fa478b47ffa4d9a4ad56cb (HEAD)
+      Author: Charles Kuo <CharlesK@ashn.com>
+      Date:   Wed Apr 24 18:17:56 2019 -0700
+
+
+      Add more apples 
+
+    8. Add more changes to recipes/apple_pie.txt, then stage and commit
+      c:\cookbook>git add recipes/apple_pie.txt
+      c:\cookbook>git commit -m "Remove sugar"
+      [detached HEAD 5350b8a] Remove sugar
+      1 file changed, 1 deletion(-)
+    
+    9. At this time, swicth back to master branch so that HEAD is pointing to master
+      c:\cookbook>git checkout master
+      Warning: you are leaving 2 commits behind, not connected to
+      any of your branches:
+
+        5350b8a Remove sugar
+        f5b9b4c Add more apples
+
+      If you want to keep them by creating a new branch, this may be a good time
+      to do so with:
+
+      git branch <new-branch-name> 5350b8a
+
+      Switched to branch 'master'
+    
+    10. The two previous commit is now unreachable - other than being referenced by their SHA1 directly 
+        At some point, the system will determine to remove those objects to save resources 
+    
+    11. To save those two commit
+      a. checkout the latest commit again with its SHA1 (5350b8a)
+        c:\cookbook>git checkout 5350b8a
+        Note: checking out '5350b8a'.
+
+        You are in 'detached HEAD' state. You can look around, make experimental
+        changes and commit them, and you can discard any commits you make in this
+        state without impacting any branches by performing another checkout.
+
+        If you want to create a new branch to retain commits you create, you may
+        do so (now or later) by using -b with the checkout command again. Example:
+
+          git checkout -b <new-branch-name>
+
+        HEAD is now at 5350b8a Remove sugar
+      b. Create a brach from this commit by running command "git branch {new-branch-name}"
+        c:\cookbook>git branch nogood
+      c. Now the detached head is associated with a new branch - so it will not be removed automatically 
 
 Objects and References
+  Three rules:
+  1. Current branch (HEAD or Branch) tracks new commits
+  2. When move to another commit (like by checkout), Git updates working directory automatically
+  3. Any unreachable objects are garbage collected  
 
 Module 03: Rebasing Made Simple
 Introduction
+  Rebase is less common among different version control system
+
 What a Rebase Looks Like
+  
 An Illusion of Movement
 Taking out the Garbage
 The Trade-offs of Merges
