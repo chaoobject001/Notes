@@ -1,0 +1,53 @@
+The Definitive Guide To User Acceptance Testing by Bugwolf
+UAT: 
+    Test in real world conditions by actual users, 
+    taking software performance and human behavior into account
+
+In SDLC: DEV -> QA -> UAT -> PROD
+
+PRO:
+    1. Identify issues from operational stresses that is out of the scope of functional test 
+    2. Potential scale of negative impact prevented 
+    3. Test system capibility in real context
+    4. Customer feedback  
+CON:
+    1. Cost of setup up environment and recruiting tester 
+    2. Cost of time
+    3. Cost of training / recruiting tester
+
+Test process:
+    1. Recurit / Train Team
+        Different user experience level and area of expertise
+    2. Setup / Plan 
+        Overall plan 
+        Business goals / requirements
+    3. Design Tests
+        Based on details of real business requirements
+    4. Implement Tests
+        Before test start, verify and document test system and environment variables and configurations 
+        As test proceed, record corrections required for next iteration to improve overall process
+    5. Report / Evaluate 
+        Measure results in matrix against acceptance criteria 
+    6. Decision before system release 
+        What adjustments are required?
+        What are expected improvement? 
+    7. Follow up with other stakeholders after system release on
+        a. End-user training 
+        b. Support 
+        c. Roll-out plan 
+        d. Workarounds
+        e. User guide / tutorial / videos 
+
+People Involved In UAT
+    1. The Sponsor / Product Manager / Product Owner
+        The sponsor will focus on identifying potential risks and barriers to success so that these can
+        be eliminated and a positive ROI realised in terms of revenue and profit. The sponsor will also
+        set the success criteria and and define test scenarios at a high level.
+    2. The Manager/Managers
+        delivering business results from the system in the real world
+        examining the system for compatibility with existing business processes
+        outline high level test scenarios over a realistic time period
+        The UAT test results will also serve as a benchmark for performance of the new system.
+    3. The End Users
+        Operates the system
+        
