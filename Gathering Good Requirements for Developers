@@ -1,0 +1,122 @@
+Gathering Good Requirements for Developers
+Module 01: Requirements Gathering for Development
+Introduction
+Goals
+  Common general goals: 
+    performance scalibility 
+    reiability 
+    adaptability 
+    cost-effectiveness 
+  Correct system behaviors come from well-understood user requirements 
+  Software requirements aim to create better understanding of the business
+
+Audience
+  developer 
+    who needs requirement himself 
+    who work with BA to get requirements done
+  How does dev think about requirement process?
+  What is the group size? 
+  What kind of project and how much details are needed?
+  
+Methodology
+  Requirement is both agile and waterfall
+  The objective at the begining of a project is to get:
+    Basic understanding
+    Scope
+    Sense of direction of project 
+    List of things we will need
+  so that we are aligned with what user want
+  Make small course adjustment early on, then refine and iterate through SDLC 
+  See from external that all of the work for requirements is done inside the process
+
+  Two end of spectrum 
+    agile: fluid use cases
+    waterfall / waterfall-like: controlled and regid requirements
+
+One vs. Many
+  Write individual requirement / tools and deliverables
+  vs. 
+  Put requirements into larger package for specifications 
+
+Course Outline
+  
+Summary
+
+Module 02: The Big Picture
+Introduction
+Project Lifecycles
+Software Development Roles
+Requirement Tools
+Stakeholders
+Operating Environment
+Time Cost Quality Triangle
+Summary
+
+Module 03: A Few Good Requirements
+Introduction
+Why We Do Requirements
+Defining Requirements
+Requirement Types
+Exercise: Making an Omelet
+A Good Requirement
+A SMART Requirement
+Summary
+
+Module 04: Requirement Skills and Techniques
+Introduction
+Elicitation
+Facilitation
+Evangelism
+Engagement
+People Integration
+Mental Modeling
+Summary
+
+Module 05: Requirement Activities
+Introduction
+Meetings
+Questionnaires
+Writing
+Summary
+
+Module 06: When Requirements Get Together
+Introduction
+Goals
+Grouping
+Requirements Forms
+MECE
+Inclusion by Reference
+Assumptions and Risks
+Requirements Traceability
+Summary
+
+Module 07: Getting Exhaustive
+Introduction
+Components
+Visuals
+Filling Gaps
+Summary
+
+Module 08: Scope and Requirements Validation
+Introduction
+Scope
+Validation
+Summary
+
+Module 09: Requirements Prioritization
+Introduction
+Techniques
+Key Questions
+Workarounds
+Sanity Checks
+Summary
+
+Module 10: Issues and Resolutions
+Introduction
+Requirements Issues
+Emotional Intelligence
+Difficult People
+Conflict Management
+Whining
+Pitfalls
+Summary
