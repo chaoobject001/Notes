@@ -1,9 +1,10 @@
 Gathering Good Requirements for Developers
-Module 01: Requirements Gathering for Development
+Module 00: Requirements Gathering for Development
 Introduction
 Goals
   Common general goals: 
-    performance scalibility 
+    performance 
+    scalibility 
     reiability 
     adaptability 
     cost-effectiveness 
@@ -13,12 +14,26 @@ Goals
 Audience
   developer 
     who needs requirement himself 
-    who work with BA to get requirements done
+    who support / work with BA to get requirements done
+  part-time BA with other duties, like project management 
   How does dev think about requirement process?
   What is the group size? 
   What kind of project and how much details are needed?
   
 Methodology
+  Waterfall Methodology:
+    essential to get started right
+    requirement skill are often lacking
+    requirement often seen as barrier to get start 
+  
+  Agile Methodology:
+    Requirements 
+      some front work still required 
+      seen as being done in cycle / iterative process
+      often take the form of use cases / user stories
+      considered very fluid
+      starting as business objective, refine through process
+
   Requirement is both agile and waterfall
   The objective at the begining of a project is to get:
     Basic understanding
@@ -35,11 +50,34 @@ Methodology
 
 One vs. Many
   Write individual requirement / tools and deliverables
+    Skills
+    Techniques
   vs. 
   Put requirements into larger package for specifications 
+    Tools
+    Deliverables
+    Managing relationships
 
 Course Outline
-  
+  The Big picture
+  A few good requirements
+  Requirements skills and techniques
+    
+    How to get requirements
+    How to put requirements together into a requirement specification
+    How to get requirements details
+    Common issues in building requirements and resolutions 
+  Module 2: The Big Picture
+    software development 
+    project lifecycles
+    the roles, 
+    who's in it, 
+    what the requirement tools are in terms of deliverables and techniques
+    stakeholders, who's involved, 
+    we'll talk about the operating environment and 
+    how you create an environment where people can be free to share requirements, 
+    and we end with a time-cost-quality triangle. 
+
 Summary
 
 Module 02: The Big Picture
