@@ -59,36 +59,135 @@ One vs. Many
     Managing relationships
 
 Course Outline
-  The Big picture
+  The Big picture - where we are
   A few good requirements
-  Requirements skills and techniques
-    
-    How to get requirements
-    How to put requirements together into a requirement specification
-    How to get requirements details
-    Common issues in building requirements and resolutions 
-  Module 2: The Big Picture
-    software development 
-    project lifecycles
-    the roles, 
-    who's in it, 
-    what the requirement tools are in terms of deliverables and techniques
-    stakeholders, who's involved, 
-    we'll talk about the operating environment and 
-    how you create an environment where people can be free to share requirements, 
-    and we end with a time-cost-quality triangle. 
+  Requirements skills and techniques - do your own requirements
+  Requirements Activities - how to get requirements
+  When Requirements Get Together - how to get requirements into specifications
+  Getting Exhaustive - how to get the hard-to-get requirement details
+  Scope and Requirements Validation 
+  Requirements Prioritization
+  Issues and Resolutions - what are the common issues?
 
+  Module 2: The Big Picture
+    Project Lifecycles  
+    Software Development Roles
+    Requirements Tools - in terms of deliverables and techniques
+    Stakeholders - who is involved
+    Operating Environment - how people can share requirements
+    Time-Cost-Quality Triangle 
+
+  Module 3: A Few Good Requirements
+    Why We Do Requirements
+    Defining Requirements
+    Requirement Types - from business objective to details
+    Exercise: Makeing an Omelet 
+    A Good Requirement
+    A SMART Requirement - technique 
+  
+  Module 4: Requirements Skills and Techniques (soft skills)
+    Elicitation - how to get people to tell you
+    Facilitation - facilitate effective meetings
+    Evangelism - how to get people involved wanting to build the solution 
+    Engagement - how to get people on board
+    People Integration - how to get people to work together
+    Mental Modeling - how to get people to understand the solution before it's built 
+
+  Module 5: Requirements Activities
+    How to do ...
+    Meetings
+      1 on 1
+        interview 
+        observation
+      Focus Groups
+        Attendance (who?)
+        Roles
+    Questionnaires (when are they not useful?)
+      Open / Close
+      Who to Survey
+    Writing 
+      Text 
+      Diagrams
+
+  Module 6: When Requirements Get Together (into document / specifications)
+    Goals
+      Agreement
+      Complete Enough - but we will never completely in alignment
+    Grouping
+      Unique ID - for reference later
+      Relationships
+    Requirements Forms
+      Document
+      Specification
+      Package
+    MECE 
+      - mutually exclusive, collectively exhaustive
+      - none of the requirements should conflict
+    Inclusion by Reference - only include when necessary 
+    Assumptions and Risks
+    Requirements Traceability
+      we want to get requirements traceable through design and testing 
+      so that we can ensure quality
+
+  Module 7: Getting Exhaustive
+    Put together Components
+    Create Visuals to go with text requirement
+    Filling Gaps 
+  
+  Module 8: Scope and Requirements Validation
+    Scope
+      Product Vision Statement & Business Objectives
+        - measureable in Success Metrics
+      What are Acceptance Criteria for the project
+      To Know if the project is built successfully according to requirements
+      Diagrams
+    Validation (walk trhough items in requirement one by one)
+      Checklist
+      Pre and Post Conditions
+      Security
+      Imprecise Words - what else are we missing 
+  
+  Module 9: Requirements Prioritization
+    Techniques
+    Key Questions
+    Workarounds
+    Sanity Checks - does the project make sense
+  
+  Module 10: Issues and Resolutions - challenges in developing requirements
+    Requirements Issues
+    Emotional Intelligence
+    Difficult People
+    Conflict Management
+    Whining
+    Pitfalls
+    
 Summary
+  Requirements is not straight forward, linear process
+  Process to deliverables - a package works for unique situation
+  Create requirements - one way or another
 
 Module 02: The Big Picture
-Introduction
-Project Lifecycles
-Software Development Roles
-Requirement Tools
-Stakeholders
-Operating Environment
-Time Cost Quality Triangle
-Summary
+  Introduction
+    How do software requirement fit in software development lifecycle?
+    Agenda
+      Project Lifecycles 
+        - where is start and end
+      Software Development Roles 
+        - who is involved in process 
+        - what role they have to play in requirements
+      Requirements Tools
+        Conversation about Stakeholders
+        Operating Environment - what to do to get requirement
+      Time Cost Quality Triangle 
+
+  Project Lifecycles
+    
+  Software Development Roles
+  Requirement Tools
+  Stakeholders
+  Operating Environment
+  Time Cost Quality Triangle
+  Summary
 
 Module 03: A Few Good Requirements
 Introduction
