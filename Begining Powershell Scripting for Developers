@@ -1,0 +1,90 @@
+Module 1: Understanding the PowerShell Platform
+  Course Outline
+    The powerShell Platform
+    Variables
+    Program Flow
+    Functions and Modules
+    Advanced Concepts - debug / security / remoting
+    Objects
+    Resources and Other IDEs
+
+  The PowerShell Interactive Console
+    This module will cover:
+      Command Line Interface
+      The PowerShell ISE (Integrated Scripting Environment)
+      Cmdlets
+      Providers
+    
+
+  The PowerShell ISE (Integrated Scripting Environment)
+  Commenting in PowerShell
+  Your First Cmdlets
+  PowerShell Aliases
+  Putting the Power in PowerShell - Pipelining
+  Not Just Another Pretty Face - Out-Gridview
+  Providers in PowerShell
+
+Module 2: Using Variables in PowerShell
+Introduction to Variables
+Comparisons and Calculations in PowerShell
+PowerShell's Built-in Variables
+The Variable Cmdlets
+
+Module 3: Strings, Arrays, and Hash Tables
+Basic Strings
+String Interpolation
+Formatting Strings
+Arrays
+Hashtables
+
+Module 4: Program Flow
+Branching Logic
+Loops in PowerShell
+PowerShell Script Blocks
+
+Module 5: Reusing Code with Functions and Modules
+Basic Functions
+Scoping and Parameters
+Writing a Pipeline Enabled Function
+Advanced Functions
+Error Handling
+Beginning Modules
+Advanced Modules
+Making Modules Easy to Use
+Profiles
+
+Module 6: Advanced Concepts
+Debugging
+Security - Execution Policy
+Code Signing Overview
+Creating a Self Signed Code Signing Certificate
+Signing Your Scripts
+Remoting
+
+Module 7: Working with Objects
+Object Oriented Terminology
+Creating Objects from HashTables
+Creating Objects from PSObject
+Property Aliases and Script Blocks
+Script Blocks with Parameters
+Script Property
+Default Properties
+Classes from .NET Code - Static Methods
+Classes from .NET Code - Embedded
+Classes from .NET Code - External Files
+Adding Properties and Scripts to Existing Objects
+Serializing an Object
+Basic PowerShell V5 Classes
+PowerShell 5 Enums
+Advanced PowerShell V5 Classes
+
+Module 8: Resources, Other IDEs, and a Real World Module
+Alternate IDE 1 - Idera PowerShellPlus
+Alternate IDE 2 - Visual Studio PoshTools
+Alternate IDE 3 - Sapien PowerShell Studio
+PowerShell Resources
+Using Online Resources - The Deploy Module Script
+Creating the ZipCodeLookup Class
+Deploying the ZipCodeLookup Class
+Using the ZipCodeLookup Class Part 1
+Using the ZipCodeLookup Class Part 2
