@@ -1,0 +1,112 @@
+Combining and Filtering Data with T-SQL
+
+Module 1: Course Overview
+
+Module 2: Setting up the Environment
+  Setting up the Environment 
+  Run SQL Server Management Studio as Admin
+  Attach mdf files
+
+Module 3: Shaping Data in a Query with SELECT
+  Introduction
+    Course objective: 
+      Combine and filter data for both presentation and data analytics
+        include, Data manipulation via SELECT command 
+    
+    Four primary purpose of SQL Statement (CRUD)
+    Create
+      INSERT INTO table
+    READ 
+      SELECT field FROM table
+    UPDATE
+      UPDATE table SET field
+    DELETE 
+      DELETE FROM table 
+
+    Data Manipulation Language (DML)
+      Concatenation
+      CAST() & CONVERT()
+      Formatting Data
+        - Dates
+        - Strings
+        - Numbers
+      NULL
+      Extrapulate information from customer data: 
+        How long does it take to get customer's order?
+        How many years has an EE worked
+      Query Logic Methods:
+        Case, WHEN, IF ELSE
+      SQL Error handling 
+
+  Anatomy of the Select Statement
+    Syntax 
+      The rules that state how and in which order, words and symbols are used in a computer language 
+    Query
+      The question - what is asked?
+    Result set
+      The answer - the data returned from the query
+    SELECT query consisted of 4 elements:
+      SELECT -  always required
+      GROUP BY - required in some cases
+      FROM - specify which table or DB the data should be retrived from 
+
+      SELECT expressions (WHAT?)
+      FROM tables (WHERE?)
+      GROUP BY fields(SUM, COUNT, MIN, MAX) (aggregation)
+      HAVING or WHERE conditions (Filtered on?) (Optional)
+      ORDER BY Asc or Desc (Organized How?) (Optional)
+
+  Concatenation
+  Cast() & Convert()
+  Formatting and Calculating Dates
+  Formatting Using CASE WHEN
+  Summary
+
+Module 4: Combining Data From Two or More Tables using JOINS
+  Introduction
+  Primary and Foreign Keys
+  Inner Join
+  Left and Right Joins
+  Full Join
+  Self Join
+  Summary
+
+Module 5: Filtering the Results using WHERE
+  Introduction
+  Analyzing and Validating using WHERE
+  Expressions and Comparison Operators
+  Nested Select Statements
+  Summary
+
+Module 6: Limiting the Results with SQL Functions
+  Introduction
+  TOP(n) and TOP(n) PERCENT
+  Offset and Fetch
+  Using Variables to Limit Results
+  Summary
+
+Module 7: Using T-SQL Operators
+  Introduction
+  Difference Between Joins and Set Operators
+  Union All and Set Operator Rules
+  Union
+  Intersect
+  Except
+  Summary
+
+Module 8: Aggregating Data in a SELECT Query
+  Introduction
+  Count
+  Sum
+  Average
+  Min and Max
+  Aggregate Summary
+
+Module 9: Simplifying Queries with Intermediary Tables
+  Introduction
+  Common Table Expressions
+  Temporary Tables
+  Cursors
+  Summary
+
+Module 10: Summary
