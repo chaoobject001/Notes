@@ -45,18 +45,71 @@ Module 3: Shaping Data in a Query with SELECT
       The question - what is asked?
     Result set
       The answer - the data returned from the query
-    SELECT query consisted of 4 elements:
-      SELECT -  always required
-      GROUP BY - required in some cases
-      FROM - specify which table or DB the data should be retrived from 
+    
+    SELECT query consisted of several elements:
 
-      SELECT expressions (WHAT?)
-      FROM tables (WHERE?)
-      GROUP BY fields(SUM, COUNT, MIN, MAX) (aggregation)
-      HAVING or WHERE conditions (Filtered on?) (Optional)
-      ORDER BY Asc or Desc (Organized How?) (Optional)
+    Formula:
+      SELECT expressions (What should be returned)
+      FROM tables (Which table or DB the data should be retrived from)
+      GROUP BY fields(Necessary for aggregation - such as SUM, COUNT, MIN, MAX) 
+      HAVING conditions (Optional filter for aggregation)
+      WHERE conditions (Optional filter for Non-aggregation query)
+      ORDER BY Asc or Desc (Optional sorting for (multiple) field(s) - Ascending by default )
+    
+    Example: 
+      SELECT * FROM [Northwind].[dbo].[Employees]
+      -- Wildcard (*) is used to browse DB initially and returns all fields 
+
+      SELECT FirstName, LastName, Title, birthdate, Hiredate
+      FROM Northwind.dbo.Employees 
+      -- Return results for the five fields specified 
+      -- Full path is specified as "Northwind.dbo.Employees", where
+      -- "Northwind" is the DB name
+      -- "dbo" means table created by database owner (us)
+      -- "Employees" is the name of table  
+
+      SELECT FirstName, 
+       LastName, 
+       Title, 
+       birthdate, 
+       Hiredate
+      FROM Northwind.dbo.Employees
+      WHERE Title = 'Sales Representative'
+      ORDER BY LastName Desc;
+      -- select "Sales Representatives"
+      -- sort result set by LastName in descending order
+
+    APEX SQL Refactor is can work in SSMS and Visual Studio
 
   Concatenation
+    Concatenation
+      Linking items (fields) together to create single field as string
+      "1" + "1" = "11" OR "Red"+ " " + "Ball" = "Red Ball"
+    
+    Formula:
+      SELECT FirstName + '' + LastName AS EmployeeName (alias)
+      FROM Employees
+      WHERE Title = 'Sales Representative' (optional - filter on)
+      ORDER BY BirthDate DESC; (optional - sort by)
+    
+    Variant(s):
+      CONCAT()
+      
+      SELECT CONCAT(FirstName, ' ', LastName) AS EmployeeName 
+      FROM Employees
+    
+      Combination with other method call
+
+      SELECT 'Today is ' + CONVERT(varchar, GETDATE(), 1)
+      SELECT CONCAT('Today is ', CONVERT(varchar, GETDATE(), 1));
+
+    Why & Usage:
+      Better format for reporting or form
+      Single Responsibility Principle - easy maintaince - only 1 place to change
+      For customized user experience or reporting
+        Return concatenated reult as JSON or HTML
+      When results is NOT intended for analytics 
+
   Cast() & Convert()
   Formatting and Calculating Dates
   Formatting Using CASE WHEN
