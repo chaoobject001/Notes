@@ -1,0 +1,165 @@
+Combining and Filtering Data with T-SQL
+
+Module 1: Course Overview
+
+Module 2: Setting up the Environment
+  Setting up the Environment 
+  Run SQL Server Management Studio as Admin
+  Attach mdf files
+
+Module 3: Shaping Data in a Query with SELECT
+  Introduction
+    Course objective: 
+      Combine and filter data for both presentation and data analytics
+        include, Data manipulation via SELECT command 
+    
+    Four primary purpose of SQL Statement (CRUD)
+    Create
+      INSERT INTO table
+    READ 
+      SELECT field FROM table
+    UPDATE
+      UPDATE table SET field
+    DELETE 
+      DELETE FROM table 
+
+    Data Manipulation Language (DML)
+      Concatenation
+      CAST() & CONVERT()
+      Formatting Data
+        - Dates
+        - Strings
+        - Numbers
+      NULL
+      Extrapulate information from customer data: 
+        How long does it take to get customer's order?
+        How many years has an EE worked
+      Query Logic Methods:
+        Case, WHEN, IF ELSE
+      SQL Error handling 
+
+  Anatomy of the Select Statement
+    Syntax 
+      The rules that state how and in which order, words and symbols are used in a computer language 
+    Query
+      The question - what is asked?
+    Result set
+      The answer - the data returned from the query
+    
+    SELECT query consisted of several elements:
+
+    Formula:
+      SELECT expressions (What should be returned)
+      FROM tables (Which table or DB the data should be retrived from)
+      GROUP BY fields(Necessary for aggregation - such as SUM, COUNT, MIN, MAX) 
+      HAVING conditions (Optional filter for aggregation)
+      WHERE conditions (Optional filter for Non-aggregation query)
+      ORDER BY Asc or Desc (Optional sorting for (multiple) field(s) - Ascending by default )
+    
+    Example: 
+      SELECT * FROM [Northwind].[dbo].[Employees]
+      -- Wildcard (*) is used to browse DB initially and returns all fields 
+
+      SELECT FirstName, LastName, Title, birthdate, Hiredate
+      FROM Northwind.dbo.Employees 
+      -- Return results for the five fields specified 
+      -- Full path is specified as "Northwind.dbo.Employees", where
+      -- "Northwind" is the DB name
+      -- "dbo" means table created by database owner (us)
+      -- "Employees" is the name of table  
+
+      SELECT FirstName, 
+       LastName, 
+       Title, 
+       birthdate, 
+       Hiredate
+      FROM Northwind.dbo.Employees
+      WHERE Title = 'Sales Representative'
+      ORDER BY LastName Desc;
+      -- select "Sales Representatives"
+      -- sort result set by LastName in descending order
+
+    APEX SQL Refactor is can work in SSMS and Visual Studio
+
+  Concatenation
+    Concatenation
+      Linking items (fields) together to create single field as string
+      "1" + "1" = "11" OR "Red"+ " " + "Ball" = "Red Ball"
+    
+    Formula:
+      SELECT FirstName + '' + LastName AS EmployeeName (alias)
+      FROM Employees
+      WHERE Title = 'Sales Representative' (optional - filter on)
+      ORDER BY BirthDate DESC; (optional - sort by)
+    
+    Variant(s):
+      CONCAT()
+      
+      SELECT CONCAT(FirstName, ' ', LastName) AS EmployeeName 
+      FROM Employees
+    
+      Combination with other method call
+
+      SELECT 'Today is ' + CONVERT(varchar, GETDATE(), 1)
+      SELECT CONCAT('Today is ', CONVERT(varchar, GETDATE(), 1));
+
+    Why & Usage:
+      Better format for reporting or form
+      Single Responsibility Principle - easy maintaince - only 1 place to change
+      For customized user experience or reporting
+        Return concatenated reult as JSON or HTML
+      When results is NOT intended for analytics 
+
+  Cast() & Convert()
+  Formatting and Calculating Dates
+  Formatting Using CASE WHEN
+  Summary
+
+Module 4: Combining Data From Two or More Tables using JOINS
+  Introduction
+  Primary and Foreign Keys
+  Inner Join
+  Left and Right Joins
+  Full Join
+  Self Join
+  Summary
+
+Module 5: Filtering the Results using WHERE
+  Introduction
+  Analyzing and Validating using WHERE
+  Expressions and Comparison Operators
+  Nested Select Statements
+  Summary
+
+Module 6: Limiting the Results with SQL Functions
+  Introduction
+  TOP(n) and TOP(n) PERCENT
+  Offset and Fetch
+  Using Variables to Limit Results
+  Summary
+
+Module 7: Using T-SQL Operators
+  Introduction
+  Difference Between Joins and Set Operators
+  Union All and Set Operator Rules
+  Union
+  Intersect
+  Except
+  Summary
+
+Module 8: Aggregating Data in a SELECT Query
+  Introduction
+  Count
+  Sum
+  Average
+  Min and Max
+  Aggregate Summary
+
+Module 9: Simplifying Queries with Intermediary Tables
+  Introduction
+  Common Table Expressions
+  Temporary Tables
+  Cursors
+  Summary
+
+Module 10: Summary
