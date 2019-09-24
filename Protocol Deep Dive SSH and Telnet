@@ -1,0 +1,50 @@
+The Secure Shell (SSH) Protocol
+  Communication Protocol Terms
+    Unix and Linux based remote communication protocol 
+    Module covers OpenSSH
+    
+    Communication protocol 
+      Accepted rules that establish the synchronization methodology
+      and syntax that parties to a communication session
+      will use to govern their exchanges
+
+    Open System Interconnection (OSI) Model
+      7 layers:
+        Layer 7: Application
+          Ex. Image load by browser
+        Layer 6: Presentation
+          Ex. Image is converted into readable format where data transformation 
+          like encryption and media file processing 
+        Layer 5: Session
+          Ex. Constant connection w/ remote web server via HTTP protocol
+          SSH and Telnet also operate on layer 5 
+          [A phone call without conversation]
+        Layer 4: Transport
+          Ex. Data transfer on top of session, on transport layer
+          TCP protocol
+        Layer 3: Network
+          Ex. Infrastructure made up of routers or IPv4 or ICMP protocol
+              that makes adress assignment, routng b/t network, control moving network traffic  
+              - Routing request of URL from browser to server's host 
+        Data / Data Link
+          Take care transmission of data frames
+          Handle acknowledagements of reception
+          Data Frame:
+            
+        Physical
+
+      Layer 1 to 3 are Media layer - provide actual connectivity 
+      Layer 4 to 7 are Host layers 
+
+
+  Introduction to OpenSSH
+  Using SSH Debugging Tools
+  Basic SSH Troubleshooting
+  Common SSH Failure Scenarios
+
+
+The Telnet Protocol
+  Telnet's Historical Legacy
+  When NOT to Use Telnet
+  How Telnet works
+  Troubleshooting Telnet Connections
