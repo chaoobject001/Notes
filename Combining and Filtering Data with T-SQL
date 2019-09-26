@@ -111,6 +111,17 @@ Module 3: Shaping Data in a Query with SELECT
       When results is NOT intended for analytics 
 
   Cast() & Convert()
+    Why & Usage: 
+      Convert one data type to another in CRUD / Concatenation
+      Handle NULL values
+      Join tables on fields with different data types
+      End user report formatting 
+      Convert() is OFTEN used for Formatting 
+      CAST() is for data type changing (in calculation, etc)
+
+    
+      
+
   Formatting and Calculating Dates
   Formatting Using CASE WHEN
   Summary
