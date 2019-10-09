@@ -117,7 +117,6 @@ Module 3: Shaping Data in a Query with SELECT
       Some data types need to be converted into string before concatenation  
 
   Cast() & Convert()
-<<<<<<< HEAD
     Why:
       Alter data type from one to another
       Used in CRUD
@@ -164,7 +163,6 @@ Module 3: Shaping Data in a Query with SELECT
       on fields with different data values
       via Cast() to alter data type
 
-=======
     Why & Usage: 
       Convert one data type to another in CRUD / Concatenation
       Handle NULL values
@@ -173,10 +171,6 @@ Module 3: Shaping Data in a Query with SELECT
       Convert() is OFTEN used for Formatting 
       CAST() is for data type changing (in calculation, etc)
 
-    
-      
-
->>>>>>> f66cb3671b8ea008d237bb4aa341ba4be705ac01
   Formatting and Calculating Dates
   Formatting Using CASE WHEN
   Summary

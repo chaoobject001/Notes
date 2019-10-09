@@ -1,0 +1,38 @@
+INSEEGO code exercise
+
+Instructions:
+Write a basic test plan for the following scenario (use gherkin if you are comfortable
+with gherkin)
+
+Given
+There are 2 Companies (companyV1 and companyV2) which are on 2 different versions
+of the product V1 and V2.
+
+The process of adding a product to Cart is different for the 2 versions. For V1, the user
+chooses the product then the plan, for V2, it’s the other way around. Checkout is the
+same.
+
+Orders can only contain one product and one plan. They are defined by their orderId
+
+Users can only place orders in one company and can only place a max of 3 orders
+
+           
+                           
+Exercise:
+Provide orders that adequately test your plan as a separate file.
+
+Provide object structure data that fulfills all given requirements
+
+Write code structures to validate a set of orders placed by User1 in Company1 and User2 in
+Company2 and print the list of orders per user including the orderId as well as the product and
+plan for each order
+
+Please use your most proficient programming language to create object oriented design
+to implement classes and methods . Please add comments describing any assumptions
+you make
+
+Must be completed in 2 days
+
+Attach the results to a zip file (avoid naming it with the word “test” as it gets caught by
+our spam filers). If you have a shared file location (google docs, etc) this also works
+great.
