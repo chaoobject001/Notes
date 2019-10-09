@@ -67,12 +67,14 @@ Module 2: Working with Tables
     Here is three types of primary keys
     create table Users {
       -- Id integer primary key identity(1, 1): Integer based primary key, auto-incremented by 1, starting from number 1 each time
-      -- Integer is fast and small. However, there is max integer count (about 2 billion)      
-      -- Id uniqueidentifier primary key default newid(): A uniqueidentifier (GUID), auto-incrementing using newid() function, which generate GUID 
-                                                          Works well when there are not too many records in DB; GUID takes up more space
-                                                          Using newsequentialid() method (instead of newid()) to add new Id makes its easier to sort by indexer 
+      --     Integer is fast and small. However, there is max integer count (about 2 billion)      
+      -- Id uniqueidentifier primary key default newid(): 
+      --     A uniqueidentifier (GUID), auto-incrementing using newid() function, which generate GUID 
+      --     Works well when there are not too many records in DB; GUID takes up more space
+      --     Using newsequentialid() method (instead of newid()) to add new Id makes its easier to sort by indexer 
       -- email varchar(50) not null: string as primary key:
-      --   email as primary key - CON: email generally has business value to application; it helps identify user and communicate with user; but often changeable  
+      --  email as primary key - CON: email generally has business value to application; 
+      --  it helps identify user and communicate with user; but often changeable  
 
     }
     
@@ -90,6 +92,7 @@ Module 2: Working with Tables
         RoleId integer,
         primary key(UserId,RoleId)
         -- relationship b/t role and user is unique
+        -- each combination (as primary key) can ONLY happen once
       );
 
       create table Roles(
@@ -112,6 +115,7 @@ Module 2: Working with Tables
       Last varchar(50),
       Bio varchar(MAX)
       -- if space is of conern, use varchar or varchar(MAX)
+      -- if not, Bio text is OK too
     );
 
   Column Defaults
