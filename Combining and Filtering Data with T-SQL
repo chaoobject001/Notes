@@ -63,10 +63,11 @@ Module 3: Shaping Data in a Query with SELECT
       SELECT FirstName, LastName, Title, birthdate, Hiredate
       FROM Northwind.dbo.Employees 
       -- Return results for the five fields specified 
-      -- Full path is specified as "Northwind.dbo.Employees", where
+      -- Full path is specified as "Northwind.dbo.Employees", AKA. "Fully Qualified Namespace", where
       -- "Northwind" is the DB name
       -- "dbo" means table created by database owner (us)
-      -- "Employees" is the name of table  
+      -- "Employees" is the name of table 
+      -- Use "Available Database" dropdown to select DB by default adn reference table without full path 
 
       SELECT FirstName, 
        LastName, 
@@ -79,7 +80,9 @@ Module 3: Shaping Data in a Query with SELECT
       -- select "Sales Representatives"
       -- sort result set by LastName in descending order
 
-    APEX SQL Refactor is can work in SSMS and Visual Studio
+    APEX SQL Refactor can work in SSMS and Visual Studio
+
+    To execute query: Ctrl + E 
 
   Concatenation
     Concatenation
@@ -93,24 +96,73 @@ Module 3: Shaping Data in a Query with SELECT
       ORDER BY BirthDate DESC; (optional - sort by)
     
     Variant(s):
-      CONCAT()
+      -- CONCAT() may not be available in older DB 
       
       SELECT CONCAT(FirstName, ' ', LastName) AS EmployeeName 
       FROM Employees
+      -- use AS to customize a column name
+
     
-      Combination with other method call
+      Combination with other method call and not necessary with DB fields
 
       SELECT 'Today is ' + CONVERT(varchar, GETDATE(), 1)
       SELECT CONCAT('Today is ', CONVERT(varchar, GETDATE(), 1));
 
     Why & Usage:
-      Better format for reporting or form
+      Better, consistent format for reporting or form letters
       Single Responsibility Principle - easy maintaince - only 1 place to change
       For customized user experience or reporting
         Return concatenated reult as JSON or HTML
-      When results is NOT intended for analytics 
+      When results is NOT intended for analytics
+      Some data types need to be converted into string before concatenation  
 
   Cast() & Convert()
+    Why:
+      Alter data type from one to another
+      Used in CRUD
+      Produce specific data for customized concatenation 
+      Convert() is often used for formatting 
+      Cast() is often used for stright data type change (for calculation) 
+      Working with NULL values
+      Joining tables
+      Formatting enduser reports
+    
+    Diff b/t Cast() & Convert():
+      CAST():
+        ANSI standard
+        Support by ALL RDMS
+      CONVERT():
+        Supported by 
+          MS SQL Server
+          MySQL
+          Oracle
+        NOT suported by
+          PostgreSQL
+          SQLite 
+        Additional formatting capability
+          
+      Best scenarios for Cast() / Convert()
+        Use Cast()
+          Whenever formatting is NOT used
+
+        Use Convert()
+          Only when platform support is available 
+
+    Cast() & Convert() Syntax:
+      
+
+    Convert() to format numerical, date and currency values
+
+    Cast() to alter data type to perform calculation
+
+    Error handling with
+      TRY_CAST()
+      TRY_CONVERT()
+
+    Join tables 
+      on fields with different data values
+      via Cast() to alter data type
+
   Formatting and Calculating Dates
   Formatting Using CASE WHEN
   Summary
