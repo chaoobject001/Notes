@@ -189,7 +189,7 @@ Module 3: Shaping Data in a Query with SELECT
 
       SELECT CAST(GETDATE() AS varchar(11)) AS CurrentDate  -- Add column name CurrentDate
 
-
+      http://kilianwebservice.de:8080/documents/20195/62637/BDD_in_Action.pdf/3a6a2aef-5bf5-4ccd-a33d-e153d1a9edb3
 
   Formatting and Calculating Dates
   Formatting Using CASE WHEN
