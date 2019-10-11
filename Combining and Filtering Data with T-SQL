@@ -124,8 +124,8 @@ Module 3: Shaping Data in a Query with SELECT
       Convert() is often used for formatting 
       Cast() is often used for stright data type change (for calculation) 
       Working with NULL values
-      Joining tables
-      Formatting enduser reports
+      Joining tables with different data type
+      Formatting end user reports
     
     Diff b/t Cast() & Convert():
       CAST():
@@ -142,22 +142,32 @@ Module 3: Shaping Data in a Query with SELECT
         Additional formatting capability
           
       Best scenarios for Cast() / Convert()
-        Use Cast()
-          Whenever formatting is NOT used
-
-        Use Convert()
-          Only when platform support is available 
+        Use Cast() whenever formatting is NOT used
+        Use Convert() Only when platform support is available 
+        Both change an expression of one data type to another
+        NOT all data type conversions are allowed, like text to integer
 
     Cast() & Convert() Syntax:
-      
+      CAST(expression AS data_type [(length)])
+      -- expression: field or value to be altered
+      -- data_type: data_type to be altered into
+      -- length: optional; specify length of changed value returned, available only when slink specifications are supported 
+
+      CONVERT(data_type [(length)], expression[, style])
+      -- Convert() can change both data type, length and formatting 
+      -- stype: specify formatting
 
     Convert() to format numerical, date and currency values
+
 
     Cast() to alter data type to perform calculation
 
     Error handling with
-      TRY_CAST()
-      TRY_CONVERT()
+      -- when it's possible that expression may not be allowed to be altered into data type specified 
+        TRY_CAST()
+        TRY_CONVERT()
+
+    SQL Server Data Type Conversion Chart can be used as reference
 
     Join tables 
       on fields with different data values
@@ -170,6 +180,16 @@ Module 3: Shaping Data in a Query with SELECT
       End user report formatting 
       Convert() is OFTEN used for Formatting 
       CAST() is for data type changing (in calculation, etc)
+
+    Examples:
+      SELECT GETDTE()                         -- return 2019-10-10 19:07:33.777
+      SELECT CAST(GETDATE() AS varchar(50))   -- return Oct 10 2019  7:10PM
+      SELECT CAST(GETDATE() AS varchar(11))   -- return Oct 10 2019
+      -- Better ways to get formatting: split; some logic with case
+
+      SELECT CAST(GETDATE() AS varchar(11)) AS CurrentDate  -- Add column name CurrentDate
+
+
 
   Formatting and Calculating Dates
   Formatting Using CASE WHEN
