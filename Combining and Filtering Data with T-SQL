@@ -181,19 +181,41 @@ Module 3: Shaping Data in a Query with SELECT
       Convert() is OFTEN used for Formatting 
       CAST() is for data type changing (in calculation, etc)
 
-    Examples:
+    Examples for CAST() date:
       SELECT GETDTE()                         -- return 2019-10-10 19:07:33.777
       SELECT CAST(GETDATE() AS varchar(50))   -- return Oct 10 2019  7:10PM
       SELECT CAST(GETDATE() AS varchar(11))   -- return Oct 10 2019
       -- Better ways to get formatting: split; some logic with case
 
       SELECT CAST(GETDATE() AS varchar(11)) AS CurrentDate  -- Add column name CurrentDate
+    
+    Examples for CONVERT() date:
+      SELECT CONVERT(varchar(50), GETDATE())  -- return date and time, such as Oct 18 2019 6:37PM
+      SELECT CONVERT(varchar(50), GETDATE(), 0) -- Style = 0 return same result
 
-      http://kilianwebservice.de:8080/documents/20195/62637/BDD_in_Action.pdf/3a6a2aef-5bf5-4ccd-a33d-e153d1a9edb3
+      SELECT CONVERT(varchar(50), GETDATE(), 101) -- Style = 101, return numeric date like 10/18/2019
+      SELECT CONVERT(varchar(50), GETDATE(), 101) AS CurrentDate -- return numeric date under column, CurrentDate
 
+    Examples of CAST() / CONVERT() incompatible types:
+      SELECT CAST('Hello1' AS int)    -- Conversion failed when converting the varchar value 'Hello1' to data type int.
+      SELECT CONVERT(int, 'Hello2')   -- Conversion failed when converting the varchar value 'Hello2' to data type int.
+
+      -- CAST() / CONVERT() incompatible types produce errors and stop script execution
+      -- To bypass stopping, use TRY_CAST() / TRY_CONVERT() 
+      -- incompatible types produce NULL value instead 
+      SELECT TRY_CAST('Hello1' AS int)  -- return NULL
+      SELECT TRY_CONVERT(int, 'Hello2') -- return NULL
+
+    Examples of TRY_CAST() while JOIN:
+    When JOIN two tables, the tables must have the same data types or compatible data type values
+    System will implicitly convert data types for a match
+
+
+      
   Formatting and Calculating Dates
   Formatting Using CASE WHEN
   Summary
+  http://kilianwebservice.de:8080/documents/20195/62637/BDD_in_Action.pdf/3a6a2aef-5bf5-4ccd-a33d-e153d1a9edb3
 
 Module 4: Combining Data From Two or More Tables using JOINS
   Introduction
