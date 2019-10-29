@@ -184,8 +184,8 @@ Module 3: Shaping Data in a Query with SELECT
     Examples for CAST() date:
       SELECT GETDTE()                         -- return 2019-10-10 19:07:33.777
       SELECT CAST(GETDATE() AS varchar(50))   -- return Oct 10 2019  7:10PM
-      SELECT CAST(GETDATE() AS varchar(11))   -- return Oct 10 2019
-      -- Better ways to get formatting: split; some logic with case
+      SELECT CAST(GETDATE() AS varchar(11))   -- return first 11 characters, "Oct 10 2019" 
+      -- When CONVERT() is not available, there are other ways to get formatting: split; some logic with case
 
       SELECT CAST(GETDATE() AS varchar(11)) AS CurrentDate  -- Add column name CurrentDate
     
@@ -200,15 +200,29 @@ Module 3: Shaping Data in a Query with SELECT
       SELECT CAST('Hello1' AS int)    -- Conversion failed when converting the varchar value 'Hello1' to data type int.
       SELECT CONVERT(int, 'Hello2')   -- Conversion failed when converting the varchar value 'Hello2' to data type int.
 
-      -- CAST() / CONVERT() incompatible types produce errors and stop script execution
+      -- CAST() / CONVERT() incompatible types produce errors and STOP script execution
       -- To bypass stopping, use TRY_CAST() / TRY_CONVERT() 
       -- incompatible types produce NULL value instead 
-      SELECT TRY_CAST('Hello1' AS int)  -- return NULL
-      SELECT TRY_CONVERT(int, 'Hello2') -- return NULL
+      SELECT TRY_CAST('Hello1' AS int)  -- No error, return NULL
+      SELECT TRY_CONVERT(int, 'Hello2') -- No error, return NULL
 
     Examples of TRY_CAST() while JOIN:
     When JOIN two tables, the tables must have the same data types or compatible data type values
     System will implicitly convert data types for a match
+    Setup with something like following script:
+      CREATE TABLE ColorTable2(
+        ColorName varchar(50) NOT NULL,
+        SortOrder varchar(50) NOT NULL
+      );
+
+      INSERT INTO ColorTable2
+      VALUES
+      ('Green', '1'),
+      ('Purple', '2'),
+      ('Yellow', '3'),
+      ('Blue', '4'),
+      ('Orange', '5');
+
 
 
       
