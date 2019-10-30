@@ -210,6 +210,11 @@ Module 3: Shaping Data in a Query with SELECT
     When JOIN two tables, the tables must have the same data types or compatible data type values
     System will implicitly convert data types for a match
     Setup with something like following script:
+      CREATE TABLE ColorTable1(
+        ColorName varchar(50) NOT NULL,
+        SortOrder int NOT NULL
+      );
+
       CREATE TABLE ColorTable2(
         ColorName varchar(50) NOT NULL,
         SortOrder varchar(50) NOT NULL
@@ -222,11 +227,27 @@ Module 3: Shaping Data in a Query with SELECT
       ('Yellow', '3'),
       ('Blue', '4'),
       ('Orange', '5');
+    
+    Examples of JOIN with implicit conversion
+      SELECT * FROM ColorTable1 
+      JOIN ColorTable2 ON ColorTable1.SortOrder = ColorTable2.SortOrder
+      -- return results without error b/c implicit conversion data type is error free
 
+    Example of handle error from implicit conversion
+      -- First, update ColorTable2 SortOrder to literal 'one'
+      UPDATE ColorTable2 SET SortOrder = 'one' WHERE ColorName = 'Green'
 
-
+      -- When executing same JOIN statement in previous example, an error was thrown 
+      -- "Conversion failed when converting the varchar value 'one' to data type int."
+      -- Explicit TRY_CAST() to avoid this error
+      SELECT * FROM ColorTable1 
+      JOIN ColorTable2 ON ColorTable1.SortOrder = TRY_CAST(ColorTable2.SortOrder AS INT)
+      -- The results are now returned without error, but with one fewer row.
+      -- TRY_CAST() return NULL when trying to cast 'one' as an integer 
       
   Formatting and Calculating Dates
+    
+
   Formatting Using CASE WHEN
   Summary
   http://kilianwebservice.de:8080/documents/20195/62637/BDD_in_Action.pdf/3a6a2aef-5bf5-4ccd-a33d-e153d1a9edb3
