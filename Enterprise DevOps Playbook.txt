@@ -1,0 +1,81 @@
+DevOps
+  culture
+  principles
+  processes
+  that automate streamline e2e flow
+  from code development
+  to delivering features to users in production
+  on an ongoing basis
+
+Goal
+  At the same time:
+    reduce risk
+    inclease velocity 
+    improve quality 
+
+Players
+  SW Dev 
+  QA
+  Sec
+  Ops
+
+ToDo
+  - Transform culture
+  
+  - Change the way to 
+    Design & Build SW
+    in a Modular approach
+  
+  - Automate legacy (= existing?) processes
+
+  - Design contracts to enable integration of Dev and Ops
+
+  - Collaborate to leads to more collaboration 
+
+  - Honest performance assessment 
+
+  - Consistent improvement in SW delivery strategies
+    based on
+    EXP / Feedback / Lesson
+    project requirement 
+
+Each Play is a practical roadmap to:
+  Define starting point, steps and plan
+  to be adapted in different context 
+
+  Play 1 - Develop the Team - culture, principles and roles
+    Successful change 
+      depends on 
+        capabilities of people and culture
+    culture drives structure   
+
+  Play 2 - Study DevOps Practices (7)
+    Definition, How and What to Measure
+    Minimum knowledage of expectation from each Practice
+    Questions about definition & scope
+    Implementation checklist
+
+  Play 3 - Assess DevOps Maturity Level
+    Continuously assess strength and weakness as a team
+
+  Play 4 - Create DevOps Pipeline
+    Pipeline 
+      - Repeatable end to end implementation of DevOps workflow
+      - From code check-in
+        to automated test
+        to manual review
+        to deployment
+      - consisted of Activities & Tools
+    
+  Play 5 - Learn and Improve Through Metrics & Visibility
+    You cannot manage what you cannot measure
+    - Where you are
+    - Where you are going
+    - How to get where you want to go
+  
+PLAY 1 - Develop the Team - culture, principles and roles
+
+  
+
+  
+
