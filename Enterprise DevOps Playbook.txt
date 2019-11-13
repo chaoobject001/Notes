@@ -77,8 +77,7 @@ PLAY 1 - Develop the Team - culture, principles and roles
   Principle and Culture
     Root causes of issues in DevOps implementation is often traced to one of the principle or culture
     1. Ops as 1st-class citizen
-      Operational needs should h
-        ave equal weight to other backlog items 
+      Operational needs should have equal weight to other backlog items 
     2. Dev as 1st-responder to production issues
       Add code base knowledge in diagnosis team 
       Enforce dev accountability 
@@ -189,22 +188,101 @@ PLAY 1 - Develop the Team - culture, principles and roles
 
     ROLE: Site Reliability Engineer
       Defination:
-
+        Monitor apps or services POST-deployment
+      
       RESPONSIBILITIES:
-
-      REQ:
-
-      Specific Tech:
+        Automate as much as possible to 
+        establish key thresholds for alert automation to 
+        baseline the different health levels for applications and services
+      
+      REQ / Specific Tech:
+        Matrics gathering data across environments with:
+          Application Performance Monitoring [APM]
+          Security Information & Event Management [SIEM] 
+            - collecting security alert in single location to distribute centralized message
+            - provide logging users and reporting system changes for policy compliance purpose 
+              - PCI, HIPPA and FFIEC
+            - automate cross-sources-correlation analysis to pre-filter false positives with
+              - Threat Feeds
+              - Blacklists
+              - Geolocations
+        And troubleshooting gathered data  
 
     ROLE: Software Engineer
-      Defination:
+      Defination: developers
 
-      RESPONSIBILITIES:
+      REQ / RESPONSIBILITIES:
+        embrace principles (in PLAY 1) 
+        complete team mindset:
+          Dev also covers testing, infrastructure and system admin roles
+          - you build it, you run it, you fix it
 
-      REQ:
+      Specific Tech: - 
 
-      Specific Tech:
+    Other ROLES of similar names include "Release Engineer" or "Ops Lead"  
+
+PLAY 2: Study the DevOps Practices
   
+  From code commit to deployment 
+    
+  PRACTICE 1: Configuration management 
+    Defination:
+      Configuration management (CM) = 
+        source control 
+        [+ manage / deploy artifacts] 
+        [+ configure SW/HW] 
+      to automate and standardize deployment 
+
+      Centralized workflow - 1 branch
+        usually used to transition out of traditional source control like Apache Subversion
+
+      Feature workflow
+
+      Gitflow workflow
+
+        Master branch
+
+        Hotfix branch
+
+        Release branch 
+
+        Development branch 
+
+        Feature branch
+    
+    Guiding Questions:
+      1. How do you manage source code versions?
+      2. Do you maintain & improve production system OR build new system?
+      3. How many feature are being built at the same time?
+      4. What happen when you receive a defect from Ops team? 
+      5. How do you fix defect and manage source code change?
+      6. Who owns source code control system? Dev team, maintenance team, Ops team?
+      7. What criteria is used to determine source code branching strategy?
+      8. Are you building a monolithic system or microservices-based distributed system?
+      9. How many code repo do you have / expect to have?
+      10. Are you planning continuous delivery or continuous deployment?   
+
+    Checklist:
+      1. Document configuration management approach in a simple, easy-to-read document to everyone 
+      2. Select a source code control system that allows all types of branching techniques
+         - even some advanced flow may not be used 
+      3. Select configuration workflow based on operations need and continuous delivery objectives. 
+         (Gitflow is most effective for delivering)
+      4. Document branching strategy for easy knowledge sharing
+      5. Define limitations of configuration management and source code branching strategy 
+
+
+  PRACTICE 2: Continuous integration 
+
+  PRACTICE 3: Automated testing 
+
+  PRACTICE 4: Infrastructure as Code
+
+  PRACTICE 5: Continuous delivery 
+
+  PRACTICE 6: Continuous deployment 
+
+  PRACTICE 7: Continuous monitoring 
 
 
 
