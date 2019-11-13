@@ -239,11 +239,18 @@ PLAY 2: Study the DevOps Practices
       Feature workflow
 
       Gitflow workflow
-
+        Based on Vincent Driessen’s Git Branching model
+        
         Master branch
-
+          Offical release history 
+          Code merged only before new release
+          All historical releases are tagged in master branch
+        
         Hotfix branch
-
+          Support maintenance or patch fixes that require quick release into production
+          The ONLY branch forks off the master directly 
+          After fix is completed, merged back into master, development and/or release branches as needed
+          
         Release branch 
 
         Development branch 
