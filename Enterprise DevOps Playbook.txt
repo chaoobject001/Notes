@@ -74,8 +74,139 @@ Each Play is a practical roadmap to:
     - How to get where you want to go
   
 PLAY 1 - Develop the Team - culture, principles and roles
-
+  Principle and Culture
+    Root causes of issues in DevOps implementation is often traced to one of the principle or culture
+    1. Ops as 1st-class citizen
+      Operational needs should h
+        ave equal weight to other backlog items 
+    2. Dev as 1st-responder to production issues
+      Add code base knowledge in diagnosis team 
+      Enforce dev accountability 
+    3. Shorten time b/t bug identification to production fix 
+      Dev as part of Ops support team to proactively identify potential needs
+      Common obstacles of communication & integration
+        - separate team w/ separate contracts
+        - separate responsibility & manual process
+    4. Shorten time b/t code commit to deployment
+      Design system architecture to deploy discrete changes 
+      so that process automtion is possible 
+      to reduce deployment time and improve quality 
+    5. Minimize coordination to deploy release
+      Instead of formal communication b/t groups, apply following:
+      - Ongoing interaction
+      - Shared knowledge on every aspect of project
+      - Shared automated repeatable processes 
+      - Shared responsibility
+      Maximize transparency OVER constant forced communication 
+    6. STOP & FIX defects identified by continuous flow and monitoring 
+      Constant visibility into all programs and systems to 
+      monitor, identify and resolve issues 
+      before negatively impact user experience 
+    7. Enforce STD process to ensure predictable outcomes
+      Exception is NOT norm
+      Instability breaks automation - which in term breaks DevOps
+    8. Become a learning organization through continual feedback and ACTION
+      Learning from failure 
+      -> institutional memory 
+      -> changes in action 
+      -> prevent future failure 
   
+  New DevOps Role
+    Autonomous team independently manage own 
+      - work
+      - working practices 
+      - Build
+      - Deploy
+      - Operate and maintain SW 
+
+    Anti-pattern: Standalone DevOps Team
+    instead, 
+    a DevOps engineer OR Enginner with DevOps skills must take on ownership of a feature 
+
+    ROLE: DevOps Architect
+      Defination:
+        uses automation to create efficient, 
+        effective processes and standards to 
+        continuously improve quality and estimation.
+
+      RESPONSIBILITIES:
+        oversees tool analysis and selection and implements test automation frameworks and approaches
+
+      REQ:
+        technical depth necessary to provide advice for 
+          making appropriate technology choices
+          defending recommendations
+          driving technical implementation
+          end-to-end test automation and tool strategies
+        
+      Specific Tech:
+        - containerization and orchestration of containers across 
+        multiple Infrastructure as a Service (IaaS) vendors 
+        - deployment automation using IaaS providers 
+
+    
+    ROLE: DevOps Engineer
+      Defination:
+        hybrid technical role that comprises development and operations, 
+      
+      RESPONSIBILITIES:
+        Implement development and deployment pipeline
+        Specifically, 
+          developing Infrastructure as Code that enables immutable infrastructure, repeatability, 
+          and automation of the entire infrastructure for each environment.
+      
+      REQ:
+        proficient in coding or scripting
+        process reengineering
+        collaborating with multiple groups
+
+      Specific Tech:
+        well-versed in multiple popular and commonly used operating systems and platforms
+
+    ROLE: Test Automation Engineer
+      Defination:
+         test automation engineer automates as many steps as possible to 
+         achieve the test coverage and confidence required to quickly push changes to production
+      
+      RESPONSIBILITIES:
+        The test automation engineer provides the framework and expertise 
+        to enable developers to embed test automation as part of the continuous process.
+
+      REQ:
+        well-versed in software testing processes and tools 
+          - unit testing, mock integration testing, and test automation tools like Selenium
+        Scripting needed to implement automated test processes for each DevOps pipeline step  
+      
+      Specific Tech:
+        automations include 
+          unit tests 
+          static code tests 
+          smoke tests 
+        Specific tests: 
+          Section 508 compliance checks
+          SLA validations
+          vulnerability scans.
+
+    ROLE: Site Reliability Engineer
+      Defination:
+
+      RESPONSIBILITIES:
+
+      REQ:
+
+      Specific Tech:
+
+    ROLE: Software Engineer
+      Defination:
+
+      RESPONSIBILITIES:
+
+      REQ:
+
+      Specific Tech:
+  
+
+
 
   
 
