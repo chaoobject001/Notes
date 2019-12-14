@@ -1,0 +1,63 @@
+Module 1 Course Overview
+
+Module 2 What Is T-SQL?
+  Module Introduction
+  What Is T-SQL?
+  A Little SQL Server Architecture
+  Tools
+  Demo: Tools
+  Module Review
+
+Module 3 Our First SELECT
+  Module Introduction
+  What Is a SQL Query?
+  More Terminology
+  Demo: First SELECT
+  Module Review
+
+Module 4 The FROM Clause
+  Module Introduction
+  TSQL Demo Database
+  Demo: FROM Single Table
+  Introduction to Multiple Tables in FROM
+  Demo: Multiple Tables
+  Module Review
+
+Module 5 Filtering with WHERE
+  Module Introduction
+  Understanding NULLs
+  3VL (Ternary) Logic
+  Logical Predicates and Operators
+  Filtering with WHERE
+  Module Review
+
+Module 6 Grouping Rows
+  Module Introduction
+  What Is Grouping Good For?
+  Grouping Rows
+  Group Filtering with HAVING
+  Module Review
+  Evaluating SELECT Expressions
+  Module Introduction
+
+Module 7 Evaluating SELECT Expressions
+Dealing with NULLs
+Using DISTINCT
+Module Review
+
+Module 8 Ordering and Paging
+  Module Introduction
+  Law of Order
+  ORDER BY
+  Determinism and Tiebreakers
+  Paging Result Sets
+  Demo: Ordering and Paging
+  Module Review
+
+Module 9 Wrapping Up
+  Module Introduction
+  Course Review
+  Takeaway
+  Feedback
+  Next Steps
+  Additional Resources and Conclusion
