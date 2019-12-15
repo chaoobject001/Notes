@@ -1,10 +1,96 @@
 Module 1 Course Overview
+  SQL is around for 50+ years 
+  How SQL work > Syntax
+  Logical challenges & pitfall
+
+  SQL Terminology & Tools
+  Intricacies of SQL
+  Underlying concepts of SQL & Relational Model counter part
+  How data is processed by every clause of SELECT query
+  How to prepare source data, filter it effectively 
+  How to handle complications of missing data
+  How to combine multiple Rows
+  How to support presentation, ordering and paging and when NOT to   
 
 Module 2 What Is T-SQL?
   Module Introduction
+    Terminology
+    Architectural Overview
+    Tools
+
   What Is T-SQL?
+    Standardized by ANSI and ISO
+    1st edition published in 1986, latest in 2019
+    Each vandor uses subset of and extensions to ANSI SQL standard 
+    T-SQL = Transact SQL 
+      used by Microsoft SQL Server and Sybase
+    
+    MS SQL Server = relational DB management system (RDBMS)
+    Other types of Database Management System (DBMS) include:
+      Hierarchal
+      Object-oriented 
+      Document stores 
+      Key value stores
+      Graph database
+
+    Relational model  
+      a data modeling paradigm based on set theory and first order predicate logic
+
+    What is DB? Simon Allardice's 'Databases - executive briefing'
+
   A Little SQL Server Architecture
+    SQL Server => SQL Server Services
+      Core SQL DB Engine
+      Macine learning 
+      Integration Analysis 
+      Reporting 
+      Replication
+      Others 
+
+    Core SQL DB Engine can be installed on 
+      Windows / Linux OS
+      Docker container
+
+    Most Cloud provider offer SQL Server as a managed cloud product 
+    MS Azure has Azure SQL DB, a SQL Server DB in a platform as a Service 
+
+    SQL Server is 
+      a multi-user server
+      communicated via TCP / IP port
+
+    User and application servers use API to send queries to server and receive results from network
+
+    Two authentication methods for users and application clients
+      SQL Authentication - login credential stored internally 
+      Windows Authentication - Active Directory for single sign-on scenario
+
+    SQL Server Object Hierarchy
+      OS contains 1 or more ...
+      SQL Server Instance that contains 1 or more ...
+      Database that contains 1 or more ...
+      Schema that contains ...
+      Object(s) like
+        Table
+        View
+        Store Procedure
+        others    
+
+    Fully Qualified Object Names
+      Can access every object
+      Consist of 4 parts: [Instance].[Database].[Schema].Object
+
+    Omit 
+      Instance - use current instance connection
+      Database - use current session's DB context
+      Schema   - use dbo (database owner) or explicit default schema
+
   Tools
+    SQL Server Instance: azure sql database also available  
+    Client IDE: SSMS or Azure Data Studio
+    Online tools - No persist data:
+      www.sbfiddle.uk
+      www.sqlfiddle.com
+
   Demo: Tools
   Module Review
 
@@ -56,7 +142,12 @@ Module 8 Ordering and Paging
 
 Module 9 Wrapping Up
   Module Introduction
+  
   Course Review
+    What is T-SQL and its root in relational model
+    What is SQL Server, the ditions to use, authentication
+    How to access object using fully qualified names
+
   Takeaway
   Feedback
   Next Steps
