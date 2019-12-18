@@ -96,12 +96,53 @@ Module 2 What Is T-SQL?
 
 Module 3 Our First SELECT
   Module Introduction
+    Query execution order
+    Terminology 
+      Sets
+      Expressions
+      Operators
+      Functions
+      Aliases
+      Data types
+    SELECT without FROM
   What Is a SQL Query?
+    Complete list of SQL clause (caluse = part of a sentence that contains a verb):
+      (5) SELECT          - List of expressions to return
+      (1) FROM            - Source data set, the ONLY data available for all following clauses 
+      (2) WHERE           - Filter rows with predicate (a Boolean function that can return True or False)  
+      (3) GROUP BY        - Rows combined into groups based on grouping expression
+      (4) HAVING          - Filter whole groups instead of rows
+      (6) ORDER BY        - Sort for presentation order
+      (7) OFFSET - FETCH  - page specification; limit numbers of rows that will be returned 
+
   More Terminology
+    Set - a collection of unique elements with No order (neither for Row, nor for Column); also an element on its own
+    Relation - how a subset of elements related to each other which form a meaningful unit (Table)
+    Tuples - a finite ordered list of elements of a relation; AKA Rows 
+    Rows - unique and have NO order 
+    Key - attribute(s) that ensure uniqueness of Rows, like name, ISBN or order number
+    Tuple - attribute, known as Column in SQL 
+    Alias 
+      - name to hold datasets or individual expressions
+      - by default Alias is an object's name, like "Employees" table
+      - any expression involve more than just base column lose column alias (AS)
+
+    SQL is a Stringly Typed language = every expression in SQL has a specific data type
+      Numeric
+      String
+      Binary
+      Temporal
+
+      Special Data Types
+        Hierarchy
+        Spatial
+        Document (XML / JSON)
+
   Demo: First SELECT
   Module Review
 
 Module 4 The FROM Clause
+
   Module Introduction
   TSQL Demo Database
   Demo: FROM Single Table
