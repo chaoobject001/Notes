@@ -128,23 +128,71 @@ Module 3 Our First SELECT
       - any expression involve more than just base column lose column alias (AS)
 
     SQL is a Stringly Typed language = every expression in SQL has a specific data type
-      Numeric
-      String
-      Binary
-      Temporal
-
+      Numeric - integers, decimals and floating-point types
+      String  - encoded in ASCII or Unicode 
+      Binary  - technically a string, but usually used to store images, video and audio 
+      Temporal- Time-related attributes, like date, time or combinations 
+     
       Special Data Types
         Hierarchy
         Spatial
-        Document (XML / JSON)
+        Unstructured data type / Document (XML / JSON)
+      
+      What is NOT in T-SQL
+        Interval  - timespan
+        Boolean   - use Bit (numeric type) instead
+      
+      Operators and Functions
+        Creates new expressions from existing ones
+          Arithmetic: + - * / %
+          String: SUBSTRING, UPPER, LTRIM, + 
+          Date & Time: GETDATE, YEAR, DATEDIFF, DATEADD
+          Bitwise: &, ^, |, ~
+          Comparison: >, <, <>, =, !=, LIKE
+          Logical: AND, OR, NOT, IN, ANY, BETWEEN
+
+        User-defined functions
 
   Demo: First SELECT
+    SELECT without FROM
+    Examples:
+      SELECT 'X'; -- return single row with single column and the value string 'X'
+      SELECT X; -- SQL will evaluate X as identifier / alias (for a column) and gets an error b/c X does not exist
+      
+      SELECT 2 * 7, SQRT(2); 
+        -- Expression can contains multiple sub-expressions w/ operators 
+        -- separate by comma cause each one to be returned as a separate column of the reults set
+      
+      SELECT 2 * 7 AS Easy, SQRT(2) AS LessEasy;
+        -- Use keyword AS to assign alias(column name) to expressions 
+
+      SELECT 7 / 2; -- return 3 (integer)
+
+      SELECT 7 / 2 * 1.00; -- return 3.00; be aware of Operator Precedence 
+
+      SELECT 7 / (2 * 1.00); -- return 3.50  
+
+    The preferred method to process decimal is use CAST()
+      CAST() convert expression from one type to another
+        CAST( expression AS datatype(length) )
+      SELECT CAST(7 AS DECIMAL(5,2)) / 2; -- return 3.50
+    
+    Always use ISO format (YYYYMMDD) when CAST string into DATE type
+      SELECT CAST('20191218' AS DATE) AS TODAY;
+
+    Avoid implicit conversion in SQL
+      SELECT '4' + 4; -- return intteger 8
+
   Module Review
 
 Module 4 The FROM Clause
-
   Module Introduction
+    FROM clause - evaluation of the source dataset of any query 
+    SELECT FROM single source set
+    SELECT FROM multiple source sets
+
   TSQL Demo Database
+    
   Demo: FROM Single Table
   Introduction to Multiple Tables in FROM
   Demo: Multiple Tables
