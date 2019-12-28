@@ -213,15 +213,137 @@ Module 4 The FROM Clause
         2 foreign keys: OrderID and Item - ensure both OrderID and Item are valid 
     
   Demo: FROM Single Table
+    Example 1
+      SELECT *
+      FROM Customers; -- Do NOT use this in production
+
+    1. Customers table is evaluated by FROM caluse (the source set)
+    2. Customers table is then evaluated by SELECT clause
+    3. SELECT clause evaluate EACH ROW from source set to construct the results 
+
+    Example 2
+      SELECT 'Pluralsight' AS BestTraining 
+      FROM Customers;
+
+    1. Customers table is evaluated by FROM caluse
+    2. Then the source set is evaluated in SELECT clause 
+    3. Expression in SELECT clause is evaluated for EACH ROW
+    4. Expression can be columns from table OR literal constant like a string   
+    5. Result set has same number of rows as Customers table under column name 'BestTraining', each display 'Pluralsight'
+
+    Example 3. 
+      SELECT  OrderID + 0 AS OrderID, 
+              OrderDate, 
+              Customer AS Client
+      FROM    Orders;
+    
+    1. Combine column with ANY operator (like '+') will REMOVE column name from resulting column
+    2. It is recommanded to use AS keyword to provide alias in this case
+    3. An alternative column name can also be used to subsitute the original column name with AS keyword
+    4. Aliasing with AS helps clarify expressions
     
   Introduction to Multiple Tables in FROM
+    Multiple Data Sources - need to JOIN separate data sources together
+    JOIN 2 tables 
+      Table_1 = (A, B, C) 
+      Table_2 = (B, E)  
+    
+    Step 1 - CROSS JOIN to produce Cartesian Product
+    1. Every JOIN start with Cartesian Product (CROSS JOIN) - every element from table 1 is paried with every elements from table 2
+       Cartesian Product = (AB, AE, BB, BE, CB, CE)
+       Table_1 CROSS JOIN Table_2 
+    2. CROSS JOIN is not often used - typically rows from both table are matched based on common denominator 
+       Such as orders from a specific customer OR order with specific items solde 
+
+    Step 2 - Matching Rows 
+    Table_1 INNER JOIN Table_2
+    1. INNER JOIN start with Cartesian Product and a JOIN PREDICATE that specifies match condition 
+    2. JOIN PREDICATE is used to evaluate each pair of element from Cartesian Product
+    3. If JOIN PREDICATE evaluated to TRUE, the pair will be kept, else the pair will be removed
+    4. Query continue with kept pairs to next phase
+
+    Example.
+      Table_1 INNER JOIN Table_2
+      ON
+      Table_1.Character = Table_2.Character  
+      
+      For Cartesian Product = (AB, AE, BB, BE, CB, CE)
+      Only 'BB' is kept
+
+    Step 3 - Add reserved rows
+    1. To keep ALL elements from Table_1, regardless if they have matching element in Table_2 
+       Table_1 need to be reserved with LEFT OUTER JOIN - b/c it is on the LEFT side
+    2. The elements from reserved set that FAILED JOIN PREDICATE evaluation are now re-introduced 
+    3. All rows of result set have same structure 
+       so the elements from reserved set that failed predicate need to be paired as well 
+    4. "NULL" is paried with re-introduced element to indicate a missing value 
+
+    Example.
+      Table_1 LEFT OUTER JOIN Table_2
+      ON
+      Table_1.Character = Table_2.Character 
+
+      For Cartesian Product = (AB, AE, BB, BE, CB, CE)
+      Only 'BB' is kept
+      A and C failed JOIN PREDICATE Table_1.Character = Table_2.Character, but now re-introduced  
+      result = (AxNULL, BB, CxNULL)
+
   Demo: Multiple Tables
+    Using Customer's name (Primary Key in Customers table) in Orders table as Natural keys
+    Natural Keys are meaningful / real attributes
+    Natural keys reduce the need to JOIN tables  
+
+    Step 1 - Cartesian Product
+      SELECT  *
+      FROM    Customers
+              CROSS JOIN
+              Orders;
+    
+    Step 2 - INNER JOIN
+      SELECT  *
+      FROM    Customers AS C
+              INNER JOIN
+              Orders AS O
+              ON C.Customer = O.Customer; 
+      The predicate evaluate to TRUE if customer is paired with own order 
+      Alias Table to shorter name (C and O) to keep query concise 
+      SQL server evaluate every row of the Cartesian Product and eliminate all that failed  
+
+      If a JOIN predicate is ALWAYS TRUE, then the result would be the same as CROSS JOIN
+
+    Step 3 - LEFT OUTER JOIN
+      To include customers who never made an order 
+
+      SELECT  *
+      FROM    Customers AS C
+              LEFT OUTER JOIN
+              Orders AS O
+              ON C.Customer = O.Customer; 
+
   Module Review
 
 Module 5 Filtering with WHERE
   Module Introduction
+    Ternary logic (3 valued logic) 
+    NULL indicators - how to handle it correctly for filtering 
+    Logical predicates
+    Using WHERE
+
   Understanding NULLs
+    NULL 
+      Indicate missing or inapplicable data 
+      Not part of original relational model - introduced in 1975 (standardized in 1986)
+    
+    NULL IS NOT A VALUE!
+      - can be seen as marker, indicator or state
+  
   3VL (Ternary) Logic
+    3 values: True, False, Unknown 
+    Rule #1: Any comparison of two unknowns is unknown
+    Rule #2: Comparison of known value to an unknown is unknown 
+    Rule #3: State predicates evaluate to True or False
+
+
   Logical Predicates and Operators
   Filtering with WHERE
   Module Review
