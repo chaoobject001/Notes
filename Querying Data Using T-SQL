@@ -343,9 +343,55 @@ Module 5 Filtering with WHERE
     Rule #2: Comparison of known value to an unknown is unknown 
     Rule #3: State predicates evaluate to True or False
 
-
   Logical Predicates and Operators
+    Additional Logical Operators - When using multiple predicates, be sure to use parentheses
+      ALL
+        Predicate: X > ALL(A, B, C) is True, only when ...
+        X > A AND X > B AND X > C
+        This will evaluate the same for Any comparison operator: <, ==, !=, ...
+        If A, B or C is NULL, the predicate X > ALL(A, B, C) will evaluate to Unknown
+      
+      ANY / SOME
+        Predicate: X > ANY|SOME(A, B, C) is True, when ...
+        X > A OR X > B OR X > C
+        If any of A, B or C is NULL, as long as X still more than any of the rest, 
+        the predicate is True 
+        Else, the predicate evaluate to Unknown 
+
+      BETWEEN
+        Predicate: X BETWEEN A AND B is true when ...
+        X >= A AND X <= B
+        Bounderies included 
+
+      IN 
+        Predicate: X IN (A, B, C) is true when ...
+        X = A OR X = B OR X = C
+
+      NOT IN
+        Predicate: X NOT IN (A, B, C) is true when ...
+        X <> A AND X <> B AND X <> C
+        If any operand is NULL, the entire predicate will always evaluate to Unknown 
+        
+      LIKE
+        Predicate: X LIKE ( <pattern> ) is true when ...
+        X matches wildcard pattern 
+
+      EXISTS
+        Predicate: EXISTS (sub-query) is true when 
+        sub-query returns any row at all 
+
+    NULL Predicates 
+      How to check if an expression is or is not NULL
+        1. X = NULL is always evaluate to (unknown) NULL, regardless X IS NULL or NOT
+
+        2. X <> NULL is always evaluate to (unknown) NULL, regardless X IS NULL or NOT
+
+        3. X IS NULL evaluate to True if X is null, Flase if not; Never unknown 
+
+        4. X IS NOT NULL evaluate to False if X is null, True if not; never unknown 
+        
   Filtering with WHERE
+  
   Module Review
 
 Module 6 Grouping Rows
