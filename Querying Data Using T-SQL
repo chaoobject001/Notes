@@ -391,13 +391,104 @@ Module 5 Filtering with WHERE
         4. X IS NOT NULL evaluate to False if X is null, True if not; never unknown 
         
   Filtering with WHERE
+    Example 1
+    SELECT	*
+    FROM	Customers
+    WHERE	Country = NULL; 
+    -- This WHERE clause will always evaluate to Unknown, so NO rows can be returned for results
+    -- The results will display all columns from table Customers without any row
+
+    Example 2
+    SELECT	*
+    FROM	Customers
+    WHERE	Country IS NULL; 
+    -- This WHERE clause will always evaluate to True when Country attribute is NULL
+
+    Example 3
+    SELECT  *
+    FROM    Customers
+    WHERE   Country IS NOT NULL;
+    -- This WHERE clause will always evaluate to True when Country attribute is NOT NULL
+
+    Example 4
+    SELECT  *
+    FROM    Orders
+    WHERE   OrderDate BETWEEN '20190101' AND '20190115';
+    -- WHERE clause will return OrderDate 01/01/2019 to 01/15/2019, boundaries included 
+    -- If OrderDate is NULL, WHERE clause will filter out row as well
+
+    Example 5
+    SELECT  *
+    FROM    Customers
+    WHERE   Country BETWEEN 'A' AND 'Z';   
+    -- If Country is NULL, WHERE clause will filter out row as well
+
+    Example 6
+    SELECT  *
+    FROM    Items 
+    WHERE   Item IN ('Turntable', 'Amplifier');
+    -- Return rows with Item attribute equal to 'Turntable' OR 'Amplifier' 
+
+    Example 7
+    SELECT  *
+    FROM    Items 
+    WHERE   Item NOT IN ('Turntable', 'Amplifier');
+    -- Return rows with Item attribute NOT equal to 'Turntable' OR 'Amplifier' 
+
+    Example 8 
+    SELECT  *
+    FROM    Items
+    WHERE   Item IN ('Turntable', 'Amplifier', NULL);
+    -- Still return rows with Item attribute equal to 'Turntable' OR 'Amplifier' 
+    -- Item = 'Turntable' OR Item = 'Amplifier' OR Item = NULL
+    -- Item = 'Turntable' OR Item = 'Amplifier' OR Unknown
+    -- still evaluate to the same results 
+
+    Example 9
+    SELECT  *
+    FROM    Items 
+    WHERE   Item NOT IN ('Turntable', 'Amplifier', NULL);
+    -- return NO results
+    -- Item != 'Turntable' AND Item != 'Amplifier' AND Item != NULL
+    -- Item != 'Turntable' AND Item != 'Amplifier' AND UNknown
+    -- Always evaluate to false
+
+    Example 10
+    SELECT  *
+    FROM    Items 
+    WHERE   Item LIKE 'A%';   
+    -- Return rows with Item attribute that start with character A
+    -- pattern matching ignores difference b/t upper and lower case
+    -- '%' = any sequence length of characters 
   
   Module Review
 
 Module 6 Grouping Rows
   Module Introduction
+    Why grouping?
+    Grouping fundamental 
+      - How grouping fits in general scheme of query processing 
+      - Limit of grouping introduce to the rest of the query 
+    Group By clause - create groups
+    Having clause - filter groups  
+
   What Is Grouping Good For?
+    Get A higher level of insight (instead of attributes from individual rows)
+    from each of the sub-groups (bsed on common denominator)
+
+    The output include:  
+      common denominator for grouping
+      derived attribute
+    
+    Once group by common denominator, individual row attribute is no longer accessible  
+
   Grouping Rows
+    Grouping
+      GROUP BY clause works on the data set AFTER filtered by WHERE clause
+      GROUP BY takes attribute of all individual rows with the same attribute and place them in a single group
+      After GROUP BY, only values stays the same are the one specified by GROUP BY expression 
+
+
   Group Filtering with HAVING
   Module Review
   Evaluating SELECT Expressions
