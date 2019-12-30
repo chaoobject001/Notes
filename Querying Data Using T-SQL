@@ -484,20 +484,152 @@ Module 6 Grouping Rows
 
   Grouping Rows
     Grouping
-      GROUP BY clause works on the data set AFTER filtered by WHERE clause
-      GROUP BY takes attribute of all individual rows with the same attribute and place them in a single group
-      After GROUP BY, only values stays the same are the one specified by GROUP BY expression 
+      GROUP BY 
+        - works on the data set passed from WHERE clause
+        - takes attribute of all individual rows with the same attribute and place them in a single group
+      GROUP BY expression defines how individual rows to be grouped
+      After GROUP BY
+        working set consisted 1 row per group  
+        only values stays the same are the one specified by GROUP BY expression 
+        The only way to reference a column that is NOT part of GROUP BY expression is 
+          to instruct SQL server 
+            pick one of the values from the group, OR
+            calculate a single value based of the group  
+            i.e, Aggregate function
+      
+      Aggregate function operates on a set of elements and return A SINGLE value
+      Common aggregate Functions:
+        Minimum
+        Maximum
+        Average
+        Count
+        T-SQL specific
+          Standard deviation
+          Variance
+      
+      Example 1:
+        Phase 1
+          SELECT  *
+          FROM    Customers;  -- return ALL customer rows
+        
+        Phase 2
+          SELECT  *
+          FROM    Customers
+          WHERE   Country IS NOT NULL;  -- remove rows with unknown (NULL) Country 
 
+        Phase 3
+          SELECT  *
+          FROM    Customers
+          WHERE   Country IS NOT NULL
+          GROUP BY Country;
+        
+        This query will produce following error:
+          Msg 8120, Level 16, State 1, Line 1
+          Column 'Customers.Customer' is invalid in the select list because 
+          it is not contained in either an aggregate function or the GROUP BY clause.
+        There are potentially manay rows of the same 'Country'
+        GROUP BY can return ONLY ONE row for each 'Country' - Thus the error from SELECT * 
+
+        Phase 4
+          SELECT  Country, COUNT(*) AS NumberOfCustomers
+          FROM    Customers
+          WHERE   Country IS NOT NULL
+          GROUP BY Country;
+        
+        New SELECT clause contains 
+          Country   - in GROUP BY clause
+          COUNT(*)  - * is now in aggregate fucntion; 
+                      this counts number of rows (Customers) within each group (Country)
+      
+      Example 2
+        SELECT  Country, COUNT(*) AS NumberOfCustomers
+        FROM    Customers
+        GROUP BY Country;
+        -- This query will now also return rows WHERE Country IS NULL
+
+        -- Re-execute query above after execute following statement 
+        INSERT INTO Customers (Customer, Country)
+        VALUES ('Jane', NULL);
+
+        Now two rows with Country IS NULL is grouped into single group
+        While two NULL are different mathmatically, they will be treated as the same for grouping
 
   Group Filtering with HAVING
+    The HAVING Group filter 
+      Having clause operates on group set AFETR GROUP BY clause
+      Having clause can eliminate group with aggregate predicate 
+      Having clause CANNOT reference individual rows 
+
+    Example 1
+      SELECT  Country, COUNT(*) AS NumberOfCustomers
+      FROM    Customers
+      GROUP BY Country
+      HAVING COUNT(*) > 1; 
+      -- Show Country with more than 1 customer
+      -- An aggregate cannot be used in WHERE (with exceptions)
+
+    Example 2 
+      SELECT  Country, COUNT(*) AS NumberOfCustomers
+      FROM    Customers
+      GROUP BY Country
+      HAVING Country IS NOT NULL; 
+      -- HAVING clause can use more than just aggregate 
+      -- However, filter by GROUP BY expression can be done more efficiently with WHERE clause
+    
+    Example 3 
+      SELECT  Country, COUNT(*) AS NumberOfCustomers
+      FROM    Customers
+	    WHERE	  Country IS NOT NULL
+      GROUP BY Country;
+      -- same results as previous example, but more efficient 
+      -- b/c extra step to create additional group then remove some of them right after GROUP BY clause 
+
   Module Review
-  Evaluating SELECT Expressions
-  Module Introduction
+    NOT ALL relational database management system (RDBMS) respect logical grouping rules
+      - SQLite and possibly MySQL (but not by default)
 
 Module 7 Evaluating SELECT Expressions
-Dealing with NULLs
-Using DISTINCT
-Module Review
+  Module Introduction
+    How SELECT expressions are processed 
+    How to deal with NULL - for better presentation to client application
+    How to eliminate duplicates with DISTINCT - and its logical implication
+
+  Evaluating SELECT Expression
+    SELECT processing takes place AFTER HAVING clause
+    SELECT process each row one by one
+      For each row, ALL expressions are evaluated ALL at once
+    
+    The SELECT expressions consisted of:
+      The source columns
+      Expressions based on these source columns
+      Literal constants
+      Functions
+      Any other valid expression
+
+    Expressions can (and need to) be uniquely aliased 
+      Direct column reference inherit column name as Alias - but any operator or function revoke the inheritance  
+      A relational set requires uniquely referencable attributes 
+      Reference each expression with unique and friendly alias  
+    
+    Eliminate or keep duplicate rows with ALL | DISTINCT
+      After all rows and expressions are evaluated:
+        DISTINCT is used to eliminate duplicate rows
+      ALL is typically omitted from query and is assumed by default 
+        By default or with ALL, SQL server returns all rows without looking for duplicate 
+
+    Example: ROW by ROW and ALL at Once
+      SELECT OrderId, Item, (Quantity * Price) AS Amount, Amount * 0.9 AS Discounted
+      FROM OrderItems
+      -- this query will produce error:
+      -- Msg 207, Level 16, State 1, Line 1
+      -- Invalid column name 'Amount'.
+
+      Since all expressions from each row is processed ALL AT Once,
+      'Amount' will not be recognized as valid name from the same SELECT clause 
+
+  Dealing with NULLs
+  Using DISTINCT
+  Module Review
 
 Module 8 Ordering and Paging
   Module Introduction
