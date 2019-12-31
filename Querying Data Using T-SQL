@@ -627,15 +627,120 @@ Module 7 Evaluating SELECT Expressions
       Since all expressions from each row is processed ALL AT Once,
       'Amount' will not be recognized as valid name from the same SELECT clause 
 
-  Dealing with NULLs
+  Dealing with NULLs - Replace NULL with more user-frindly values
+    T-SQL specific function:
+      ISNULL(X, Y) 
+        -- If X IS NULL, return Y (a literal constant like "N/A", "0" OR an expression)
+        -- This is NOT "IS NULL" predicate 
+    More generic case conditional function:
+      COALESCE(X, Y, Z)
+        -- COALESCE can be used with ANY number of operands
+        -- Return the left most non-NULL or known expression 
+    Evaluate to NULL with equal operands 
+      NULLIF (X, Y) -- Evaluates to NULL if X = Y
+
   Using DISTINCT
+    DISTINCT (optional) applies After ALL expressions have been evaluated for ALL rows, 
+    DISTINCT eliminates duplicate rows based on ALL SELECT list expressions
+    NULLs are treated as the same (GROUP BY), but NOT equal 
+    
+    Example
+      STEP 1
+        SELECT  Country
+        FROM    Customer;  -- get duplicated rows
+
+      STEP 2
+        Two options to remove duplicate: DISTINCT or GROUP BY - same results 
+        Both treated NULL as the same but NOT EQUAL 
+          using DISTINCT:
+            SELECT  DISTINCT Country
+            FROM    Customers;
+          
+          using GROUP BY:
+            SELECT  Country
+            FROM    Customers
+            GROUP BY Country;
+      
+      STEP 3
+        Adding Customer to SELECT clause with DISTINCT
+
+        SELECT  DISTINCT Country, Customer
+        FROM    Customers; 
+
+        DISTINCT applies to BOTH Country and Customer (Primary Key)
+        - this effectively returns ALL rows
+      
+      STEP 4 
+        Replace NULL (in Country) with readble message
+
+        SELECT  DISTINCT ISNULL(Country, 'N/A') AS Country, Customer
+        FROM    Customers;
+
+        -- ISNULL(Country, 'N/A') replace Country expression when it IS NULL and replace it with 'N/A'
+        -- Using function ISNULL() removed inheritted Column name, so aliasing with AS Country  
+
   Module Review
 
 Module 8 Ordering and Paging
   Module Introduction
+    Presentation Ordering 
+    Paging (AKA. Pagination)
+    Ordering - why should we NOT do it in DB?
+    ORDER BY clause
+    Query Determinism 
+    Tiebreakers
+    Paging results set with 
+      OFFSET - FETCH
+      T-SQL 'TOP' operator 
+  
   Law of Order
+    SET has NO ORDER
+    CURSOR = Apply order to SET 
+    A relational model that deals with SET ONLY cannot handle CURSOR
+
+    CURSOR in SQL is a row level operation
+    Order is important in presentation
+
+    Whose job is it to ORDER rows?
+      3-Tier Architecture - idealy each tier should be independent 
+        Presentation
+        Business
+        Database
+      
+      Opinion: 
+        It's NOT DB's responsibility to deal with presentation
+        Ordering is the responsibility of presentation tier
+      
+      Downside of ordering in DB
+        Lower query performance 
+        Data inconsistency 
+        Possible bugs
+      
+      Business rules / logic should stay out of DB
+
+      Exception: Use ORDER BY for Paging
+
   ORDER BY
-  Determinism and Tiebreakers
+    Receive dataset AFTER SELECT clause
+    Ideally ORDER BY clause can only access expressions defined in SELECT clause
+    ORDER BY is THE ONLY clause that can use aliases defined in SELECT clause
+    ORDER BY ascending (by default) or descending order
+    In T-SQL: 
+      NULL has lowest ordering value 
+      Use conditional expression like 'CASE' to replace NULL with value that's higher than others 
+        - This is the ONLY way to make NULL sort last
+    In POSTGRES: 
+      NULL has highest ordering value
+      option to use 'NULL FIRST' or 'NULL LAST' options
+
+  Query Determinism and Tiebreakers
+    Deterministic query: 
+      when executed multiple times over the SAME dataset 
+      return the SAME results
+    
+    This property can be affected by ORDER BY (among other factors)
+    
+
   Paging Result Sets
   Demo: Ordering and Paging
   Module Review
