@@ -740,19 +740,99 @@ Module 8 Ordering and Paging
     
     This property can be affected by ORDER BY (among other factors)
     
+    When Order by non-unique expression (2 or more rows have the same ordering expression value),
+    SQL Server can return tied rows in ANY order 
+
+    To ensure consistency in ordering: 
+      SQL query is responsible to specify ORDER BY expressions so there is an unique ordering value per row 
+    
+    To ensure unique ordering value / row:
+      Additional expressions are needed to serve as "tibreakers"
+
+    Example:
+      ORDER BY OrderID -- 2 or more rows have the same value for OrderID need a tiebreaker
+
+      ORDER BY OrderID, Item -- additional expression used as tiebreaker 
 
   Paging Result Sets
+    Paging (in DB)
+      - process the number of rows too many for human; 
+      - especially when caching at presentation tier is too costly
+
+    T-SQL has 3 ways to limit result sets:
+      1. TOP operator 
+        - Specified in SELECT clause, 
+        - Before SELECT expressions
+        - After (Optional) DISTINCT
+        - can be used WITHOUT ORDER BY clause - return any rows
+        - Not used in other DBMS
+        - No OFFSET option, thus hard to use for paging purpose
+      
+        TOP(n) WITH TIES 
+          would return more than n rows IF additional rows share the same sorting values 
+
+          SELECT TOP(5) WITH TIES OrderID
+          FROM Orders
+          ORDER BY OrderDate DESC;
+      
+        TOP(n) PERCENT WITH TIES
+          would return more than n% rows IF additional rows share the same sorting values 
+      
+      2. OFFSET - FETCH clause
+        - After ORDER BY clause
+        - ANSI/ISO standard 
+
+          SELECT OrderID
+          FROM Orders
+          ORDER BY OrderDate DESC
+          OFFSET 0 ROWS
+          FETCH NEXT 5 ROWS ONLY;
+
+      3. LIMIT - OFFSET clause
+        - used by many other DBMS
+        - non-ANSI standard
+
+          LIMIT 5 OFFSET 0;  
+
   Demo: Ordering and Paging
+    Step 1: Sort order by date and display latest one first
+      SELECT  *
+      FROM    Orders
+      ORDER BY OrderDate DESC;
+
+    STEP 2. Sort OrderItems by Item in ascending order
+      SELECT  *
+      FROM    OrderItems
+      ORDER BY Item ASC;
+
+    STEP 3. Sort OrderItems by Quantity, but not display Quantity
+      SELECT  OrderID, Item
+      FROM    OrderItems
+      ORDER BY Quantity;
+    
+    STEP 4. Sort OrderItems by OrderID, but without tiebreaker
+      SELECT  *
+      FROM    OrderItems
+      ORDER BY OrderID; -- rows with same OrderID canbe displayed in random order among themselves
+
+    STEP 5. Add tiebreaker to ensure deterministic query (Primary Key is OrderID and Item combined)
+      SELECT  *
+      FROM    OrderItems
+      ORDER BY OrderID, Item;
+
+    STEP 6. Return TOP 3 items based on quantity sold
+      SELECT  Item, SUM(Quantity) AS NumberOfItemSold
+      FROM    OrderItems
+      GROUP BY Item
+      ORDER BY NumberOfItemSold DESC
+      OFFSET 0 ROWS FETCH NEXT 3 ROWS; -- Page #1 display 3 rows
+
   Module Review
+    A Query without an ORDER BY clause will NOT return rows in ANY specific order!  
 
 Module 9 Wrapping Up
   Module Introduction
-  
   Course Review
-    What is T-SQL and its root in relational model
-    What is SQL Server, the ditions to use, authentication
-    How to access object using fully qualified names
-
   Takeaway
   Feedback
   Next Steps
