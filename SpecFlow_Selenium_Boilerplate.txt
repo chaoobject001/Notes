@@ -1,0 +1,85 @@
+Start VS studio with new project "SpecFlow_Selenium_Boilerplate" as class library
+Install follwoing NuGet packages
+  Selenium.WebDriver (3.141.0)
+  Selenium.WebDriver.ChromeDriver (79.0.3945.3600)
+  SpecFlow (3.1.80)
+  MSTest.TestFramework (2.0.0)
+  MSTest.TestAdapter (2.0.0)
+
+Add following folders under project "SpecFlow_Selenium_Boilerplate"
+Save changes and restart project
+Remove class1.cs
+Create BaseTest.cs file under folder "Tests"
+Under BaseTest.cs
+  Add directives:
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Chrome;
+    using System.Configuration;
+    using System.Threading;
+  
+  Edit default class into following:
+    [TestClass]
+    public class TestBase
+    {  }
+
+Build project - verify Build: 1 succeeded
+
+Under BaseTest.cs
+  Add following property under class TestBase
+    protected static IWebDriver driver;
+    public TestContext TestContext { get; set; }
+    private string appURL;
+
+  Add constructor
+    public TestBase() { }
+  
+  Add 2 methods as specified below 
+    [TestInitialize]
+        public void CreateDriver()
+        {
+            appURL = ConfigurationManager.AppSettings.Get("TrelloBaseURL");
+            driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Navigate().GoToUrl(appURL + "/");
+        }
+
+    [TestCleanup]
+        public void QuitDriver()
+        {
+            if (driver != null)
+                driver.Quit();
+        }
+
+Add configuration file (App.config) to store base app URL under project root
+  Content as listed:
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+      <specFlow>
+        <unitTestProvider name="mstest.v2" />
+      </specFlow>
+      <appSettings>
+        <add key="BaseURL" value="http://todomvc.com/examples/react-alt/#/" />
+      </appSettings>
+    </configuration>
+
+Create first test class ()  with following
+  Directives:
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Configuration; 
+  
+  Initial class setup
+    namespace SpecFlow_Selenium_Boilerplate.Tests
+    {
+      [TestClass]
+      public class DefaultPageLoadingTest : TestBase {
+
+      }
+    }
+  
+  Add constructor
+    public LoginTest() { } 
+
+Add page object for the ToDo page
+  

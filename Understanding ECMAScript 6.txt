@@ -462,6 +462,199 @@ Chapter 8: Iterators and Generators
 Chapter 9: Introducing JavaScript Classes
 Chapter 10: Improved Array Capabilities
 Chapter 11: Promises and Asynchronous Programming
+  Asynchronous Programming Background
+    The Event Model
+    The Callback Pattern
+  Promise Basics
+    promise is a placeholder for the result of asynchronous operation / function
+    ex.
+      // readFile promises to complete at some time in the future
+      let promise = readFile("example.txt")
+    
+    WHEN the result of function will be ready depends on promise life cycle
+
+    The Promise Life Cycle
+      Starting in "Pending" state, indicates asynchronous operation is not completed yet (unsettled)
+      Once asynchronous operation completes (settled), promise enters one of the 2 states:
+        1. Fulfilled  - operation completed successfully  
+        2. Rejected   - operation completed unsuccessfully (due to error or other causes)
+      Internal property, [[PromiseState]] is "pending", "fulfilled", or "rejected"
+
+      When [[PromiseState]] changes, then() method will be executed
+      then()
+        - Any object implements is a "thenable" 
+        - Available in all promises
+        - Not ALL thenables are promises
+        - then() takes 2 OPTIONAL arguments
+          1. function to call when promise is fulfilled 
+          2. function to call when promise is rejected
+          - any additional data related to asynchronous operation is passed to either function
+        - Without reject handler, all failures will happen silently - so ALWAYS attach a rejection handler
+      ex.
+        let promise = readFile("example.txt")
+
+        promise.then(function(contents){
+          // fulfillment
+          console.log(contents);
+        }, function(err) {
+          // rejection
+          console.error(err.message);
+        });
+
+        promise.then(function(contents) {
+          //fulfillment - ERROR will NOT be reported
+          console.log(contents);
+        });
+
+        promise.then(null, function() {
+          // rejection - success will not be reported
+          console.error(err.message);
+        });
+
+        // is the same as:
+
+        promise.catch(function(err) {
+          // rejection
+          console.error(err.message)
+        });
+      
+      Promises also have catch(), intended to be used in combination to handle asynchronous operation
+      
+      To add new fulfillment or rejection handler AFTER 
+        promise settled and previous handler executed:
+      Ex.
+        let promise = readFile("example.txt");
+
+        // original fulfillment handler
+        promise.then(function(contents) {
+          console.log(contents);
+
+          // new fulfillment handler
+          promise.then(function(contents) {
+            console.log(contents);
+          });
+        });
+
+    Creating Unsettled Promises
+      Function like readFile() returns a Promise, created within function definition
+      Promise is created with constructor like:
+        new Promise()
+      Promise constructor takes a single function, "executor", as argument
+      Executor runs immediately when function is called
+      The executor takes 2 functions as arguments AND implement asynchronous operation
+        1. resolve()  - called when asynchronous operation succeeded to add job to job cucue and resolve Promise
+        2. reject()   - called when asynchornous operation failed to add job to job cucue and resolve Promise
+      Ex.
+        // Node.js example
+        let fs = require("fs")
+
+        // a function that returns readFile
+        function readFile(filename) {
+          // executor function takes resolve() and reject()
+          return new Promise(function(resolve, reject) {
+            // asnychronous operation
+            fs.readFile(fileName, {encoding: "utf8"}, function(err, contents) {
+              // call reject() when operation fails
+              if(err) {
+                reject(err);
+                return; // end method 
+              }
+              // call resolve() when operation succeeded 
+              resolve(contents);
+            });
+          });
+        }
+
+        let promise = readFile("example.txt")
+
+        // listen for both fulfillment and rejection
+        promise.then(function(contents) {
+          // fulfillment
+          console.log(contents);          
+        }, function(err) {
+          // rejection
+          console.error(err.message);
+        });
+
+      Ex. Job scheduling 
+          let promise = new Promise(function(resolve, reject) {
+              console.log("Promise");
+              resolve();
+          });
+
+          console.log("Hi!")
+          VM509:2 Promise
+          VM509:6 Hi!
+          undefined
+          let promise = new Promise(function(resolve, reject) {
+              console.log("Promise");
+              resolve();
+          });
+
+          promise.then( function() {
+              console.log("Resolved")
+          });
+
+          console.log("Hi!");
+
+          // The output is:
+          // Promise
+          // Hi!
+          // Resolved
+      Fulfillment and rejection handler are always added to the END of job queue AFTER executor is completed 
+
+    Creating Settled Promise
+      To use Promise to represent ONLY a single known value:
+      1. Promise.resolve()
+      2. Promise.reject()  
+      Pass Promise into either method, the Promise will be returned WITHOUT modification   
+
+      Using Promise.resolve()
+        Ex. 
+          let promise = Promise.resolve(42)
+
+          promise.then(function(value) {
+            console.log(value);
+          }); // 42
+        
+      Using Promise.reject()
+        Ex.
+          let promise = Promise.reject(42);
+
+          promise.catch(function(value) {
+            console.log(value);  
+          }); // 42
+
+      Passing Non-Promise Thanables to Promise.resolve() / Promise.reject()
+        Non-Promise Thanable:
+          An object with then() method that accepts 
+          resolve and reject handler functions 
+        
+        Ex. for Promise.resolve()
+          let thenable = {
+            then: function(resolve, reject) {
+              resolve(42);    
+            }
+          };
+
+          let p1 = Promise.resolve(thenable);
+          p1.then(function(value) {
+            console.log(value);    
+          })
+
+        Ex. for Promise.reject()
+          let thenable = {
+            then: function (resolve, reject) {
+              reject(42);
+            }
+          };
+
+          let p2 = Promise.resolve(thenable);
+          p2.catch( function(value) {
+            console.log(value)
+          });
+
+
 Chapter 12: Proxies and the Reflection API
 Chapter 13: Encapsulating Code with Modules
 Appendix A: Smaller ECMAScript 6 Changes
