@@ -1,0 +1,45 @@
+# Identidy which shell is currently used:
+> echo $SHELL
+# echo print arg on screen; $ specify environbment variable 
+
+# basic commands
+ls      # list all content of a directory
+cd      # change directory / navigation
+pwd     # present working directory 
+mkdir   # make directory ex. > mkdir new directory
+
+# run multiple command one after another, separate them by semicolon
+> cd newdirectory; mkdir www; pwd
+
+# create directory tree in one command with mkdir -p
+> mkdir -p /tmp/america/california/LA
+
+# remove directory AND all its content
+> rm -r /tmp/my_dir1 
+
+# copy one directory AND all contents from one to another 
+> cp -r my_dir1 /tmp/my_dir1
+
+# Commands with files
+# create new file without content 
+> touch new_file.txt
+
+# add content to file
+> cat > new_file.txt
+This is some sample content
+(Enter to add new line; CTRL + D to save content and exit prompt)
+
+# view file content 
+> cat new_file.txt
+
+# copy file
+> cp [original_file_path_and_name] [new_file_path_and_name]
+
+# move file / rename file (same path, different file name)
+> mv [original_file_path_and_name] [new_file_path_and_name] 
+
+# remove / delet file
+> rm new_file.txt
+
+
+
