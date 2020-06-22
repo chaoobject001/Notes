@@ -206,7 +206,7 @@ Chapter 2: Strings and Regular Expression
       16-bit sequence that represents string before ECMAScript 6  
     code point:
       global unique identifiers 
-      number start from 0, number represents character
+      number start from 0, each number represents a character
       character codes  
     
     UTF-16 Code Points
@@ -354,7 +354,7 @@ Chapter 2: Strings and Regular Expression
         optional: index within str where search begin (default to 0)
       String.endsWtih()
         str.endsWtih(searchString[, length])
-        return true if searchString matches the end of str, else return dalse
+        return true if searchString matches the end of str, else return false
         optional: match from index {length - 1} to index {0}  (default to str.length)
       Ex. 
         let msg = "0123456";
