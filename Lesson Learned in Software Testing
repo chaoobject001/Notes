@@ -1,0 +1,54 @@
+Specification = sys expected behaviors
+Always explore
+
+Evaluate the lesson with these criteria / questions:
+- Under what circumstances would an application of this lesson work in your company?
+  (Positive test)
+- Under what circumstances would the application not work?
+  (Negavite test)
+- Has anyone you know tried anything like this lesson before? What happened? Why?
+  (Past experience / other minds)
+- What's different about your current project from that person's project? 
+  (Current context v. Past)
+  Should that difference matter?
+  (Prioritze)
+- Who is most likely to benefit from the attempt to apply this lesson? (PROs)
+  Who is most likely to be disadvantaged as a result of an attempt to apply the lesson? (CONs)
+- What will you learn from attempting to apply this lesson? (Knowledage/Exp/Insight Gain)
+- Manage risk via pilot study to try new idea / lesson in current company / 
+  (make use of current) project?
+- Matrix to evaluate the results of applying lesson
+- What is the best / worst that can happen to you / other stakeholders (like user or devs)
+- How to deal with objection from key stakeholder and then sell the idea?
+
+Failures occur under conditions that must be met for the failure to occur
+Symptom is like a less serious failure - it can be an indicator of an underlying (cause of) failure
+Bug / Issue is a catch-all term for anything wrong w/ software
+
+Bug report define specifics of what makes a product less valuable to someone
+
+The role of tester is a relationship
+Tester does not control the relationship
+Tester negotiate the relationship 
+The relationship is the foundation for setting expectation 
+
+  Testing is done to find information so that decision about product can be made based on it.
+
+  Mission drives tasks 
+    Different clients has different requirements
+    A list of examples
+    - Find important bug fast
+    - Provide general assessment of the quality of the product
+    - Certify product meets a specific standard(s)
+    - Help clients to improve product quality and testability 
+    - Assure test process meets accountability standards
+    - Educate clients about testing and how to work w/ testers
+    - Follow a specific set of methods / rules
+    - Help predict and control the cost of support
+    - Help client improve their processes
+    - Execute tasks w/ minimum cost, time or undesirable side effects
+    - Satisfy particular client 
+     
+
+
+
